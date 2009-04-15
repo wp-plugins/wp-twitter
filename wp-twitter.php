@@ -3,7 +3,7 @@
 Plugin Name: WP-Twitter
 Plugin URI: http://webmais.com/wp-twitter
 Description: <strong>WP-Twitter</strong> is a plugin that creates a integration between your WordPress blog and your <a href="http://twitter.com">Twitter</a> account by giving you the following functionality: <strong>i)</strong> Post a tweet from the WordPress Admin Screens, including option to reduce the URL with API <a href="http://is.gd">is.gd</a> before sending. <strong>ii)</strong> Widget for displays yours latest tweets in your WordPress blog.
-Version: 1.0
+Version: 1.1
 Author: Fabrix DoRoMo
 Author URI: http://webmais.com
 */
@@ -41,25 +41,35 @@ add_submenu_page('post-new.php'	, __('WP-Twitter &raquo;', 'wp-twitter'), __('WP
 }
 function show_tb_warning()
 {
-	echo "<div class=\"error\"><p>Please update your <a href=\"".get_bloginfo('wpurl')."/wp-admin/options-general.php?page=wp-twitter/wp-twitter.php\">WP-Twitter username and password</a>.</p></div>";
+	echo "<div class=\"error\"><p>".__('Please update your', 'wp-twitter')." <a href=\"".get_bloginfo('wpurl')."/wp-admin/options-general.php?page=wp-twitter/wp-twitter.php\">".__('WP-Twitter username and password', 'wp-twitter')."</a></p></div>";
 }
+
+$currentLocale = get_locale();
+			if(!empty($currentLocale)) {
+				$moFile = dirname(__FILE__) . "/lang/wp-twitter-" . $currentLocale . ".mo";
+				if(@file_exists($moFile) && is_readable($moFile)) load_textdomain('wp-twitter', $moFile);
+			}
+
 function wp_twitter_options() {
+
+
+
 ?>
 <div class="wrap">
 <div id="icon-options-general" class="icon32"><br /></div>
-<h2>WP-Twitter Options:</h2>
+<h2><?php _e('WP-Twitter Options:', 'wp-twitter') ?></h2>
 <form method="post" action="options.php">
 <?php wp_nonce_field('update-options'); ?>
-<h3>Username and Password</h3>
-<p>Enter your Twitter username and password to enable to <a href="<?php bloginfo('wpurl') ?>/wp-admin/edit.php?page=wp-twitter.php">post updates</a>.</p>		
+<h3><?php _e('Username and Password', 'wp-twitter') ?></h3>
+<p><?php _e('Enter your Twitter username and password to enable to', 'wp-twitter') ?> <a href="<?php bloginfo('wpurl') ?>/wp-admin/edit.php?page=wp-twitter.php"><?php _e('post updates', 'wp-twitter') ?></a>.</p>		
 <table class="widefat fixed" style="width: 370px;">
 <thead>
 <tr valign="top">
-<th scope="row">Twitter Username</th>
+<th scope="row"><?php _e('Twitter Username', 'wp-twitter') ?></th>
 <td><input type="text" name="wp_twitter_username" value="<?php echo get_option('wp_twitter_username'); ?>" /></td>
 </tr>
 <tr valign="top">
-<th scope="row">Twitter Password</th>
+<th scope="row"><?php _e('Twitter Password', 'wp-twitter') ?></th>
 <td><input type="password" name="wp_twitter_pw" value="<?php echo get_option('wp_twitter_pw'); ?>" /></td>
 </tr>
 </thead>
@@ -95,9 +105,9 @@ function postToTwitter($username,$password,$message){
     $resultArray = curl_getinfo($ch);
     curl_close($ch);
     if($resultArray['http_code'] == "200"){
-         $twitter_status='Your message has been sended! <a href="http://twitter.com/'.$username.'" target="_blank">See your profile</a>';
+         $twitter_status=''.__('Your message has been sended, see your twitter profile! (', 'wp-twitter').'<a href="http://twitter.com/'.$username.'" target="_blank">'.$username.'</a>)';
     } else {
-         $twitter_status="Error posting to Twitter. Retry";
+         $twitter_status="".__('Error posting to Twitter, Retry', 'wp-twitter')."";
     }
 	return $twitter_status;
 }
@@ -122,29 +132,29 @@ countfield.value = maxlimit - field.value.length;
 </script>
 <div class="wrap">
 <div id="icon-edit" class="icon32"><br /></div>
-<h2>Post a message on Twitter</h2>
+<h2><?php _e('Post a message on Twitter', 'wp-twitter') ?></h2>
 <?php if(isset($_POST['twitter_msg']) && !isset($error)){?>
 <div id="message" class="updated fade"><p><strong><?php echo $twitter_status ?></strong></p></div>
 <?php } else if(isset($error)){?>
-<div id="message" class="updated fade"><p><strong>Error: please insert a message!</strong></p></div>
+<div id="message" class="updated fade"><p><strong><?php _e('Error: please insert a message!', 'wp-twitter') ?></strong></p></div>
 <?php }?>
 <div id="poststuff" class="metabox-holder" style="width: 470px;">
 <div id="submitdiv" class="postbox">
-<h3 class='hndle'><span>What are you doing?</span></h3>
+<h3 class='hndle'><span><?php _e('What are you doing?', 'wp-twitter') ?></span></h3>
 <form action="<?php bloginfo('wpurl') ?>/wp-admin/edit.php?page=wp-twitter.php" method="post" name="myform">
 <div align="center"><textarea name="twitter_msg" type="text" id="twitter_msg" rows="4" style="width: 458px;border: none" maxlength="140" onKeyDown="textCounter(this.form.twitter_msg,this.form.remLen,140);" onKeyUp="textCounter(this.form.twitter_msg,this.form.remLen,140);"></textarea></div>
 </div>
 <table border="0" cellpadding="0" cellspacing="0" width="100%"><tr>
-<td align="left"><input disabled readonly type="text" name="remLen" size="3" maxlength="3" style="font-size:10px" value="140"> <small>(characters left)</small></td>
-<td align="right"><input type="submit" name="button" id="button" class="button-primary" value=" Update " /></td>
+<td align="left"><input disabled readonly type="text" name="remLen" size="3" maxlength="3" style="font-size:10px" value="140"> <small>(<?php _e('characters left', 'wp-twitter') ?>)</small></td>
+<td align="right"><input type="submit" name="button" id="button" class="button-primary" value="<?php _e(' Update ', 'wp-twitter') ?>" /></td>
 </tr>
 </table>
 </div></form>
 <p>&nbsp;</p>
 <div id="icon-edit" class="icon32"><br /></div>
-<h2>Optional</h2>
-<p><em>"Your message + "BIG URL" = 140 Characters"</em><br><strong>TIP:</strong> before posting, reduce the size of URL for leave more space for your text.<br/>
-Enter the URL you'd like a short URL, click "<strong>Get URL</strong>", and the new URL will appear for you!</p>
+<h2><?php _e('Optional', 'wp-twitter') ?></h2>
+<p><em><?php _e('"Your message + "BIG URL" = 140 Characters"</em><br><strong>TIP:</strong> before posting, reduce the size of URL for leave more space for your text.', 'wp-twitter') ?><br/>
+<small><?php _e('Enter the URL you\'d like a short URL, click "<strong>Get URL</strong>", and the new URL will appear for you!', 'wp-twitter') ?></small></p>
 <table class="widefat fixed" style="width: 390px;">
 <tr><td>
 <iframe scrolling="No" frameborder="0" width="390" height="85" src="<?php bloginfo('wpurl') ?>/wp-content/plugins/wp-twitter/tiny-url.php"></iframe>
@@ -186,15 +196,15 @@ function widget_WPtwitter_init() {
 		$title = htmlspecialchars($options['title'], ENT_QUOTES);
 		$show = htmlspecialchars($options['show'], ENT_QUOTES);
 		echo '<p style="text-align:right;">
-				<label for="Twitter-account">' . __('Account:') . '
+				<label for="Twitter-account">' . __('Account:', 'wp-twitter') . '
 				<input style="width: 200px;" id="Twitter-account" name="Twitter-account" type="text" value="'.$account.'" />
 				</label></p>';
 		echo '<p style="text-align:right;">
-				<label for="Twitter-title">' . __('Title:') . '
+				<label for="Twitter-title">' . __('Title:', 'wp-twitter') . '
 				<input style="width: 200px;" id="Twitter-title" name="Twitter-title" type="text" value="'.$title.'" />
 				</label></p>';
 		echo '<p style="text-align:right;">
-				<label for="Twitter-show">' . __('Tweets:') . '
+				<label for="Twitter-show">' . __('Tweets:', 'wp-twitter') . '
 				<input style="width: 200px;" id="Twitter-show" name="Twitter-show" type="text" value="'.$show.'" />
 				</label></p>';
 		echo '<input type="hidden" id="Twitter-submit" name="Twitter-submit" value="1" />';

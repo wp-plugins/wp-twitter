@@ -1,14 +1,10 @@
 === WP-Twitter ===
 Plugin Name: WP-Twitter
-Plugin URI: http://webmais.com/wp-twitter
-Version: 1.0
-Author: Fabrix DoRoMo
-Author URI: http://webmais.com
-Contributors: Fallcom
-Tags: widget, twitter , post, tweet, integrate
+Contributors: fdoromo
+Tags: Widget, Twitter , Post, Tweet, Integrate, Update
 Requires at least: 2.3
 Tested up to: 2.7.1
-Stable tag: trunk
+Stable tag: 1.1
 
 WP-Twitter is a plugin that creates a integration between your WordPress blog and your Twitter account by giving you the following functionality:
 
@@ -39,7 +35,11 @@ WP-Twitter is a plugin that creates a integration between your WordPress blog an
 
 == Changes ==
 
-Version 1.0 <-> *2009/04/13* <-> Initial release
+= Version 1.1 = 
+Multilanguage support, included .POT file and translated Brasilian Portuguese pt_BR
+
+= Version 1.0 = 
+Initial release
 
 
 == LICENSE ==
