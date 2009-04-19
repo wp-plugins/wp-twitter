@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wp-twitter\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/wp-twitter\n"
-"POT-Creation-Date: 2009-04-15 01:25+0000\n"
+"POT-Creation-Date: 2009-04-19 16:05+0000\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Fabrix <fabrix@fabrix.net>\n"
 "Language-Team: Fabrix <fabrix@webmais.com>\n"
@@ -25,83 +25,95 @@ msgstr "Por favor atualize seu "
 msgid "WP-Twitter username and password"
 msgstr "WP-Twitter usuário e senha"
 
-#: wp-twitter.php:60
+#: wp-twitter.php:125
 msgid "WP-Twitter Options:"
 msgstr "WP-Twitter Opções:"
 
-#: wp-twitter.php:63
+#: wp-twitter.php:128
 msgid "Username and Password"
 msgstr "Usuário e Senha"
 
-#: wp-twitter.php:64
+#: wp-twitter.php:129
 msgid "Enter your Twitter username and password to enable to"
 msgstr "Entre com o seu nome de usuário e senha Twitter, para habilitar"
 
-#: wp-twitter.php:64
+#: wp-twitter.php:129
 msgid "post updates"
 msgstr "postagem de atualizações"
 
-#: wp-twitter.php:68
+#: wp-twitter.php:134
 msgid "Twitter Username"
 msgstr "Usuário Twitter"
 
-#: wp-twitter.php:72
+#: wp-twitter.php:138
 msgid "Twitter Password"
 msgstr "Senha Twitter"
 
-#: wp-twitter.php:80
+#: wp-twitter.php:147
+msgid "followers"
+msgstr "seguidores "
+
+#: wp-twitter.php:148
+msgid "No Description On Account"
+msgstr "Nenhuma descrição nesta conta"
+
+#: wp-twitter.php:152
+msgid "Sorry, the credentials you have supplied are invalid. Please re-enter them again below."
+msgstr "Desculpe, as credenciais que você forneceu são inválidas. Reintroduza novamente os dados."
+
+#: wp-twitter.php:166
 msgid "Save Changes"
 msgstr "Salvar Alterações"
 
-#: wp-twitter.php:108
+#: wp-twitter.php:192
 msgid "Your message has been sended, see your twitter profile! ("
 msgstr "Sua mensagem foi enviada, veja seu perfil no Twitter! ("
 
-#: wp-twitter.php:110
+#: wp-twitter.php:194
 msgid "Error posting to Twitter, Retry"
 msgstr "ERRO: A mensagem não foi postada no Twitter, tente novamente."
 
-#: wp-twitter.php:135
+#: wp-twitter.php:219
 msgid "Post a message on Twitter"
 msgstr "Enviar mensagem para o Twitter"
 
-#: wp-twitter.php:139
+#: wp-twitter.php:223
 msgid "Error: please insert a message!"
 msgstr "ERRO: Por favor, entre com a mensagem!"
 
-#: wp-twitter.php:143
+#: wp-twitter.php:227
 msgid "What are you doing?"
 msgstr "O que você esta fazendo?"
 
-#: wp-twitter.php:148
+#: wp-twitter.php:232
 msgid "characters left"
 msgstr "caracteres restando"
 
-#: wp-twitter.php:149
+#: wp-twitter.php:233
 msgid " Update "
 msgstr "Atualizar"
 
-#: wp-twitter.php:155
+#: wp-twitter.php:239
 msgid "Optional"
 msgstr "Opcional"
 
-#: wp-twitter.php:156
+#: wp-twitter.php:240
 msgid "\"Your message + \"BIG URL\" = 140 Characters\"</em><br><strong>TIP:</strong> before posting, reduce the size of URL for leave more space for your text."
 msgstr "\"Sua mensagem + \"GRANDE URL\" = 140 caracteres\"</em><br><strong>DICA: </strong> antes de postar, reduza o tamanho da URL para sobrar mais espaço para seu texto."
 
-#: wp-twitter.php:157
+#: wp-twitter.php:241
 msgid "Enter the URL you'd like a short URL, click \"<strong>Get URL</strong>\", and the new URL will appear for you!"
 msgstr "Entre a URL que você gostaria de reduzir, então clique em \"<strong>Get URL</strong>\" e a nova URL aparece para você!"
 
-#: wp-twitter.php:199
+#: wp-twitter.php:284
 msgid "Account:"
 msgstr "Conta:"
 
-#: wp-twitter.php:203
+#: wp-twitter.php:288
 msgid "Title:"
 msgstr "Título:"
 
-#: wp-twitter.php:207
+#: wp-twitter.php:292
 msgid "Tweets:"
 msgstr "Tweets:"
 
@@ -112,10 +124,6 @@ msgstr "WP-Twitter"
 #. Plugin URI of an extension
 msgid "http://webmais.com/wp-twitter"
 msgstr "http://webmais.com/wp-twitter"
-
-#. Description of an extension
-msgid "<strong>WP-Twitter</strong> is a plugin that creates a integration between your WordPress blog and your <a href=\"http://twitter.com\">Twitter</a> account by giving you the following functionality: <strong>i)</strong> Post a tweet from the WordPress Admin Screens, including option to reduce the URL with API <a href=\"http://is.gd\">is.gd</a> before sending. <strong>ii)</strong> Widget for displays yours latest tweets in your WordPress blog."
-msgstr "<strong>WP-Twitter</strong> is a plugin that creates a integration between your WordPress blog and your <a href=\"http://twitter.com\">Twitter</a> account by giving you the following functionality: <strong>i)</strong> Post a tweet from the WordPress Admin Screens, including option to reduce the URL with API <a href=\"http://is.gd\">is.gd</a> before sending. <strong>ii)</strong> Widget for displays yours latest tweets in your WordPress blog."
 
 #. Author of an extension
 msgid "Fabrix DoRoMo"

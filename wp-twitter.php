@@ -2,8 +2,8 @@
 /*
 Plugin Name: WP-Twitter
 Plugin URI: http://webmais.com/wp-twitter
-Description: <strong>WP-Twitter</strong> is a plugin that creates a integration between your WordPress blog and your <a href="http://twitter.com">Twitter</a> account by giving you the following functionality: <strong>i)</strong> Post a tweet from the WordPress Admin Screens, including option to reduce the URL with API <a href="http://is.gd">is.gd</a> before sending. <strong>ii)</strong> Widget for displays yours latest tweets in your WordPress blog.
-Version: 1.1
+Description: WP-Twitter is a plugin that creates a integration between your WordPress blog and your <a href="http://twitter.com">Twitter</a> account by giving you the following functionality: <strong>i)</strong> Post a tweet from the WordPress Admin Screens, including option to reduce the URL with API <a href="http://is.gd">is.gd</a> before sending. <strong>ii)</strong> Widget for displays yours latest tweets in your WordPress blog.
+Version: 1.2
 Author: Fabrix DoRoMo
 Author URI: http://webmais.com
 */
@@ -44,6 +44,13 @@ function show_tb_warning()
 	echo "<div class=\"error\"><p>".__('Please update your', 'wp-twitter')." <a href=\"".get_bloginfo('wpurl')."/wp-admin/options-general.php?page=wp-twitter/wp-twitter.php\">".__('WP-Twitter username and password', 'wp-twitter')."</a></p></div>";
 }
 
+function wptwitter_admin() {
+	echo '<link rel="stylesheet" type="text/css" href="' . get_bloginfo('wpurl') . '/wp-content/plugins/wp-twitter/inc/style.css" />';
+
+}
+add_action( 'admin_head', 'wptwitter_admin' );
+
+
 $currentLocale = get_locale();
 			if(!empty($currentLocale)) {
 				$moFile = dirname(__FILE__) . "/lang/wp-twitter-" . $currentLocale . ".mo";
@@ -51,7 +58,65 @@ $currentLocale = get_locale();
 			}
 
 function wp_twitter_options() {
+?>
+<?php
+//--------------------------------------
+if ( ABSPATH ) {
+   require_once( ABSPATH . 'wp-config.php' );
+   require_once( ABSPATH . 'wp-includes/class-snoopy.php' );
+} else {
+   require_once( '../../../wp-config.php' );
+   require_once( '../../../wp-includes/class-snoopy.php' );
+}
+require_once( 'inc/xml.php' );
+$username = get_option('wp_twitter_username');
+$password = get_option('wp_twitter_pw');
 
+$settings['username'] = $username;
+$settings['password'] = $password;
+
+
+function wptwitter_hit_server( $location, $username, $password, &$output, $post = false, $post_fields = '' ) {
+   $output = '';
+   $snoopy = new Snoopy;
+
+   if ( $username ) {
+      $snoopy->user = $username;
+      if ( $password ) {
+         $snoopy->pass = $password;      
+      }
+   }
+   
+   if ( $post ) {
+      // need to do the actual post
+      $result = $snoopy->submit( $location, $post_fields );
+      if ( $result ) {
+         return $true;  
+      }
+   } else {
+      $result = $snoopy->fetch( $location );
+      if ( $result ) {
+         $output = $snoopy->results;  
+      }
+      
+      $code = explode( ' ', $snoopy->response_code );
+      if ( $code[1] == 200) {
+         return true;
+      } else {
+         return false;
+      }
+   }
+}
+
+
+function wptwitter_verify_credentials( $username, $password, &$credent ) {
+  $output = '';
+  $result = wptwitter_hit_server( 'http://twitter.com/account/verify_credentials.xml', $username, $password, $output );  
+   if ( $result ) {
+        $credent= wptwitter_xml( $output );
+   } 
+   return $result;
+}
 
 
 ?>
@@ -62,7 +127,8 @@ function wp_twitter_options() {
 <?php wp_nonce_field('update-options'); ?>
 <h3><?php _e('Username and Password', 'wp-twitter') ?></h3>
 <p><?php _e('Enter your Twitter username and password to enable to', 'wp-twitter') ?> <a href="<?php bloginfo('wpurl') ?>/wp-admin/edit.php?page=wp-twitter.php"><?php _e('post updates', 'wp-twitter') ?></a>.</p>		
-<table class="widefat fixed" style="width: 370px;">
+
+<table class="widefat fixed" style="width: 400px;">
 <thead>
 <tr valign="top">
 <th scope="row"><?php _e('Twitter Username', 'wp-twitter') ?></th>
@@ -72,20 +138,38 @@ function wp_twitter_options() {
 <th scope="row"><?php _e('Twitter Password', 'wp-twitter') ?></th>
 <td><input type="password" name="wp_twitter_pw" value="<?php echo get_option('wp_twitter_pw'); ?>" /></td>
 </tr>
+<tr valign="top"><td colspan="2">
+<?php if ( $settings['username'] ) { ?>
+           <?php $ok = wptwitter_verify_credentials( $settings['username'], $settings['password'], $result );  ?>
+            <?php if ( $ok ) { ?>
+<img class="avatar" src="<?php echo $result['user']['profile_image_url']; ?>" alt="Profile Image" />
+             <div class="info">               
+                <strong> <?php echo $result['user']['name']; ?>, <?php echo $result['user']['followers_count'] . ' ' . __('followers', 'wp-twitter'); ?></strong>
+                 <br/><small><?php if ( is_array( $result['user']['description'] ) ) _e('No Description On Account', 'wp-twitter'); else echo $result['user']['description']; ?></small> 
+            </div> 
+            <?php } else { ?>
+               <div class="sorry">
+                  <?php _e('Sorry, the credentials you have supplied are invalid. Please re-enter them again below.', 'wp-twitter'); ?>
+               </div>
+            <?php } ?> 
+        
+      <?php } ?></td></tr>
+	<!-- <tr valign="top">
+<th scope="row">asdasd</th> <td>wewrwer</td>
+	  </tr> -->
+	  
 </thead>
 </table>
 <input type="hidden" name="action" value="update" />
 <input type="hidden" name="page_options" value="wp_twitter_username,wp_twitter_pw" />
 <p class="submit">
-<input type="submit" name="Submit" class="button-primary" value="<?php _e('Save Changes') ?>" />
+<input type="submit" name="Submit" class="button-primary" value="<?php _e('Save Changes', 'wp-twitter') ?>" />
 </p>
 </form>
 </div>
-
-
+ 
 <?php
 }?>
-
 
 <?php
 function wp_twitter_add() {
@@ -157,7 +241,7 @@ countfield.value = maxlimit - field.value.length;
 <small><?php _e('Enter the URL you\'d like a short URL, click "<strong>Get URL</strong>", and the new URL will appear for you!', 'wp-twitter') ?></small></p>
 <table class="widefat fixed" style="width: 390px;">
 <tr><td>
-<iframe scrolling="No" frameborder="0" width="390" height="85" src="<?php bloginfo('wpurl') ?>/wp-content/plugins/wp-twitter/tiny-url.php"></iframe>
+<iframe scrolling="No" frameborder="0" width="390" height="85" src="<?php bloginfo('wpurl') ?>/wp-content/plugins/wp-twitter/inc/tiny-url.php"></iframe>
 </td></tr></table>
 </div><!-- wrap -->
 <?php }?>
@@ -178,6 +262,7 @@ function widget_WPtwitter_init() {
 		echo $after_title;
 		echo '<div id="twitter_div">';
 		echo '<ul id="twitter_update_list"></ul></div>
+		<!-- WP-Twitter => http://webmais.com/wp-twitter/ -->
 		      <script type="text/javascript" src="http://twitter.com/javascripts/blogger.js"></script>';
 		echo '<script type="text/javascript" src="http://twitter.com/statuses/user_timeline/'.$account.'.json?callback=twitterCallback2&amp;count='.$show.'"></script>';
 		echo $after_widget;

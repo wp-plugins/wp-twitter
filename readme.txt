@@ -4,7 +4,7 @@ Contributors: fdoromo
 Tags: Widget, Twitter , Post, Tweet, Integrate, Update
 Requires at least: 2.3
 Tested up to: 2.7.1
-Stable tag: 1.1
+Stable tag: 1.2
 
 WP-Twitter is a plugin that creates a integration between your WordPress blog and your Twitter account by giving you the following functionality:
 
@@ -17,7 +17,8 @@ WP-Twitter is a plugin that creates a integration between your WordPress blog an
 
 == Screenshots ==
 1. User interface
-2. Widget config
+2. Settings
+3. Widget config
 
 
 == Installation ==
@@ -29,11 +30,14 @@ WP-Twitter is a plugin that creates a integration between your WordPress blog an
 
 = Configure the widget options: =
 * Account: your Twitter account name *required
-* Title: the heading you want to appear above your Twitters in the    sidebar
+* Title: the heading you want to appear above your Twitters in the sidebar
 * Tweets: the number of Twitters shown.
 
 
 == Changes ==
+= Version 1.2 = 
+Settings : verify credentials
+
 
 = Version 1.1 = 
 Multilanguage support, included .POT file and translated Brasilian Portuguese pt_BR
