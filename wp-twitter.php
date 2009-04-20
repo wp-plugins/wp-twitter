@@ -3,7 +3,7 @@
 Plugin Name: WP-Twitter
 Plugin URI: http://webmais.com/wp-twitter
 Description: WP-Twitter is a plugin that creates a integration between your WordPress blog and your <a href="http://twitter.com">Twitter</a> account by giving you the following functionality: <strong>i)</strong> Post a tweet from the WordPress Admin Screens, including option to reduce the URL with API <a href="http://is.gd">is.gd</a> before sending. <strong>ii)</strong> Widget for displays yours latest tweets in your WordPress blog.
-Version: 1.2
+Version: 1.3
 Author: Fabrix DoRoMo
 Author URI: http://webmais.com
 */
@@ -270,7 +270,7 @@ function widget_WPtwitter_init() {
 	function widget_WPtwitter_control() {
 		$options = get_option('widget_WPtwitter');
 		if ( !is_array($options) )
-			$options = array('account'=>'Fallcom', 'title'=>'Twitter', 'show'=>'5');
+			$options = array('account'=>'fdoromo', 'title'=>'Twitter', 'show'=>'5');
 		if ( $_POST['Twitter-submit'] ) {
 			$options['account'] = strip_tags(stripslashes($_POST['Twitter-account']));
 			$options['title'] = strip_tags(stripslashes($_POST['Twitter-title']));

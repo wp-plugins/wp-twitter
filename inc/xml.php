@@ -1,6 +1,6 @@
 <?php
 
-function wordtwit_parsexml( $xml, $get_attributes = 1, $priority = 'tag' )
+function wptwitter_xml( $xml, $get_attributes = 1, $priority = 'tag' )
 {
     $parser = xml_parser_create('');
     xml_parser_set_option( $parser, XML_OPTION_TARGET_ENCODING, "UTF-8" );
