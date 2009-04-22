@@ -3,7 +3,7 @@
 Plugin Name: WP-Twitter
 Plugin URI: http://webmais.com/wp-twitter
 Description: WP-Twitter is a plugin that creates a integration between your WordPress blog and your <a href="http://twitter.com">Twitter</a> account.
-Version: 1.4
+Version: 1.3
 Author: Fabrix DoRoMo
 Author URI: http://webmais.com
 */
@@ -19,7 +19,7 @@ Author URI: http://webmais.com
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. 
 // **********************************************************************
 ob_start();
-$wptwitter_version = '1.4';
+$wptwitter_version = '1.3';
 if(get_option('wp_twitter_username') == "")
 {
 add_action('admin_notices', 'show_tb_warning');
@@ -63,7 +63,7 @@ include ('inc/credentials.php');
 
 <h3 class="hndle"><?php _e('Twitter Profile', 'wp-twitter') ?></h3><div class="inside">
 <ul><li>
-<p><?php _e('The following information is associated with the Twitter credentials supplied below.', 'wp-twitter') ?> </p>
+<p><?php _e('The following information is associated with your Twitter credentials.', 'wp-twitter') ?> </p>
 <?php if ( $settings['username'] ) { ?>
            <?php $ok = wptwitter_verify_credentials( $settings['username'], $settings['password'], $result );  ?>
             <?php if ( $ok ) { ?>
