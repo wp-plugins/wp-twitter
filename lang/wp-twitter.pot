@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/wp-twitter\n"
-"POT-Creation-Date: 2009-04-19 16:05+0000\n"
+"POT-Creation-Date: 2009-04-22 01:52+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,114 +16,154 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: wp-twitter.php:40
+#: wp-twitter.php:37
 msgid "WP-Twitter &raquo;"
 msgstr ""
 
-#: wp-twitter.php:44
+#: wp-twitter.php:41
 msgid "Please update your"
 msgstr ""
 
-#: wp-twitter.php:44
+#: wp-twitter.php:41
 msgid "WP-Twitter username and password"
 msgstr ""
 
-#: wp-twitter.php:125
-msgid "WP-Twitter Options:"
+#: wp-twitter.php:57
+msgid "WP-Twitter Options"
 msgstr ""
 
-#: wp-twitter.php:128
-msgid "Username and Password"
+#: wp-twitter.php:64
+msgid "Twitter Profile"
 msgstr ""
 
-#: wp-twitter.php:129
-msgid "Enter your Twitter username and password to enable to"
+#: wp-twitter.php:66
+msgid ""
+"The following information is associated with the Twitter credentials "
+"supplied below."
 msgstr ""
 
-#: wp-twitter.php:129
-msgid "post updates"
-msgstr ""
-
-#: wp-twitter.php:134
-msgid "Twitter Username"
-msgstr ""
-
-#: wp-twitter.php:138
-msgid "Twitter Password"
-msgstr ""
-
-#: wp-twitter.php:147
+#: wp-twitter.php:72
 msgid "followers"
 msgstr ""
 
-#: wp-twitter.php:148
+#: wp-twitter.php:73
 msgid "No Description On Account"
 msgstr ""
 
-#: wp-twitter.php:152
+#: wp-twitter.php:77
 msgid ""
 "Sorry, the credentials you have supplied are invalid. Please re-enter them "
 "again below."
 msgstr ""
 
-#: wp-twitter.php:166
+#: wp-twitter.php:93
+msgid "<strong>Version:</strong>"
+msgstr ""
+
+#: wp-twitter.php:94
+msgid "Author"
+msgstr ""
+
+#: wp-twitter.php:103
+msgid "Twitter Account "
+msgstr ""
+
+#: wp-twitter.php:105
+msgid "Enter your Twitter username and password to enable to"
+msgstr ""
+
+#: wp-twitter.php:105
+msgid "post updates"
+msgstr ""
+
+#: wp-twitter.php:107
+msgid "Twitter Username"
+msgstr ""
+
+#: wp-twitter.php:108
+msgid "Twitter Password"
+msgstr ""
+
+#: wp-twitter.php:116
+msgid "Tweets to show in admin screen"
+msgstr ""
+
+#: wp-twitter.php:141
 msgid "Save Changes"
 msgstr ""
 
-#: wp-twitter.php:192
+#: wp-twitter.php:175
 msgid "Your message has been sended, see your twitter profile! ("
 msgstr ""
 
-#: wp-twitter.php:194
+#: wp-twitter.php:177
 msgid "Error posting to Twitter, Retry"
 msgstr ""
 
-#: wp-twitter.php:219
+#: wp-twitter.php:205
 msgid "Post a message on Twitter"
 msgstr ""
 
-#: wp-twitter.php:223
+#: wp-twitter.php:209
 msgid "Error: please insert a message!"
 msgstr ""
 
-#: wp-twitter.php:227
-msgid "What are you doing?"
+#: wp-twitter.php:216
+msgid "Tip"
 msgstr ""
 
-#: wp-twitter.php:232
-msgid "characters left"
+#: wp-twitter.php:218
+msgid "\"Message + \"BIG URL\" = 140 Characters\""
 msgstr ""
 
-#: wp-twitter.php:233
-msgid " Update "
-msgstr ""
-
-#: wp-twitter.php:239
-msgid "Optional"
-msgstr ""
-
-#: wp-twitter.php:240
+#: wp-twitter.php:220
 msgid ""
-"\"Your message + \"BIG URL\" = 140 Characters\"</em><br><strong>TIP:</"
-"strong> before posting, reduce the size of URL for leave more space for your "
-"text."
+"Before posting, reduce the size of URL for leave more space for your text. "
 msgstr ""
 
-#: wp-twitter.php:241
+#: wp-twitter.php:222
 msgid ""
-"Enter the URL you'd like a short URL, click \"<strong>Get URL</strong>\", "
+"Enter the URL you'd like a short URL, click <code>TinyURL &raquo;</code>, "
 "and the new URL will appear for you!"
 msgstr ""
 
-#: wp-twitter.php:284
+#: wp-twitter.php:224
+msgid "Reduce URL:"
+msgstr ""
+
+#: wp-twitter.php:239
+msgid "What are you doing?"
+msgstr ""
+
+#: wp-twitter.php:245
+msgid "characters left"
+msgstr ""
+
+#: wp-twitter.php:246
+msgid " Update "
+msgstr ""
+
+#: wp-twitter.php:260 wp-twitter.php:307
+msgid "Please wait while my tweets load, Retry"
+msgstr ""
+
+#: wp-twitter.php:275
+msgid "re-enter"
+msgstr ""
+
+#: wp-twitter.php:275
+msgid "Sorry, the credentials you have supplied are invalid. Please <a href=\""
+msgstr ""
+
+#: wp-twitter.php:334
 msgid "Account:"
 msgstr ""
 
-#: wp-twitter.php:288
+#: wp-twitter.php:338
 msgid "Title:"
 msgstr ""
 
-#: wp-twitter.php:292
+#: wp-twitter.php:342
 msgid "Tweets:"
 msgstr ""
 
@@ -138,11 +178,7 @@ msgstr ""
 #. Description of an extension
 msgid ""
 "WP-Twitter is a plugin that creates a integration between your WordPress "
-"blog and your <a href=\"http://twitter.com\">Twitter</a> account by giving "
-"you the following functionality: <strong>i)</strong> Post a tweet from the "
-"WordPress Admin Screens, including option to reduce the URL with API <a href="
-"\"http://is.gd\">is.gd</a> before sending. <strong>ii)</strong> Widget for "
-"displays yours latest tweets in your WordPress blog."
+"blog and your <a href=\"http://twitter.com\">Twitter</a> account."
 msgstr ""
 
 #. Author of an extension

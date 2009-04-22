@@ -43,7 +43,7 @@ WP-Twitter is a plugin that creates a integration between your WordPress blog an
 
 
 * 1.1 
-    * Multilanguage support, included .POT file and translated Brasilian Portuguese pt_BR please email with ".po" translations to webmastere@webmais.com
+    * Multilanguage support, included .POT file and translated Brasilian Portuguese pt_BR. Please email with ".po" translations to webmaster@webmais.com
 
 * 1.0
     * Initial release

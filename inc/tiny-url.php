@@ -4,7 +4,7 @@
 <title>Create Tiny URLs</title>
 	<meta name="description" content="">
 	<style type="text/css">
-	body{background:#fff; font-family:verdana; font-size:11px; }
+	body{background:#fff; font-family:verdana; font-size:11px; margin: 0;padding: 0}
 	input{ font:11px tahoma, arial, helvetica, sans-serif; padding:5px; }
 	</style>
 
@@ -43,14 +43,15 @@
 			$('geturl').addEvent('click',function() {
 				if($('url').value) {
 					var newu = new_tiny_url.createURL($('url').value,function(resp) {
-						$('newurl').set('html','The short URL is:<strong> <a href="' + resp + '" target="_blank">' + resp + '</a></strong>').setStyle('color','green');
+						$('newurl').set('html','TinyURL:<strong> <a href="' + resp + '" target="_blank">' + resp + '</a></strong>').setStyle('color','green');
 					});
 				}
 			});
 		});
 	</script>
 </head><body>
-<p><strong>URL:</strong> <input id="url" size="45" type="text" style="background: #FAFAD2;border: solid 1px;"> <input id="geturl" value="Get URL" type="button"></p>
+<input id="url" type="text" style="width: 200px;font-size:11px;background: #FAFAD2;border: solid 1px;">
+<div align="center"><input id="geturl" value="TinyURL &raquo;" type="button"></div>
 <p id="newurl"></p>
 
 	

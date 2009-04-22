@@ -1,5 +1,12 @@
 <?php
-
+if ( ABSPATH ) {
+   require_once( ABSPATH . 'wp-config.php' );
+   require_once( ABSPATH . 'wp-includes/class-snoopy.php' );
+} else {
+   require_once( '../../../wp-config.php' );
+   require_once( '../../../wp-includes/class-snoopy.php' );
+}
+// xml
 function wptwitter_xml( $xml, $get_attributes = 1, $priority = 'tag' )
 {
     $parser = xml_parser_create('');
@@ -126,5 +133,54 @@ function wptwitter_xml( $xml, $get_attributes = 1, $priority = 'tag' )
     }
     return $xml_array;
 }
+// xml end
+$username = get_option('wp_twitter_username');
+$password = get_option('wp_twitter_pw');
 
-?>
+$settings['username'] = $username;
+$settings['password'] = $password;
+
+
+function wptwitter_hit_server( $location, $username, $password, &$output, $post = false, $post_fields = '' ) {
+   global $wptwitter_version;
+   $output = '';
+   $snoopy = new Snoopy;
+   $snoopy->agent = 'WP-Twitter ' . $wptwitter_version;
+
+   if ( $username ) {
+      $snoopy->user = $username;
+      if ( $password ) {
+         $snoopy->pass = $password;      
+      }
+   }
+   
+   if ( $post ) {
+      // need to do the actual post
+      $result = $snoopy->submit( $location, $post_fields );
+      if ( $result ) {
+         return $true;  
+      }
+   } else {
+      $result = $snoopy->fetch( $location );
+      if ( $result ) {
+         $output = $snoopy->results;  
+      }
+      
+      $code = explode( ' ', $snoopy->response_code );
+      if ( $code[1] == 200) {
+         return true;
+      } else {
+         return false;
+      }
+   }
+}
+
+
+function wptwitter_verify_credentials( $username, $password, &$credent ) {
+  $output = '';
+  $result = wptwitter_hit_server( 'http://twitter.com/account/verify_credentials.xml', $username, $password, $output );  
+   if ( $result ) {
+        $credent= wptwitter_xml( $output );
+   } 
+   return $result;
+}?>
