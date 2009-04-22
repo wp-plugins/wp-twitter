@@ -63,7 +63,7 @@ include ('inc/credentials.php');
 
 <h3 class="hndle"><?php _e('Twitter Profile', 'wp-twitter') ?></h3><div class="inside">
 <ul><li>
-<p><?php _e('The following information is associated with the Twitter credentials supplied below.', 'wp-twitter') ?> </p>
+<p><?php _e('The following information is associated with your Twitter credentials.', 'wp-twitter') ?> </p>
 <?php if ( $settings['username'] ) { ?>
            <?php $ok = wptwitter_verify_credentials( $settings['username'], $settings['password'], $result );  ?>
             <?php if ( $ok ) { ?>
