@@ -35,11 +35,11 @@ private function send_request($url, $method='GET', $data='', $auth_user='', $aut
 //Shorten long URLs with is.gd or bit.ly.
 public function shorten_url($the_url) {
 
-	if ($shortener=="u.nu") {
+	if ($shortener=="is.gd") {
 		$url = "http://is.gd/api.php?longurl={$the_url}";
 		$response = $this->send_request($url, 'GET');
 	} else {
-		$url = "http://u.nu/unu-api-simple?url={$the_url}";
+		$url = "http://is.gd/api.php?longurl={$the_url}";
 		$response = $this->send_request($url, 'GET');
 	}
 	return $response;

@@ -1,3 +1,4 @@
+<?php include('inc/functions.php');?>
 /*** Character Counter ***/
 function textCounter(field, countfield, maxlimit) {
 if (field.value.length > maxlimit)
@@ -40,7 +41,7 @@ jQuery(document).ready(function() {
 jQuery(document).ready(function() {
 
 	jQuery("#shorten-url").click(function() {
-		theurl = prompt("Enter the URL to be shortened", "http://");
+		theurl = prompt("<?php _e('Enter the URL to be shortened', 'wp-twitter') ?>", "http://");
 		if (theurl != null && theurl != "" && theurl != "http://" && theurl != false) {
 			loading = setInterval(function() {
 	     		jQuery('#shorten-url').toggleClass('tw-hide');

@@ -1,5 +1,6 @@
 <?php include('inc/functions.php');
-if ( $can_edit_posts = current_user_can( 'edit_posts' ) ) : ?>
+global $user_level;
+if ( $user_level >= 8 ) : ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -25,13 +26,37 @@ body{
 }
 </style>
 <script type="text/javascript" src="<?php bloginfo('url'); ?>/wp-includes/js/jquery/jquery.js"></script>
-<script type="text/javascript" src="/inc/admin_scripts.js"></script>
+<script type="text/javascript" src="admin_scripts.php"></script>
 </head>
 <body>
 <div id="topSection">
 <div class="header">&nbsp;&nbsp;&nbsp;<input id="submit" type="Submit" style="background: #D7932D" value="<?php _e('Recent', 'wp-twitter') ?>" onclick="window.location.href='timeline.php'" /> <input id="submit" type="Submit" value="<?php _e('Mentions', 'wp-twitter') ?>" onclick="window.location.href='replies.php'" />  <input id="submit" type="Submit" value="<?php _e('Direct', 'wp-twitter') ?>" onclick="window.location.href='inbox.php'" /> <input id="submit" type="Submit" value="<?php _e('Archive', 'wp-twitter') ?>" onclick="window.location.href='user.php'" /> </div></div>
 <?php
-require('inc/twitterAPI.php');
+function postToTwitter($username,$password,$message){
+    $host = "http://twitter.com/statuses/update.xml?status=".urlencode(stripslashes(urldecode($message)));
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, $host);
+    curl_setopt($ch, CURLOPT_VERBOSE, 1);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+	curl_setopt($ch, CURLOPT_POSTFIELDS, "source=wp-twitter");
+    curl_setopt($ch, CURLOPT_USERPWD, "$username:$password");
+    curl_setopt($ch, CURLOPT_HTTP_VERSION, CURL_HTTP_VERSION_1_1);
+    curl_setopt($ch, CURLOPT_POST, 1);
+
+    $result = curl_exec($ch);
+    // Look at the returned header
+    $resultArray = curl_getinfo($ch);
+
+    curl_close($ch);
+
+    if($resultArray['http_code'] == "200"){
+         $twitter_status= __('Your message has been sended!', 'wp-twitter') ;
+    } else {
+         $twitter_status="Error";
+    }
+	return $twitter_status;
+}
+
 if(isset($_POST['tweet'])){
 	$twitter_message=$_POST['tweet'];
 	if(strlen($twitter_message)<1){
@@ -62,7 +87,7 @@ document.getElementById('details').style.display="none";
 <h3><em>Twitter: <a href="http://www.twitter.com/<?php print get_option('wp_twitter_username'); ?>" target="_blank">@<?php print get_option('wp_twitter_username'); ?></a></em></h3>
 <textarea name="tweet" type="text" id="tweet" rows="3" style="background: #fff;border: solid 1px black;width: 355px;" maxlength="140" onKeyDown="textCounter(this.form.tweet,this.form.remLen,140);" onKeyUp="textCounter(this.form.tweet,this.form.remLen,140);"></textarea>
 <input type="hidden" name="do" id="do_action" value="update-status" />
-<input type="hidden" name="post_to" id="post_to" value="<?php bloginfo('wpurl') ?>/form_post.php" />
+<input type="hidden" name="post_to" id="post_to" value="inc/short_url.php" />
 	
 <table border="0" cellpadding="0" cellspacing="0" width="355"><tr>
 <td align="left"><input disabled readonly type="text" name="remLen" size="3" maxlength="3" style="font-size:10px; color:red" value="140"> <small><?php _e('characters left', 'wp-twitter') ?></small></td>
@@ -96,9 +121,9 @@ $description = preg_replace("#(^|[\n ])([\w]+?://[\w]+[^ \"\n\r\t<]*)#ise", "'\\
 $description = preg_replace("#(^|[\n ])((www|ftp)\.[^ \"\t\n\r<]*)#ise", "'\\1<a href=\"http://\\2\" target=\"_blank\">\\2</a>'", $description);
 
 echo "<div class='user'><span class='status' id='", $twit1->id,"'><img border=\"0\" class=\"twitter_followers\" src=\"", $twit1->user->profile_image_url, "\"  width=\"48\" height=\"48\" />\n";
-echo "<div class='name'><a class=\"name1\" href=\"http://www.twitter.com/", $twit1->user->screen_name,"\" target=\"_blank\" title=\"", $twit1->user->name,"\" \">", $twit1->user->screen_name,"</a><table style=\"float:right;\"><tr><td><a class=\"reply\" href=\"#update\" title=\"Reply\"><img src=\"inc/reply.png\" width=\"16\" height=\"16\" border=\"0\" style=\"float:right;\"/></a></td></tr><tr><td><a class=\"retweet\" href=\"#update\" title=\"Retweet\"><img src=\"inc/rt.png\" width=\"16\" height=\"16\" border=\"0\"/></a></p></td></tr></table></div>";
+echo "<div class='name'><a class=\"name1\" href=\"http://www.twitter.com/", $twit1->user->screen_name,"\" target=\"_blank\" title=\"", $twit1->user->name,"\" \">", $twit1->user->screen_name,"</a><table style=\"float:right;\"><tr><td><a class=\"reply\" href=\"#update\" title=\"". __('Reply', 'wp-twitter') ."\"><img src=\"inc/reply.png\" width=\"16\" height=\"16\" border=\"0\" style=\"float:right;\"/></a></td></tr><tr><td><a class=\"retweet\" href=\"#update\" title=\"". __('Retweet', 'wp-twitter') ."\"><img src=\"inc/rt.png\" width=\"16\" height=\"16\" border=\"0\"/></a></p></td></tr></table></div>";
 echo "<div class='text'>".$description." </span></div>";
-echo "<hr><div class='description'><a href=\"http://www.twitter.com/", $twit1->user->screen_name,"/status/", $twit1->id,"\" target=\"_blank\"> ".$data1."</a> from ", $twit1->source,"</div></div>";}
+echo "<hr><div class='description'><a href=\"http://www.twitter.com/", $twit1->user->screen_name,"/status/", $twit1->id,"\" target=\"_blank\"> ".$data1."</a> ". __('from', 'wp-twitter') ." ", $twit1->source,"</div></div>";}
 
 curl_close($tw);
 ?>
@@ -111,7 +136,7 @@ curl_close($tw);
 <?php else : ?>
 <div style="padding: 5px; width: 350px;height: 100px;background: Black;color: Red; font: 12px Verdana, Geneva, Arial, Helvetica, sans-serif;text-align: center;" >
 <h1 style="color:#fff"><?php printf($user_identity) ?></h1>
-<strong>&raquo; You do not have permission to access this page!</strong>
+<strong><?php _e('You do not have permission to access this page!', 'wp-twitter') ?></strong>
 
 
 

@@ -1,5 +1,5 @@
 <?php
-require_once('../../../wp-load.php');
+require_once('../../../../wp-load.php');
 require_once('mh_twitter_class.php');
 
 if(!empty($_POST)) {

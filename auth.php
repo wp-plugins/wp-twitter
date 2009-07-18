@@ -1,4 +1,4 @@
-<?php require($_SERVER['DOCUMENT_ROOT'].'/wp-blog-header.php');  ?>
+<?php include('inc/functions.php'); ?>
 function closebox() {
     document.body.removeChild(document.getElementById('twitterframe'));
     document.body.removeChild(document.getElementById('closebutton'));
