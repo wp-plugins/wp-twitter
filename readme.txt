@@ -4,7 +4,7 @@ Contributors: fdoromo
 Tags: Widget, Twitter , Post, Tweet, Integrate, Update
 Requires at least: 2.3
 Tested up to: 2.8
-Stable tag: 1.5
+Stable tag: 1.5.1
 
 WP-Twitter is a plugin that creates a integration between your WordPress blog and your Twitter account.
 
@@ -36,7 +36,9 @@ WP-Twitter is a plugin that creates a integration between your WordPress blog an
 
 
 == Changes ==
-
+* 1.5.1
+    * bug fix: feed error
+
 * 1.5
     * Compatibility with WordPress 2.8
     * Change of TinyUrl Creator for http://u.nu
