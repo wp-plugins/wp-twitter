@@ -1,0 +1,224 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: WP-Twitter\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-10-15 21:09-0300\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Fabrix <fabrix@fabrix.net>\n"
+"Language-Team:  <fabrix@webmais.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: Portuguese\n"
+"X-Poedit-Country: BRAZIL\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: _e;__\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SearchPath-0: E:\\www\\webmais.com\\wp-content\\plugins\\wp-twitter\n"
+
+#: E:\www\webmais.com\wp-content\plugins\wp-twitter/admin_scripts.php:44
+msgid "Enter the URL to be shortened"
+msgstr "Entre com a URL para ser reduzida!"
+
+#: E:\www\webmais.com\wp-content\plugins\wp-twitter/auth.php:24
+msgid "Close / Esc Key"
+msgstr "Fechar / tecla ESC"
+
+#: E:\www\webmais.com\wp-content\plugins\wp-twitter/inbox.php:29
+#: E:\www\webmais.com\wp-content\plugins\wp-twitter/replies.php:29
+#: E:\www\webmais.com\wp-content\plugins\wp-twitter/timeline.php:33
+#: E:\www\webmais.com\wp-content\plugins\wp-twitter/user.php:29
+msgid "Recent"
+msgstr "Recente"
+
+#: E:\www\webmais.com\wp-content\plugins\wp-twitter/inbox.php:29
+#: E:\www\webmais.com\wp-content\plugins\wp-twitter/replies.php:29
+#: E:\www\webmais.com\wp-content\plugins\wp-twitter/timeline.php:33
+#: E:\www\webmais.com\wp-content\plugins\wp-twitter/user.php:29
+msgid "Mentions"
+msgstr "Menção"
+
+#: E:\www\webmais.com\wp-content\plugins\wp-twitter/inbox.php:29
+#: E:\www\webmais.com\wp-content\plugins\wp-twitter/replies.php:29
+#: E:\www\webmais.com\wp-content\plugins\wp-twitter/timeline.php:33
+#: E:\www\webmais.com\wp-content\plugins\wp-twitter/user.php:29
+msgid "Direct"
+msgstr "Msg. Direta"
+
+#: E:\www\webmais.com\wp-content\plugins\wp-twitter/inbox.php:29
+#: E:\www\webmais.com\wp-content\plugins\wp-twitter/replies.php:29
+#: E:\www\webmais.com\wp-content\plugins\wp-twitter/timeline.php:33
+#: E:\www\webmais.com\wp-content\plugins\wp-twitter/user.php:29
+msgid "Archive"
+msgstr "Arquivo"
+
+#: E:\www\webmais.com\wp-content\plugins\wp-twitter/timeline.php:53
+msgid "Your message has been send!"
+msgstr "Sua mensagem foi enviada!"
+
+#: E:\www\webmais.com\wp-content\plugins\wp-twitter/timeline.php:81
+msgid "Post: on/off"
+msgstr "Postar: on/off"
+
+#: E:\www\webmais.com\wp-content\plugins\wp-twitter/timeline.php:86
+msgid "Shorten Link"
+msgstr "Reduzir Link"
+
+#: E:\www\webmais.com\wp-content\plugins\wp-twitter/timeline.php:93
+msgid "characters left"
+msgstr "caracteres restando."
+
+#: E:\www\webmais.com\wp-content\plugins\wp-twitter/timeline.php:94
+msgid "Update"
+msgstr "Atualizar"
+
+#: E:\www\webmais.com\wp-content\plugins\wp-twitter/timeline.php:124
+msgid "Reply"
+msgstr "Responder"
+
+#: E:\www\webmais.com\wp-content\plugins\wp-twitter/timeline.php:124
+msgid "Retweet"
+msgstr "Retransmitir"
+
+#: E:\www\webmais.com\wp-content\plugins\wp-twitter/timeline.php:126
+msgid "from"
+msgstr "por"
+
+#: E:\www\webmais.com\wp-content\plugins\wp-twitter/wp-twitter.php:49
+msgid "Please update "
+msgstr "Por favor atualize"
+
+#: E:\www\webmais.com\wp-content\plugins\wp-twitter/wp-twitter.php:49
+msgid "(( WP Twitter ))"
+msgstr "(( WP Twitter ))"
+
+#: E:\www\webmais.com\wp-content\plugins\wp-twitter/wp-twitter.php:91
+msgid "Options"
+msgstr "Opções"
+
+#: E:\www\webmais.com\wp-content\plugins\wp-twitter/wp-twitter.php:97
+msgid "Twitter Account "
+msgstr "Conta Twitter"
+
+#: E:\www\webmais.com\wp-content\plugins\wp-twitter/wp-twitter.php:100
+msgid "Enter your Twitter username and password to enable to post updates and activate your BookMarklet."
+msgstr "Entre com seu nome de usuário e senha Twitter para habilitar atualizações e ativar seu BookMarklet."
+
+#: E:\www\webmais.com\wp-content\plugins\wp-twitter/wp-twitter.php:102
+msgid "Twitter Username"
+msgstr "Usuário"
+
+#: E:\www\webmais.com\wp-content\plugins\wp-twitter/wp-twitter.php:103
+msgid "Twitter Password"
+msgstr "Senha"
+
+#: E:\www\webmais.com\wp-content\plugins\wp-twitter/wp-twitter.php:113
+msgid "followers"
+msgstr "seguidores"
+
+#: E:\www\webmais.com\wp-content\plugins\wp-twitter/wp-twitter.php:114
+msgid "No Description On Account"
+msgstr "(Sem descrição nesta conta)"
+
+#: E:\www\webmais.com\wp-content\plugins\wp-twitter/wp-twitter.php:120
+msgid "Sorry, the credentials you have supplied are invalid. Please re-enter them again."
+msgstr "Desculpe, as credenciais fornecidas são inválidas. Tente novamente."
+
+#: E:\www\webmais.com\wp-content\plugins\wp-twitter/wp-twitter.php:132
+msgid "Your BookMarklet"
+msgstr "Seu BookMarklet"
+
+#: E:\www\webmais.com\wp-content\plugins\wp-twitter/wp-twitter.php:134
+msgid "<em>BookMarklet</em> is a \"simple one-click\" tool that adds functionality to the browser, This <em>BookMarklet</em> opens a small window that makes it easier follow and update your Twitter from anywhere."
+msgstr "BookMarklet é uma ferramenta \"um-click simples\" que adiciona funcionalidade ao navegador, este BookMarklet abre uma pequena janela que torna mais fácil acompanhar e atualizar seu Twitter de qualquer lugar."
+
+#: E:\www\webmais.com\wp-content\plugins\wp-twitter/wp-twitter.php:137
+msgid "<strong>Easy to install</strong>: Drag the link below to your bookmarks bar, or right click and (Add to Favorites)."
+msgstr "<strong>Fácil de instalar</strong>: arraste o link abaixo para sua barra de favoritos, ou clique com o botão direito do <em>mouse</em> e  (Adicionar aos Favoritos)."
+
+#: E:\www\webmais.com\wp-content\plugins\wp-twitter/wp-twitter.php:142
+msgid "Drag the this link to your bookmarks bar, or right click and (Add to Favorites)"
+msgstr "Arraste este link para sua barra de favoritos, ou clique com o botão direito do mouse e  (Adicionar aos Favoritos)."
+
+#: E:\www\webmais.com\wp-content\plugins\wp-twitter/wp-twitter.php:147
+msgid "ERROR: BookMarklet link Disabled!"
+msgstr "ERRO: Link BookMarklet desabilitado!"
+
+#: E:\www\webmais.com\wp-content\plugins\wp-twitter/wp-twitter.php:152
+msgid "*This BookMarklet is currently supported by: Firefox, Safari, Opera, Chrome, Internet Explorer 7+."
+msgstr "Este BookMarklet é atualmente compativel com: Firefox, Safari, Opera, Chrome, Internet Explorer 7+."
+
+#: E:\www\webmais.com\wp-content\plugins\wp-twitter/wp-twitter.php:161
+msgid "Tweet prefix options"
+msgstr "Opções de prefixo para Tweets"
+
+#: E:\www\webmais.com\wp-content\plugins\wp-twitter/wp-twitter.php:163
+msgid "Prefix for new blog posts:"
+msgstr "Prefixo para novas postagens no blog:"
+
+#: E:\www\webmais.com\wp-content\plugins\wp-twitter/wp-twitter.php:166
+msgid "Prefix for updated blog posts:"
+msgstr "Prefixo para atualizações de postagens:"
+
+#: E:\www\webmais.com\wp-content\plugins\wp-twitter/wp-twitter.php:168
+msgid "Optional, leave in blank if prefer."
+msgstr "Opcional, deixe em branco se preferir."
+
+#: E:\www\webmais.com\wp-content\plugins\wp-twitter/wp-twitter.php:174
+msgid "Set your preferred URL Shortener"
+msgstr "Defina seu redutor de URL preferido"
+
+#: E:\www\webmais.com\wp-content\plugins\wp-twitter/wp-twitter.php:174
+msgid "Go to"
+msgstr "Ir para"
+
+#: E:\www\webmais.com\wp-content\plugins\wp-twitter/wp-twitter.php:192
+#: E:\www\webmais.com\wp-content\plugins\wp-twitter/wp-twitter.php:196
+msgid "Get one free here!"
+msgstr "Obtenha um aqui!"
+
+#: E:\www\webmais.com\wp-content\plugins\wp-twitter/wp-twitter.php:201
+msgid "api key required "
+msgstr "obrigatório utilizar api key"
+
+#: E:\www\webmais.com\wp-content\plugins\wp-twitter/wp-twitter.php:210
+msgid "Save Changes"
+msgstr "Salvar alterações"
+
+#: E:\www\webmais.com\wp-content\plugins\wp-twitter/wp-twitter.php:335
+msgid "Activate"
+msgstr "Ativar"
+
+#: E:\www\webmais.com\wp-content\plugins\wp-twitter/wp-twitter.php:335
+msgid "to this post"
+msgstr "para esta postagem"
+
+#: E:\www\webmais.com\wp-content\plugins\wp-twitter/wp-twitter.php:342
+msgid "Yes"
+msgstr "Sim"
+
+#: E:\www\webmais.com\wp-content\plugins\wp-twitter/wp-twitter.php:352
+msgid "No"
+msgstr "Não"
+
+#: E:\www\webmais.com\wp-content\plugins\wp-twitter/wp-twitter.php:408
+msgid "Account:"
+msgstr "Conta"
+
+#: E:\www\webmais.com\wp-content\plugins\wp-twitter/wp-twitter.php:412
+msgid "Title:"
+msgstr "Título"
+
+#: E:\www\webmais.com\wp-content\plugins\wp-twitter/wp-twitter.php:416
+msgid "Tweets:"
+msgstr "Tweets:"
+
+#~ msgid "You do not have permission to access this page!"
+#~ msgstr "Você não tem permissão para acessar esta página!"
+#~ msgid "Version:"
+#~ msgstr "Versão:"
+#~ msgid "WP-Twitter Options"
+#~ msgstr "WP-Twitter Opções"
+#~ msgid "WP-Twitter username and password"
+#~ msgstr "WP-Twitter nome de usuário e senha"
+
