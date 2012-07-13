@@ -1,7 +1,7 @@
 === WP Twitter ===
 Plugin Name: WP Twitter
 Contributors: fdoromo
-Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=7565084
+Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=Z9SRNRLLDAFZJ
 Tags: Widget, Twitter , Post, Tweet, Integrate, Update, Sidebar
 Requires at least: 3.0
 Tested up to: 3.4.1

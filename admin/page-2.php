@@ -29,6 +29,12 @@ function fdx_updater_published($post) //$post_ID)
 
 	return $post;
 }
+/* Action for when a post is published */
+	add_action( 'draft_to_publish', 'fdx_updater_published', 1, 1 );
+	add_action( 'new_to_publish', 'fdx_updater_published', 1, 1 );
+	add_action( 'pending_to_publish', 'fdx_updater_published', 1, 1 );
+	add_action( 'future_to_publish', 'fdx_updater_published', 1, 1 );
+
 
 /* Plugin action when published is (re)published (i.e. updated) */
 
@@ -58,7 +64,7 @@ function fdx_updater_edited($post) //$post_ID)
 
 	return $post;
 }
-
+add_action( 'publish_to_publish', 'fdx_updater_edited', 1, 1 );
 
 
 
@@ -500,7 +506,8 @@ function fdx_updater_activate()
 	update_option( 'fdx_updater_options', $new_options );
 }
 
-
+/* Intialise on first activation */
+register_activation_hook( __FILE__, 'fdx_updater_activate' );
 
 
 
@@ -720,8 +727,11 @@ register_setting( 'fdx_updater_options', 'fdx_updater_options', 'fdx_updater_opt
 	//Section 4: Short Url service
 		add_settings_section('fdx_updater_chose_url', '', 'fdx_updater_chose_url1', 'short_url');
 }
+add_action( 'admin_init', 'fdx_updater_admin_init' );
+
 
 /* Return Form components for the Allowed Form Fields */
+
 
 // Consumer Keys form
 function fdx_updater_auth1_flag()
