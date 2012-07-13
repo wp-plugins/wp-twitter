@@ -1,13 +1,4 @@
 <?php
-//carregar javascript e css
-function fdx_load_custom_admin(){
-        wp_register_style( 'custom_wp_admin_css', FDX_WPTWITTER_URL. '/css/admin.css', false, FDX_WPTWITTER_VERSION );
-        wp_enqueue_script( 'custom_wp_admin_js', FDX_WPTWITTER_URL. '/js/admin.js', false, FDX_WPTWITTER_VERSION );
-
-        wp_enqueue_style( 'custom_wp_admin_css' );
-        wp_enqueue_script( 'custom_wp_admin_js' );
-}
-add_action('admin_enqueue_scripts', 'fdx_load_custom_admin');
 
      if (isset($_POST['reset']))
     {  add_option('wp_twitter_fdx_widget_search_query', 'omg'); }
@@ -380,36 +371,31 @@ function wp_twitter_fdx_options_page() {
         update_option('wp_twitter_fdx_tweet_button_reco_desc', stripslashes_deep((string)$_POST['wp_twitter_fdx_tweet_button_reco_desc']));
 		update_option('wp_twitter_fdx_tweet_button_place', stripslashes_deep((string)@$_POST['wp_twitter_fdx_tweet_button_place']));
 		update_option('wp_twitter_fdx_tweet_button_style', stripslashes_deep((string)@$_POST['wp_twitter_fdx_tweet_button_style']));
-        echo '<div id="message" class="updated fade"><p><strong>Settings saved.</strong></p></div>';
-        echo '</strong></p></div>';
-    } else {
+        echo '<div class="updated fade"><p><strong>' . __( 'Settings updated', 'fdx-lang' ) . '.</strong></p></div>';
+        } else {
 	$wp_twitter_fdx_tweet_button_place = get_option('wp_twitter_fdx_tweet_button_place');
 	$wp_twitter_fdx_tweet_button_style = get_option('wp_twitter_fdx_tweet_button_style');
 	}
 //adicionar icones e lang patch
 
 ?>
-
 <div class="wrap">
-<div id="icon-options-general" class="icon32"><br /></div>
-<h2><?php _e('WP Twitter: Integration and Widget', 'wp-twitter') ?></h2>
+<div id="icon-edit" class="icon32 icon32-posts-post"><br /></div><h2><?php echo FDX_PLUGIN_N1;?>: <?php _e('Integration and Widget', 'fdx-lang') ?></h2>
+<div id="poststuff">
+<div id="post-body" class="metabox-holder columns-2">
 
-<div id="poststuff" class="metabox-holder">
-<table style="width: 100%; margin: 0; padding: 0">
-<tr>
-<td style="padding-right: 20px;">
+<?php include('inc/sidebar.php'); ?>
 
-    <form method="post" action="<?php echo $_SERVER["REQUEST_URI"]; ?>">
+<div class="postbox-container">
+<div class="meta-box-sortables">
+
+<form method="post" action="<?php echo $_SERVER["REQUEST_URI"]; ?>">
 <input type="hidden" name="info_update" id="info_update" value="true" />
 
- <ul id="accordion">
-
-<li><div class="postbox"><h3 class="hndle">Twitter Button integration <span class="espande">&nbsp;</span></h3></div> </li>
-<ul style="margin-top: -23px">
 <div class="postbox">
+<div class="handlediv" title="<?php _e('Click to toggle', 'fdx-lang') ?>"><br /></div><h3 class='hndle'><span><?php _e('Twitter Button integration', 'fdx-lang') ?></span></h3>
 <div class="inside">
-<!-- ######################################################################################## -->
-
+<!-- ############################################################################################################### -->
 <table class="form-table">
            					<tr valign="top">
 					<th scope="row" style="width:29%;"><label>Allow Tweet Button Integration?</label></th>
@@ -496,19 +482,16 @@ function wp_twitter_fdx_options_page() {
 					</tr>
 
  					</table>
+<!-- ############################################################################################################### -->  
+</div>
+</div>
 
- <!-- ######################################################################################## -->
 
-
-</div></div> </ul>
-
-<li><div class="postbox"><h3 class="hndle">Twitter Profile Widget Options <span class="espande">&nbsp;</span></h3></div> </li>
-
-<ul style="margin-top: -23px">
-<div class="postbox">
+<div class="postbox closed">
+<div class="handlediv" title="<?php _e('Click to toggle', 'fdx-lang') ?>"><br /></div><h3 class='hndle'><span><?php _e('Twitter Profile Widget Options', 'fdx-lang') ?></span></h3>
 <div class="inside">
-<!-- ######################################################################################## -->
-           <table class="form-table">
+<!-- ############################################################################################################### -->
+ <table class="form-table">
 
 				<tr valign="top" class="alternate">
           			<th scope="row" style="width:29%;"><label>Widget Title</label></th>
@@ -582,20 +565,14 @@ function wp_twitter_fdx_options_page() {
 				</tr>
 
 				</table>
-
-
-<!-- ######################################################################################## -->
+<!-- ############################################################################################################### -->
 </div>
 </div>
-</ul>
 
-
-<li><div class="postbox"><h3 class="hndle">Twitter Search Widget Options <span class="espande">&nbsp;</span></h3></div> </li>
-<ul style="margin-top: -23px">
-<div class="postbox">
+<div class="postbox closed" >
+<div class="handlediv" title="<?php _e('Click to toggle', 'fdx-lang') ?>"><br /></div><h3 class='hndle'><span><?php _e('Twitter Search Widget Options', 'fdx-lang') ?></span></h3>
 <div class="inside">
-<!-- ######################################################################################## -->
-
+<!-- ############################################################################################################### -->
 	<table class="form-table">
 					<tr valign="top" class="alternate">
 						<th scope="row" style="width:29%;"><label>Search Query</label></th>
@@ -671,19 +648,27 @@ function wp_twitter_fdx_options_page() {
 				</tr>
 
 					</table>
-
-<!-- ######################################################################################## -->
-
+<!-- ############################################################################################################### -->
 </div>
 </div>
-    </ul>
-</ul>
 
 
 
-<?php include( FDX_WPTWITTER_DIR . '/inc/menu_esquerdo.php');?>
-</div>
-</div>
+<div align="center"><input name="Submit" class="button-primary"  type="submit" value="<?php _e('Save All Options', 'fdx-lang') ?>" /></div>
+</form>
+</div> <!-- /postbox-container -->
+</div><!-- /meta-box-sortables -->
+
+
+
+</div><!-- /post-body -->
+</div><!-- /poststuff -->
+
+
+</div><!-- /wrap -->
+<?php include('inc/footer_js.php'); ?>
+<!-- carregar javascript especifico aqui -->
+<div class="clear"></div>
 <?php } //fim da pagina de opções
 
 function show_wp_twitter_fdx_profile_widget($args)
@@ -730,15 +715,15 @@ function wp_twitter_fdx_search_widget_control()
 function widget_wp_twitter_fdx_profile_init()
 {
     $widget_options = array('classname' => 'widget_wp_twitter_fdx_profile', 'description' => __( "Display Twitter fdx Profile Widget") );
-    wp_register_sidebar_widget('wp_twitter_fdx_profile_widgets', __('WP Twitter - Profile Widget'), 'show_wp_twitter_fdx_profile_widget', $widget_options);
-    wp_register_widget_control('wp_twitter_fdx_profile_widgets', __('WP Twitter - Profile Widget'), 'wp_twitter_fdx_profile_widget_control' );
+    wp_register_sidebar_widget('wp_twitter_fdx_profile_widgets', FDX_PLUGIN_N1 . __(' - Profile Widget', 'fdx-lang'), 'show_wp_twitter_fdx_profile_widget', $widget_options);
+    wp_register_widget_control('wp_twitter_fdx_profile_widgets', FDX_PLUGIN_N1 . __(' - Profile Widget', 'fdx-lang'), 'wp_twitter_fdx_profile_widget_control' );
 }
 
 function widget_wp_twitter_fdx_search_init()
 {
     $widget_options = array('classname' => 'widget_wp_twitter_fdx_search', 'description' => __( "Display Twitter fdx Search Widget") );
-    wp_register_sidebar_widget('wp_twitter_fdx_search_widgets', __('WP Twitter - Search Widget'), 'show_wp_twitter_fdx_search_widget', $widget_options);
-    wp_register_widget_control('wp_twitter_fdx_search_widgets', __('WP Twitter - Search Widget'), 'wp_twitter_fdx_search_widget_control' );
+    wp_register_sidebar_widget('wp_twitter_fdx_search_widgets', FDX_PLUGIN_N1. __(' - Search Widget', 'fdx-lang'), 'show_wp_twitter_fdx_search_widget', $widget_options);
+    wp_register_widget_control('wp_twitter_fdx_search_widgets', FDX_PLUGIN_N1. __(' - Search Widget', 'fdx-lang'), 'wp_twitter_fdx_search_widget_control' );
 }
 
 add_filter('the_content', 'filter_wp_twitter_fdx_profile');
@@ -749,6 +734,5 @@ add_filter('the_content', 'filter_wp_twitter_fdx_tweet_button_show');
 
 add_action('init', 'widget_wp_twitter_fdx_profile_init');
 add_action('init', 'widget_wp_twitter_fdx_search_init');
-
 
 ?>

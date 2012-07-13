@@ -11,7 +11,7 @@ License: GPLv2 or later
 Is a plugin that creates a complete integration between your WordPress blog and your Twitter account including a Twitter Button and Widgets.
 
 == Description ==
-[WP Twitter](http://wordpress.webmais.com/wp-twitter/) is a plugin that creates a integration between your WordPress blog and your Twitter account by giving you the following functionality:
+[WP Twitter](http://wp.webmais.com/wp-twitter/ "Ver esta página em Português (pt-BR)") is a plugin that creates a integration between your WordPress blog and your Twitter account by giving you the following functionality:
 
 * It will post a tweet when you have created a new post on your Wordpress blog and when you have updated a post.
 * Widget for displays yours latest tweets in your WordPress blog.
@@ -95,3 +95,7 @@ No, this plugin does not work with php4.
 
 * 1.0
     * Initial release
+
+== Upgrade Notice ==
+
+No upgrade notices yet...
