@@ -260,7 +260,7 @@ function fdx_tweet_button_test()
 	$tweet_btn_reco_desc = get_option('wp_twitter_fdx_tweet_button_reco_desc');
     $language_code = get_option('wp_twitter_fdx_tweet_button_langcode');
 
-	$final_url2 = '<a href="http://twitter.com/share?url=http://webmais.com&via='.$tweet_btn_twt_username.'&text=webmais.com plugin&related='.$tweet_btn_reco_username.':'.$tweet_btn_reco_desc.'&lang='.$language_code.'&count='.$tweet_btn_style.'" class="twitter-share-button">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>';
+	$final_url2 = '<a href="http://twitter.com/share?url=http://wp.webmais.com/wp-twitter/&via='.$tweet_btn_twt_username.'&text=Plugin WP Twitter&related='.$tweet_btn_reco_username.':'.$tweet_btn_reco_desc.'&lang='.$language_code.'&count='.$tweet_btn_style.'" class="twitter-share-button">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>';
 	echo $final_url2;
 }
 
