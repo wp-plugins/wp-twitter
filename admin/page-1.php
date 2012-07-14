@@ -380,7 +380,7 @@ function wp_twitter_fdx_options_page() {
 
 ?>
 <div class="wrap">
-<div id="icon-edit" class="icon32 icon32-posts-post"><br /></div><h2><?php echo FDX_PLUGIN_N1;?>: <?php _e('Integration and Widget', 'fdx-lang') ?></h2>
+<div id="icon-edit" class="icon32 icon32-posts-post"><br /></div><h2><?php echo FDX1_PLUGIN_NAME;?>: <?php _e('Integration and Widget', 'fdx-lang') ?></h2>
 <div id="poststuff">
 <div id="post-body" class="metabox-holder columns-2">
 
@@ -715,15 +715,15 @@ function wp_twitter_fdx_search_widget_control()
 function widget_wp_twitter_fdx_profile_init()
 {
     $widget_options = array('classname' => 'widget_wp_twitter_fdx_profile', 'description' => __( "Display Twitter fdx Profile Widget") );
-    wp_register_sidebar_widget('wp_twitter_fdx_profile_widgets', FDX_PLUGIN_N1 . __(' - Profile Widget', 'fdx-lang'), 'show_wp_twitter_fdx_profile_widget', $widget_options);
-    wp_register_widget_control('wp_twitter_fdx_profile_widgets', FDX_PLUGIN_N1 . __(' - Profile Widget', 'fdx-lang'), 'wp_twitter_fdx_profile_widget_control' );
+    wp_register_sidebar_widget('wp_twitter_fdx_profile_widgets', FDX1_PLUGIN_NAME . __(' - Profile Widget', 'fdx-lang'), 'show_wp_twitter_fdx_profile_widget', $widget_options);
+    wp_register_widget_control('wp_twitter_fdx_profile_widgets', FDX1_PLUGIN_NAME . __(' - Profile Widget', 'fdx-lang'), 'wp_twitter_fdx_profile_widget_control' );
 }
 
 function widget_wp_twitter_fdx_search_init()
 {
     $widget_options = array('classname' => 'widget_wp_twitter_fdx_search', 'description' => __( "Display Twitter fdx Search Widget") );
-    wp_register_sidebar_widget('wp_twitter_fdx_search_widgets', FDX_PLUGIN_N1. __(' - Search Widget', 'fdx-lang'), 'show_wp_twitter_fdx_search_widget', $widget_options);
-    wp_register_widget_control('wp_twitter_fdx_search_widgets', FDX_PLUGIN_N1. __(' - Search Widget', 'fdx-lang'), 'wp_twitter_fdx_search_widget_control' );
+    wp_register_sidebar_widget('wp_twitter_fdx_search_widgets', FDX1_PLUGIN_NAME. __(' - Search Widget', 'fdx-lang'), 'show_wp_twitter_fdx_search_widget', $widget_options);
+    wp_register_widget_control('wp_twitter_fdx_search_widgets', FDX1_PLUGIN_NAME. __(' - Search Widget', 'fdx-lang'), 'wp_twitter_fdx_search_widget_control' );
 }
 
 add_filter('the_content', 'filter_wp_twitter_fdx_profile');
