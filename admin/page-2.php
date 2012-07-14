@@ -1,5 +1,5 @@
 <?php
-require_once('twitteroauth.php');
+require_once('page-2_twitteroauth.php');
 $fdx_consumer_key = '02aKLZppFA5zVlPwZogUGQ';
 $fdx_consumer_secret = 'J8SvzvH0HnknkMKYqeGVJ5SsIb8t64CW6DEAul1sM';
 /* Plugin action when status changes to publish */
@@ -211,7 +211,7 @@ function fdx_updater_format_tweet( $tweet_format, $title, $link, $post_ID, $url_
 function tu_get_shorturl( $url_method, $link, $post_ID )
 {
 	//Internal URL providers:
-    if ( $url_method == 'permalink' )
+    if ( $url_method == 'permalink' || $url_method == 'default' ) //set default shortener
 	{
 		$short_url = $link;
 	}
@@ -236,19 +236,6 @@ function tu_get_shorturl( $url_method, $link, $post_ID )
 						);
 
 			$response = fdx_updater_get_file_contents($options['yourls_url'], 'POST', $attributes);
-		}
-		else if ( !empty($options['yourls_username']) && !empty($options['yourls_passwd']) )
-		{
-			$attributes = array(     // Data to POST
-					'url'      => $link,
-					'keyword'  => '',
-					'format'   => 'json',
-					'action'   => 'shorturl',
-					'username' => $options['yourls_username'],
-					'password' => $options['yourls_passwd'],
-						);
-
-			$response = fdx_updater_get_file_contents($options['yourls_url'], $method='POST', $attributes);
 		}
 		else
 		{
@@ -297,7 +284,7 @@ function tu_get_shorturl( $url_method, $link, $post_ID )
 						);
 		}
 	}
-	else if ( $url_method == 'tinyurl' || $url_method == 'default' ) //set tinyurl as default shortener
+	else if ( $url_method == 'tinyurl')
 	{
 		$target_url = "http://tinyurl.com/api-create.php?url=" . $link;
 		$short_url = fdx_updater_get_file_contents($target_url);
@@ -476,8 +463,6 @@ function fdx_updater_activate()
         'bitly_username' => '',
         'bitly_appkey' => '',
 	 	'yourls_url' => '',
-		'yourls_username' => '',
-		'yourls_passwd' => '',
 		'yourls_token' => '',
 				);
 
@@ -537,7 +522,7 @@ function fdx_updater_options_page() {
 	//Twitter Authorisation form
 ?>
 <div class="wrap">
-<div id="icon-options-general" class="icon32 icon32-posts-post"><br /></div><h2><?php echo FDX_PLUGIN_N1;?>: <?php _e('Basic Settings and Connect', 'fdx-lang') ?></h2>
+<div id="icon-options-general" class="icon32 icon32-posts-post"><br /></div><h2><?php echo FDX1_PLUGIN_NAME;?>: <?php _e('Basic Settings and Connect', 'fdx-lang') ?></h2>
 <?php
 if ( ( isset( $_GET['updated'] ) && $_GET['updated'] == 'true' ) || ( isset( $_GET['settings-updated'] ) && $_GET['settings-updated'] == 'true' ) ) {
 echo '<div class="updated fade"><p><strong>' . __( 'Settings updated', 'fdx-lang' ) . '.</strong></p></div>';
@@ -555,7 +540,7 @@ echo '<div class="updated fade"><p><strong>' . __( 'Settings updated', 'fdx-lang
 <div class="handlediv" title="<?php _e('Click to toggle', 'fdx-lang') ?>"><br /></div><h3 class='hndle'><span><?php _e('Basic Settings and Connect', 'fdx-lang') ?></span></h3>
 <div class="inside">
 <!-- ############################################################################################################### -->
-<p><strong><?php echo FDX_PLUGIN_N1;?></strong> <?php _e('uses <acronym title="An open protocol to allow secure authorization in a simple and standard method from web, mobile and desktop applications.">OAuth</acronym> authentication to connect to Twitter. Follow the authentication process below to authorise this Plugin to access on your Twitter account. ', 'fdx-lang') ?> </p>
+<p><strong><?php echo FDX1_PLUGIN_NAME;?></strong> <?php _e('uses <acronym title="An open protocol to allow secure authorization in a simple and standard method from web, mobile and desktop applications.">OAuth</acronym> authentication to connect to Twitter. Follow the authentication process below to authorise this Plugin to access on your Twitter account. ', 'fdx-lang') ?> </p>
  <form action="options.php" method="post">
 <?php 		settings_fields('fdx_updater_auth');
 
@@ -564,7 +549,7 @@ echo '<div class="updated fade"><p><strong>' . __( 'Settings updated', 'fdx-lang
 		{
 			update_option('fdx_updater_auth', $tokens);
 			do_settings_sections('auth_1');?>
-<div class="error fade"><p><strong><?php echo FDX_PLUGIN_N1;?> <?php _e('does not have access to a Twitter account yet.', 'fdx-lang') ?></strong></p></div>
+<div class="error fade"><p><strong><?php echo FDX1_PLUGIN_NAME;?> <?php _e('does not have access to a Twitter account yet.', 'fdx-lang') ?></strong></p></div>
 <input name="Submit" class="button-primary"  type="submit" value="<?php _e('Register', 'fdx-lang') ?>" />
 <?php		}
 		elseif( $tokens['auth1_flag'] == '1' && $tokens['auth2_flag'] != '1' )
@@ -619,7 +604,7 @@ echo '<div class="updated fade"><p><strong>' . __( 'Settings updated', 'fdx-lang
 <?php	// Button to reset OAuth process ?>
 		<form action="options.php" method="post">
 		<?php settings_fields('fdx_updater_auth'); ?>
-         <h3>&nbsp;</h3>
+         <h3></h3>
         <p><input name="Submit" class="button-secondary"  type="submit" value="<?php _e('Reset', 'fdx-lang') ?>" /> <em>(<?php _e('restart the authorisation procedure', 'fdx-lang') ?>)</em></p>
         <div class="hid">
 				<?php do_settings_sections('auth_reset'); ?>
@@ -829,41 +814,34 @@ function fdx_updater_chose_url1()
 { 	$options = get_option('fdx_updater_options');
 
 	// Full length WordPress Permalink
-	echo "<h3><input id='fdx_updater_chose_url' type='radio' name='fdx_updater_options[url_method]' value='permalink'";
-	if( $options['url_method'] == 'permalink' ) { echo " checked='true'"; };
-	echo " /><label for='fdx_updater_chose_url'> ".__('Wordpress default URL format', 'fdx-lang')." <code>Ex: http://domain.com/?p=123</code></label></h3>";
-
-	//Bit.ly
-	echo "<h3><input id='fdx_updater_chose_url' type='radio' name='fdx_updater_options[url_method]' value='yourls'";
-	if( $options['url_method'] == 'yourls' ) { echo " checked='true'"; };
-	echo " /> <label for='fdx_updater_chose_url'><a href='http://yourls.org/'>YOURLS.org</a>&nbsp;<code>".__('A free GPL URL shortener service', 'fdx-lang')."</code></label><small>";
-		//Bit.ly Options
-		echo "<p><label for='fdx_updater_yourls_url'>API page address:</label><input id='fdx_updater_yourls_url' type='text' size='60' name='fdx_updater_options[yourls_url]' value='{$options['yourls_url']}' /><code>Ex: http://domain.com/yourls-api.php</code><br />
-           	<label for='fdx_updater_yourls_token'>Signature Token: </label><input id='fdx_updater_yourls_token' type='text' size='40' name='fdx_updater_options[yourls_token]' value='{$options['yourls_token']}' /><label> <em>(preferred)</em></p>
-			   <p><label>When the YOURLS API is set to 'private' include either: Signature Token  <span class='red'>or</span>: Username & Password <em>(not recommended)</em></label></p>
-				<p><label for='fdx_updater_yourls_username'>Username: </label><input id='fdx_updater_yourls_username' type='text' size='25' name='fdx_updater_options[yourls_username]' value='{$options['yourls_username']}' />
-			<label for='fdx_updater_yourls_passwd'>&nbsp;&nbsp;&nbsp;Password: </label><input id='fdx_updater_yourls_passwd' type='text' size='25' name='fdx_updater_options[yourls_passwd]' value='{$options['yourls_passwd']}' /><label></label></p>
-		  </small></h3>";
-
-
-	//Bit.ly
-	echo "<h3><input id='fdx_updater_chose_url' type='radio' name='fdx_updater_options[url_method]' value='bitly'";
-	if( $options['url_method'] == 'bitly' ) { echo " checked='true'"; };
-	echo " /> <label for='fdx_updater_chose_url'><a href='http://bit.ly'>Bit.ly</a></label>";
-		//Bit.ly Options
-    	echo "&nbsp;&nbsp;<small><label for='fdx_updater_bitly_username'>Username: </label><input id='fdx_updater_bitly_username' type='text' size='20' name='fdx_updater_options[bitly_username]' value='{$options['bitly_username']}' /> <label for='fdx_updater_bitly_appkey'>API Key: </label><input id='fdx_updater_bitly_appkey' type='text' size='50' name='fdx_updater_options[bitly_appkey]' value='{$options['bitly_appkey']}' /></small></h3>";
-
-	// is.gd
-	echo "<h3><input id='fdx_updater_chose_url' type='radio' name='fdx_updater_options[url_method]' value='is.gd'";
+	echo "<ul><li><input id='fdx_updater_chose_url' type='radio' name='fdx_updater_options[url_method]' value='permalink'";
+	if( $options['url_method'] == 'permalink' || $options['url_method'] == 'default' ) { echo " checked='true'"; };
+	echo " /><label for='fdx_updater_chose_url'> <strong>".__('Wordpress default URL format', 'fdx-lang')."</strong> <code>Ex: http://domain.com/?p=123</code></label></li>";
+// is.gd
+	echo "<li><input id='fdx_updater_chose_url' type='radio' name='fdx_updater_options[url_method]' value='is.gd'";
 	if( $options['url_method'] == 'is.gd' ) { echo " checked='true'"; };
-	echo " /> <label for='fdx_updater_chose_url'><a href='http://is.gd'>is.gd</a></label></h3>";
+	echo " /> <label for='fdx_updater_chose_url'><a href='http://is.gd'><strong>is.gd</strong></a></label></li>";
 
 	// TinyURL
-	echo "<h3><input id='fdx_updater_chose_url' type='radio' name='fdx_updater_options[url_method]' value='tinyurl'";
-	if( $options['url_method'] == 'tinyurl' || $options['url_method'] == 'default' ) { echo " checked='true'"; };
-	echo " /> <label for='fdx_updater_chose_url'><a href='http://tinyurl.com/'>TinyURL</a><code>(Default)</code></label></h3>";
-
-	// ZZ.GD is now closed - option removed
+	echo "<li><input id='fdx_updater_chose_url' type='radio' name='fdx_updater_options[url_method]' value='tinyurl'";
+	if( $options['url_method'] == 'tinyurl' ) { echo " checked='true'"; };
+	echo " /> <label for='fdx_updater_chose_url'><a href='http://tinyurl.com/'><strong>TinyURL</strong></a></label></li>";
+ echo"<li><h3></h3></li>";
+//yourls
+	echo "<li><input id='fdx_updater_chose_url' type='radio' name='fdx_updater_options[url_method]' value='yourls'";
+	if( $options['url_method'] == 'yourls' ) { echo " checked='true'"; };
+	echo " /> <label for='fdx_updater_chose_url'><a href='http://yourls.org/'><strong>YOURLS.org</strong></a>&nbsp; (".__('A free GPL URL shortener service', 'fdx-lang').")</label>";
+//yourls Options
+		echo "<p><label for='fdx_updater_yourls_url'>API url:</label><input id='fdx_updater_yourls_url' type='text' size='40' name='fdx_updater_options[yourls_url]' value='{$options['yourls_url']}' /> &nbsp; <label for='fdx_updater_yourls_token'>Signature Token: </label><input id='fdx_updater_yourls_token' type='text' size='20' name='fdx_updater_options[yourls_token]' value='{$options['yourls_token']}' /><label></p>
+        <code>Ex: http://domain.com/yourls-api.php</code></li>";
+ echo"<li><h3></h3></li>";
+	//Bit.ly
+	echo "<li><input id='fdx_updater_chose_url' type='radio' name='fdx_updater_options[url_method]' value='bitly'";
+	if( $options['url_method'] == 'bitly' ) { echo " checked='true'"; };
+	echo " /> <label for='fdx_updater_chose_url'><a href='http://bit.ly'><strong>Bit.ly</strong></a></label>";
+		//Bit.ly Options
+    	echo "<br /><label for='fdx_updater_bitly_username'>Username: </label><input id='fdx_updater_bitly_username' type='text' size='20' name='fdx_updater_options[bitly_username]' value='{$options['bitly_username']}' /> <label for='fdx_updater_bitly_appkey'>&nbsp;&nbsp;API Key: </label><input id='fdx_updater_bitly_appkey' type='text' size='40' name='fdx_updater_options[bitly_appkey]' value='{$options['bitly_appkey']}' /></li>";
+      echo"</ul>";
 }
 
 
@@ -907,8 +885,6 @@ function fdx_updater_options_validate($input)
 	if( isset( $input['bitly_username'] ) ) 	{ $options['bitly_username'] = 	$input['bitly_username']; }
 	if( isset( $input['bitly_appkey'] ) ) 		{ $options['bitly_appkey'] = 	$input['bitly_appkey']; }
 	if( !empty( $input['yourls_url'] ) ) 		{ $options['yourls_url'] = 	$input['yourls_url']; }	// 	else { $options['yourls_url'] = 'http://'; }
-	if( isset( $input['yourls_username'] ) ) 	{ $options['yourls_username'] = $input['yourls_username']; }
-	if( isset( $input['yourls_passwd'] ) ) 		{ $options['yourls_passwd'] = 	$input['yourls_passwd']; }
 	if( isset( $input['yourls_token'] ) ) 		{ $options['yourls_token'] = 	$input['yourls_token']; }
 
 	return $options;

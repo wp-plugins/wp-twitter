@@ -2,13 +2,13 @@
 <div id="side-sortables" class="meta-box-sortables">
 <!-- <div class="postbox closed"> -->
 <div class="postbox">
-<div class="handlediv" title="<?php _e('Click to toggle', 'fdx-lang') ?>"><br /></div><h3 class='hndle'><span><?php echo FDX_PLUGIN_N1;?> <small style="float: right">v<?php echo FDX_PLUGIN_V1;?></small></span></h3>
+<div class="handlediv" title="<?php _e('Click to toggle', 'fdx-lang') ?>"><br /></div><h3 class='hndle'><span><?php echo FDX1_PLUGIN_NAME;?> <small style="float: right">v<?php echo FDX1_PLUGIN_VERSION;?></small></span></h3>
 <div class="inside">
-<div style="float: right; margin: 0 0 0 0"><a href="http://wp.webmais.com/wp-twitter/" target="_blank"><img src="<?php echo FDX_PLUGIN_U1;?>/images/logo.png" width="109" height="109" border="0" alt="" /></a></div>
+<div style="float: right; margin: 0 0 0 0"><a href="http://wp.webmais.com/wp-twitter/" target="_blank"><img src="<?php echo FDX1_PLUGIN_URL;?>/images/logo.png" width="109" height="109" border="0" alt="" /></a></div>
 <a class="sm_button sm_autor" href="http://fabrix.net" target="_blank"><?php _e('Author Homepage', 'fdx-lang') ?></a>
 <a class="sm_button sm_wp" href="http://wordpress.org/extend/plugins/wp-twitter/" target="_blank"><?php _e('Plugin Homepage', 'fdx-lang') ?></a>
 <a class="sm_button sm_code" href="http://wordpress.org/support/plugin/wp-twitter" target="_blank"><?php _e('Suggest a Feature', 'fdx-lang') ?></a>
-<a class="sm_button sm_pay" href="<?php echo FDX_DONATE_LINK;?>" target="_blank"><?php _e('Donate with PayPal', 'fdx-lang') ?></a>
+<a class="sm_button sm_pay" href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=Z9SRNRLLDAFZJ" target="_blank"><?php _e('Donate with PayPal', 'fdx-lang') ?></a>
 <a class="sm_button sm_bug" href="http://wordpress.org/support/plugin/wp-twitter" target="_blank"><?php _e('Report a Bug', 'fdx-lang') ?></a>
 </div>
 </div>
@@ -52,7 +52,7 @@ if (version_compare(PHP_VERSION, FDX1_MINIMUM_PHP_VER, '>=') ) { ?>
 <div class="handlediv" title="<?php _e('Click to toggle', 'fdx-lang') ?>"><br /></div><h3 class='hndle'><span><?php _e('Assess and contribute!', 'fdx-lang') ?></span></h3>
 <div class="inside">
 <?php _e('Want to help make this plugin even better? All donations are used to improve this plugin, so donate now!', 'fdx-lang') ?>
-<div align="center"><a href="<?php echo FDX_DONATE_LINK;?>" target="_blank"><img src="<?php echo FDX_PLUGIN_U1;?>/images/btn_donateCC_LG.gif" width="147" height="47" border="0" alt="" /></a></div>
+<div align="center"><a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=Z9SRNRLLDAFZJ" target="_blank"><img src="<?php echo FDX1_PLUGIN_URL;?>/images/btn_donateCC_LG.gif" width="147" height="47" border="0" alt="" /></a></div>
 <p><?php _e('Or you could:', 'fdx-lang') ?> </p>
 <ul>
 <li><a href="http://wordpress.org/extend/plugins/wp-twitter/" target="_blank"><?php _e('Rate the plugin 5 star on WordPress.org', 'fdx-lang') ?></a></li>
