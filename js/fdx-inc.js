@@ -1,15 +1,10 @@
-/* acordeon menu
+/* popup normal para share
 -------------------------------------------------------------- */
-  jQuery(document).ready(function($) {
-$("#accordion > li").click(function(){
-  	if(false == $(this).next().is(':visible')) {
-		$('#accordion > ul').slideUp(300);
-	}
-	$(this).next().slideToggle(300);
-});
-$('#accordion > ul:eq(0)').show();
-   });
-
+function PopupCenter(pageURL, title,w,h,scrol) {
+var left = (screen.width/2)-(w/2);
+var top = (screen.height/2)-(h/2);
+var targetWin = window.open (pageURL, title, 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars='+scrol+', resizable=no, copyhistory=no, width='+w+', height='+h+', top='+top+', left='+left);
+}
 
 /*---------------------------------------------------------------
 jscolor, JavaScript Color Picker (@version 1.3.0 )
