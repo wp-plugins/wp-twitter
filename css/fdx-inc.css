@@ -1,7 +1,12 @@
 div.hid { visibility: hidden; overflow: hidden; height: 1px; }  /* hack para input hiden */
 .postbox p { padding: 0 5px 0 5px !important  }
+.fdx { font-size: 13px !important; font-weight: normal !important; text-align: left !important}
+.fdx td { padding: 10px }
+
 small { color: #535353; }
 .red { color: red }
+
+
 
 a.sm_button {padding:4px;display:block;padding-left:25px;background-repeat:no-repeat;background-position:5px 50%;text-decoration:none;border:none;}
 a.sm_button:hover {border-bottom-width:1px;}

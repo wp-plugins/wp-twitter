@@ -144,12 +144,12 @@ function fdx_updater_format_tweet( $tweet_format, $title, $link, $post_ID, $url_
 	$tweet = $tweet_format;
 
 	//retieve the short url
-	$short_url = tu_get_shorturl($url_method,$link,$post_ID);
+	$short_url = fdx_get_shorturl($url_method,$link,$post_ID);
 
 	// Error handling: If plugin is deacitvated, repeat to use default link supplier
 	if( $short_url['error_code'] == '1' )
 	{
-		$short_url = tu_get_shorturl($short_url['url_method'],$link,$post_ID);
+		$short_url = fdx_get_shorturl($short_url['url_method'],$link,$post_ID);
 	}
 
 	// Additional error handing is possible: if $tweet is empty, sending will be aborted.
@@ -195,7 +195,7 @@ function fdx_updater_format_tweet( $tweet_format, $title, $link, $post_ID, $url_
 		//if still too long, force a url shortener
 		if ($tweet_length > 140)
 		{
-			$short_url = tu_get_shorturl('tinyurl',$link,$post_ID);
+			$short_url = fdx_get_shorturl('tinyurl',$link,$post_ID);
 		}
 	}
 
@@ -208,7 +208,7 @@ function fdx_updater_format_tweet( $tweet_format, $title, $link, $post_ID, $url_
 
 /* Get the selected short url */
 
-function tu_get_shorturl( $url_method, $link, $post_ID )
+function fdx_get_shorturl( $url_method, $link, $post_ID )
 {
 	//Internal URL providers:
     if ( $url_method == 'permalink' || $url_method == 'default' ) //set default shortener
@@ -325,7 +325,7 @@ function fdx_updater_get_file_contents( $url, $method='GET', $body=array(), $hea
 function fdx_updater_register($tokens)
 {
 	global $fdx_consumer_key, $fdx_consumer_secret;
-	$connection = new TwitterOAuth($fdx_consumer_key, $fdx_consumer_secret);
+	$connection = new FDXTwitterOAuth($fdx_consumer_key, $fdx_consumer_secret);
 
 	// Get the request tokens
 	$request = $connection->getRequestToken();
@@ -345,7 +345,7 @@ function fdx_updater_register($tokens)
 function fdx_updater_authorise($tokens)
 {
     global $fdx_consumer_key, $fdx_consumer_secret;
-	$connection = new TwitterOAuth($fdx_consumer_key, $fdx_consumer_secret, $tokens['request_key'], $tokens['request_secret']);
+	$connection = new FDXTwitterOAuth($fdx_consumer_key, $fdx_consumer_secret, $tokens['request_key'], $tokens['request_secret']);
 
 	// Get the access tokens
 	$request = $connection->getAccessToken();
@@ -369,7 +369,7 @@ function fdx_updater_authorise($tokens)
 function fdx_updater_verify($tokens)
 {
 	global $fdx_consumer_key, $fdx_consumer_secret;
-	$connection = new TwitterOAuth($fdx_consumer_key, $fdx_consumer_secret, $tokens['access_key'], $tokens['access_secret']);
+	$connection = new FDXTwitterOAuth($fdx_consumer_key, $fdx_consumer_secret, $tokens['access_key'], $tokens['access_secret']);
 
 	$result = $connection->get('account/verify_credentials');
 
@@ -401,7 +401,7 @@ function fdx_updater_update_status($tweet)
 	if( $tokens['auth3_flag'] == '1' )
 	{
 		global $fdx_consumer_key, $fdx_consumer_secret;
-		$connection = new TwitterOAuth($fdx_consumer_key, $fdx_consumer_secret, $tokens['access_key'], $tokens['access_secret']);
+		$connection = new FDXTwitterOAuth($fdx_consumer_key, $fdx_consumer_secret, $tokens['access_key'], $tokens['access_secret']);
 
 		// Post an update to Twitter via your application:
 		$result = $connection->post('statuses/update', array('status' => $tweet));
@@ -548,7 +548,7 @@ echo '<div class="updated fade"><p><strong>' . __( 'Settings updated', 'fdx-lang
 		if( $tokens['auth1_flag'] != '1' )
 		{
 			update_option('fdx_updater_auth', $tokens);
-			do_settings_sections('auth_1');?>
+			do_settings_sections('auth_1a');?>
 <div class="error fade"><p><strong><?php echo FDX1_PLUGIN_NAME;?> <?php _e('does not have access to a Twitter account yet.', 'fdx-lang') ?></strong></p></div>
 <input name="Submit" class="button-primary"  type="submit" value="<?php _e('Register', 'fdx-lang') ?>" />
 <?php		}
@@ -559,7 +559,7 @@ echo '<div class="updated fade"><p><strong>' . __( 'Settings updated', 'fdx-lang
 			$tokens = fdx_updater_register($tokens);
 			update_option('fdx_updater_auth', $tokens);
 
-			do_settings_sections('auth_2');
+			do_settings_sections('auth_2a');
 ?>			<input name="Submit" class="button-primary"  type="submit" value="<?php _e('Authorise', 'fdx-lang') ?>" />
 <?php		}
 		else
@@ -589,7 +589,7 @@ echo '<div class="updated fade"><p><strong>' . __( 'Settings updated', 'fdx-lang
 				echo "<div class='error'><p><strong>".__('WP Twitter does not have access to a Twitter account yet.', 'fdx-lang')."</strong></p></div>";
 				$tokens['auth3_flag'] = '0';
 				update_option('fdx_updater_auth', $tokens);
-				do_settings_sections('auth_2');
+				do_settings_sections('auth_2a');
 ?>				<p class="submit" ><input name="Submit" class="button-primary"  type="submit" value="<?php _e('Authorise', 'fdx-lang') ?>" /></p>
 <?php				break;
 			default:
@@ -607,7 +607,7 @@ echo '<div class="updated fade"><p><strong>' . __( 'Settings updated', 'fdx-lang
          <h3></h3>
         <p><input name="Submit" class="button-secondary"  type="submit" value="<?php _e('Reset', 'fdx-lang') ?>" /> <em>(<?php _e('restart the authorisation procedure', 'fdx-lang') ?>)</em></p>
         <div class="hid">
-				<?php do_settings_sections('auth_reset'); ?>
+				<?php do_settings_sections('fdx_auth_reset'); ?>
 			</div>
 
 		</form>
@@ -621,9 +621,9 @@ echo '<div class="updated fade"><p><strong>' . __( 'Settings updated', 'fdx-lang
 <div class="handlediv" title="<?php _e('Click to toggle', 'fdx-lang') ?>"><br /></div><h3 class='hndle'><span><?php _e('Basic Settings', 'fdx-lang') ?></span></h3>
 <div class="inside">
 <!-- ############################################################################################################### -->
-<?php do_settings_sections('new_post'); ?>
+<?php do_settings_sections('fdx_new_post'); ?>
 
-<?php do_settings_sections('edited_post'); ?>
+<?php do_settings_sections('fdx_edited_post'); ?>
 <!-- ############################################################################################################### -->
 </div>
 </div>
@@ -633,7 +633,7 @@ echo '<div class="updated fade"><p><strong>' . __( 'Settings updated', 'fdx-lang
 <div class="inside">
 <!-- ############################################################################################################### -->
 <p><?php _e('Twitter messages can be sent only when the post is a member of a [selected category], OR that have a specified Custom Field [title] OR [title AND value].', 'fdx-lang') ?></p>
-<?php do_settings_sections('limit_tweets'); ?>
+<?php do_settings_sections('fdx_limit_tweets'); ?>
 <!-- ############################################################################################################### -->
 </div>
 </div>
@@ -643,7 +643,7 @@ echo '<div class="updated fade"><p><strong>' . __( 'Settings updated', 'fdx-lang
 <div class="inside">
 <!-- ############################################################################################################### -->
 <p><?php _e('Choose your short URL service (account settings below)', 'fdx-lang') ?></p>
-<?php do_settings_sections('short_url'); ?>
+<?php do_settings_sections('fdx_short_url'); ?>
 <!-- ############################################################################################################### -->
 </div>
 </div>
@@ -674,43 +674,43 @@ function fdx_updater_admin_init()
 register_setting( 'fdx_updater_auth', 'fdx_updater_auth', 'fdx_updater_auth_validate' );
 
     	// Consumer Key fields
-		add_settings_section('fdx_updater_auth1_flag', '', 'fdx_updater_auth1_flag', 'auth_1', 'fdx_updater_consumer_keys');
+		add_settings_section('fdx_updater_auth1_flag', '', 'fdx_updater_auth1_flag', 'auth_1a', 'fdx_updater_consumer_keys');
 
     	// Register Keys switch
-     	add_settings_section('fdx_updater_register_keys', 'test', 'fdx_updater_auth_2', 'auth_2');
-		add_settings_field('fdx_updater_auth2_flag', '', 'fdx_updater_auth2_flag', 'auth_2', 'fdx_updater_register_keys');
+     	add_settings_section('fdx_updater_register_keys', 'test', 'fdx_updater_auth_2a', 'auth_2a');
+		add_settings_field('fdx_updater_auth2_flag', '', 'fdx_updater_auth2_flag', 'auth_2a', 'fdx_updater_register_keys');
 
 	// Reset button fields
-    	add_settings_section('fdx_updater_reset', '', 'fdx_updater_reset', 'auth_reset');
-		add_settings_field('fdx_updater_auth1_reset', '', 'fdx_updater_auth1_reset', 'auth_reset', 'fdx_updater_reset');
-		add_settings_field('fdx_updater_auth2_reset', '', 'fdx_updater_auth2_reset', 'auth_reset', 'fdx_updater_reset');
-		add_settings_field('fdx_updater_auth3_reset', '', 'fdx_updater_auth3_reset', 'auth_reset', 'fdx_updater_reset');
-		add_settings_field('fdx_updater_req_key_reset', '', 'fdx_updater_req_key_reset', 'auth_reset', 'fdx_updater_reset');
-		add_settings_field('fdx_updater_req_sec_reset', '', 'fdx_updater_req_sec_reset', 'auth_reset', 'fdx_updater_reset');
-		add_settings_field('fdx_updater_req_link_reset', '', 'fdx_updater_req_link_reset', 'auth_reset', 'fdx_updater_reset');
-		add_settings_field('fdx_updater_acc_key_reset', '', 'fdx_updater_acc_key_reset', 'auth_reset', 'fdx_updater_reset');
-		add_settings_field('fdx_updater_acc_sec_reset', '', 'fdx_updater_acc_sec_reset', 'auth_reset', 'fdx_updater_reset');
+    	add_settings_section('fdx_updater_reset', '', 'fdx_updater_reset', 'fdx_auth_reset');
+		add_settings_field('fdx_updater_auth1_reset', '', 'fdx_updater_auth1_reset', 'fdx_auth_reset', 'fdx_updater_reset');
+		add_settings_field('fdx_updater_auth2_reset', '', 'fdx_updater_auth2_reset', 'fdx_auth_reset', 'fdx_updater_reset');
+		add_settings_field('fdx_updater_auth3_reset', '', 'fdx_updater_auth3_reset', 'fdx_auth_reset', 'fdx_updater_reset');
+		add_settings_field('fdx_updater_req_key_reset', '', 'fdx_updater_req_key_reset', 'fdx_auth_reset', 'fdx_updater_reset');
+		add_settings_field('fdx_updater_req_sec_reset', '', 'fdx_updater_req_sec_reset', 'fdx_auth_reset', 'fdx_updater_reset');
+		add_settings_field('fdx_updater_req_link_reset', '', 'fdx_updater_req_link_reset', 'fdx_auth_reset', 'fdx_updater_reset');
+		add_settings_field('fdx_updater_acc_key_reset', '', 'fdx_updater_acc_key_reset', 'fdx_auth_reset', 'fdx_updater_reset');
+		add_settings_field('fdx_updater_acc_sec_reset', '', 'fdx_updater_acc_sec_reset', 'fdx_auth_reset', 'fdx_updater_reset');
 
 // Settings for WP Twitter
 register_setting( 'fdx_updater_options', 'fdx_updater_options', 'fdx_updater_options_validate' );
 
 	//Section 1: New Post published
-	add_settings_section('fdx_updater_new_post', '', 'fdx_updater_new_post', 'new_post');
-		add_settings_field('fdx_updater_newpost_update', 'Update when a post is published.', 'fdx_updater_newpost_update', 'new_post', 'fdx_updater_new_post');
-		add_settings_field('fdx_updater_newpost_format', 'Tweet format for a new post:', 'fdx_updater_newpost_format', 'new_post', 'fdx_updater_new_post');
+	add_settings_section('fdx_updater_new_post', '', 'fdx_updater_new_post', 'fdx_new_post');
+		add_settings_field('fdx_updater_newpost_update', 'Update when a post is published.', 'fdx_updater_newpost_update', 'fdx_new_post', 'fdx_updater_new_post');
+		add_settings_field('fdx_updater_newpost_format', 'Tweet format for a new post:', 'fdx_updater_newpost_format', 'fdx_new_post', 'fdx_updater_new_post');
 
 	//Section 2: Updated Post
-	add_settings_section('fdx_updater_edited_post', '', 'fdx_updater_edited_post', 'edited_post');
-		add_settings_field('fdx_updater_edited_update', 'Update when a post is edited.', 'fdx_updater_edited_update', 'edited_post', 'fdx_updater_edited_post');
-		add_settings_field('fdx_updater_edited_format', 'Tweet format for an updated post:', 'fdx_updater_edited_format', 'edited_post', 'fdx_updater_edited_post');
+	add_settings_section('fdx_updater_edited_post', '', 'fdx_updater_edited_post', 'fdx_edited_post');
+		add_settings_field('fdx_updater_edited_update', 'Update when a post is edited.', 'fdx_updater_edited_update', 'fdx_edited_post', 'fdx_updater_edited_post');
+		add_settings_field('fdx_updater_edited_format', 'Tweet format for an updated post:', 'fdx_updater_edited_format', 'fdx_edited_post', 'fdx_updater_edited_post');
 
 	// Section 3: Limit tweets to posts with certain custom field/value pair or part of a specific category
-      	add_settings_section('fdx_updater_limit_tweets', '', 'fdx_updater_limit_tweets' ,'limit_tweets');
- 	  	add_settings_field('fdx_updater_limit_to_category', 'If no categories are checked, limiting by category will be ignored, and all categories will be Tweeted.', 'fdx_updater_limit_to_category', 'limit_tweets', 'fdx_updater_limit_tweets');
-		add_settings_field('fdx_updater_limit_to_customfield', 'Send tweets for posts with this Meta [Title] OR [Title AND Value]', 'fdx_updater_limit_to_customfield', 'limit_tweets', 'fdx_updater_limit_tweets');
+      	add_settings_section('fdx_updater_limit_tweets', '', 'fdx_updater_limit_tweets' ,'fdx_limit_tweets');
+ 	  	add_settings_field('fdx_updater_limit_to_category', 'If no categories are checked, limiting by category will be ignored, and all categories will be Tweeted.', 'fdx_updater_limit_to_category', 'fdx_limit_tweets', 'fdx_updater_limit_tweets');
+		add_settings_field('fdx_updater_limit_to_customfield', 'Send tweets for posts with this Meta [Title] OR [Title AND Value]', 'fdx_updater_limit_to_customfield', 'fdx_limit_tweets', 'fdx_updater_limit_tweets');
 
 	//Section 4: Short Url service
-		add_settings_section('fdx_updater_chose_url', '', 'fdx_updater_chose_url1', 'short_url');
+		add_settings_section('fdx_updater_chose_url', '', 'fdx_updater_chose_url1', 'fdx_short_url');
 }
 add_action( 'admin_init', 'fdx_updater_admin_init' );
 

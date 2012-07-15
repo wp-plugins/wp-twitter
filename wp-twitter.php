@@ -2,7 +2,7 @@
 /*
 Plugin Name: WP Twitter
 Description: Is a plugin that creates a complete integration between your WordPress blog and your Twitter account including a Twitter Button and Widgets.
-Version: 3.0
+Version: 3.0.1
 Author: Fabrix DoRoMo
 Author URI: http://fabrix.net
 Plugin URI: http://wp.webmais.com/wp-twitter
@@ -29,7 +29,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 define('FDX1_MINIMUM_WP_VER', '3.4.1'); //minimum version of WordPress
 define('FDX1_MINIMUM_PHP_VER', '5.0.0'); //minimum version of PHP
 define('FDX1_PLUGIN_NAME', 'WP Twitter' ); //plugin name
-define('FDX1_PLUGIN_VERSION', '3.0' ); //plugin version
+define('FDX1_PLUGIN_VERSION', '3.0.1' ); //plugin version
 define('FDX1_PLUGIN_P1', 'wp-twitter' ); //plugin prefix, link1
 define('FDX1_PLUGIN_P2', 'integration' ); //link2
 define('FDX1_PLUGIN_URL', plugins_url('', __FILE__) );//plugin URL

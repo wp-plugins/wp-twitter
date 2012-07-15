@@ -5,7 +5,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: Widget, Twitter , Post, Tweet, Integrate, Update, Sidebar
 Requires at least: 3.0
 Tested up to: 3.4.1
-Stable tag: 3.0
+Stable tag: 3.0.1
 License: GPLv2 or later
 
 Is a plugin that creates a complete integration between your WordPress blog and your Twitter account including a Twitter Button and Widgets.
@@ -48,6 +48,9 @@ No, this plugin does not work with php4.
 
 
 == Changelog ==
+* 3.0.1
+    *  Bug Fix
+
 * 3.0
     *  Completely NEW version (new core, old version was discontinued <2.5)
 
@@ -95,7 +98,3 @@ No, this plugin does not work with php4.
 
 * 1.0
     * Initial release
-
-== Upgrade Notice ==
-
-No upgrade notices yet...

@@ -1,13 +1,9 @@
 <?php
-
-     if (isset($_POST['reset']))
-    {  add_option('wp_twitter_fdx_widget_search_query', 'omg'); }
-
 // ------------------------------------------------------------------------------Some default options
-add_option('wp_twitter_fdx_widget_title', 'Twitter fdx');
+add_option('wp_twitter_fdx_widget_title', 'Widget Title');
 add_option('wp_twitter_fdx_username', 'wordpress');
 add_option('wp_twitter_fdx_height', '300');
-add_option('wp_twitter_fdx_width', '370');
+add_option('wp_twitter_fdx_width', '300');
 add_option('wp_twitter_fdx_scrollbar', '-1');
 add_option('wp_twitter_fdx_shell_bg', '333333');
 add_option('wp_twitter_fdx_shell_text', 'ffffff');
@@ -16,18 +12,18 @@ add_option('wp_twitter_fdx_tweet_text', 'ffffff');
 add_option('wp_twitter_fdx_links', '4aed05');
 add_option('wp_twitter_fdx_behavior', '-1');
 
-add_option('wp_twitter_fdx_widget_search_query', 'omg');
-add_option('wp_twitter_fdx_widget_search_title', 'Excitement is in the air...');
-add_option('wp_twitter_fdx_widget_search_caption', 'OMG!!');
+add_option('wp_twitter_fdx_widget_search_query', 'twitter');
+add_option('wp_twitter_fdx_widget_search_title', 'Widget Search Title');
+add_option('wp_twitter_fdx_widget_search_caption', 'Search caption');
 add_option('wp_twitter_fdx_search_height', '300');
-add_option('wp_twitter_fdx_search_width', '370');
+add_option('wp_twitter_fdx_search_width', '330');
 add_option('wp_twitter_fdx_search_scrollbar', '-1');
 add_option('wp_twitter_fdx_search_shell_bg', '333333');
 add_option('wp_twitter_fdx_search_shell_text', 'ffffff');
 add_option('wp_twitter_fdx_search_tweet_bg', '000000');
 add_option('wp_twitter_fdx_search_tweet_text', 'ffffff');
 add_option('wp_twitter_fdx_search_links', '4aed05');
-add_option('wp_twitter_fdx_search_widget_sidebar_title', 'Twitter fdx');
+add_option('wp_twitter_fdx_search_widget_sidebar_title', 'Sidebar Title');
 
 add_option('wp_twitter_fdx_allow_tweet_button', '-1');
 add_option('wp_twitter_fdx_tweet_button_display_page', '-1');
