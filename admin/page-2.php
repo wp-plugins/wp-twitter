@@ -726,7 +726,7 @@ function fdx_updater_auth1_flag()
 function fdx_updater_auth_2()
 	{ $tokens = get_option('fdx_updater_auth');
     echo "<h3>". __('Now you need to tell Twitter that you want to allow this plugin to be able to post using your account.', 'fdx-lang');
-    echo "</h3><ol><li>". __('Go to:', 'fdx-lang')." <code><a href='{$tokens['request_link']}' target='_blank'>{$tokens['request_link']}</a></code></li>";
+    echo "</h3><ol><li>". __('Go to:', 'fdx-lang')." <code><a href=\"javascript:void(0);\" onclick=\"PopupCenter('{$tokens['request_link']}', 'idunico',750,660,'no');\">{$tokens['request_link']}</a></code></li>";
     echo "<li>". __('Follow the instructions on the page to allow access to the plug-in.', 'fdx-lang')."</li>";
     echo "<li>". __('Return to this page to complete the process.', 'fdx-lang')."</li></ol>";
     }
