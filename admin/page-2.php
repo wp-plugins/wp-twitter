@@ -723,7 +723,7 @@ function fdx_updater_auth1_flag()
 	{ echo "<input id='fdx_updater_auth1_flag' type='hidden' name='fdx_updater_auth[auth1_flag]' value='1' />"; }
 
 // Request link form
-function fdx_updater_auth_2()
+function fdx_updater_auth_2a()
 	{ $tokens = get_option('fdx_updater_auth');
     echo "<h3>". __('Now you need to tell Twitter that you want to allow this plugin to be able to post using your account.', 'fdx-lang');
     echo "</h3><ol><li>". __('Go to:', 'fdx-lang')." <code><a href=\"javascript:void(0);\" onclick=\"PopupCenter('{$tokens['request_link']}', 'idunico',750,660,'no');\">{$tokens['request_link']}</a></code></li>";
