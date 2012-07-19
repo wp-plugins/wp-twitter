@@ -2,30 +2,42 @@
 Plugin Name: WP Twitter
 Contributors: fdoromo
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=Z9SRNRLLDAFZJ
-Tags: Widget, Twitter , Post, Tweet, Integrate, Update, Sidebar
+Tags: twitter,twit, tweet, tweets, twitter widget, dynamic twitter widget, auto refresh tweet, twitter goodies,twitter tools, yourls, short url, shortlink, shorturl, Widget, Twitter , Post, Tweet, Integrate, Update, Sidebar, Sharethis 
 Requires at least: 3.0
 Tested up to: 3.4.1
-Stable tag: 3.0.1
+Stable tag: 3.1
 License: GPLv2 or later
 
-Is a plugin that creates a complete integration between your WordPress blog and your Twitter account including a Twitter Button and Widgets.
+Is a plugin that creates a complete integration between your WordPress blog and your Twitter account including ShareThis Buttons and Goodies Widgets.
 
 == Description ==
-[WP Twitter](http://wp.webmais.com/wp-twitter/ "Ver esta página em Português (pt-BR)") is a plugin that creates a integration between your WordPress blog and your Twitter account by giving you the following functionality:
+[WP Twitter](http://wp.webmais.com/wp-twitter/ "Ver esta pagina em Portugues (pt-BR)") is a plugin that creates a complete integration between your WordPress blog and your Twitter account by giving you the following functionality:
 
 * It will post a tweet when you have created a new post on your Wordpress blog and when you have updated a post.
-* Widget for displays yours latest tweets in your WordPress blog.
-* Tweet Button Integration
-* Profile Widget
-* Search Widget
+* Complete Sharethis Button Integration
+* Add Twitter Goodies to any Pages, Posts and Widget area.
 
+Add both widgets into sidebar - Go to Appearance -> Widgets -> WP Twitter
+
+to add Twitter Profile widget on page/post `[--wp_twitter--]`
+
+to add Twitter Search Widget on page/post `[--wp_twitter_search--]`
+
+Sharethis Button Option: Activate integration option from Admin Panel
+
+
+The following short url services are supported:
+
+* [YOURLS](http://yourls.org/)
+* TinyURL 
+* is.gd
+* Bit.ly
+* and Wordpress default URL format `Ex: domain.com/?p=123`
 
 == Screenshots ==
 1. URL Shortener Account Settings
-2. Basic Settings
-3. Limit Updating
-4. Button Integration
-5. Widget Integration
+2. ShareThis Button Integration
+5. Widget Real-time Settings
 
 
 == Installation ==
@@ -48,6 +60,11 @@ No, this plugin does not work with php4.
 
 
 == Changelog ==
+* 3.1
+    * Added the uninstaller
+    * Added integration with ShareThis
+    * Added Real-time widget config
+
 * 3.0.1
     *  Bug Fix
 

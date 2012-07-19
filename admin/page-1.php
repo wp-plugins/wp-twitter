@@ -1,58 +1,49 @@
 <?php
-// ------------------------------------------------------------------------------Some default options
+/* DEFAULT OPTIONS
+*------------------------------------------------------------*/
 add_option('wp_twitter_fdx_widget_title', 'Widget Title');
 add_option('wp_twitter_fdx_username', 'wordpress');
+add_option('wp_twitter_fdx_width', '250');
 add_option('wp_twitter_fdx_height', '300');
-add_option('wp_twitter_fdx_width', '300');
 add_option('wp_twitter_fdx_scrollbar', '-1');
-add_option('wp_twitter_fdx_shell_bg', '333333');
-add_option('wp_twitter_fdx_shell_text', 'ffffff');
-add_option('wp_twitter_fdx_tweet_bg', '000000');
-add_option('wp_twitter_fdx_tweet_text', 'ffffff');
-add_option('wp_twitter_fdx_links', '4aed05');
+add_option('wp_twitter_fdx_shell_bg', '#333333');
+add_option('wp_twitter_fdx_shell_text', '#ffffff');
+add_option('wp_twitter_fdx_tweet_bg', '#000000');
+add_option('wp_twitter_fdx_tweet_text', '#ffffff');
+add_option('wp_twitter_fdx_links', '#4aed05');
 add_option('wp_twitter_fdx_behavior', '-1');
 
-add_option('wp_twitter_fdx_widget_search_query', 'twitter');
+add_option('wp_twitter_fdx_widget_search_query', 'wordpress');
 add_option('wp_twitter_fdx_widget_search_title', 'Widget Search Title');
-add_option('wp_twitter_fdx_widget_search_caption', 'Search caption');
+add_option('wp_twitter_fdx_widget_search_caption', 'Search Caption');
+add_option('wp_twitter_fdx_search_width', '250');
 add_option('wp_twitter_fdx_search_height', '300');
-add_option('wp_twitter_fdx_search_width', '330');
 add_option('wp_twitter_fdx_search_scrollbar', '-1');
-add_option('wp_twitter_fdx_search_shell_bg', '333333');
-add_option('wp_twitter_fdx_search_shell_text', 'ffffff');
-add_option('wp_twitter_fdx_search_tweet_bg', '000000');
-add_option('wp_twitter_fdx_search_tweet_text', 'ffffff');
-add_option('wp_twitter_fdx_search_links', '4aed05');
+add_option('wp_twitter_fdx_search_shell_bg', '#333333');
+add_option('wp_twitter_fdx_search_shell_text', '#ffffff');
+add_option('wp_twitter_fdx_search_tweet_bg', '#000000');
+add_option('wp_twitter_fdx_search_tweet_text', '#ffffff');
+add_option('wp_twitter_fdx_search_links', '#4aed05');
 add_option('wp_twitter_fdx_search_widget_sidebar_title', 'Sidebar Title');
 
-add_option('wp_twitter_fdx_allow_tweet_button', '-1');
-add_option('wp_twitter_fdx_tweet_button_display_page', '-1');
-add_option('wp_twitter_fdx_tweet_button_display_home', '-1');
-add_option('wp_twitter_fdx_tweet_button_display_rss', '-1');
-add_option('wp_twitter_fdx_tweet_button_place', 'after');
-add_option('wp_twitter_fdx_tweet_button_style', 'horizontal');
-add_option('wp_twitter_fdx_tweet_button_container', 'float: right; margin-left: 10px;');
-add_option('wp_twitter_fdx_tweet_button_twitter_username', '');
-add_option('wp_twitter_fdx_tweet_button_reco_username', '');
-add_option('wp_twitter_fdx_tweet_button_langcode', 'en');
-add_option('wp_twitter_fdx_tweet_button_reco_desc', '');
+
 
 function filter_wp_twitter_fdx_profile($content)
 {
-    if (strpos($content, "<!--wp_twitter_fdx-->") !== FALSE)
+    if (strpos($content, "[--wp_twitter--]") !== FALSE)
     {
         $content = preg_replace('/<p>\s*<!--(.*)-->\s*<\/p>/i', "<!--$1-->", $content);
-        $content = str_replace('<!--wp_twitter_fdx-->', wp_twitter_fdx_profile(), $content);
+        $content = str_replace('[--wp_twitter--]', wp_twitter_fdx_profile(), $content);
     }
     return $content;
 }
 
 function filter_wp_twitter_fdx_search($content)
 {
-    if (strpos($content, "<!--wp_twitter_fdx_search-->") !== FALSE)
+    if (strpos($content, "[--wp_twitter_search--]") !== FALSE)
     {
         $content = preg_replace('/<p>\s*<!--(.*)-->\s*<\/p>/i', "<!--$1-->", $content);
-        $content = str_replace('<!--wp_twitter_fdx_search-->', wp_twitter_fdx_search(), $content);
+        $content = str_replace('[--wp_twitter_search--]', wp_twitter_fdx_search(), $content);
     }
     return $content;
 }
@@ -90,15 +81,15 @@ function wp_twitter_fdx_profile()
 			$v1 = $width;
 		$T2 = ",  height: ";
 			$v2 = $height;
-		$T3 = ",  theme: {    shell: {      background: '#";
+		$T3 = ",  theme: {    shell: {      background: '";
 			$v3 = $shell_bg;
-		$T4 = "',      color: '#";
+		$T4 = "',      color: '";
 			$v4 = $shell_text;
-		$T5 = "'    },    tweets: {      background: '#";
+		$T5 = "'    },    tweets: {      background: '";
 			$v5 = $tweet_bg;
-		$T6 = "',      color: '#";
+		$T6 = "',      color: '";
 			$v6 = $tweet_text;
-		$T7 = "',      links: '#";
+		$T7 = "',      links: '";
 			$v7 = $links;
 		$T8 = "'    }  },  features: {    scrollbar: ";
 		    $v8 = $scrollbar;
@@ -116,152 +107,6 @@ function wp_twitter_fdx_profile()
 
 	return $output_profile;
 }
-
-
-function filter_wp_twitter_fdx_tweet_button_show($related_content)
-{
-
-	$tweet_btn_allow = get_option('wp_twitter_fdx_allow_tweet_button');
-	$tweet_btn_display_page = get_option('wp_twitter_fdx_tweet_button_display_page');
-	$tweet_btn_display_home = get_option('wp_twitter_fdx_tweet_button_display_home');
-	$tweet_btn_display_rss = get_option('wp_twitter_fdx_tweet_button_display_rss');
-	$tweet_btn_place = get_option('wp_twitter_fdx_tweet_button_place');
-	$tweet_btn_style = get_option('wp_twitter_fdx_tweet_button_style');
-	$tweet_btn_float = get_option('wp_twitter_fdx_tweet_button_container');
-	$tweet_btn_twt_username = get_option('wp_twitter_fdx_tweet_button_twitter_username');
-	$tweet_btn_reco_username = get_option('wp_twitter_fdx_tweet_button_reco_username');
-    $tweet_btn_reco_langcode = get_option('wp_twitter_fdx_tweet_button_langcode');
-	$tweet_btn_reco_desc = get_option('wp_twitter_fdx_tweet_button_reco_desc');
-    $language_code = get_option('wp_twitter_fdx_tweet_button_langcode');
-
-	global $post;
-	$p = $post;
-	$title1 = $p->post_title ;
-	$link1 = get_permalink($p);
-	$blog_url = get_bloginfo('wpurl');
-	$blog_title = get_bloginfo('wp_title');
-
-
-	$final_url2 = '<a href="http://twitter.com/share?url='.$link1.'&via='.$tweet_btn_twt_username.'&text='.$title1.'&related='.$tweet_btn_reco_username.':'.$tweet_btn_reco_desc.'&lang='.$language_code.'&count='.$tweet_btn_style.'" class="twitter-share-button">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>';
-
-	$final_url2 = '<div style="'.$tweet_btn_float.'">' . $final_url2 . '</div>';
-
-	if($tweet_btn_allow == 1)
-	{
-		if (is_page() && $tweet_btn_display_page == 1)
-		{
-			if ($tweet_btn_place == "before")
-			{
-				$related_content =  $final_url2 . $related_content;
-			}
-			if ($tweet_btn_place == "after")
-			{
-				$related_content =  $related_content . $final_url2;
-			}
-			if ($tweet_btn_place == "manual")
-			{
-				wp_twitter_fdx_add_option_page();
-			}
-		}
-
-		if (is_single() || is_search() || is_archive())
-		{
-			if ($tweet_btn_place == "before")
-			{
-				$related_content =  $final_url2 . $related_content;
-			}
-			if ($tweet_btn_place == "after")
-			{
-				$related_content =  $related_content . $final_url2;
-			}
-			if ($tweet_btn_place == "manual")
-			{
-				wp_twitter_fdx_add_option_page();
-			}
-		}
-
-		if (is_home() && $tweet_btn_display_home == 1)
-		{
-			if ($tweet_btn_place == "before")
-			{
-				$related_content =  $final_url2 . $related_content;
-			}
-			if ($tweet_btn_place == "after")
-			{
-				$related_content =  $related_content . $final_url2;
-			}
-			if ($tweet_btn_place == "manual")
-			{
-				wp_twitter_fdx_add_option_page();
-			}
-		}
-
-		if (is_feed() && $tweet_btn_display_rss == 1)
-		{
-			if ($tweet_btn_place == "before")
-			{
-				$related_content =  $final_url2 . $related_content;
-			}
-			if ($tweet_btn_place == "after")
-			{
-				$related_content =  $related_content . $final_url2;
-			}
-			if ($tweet_btn_place == "manual")
-			{
-				wp_twitter_fdx_add_option_page();
-			}
-		}
- 	}
-	$post = $p;
-	return $related_content;
-}
-
-function fdx_tweet_button()
-{
-
-	$tweet_btn_allow = get_option('wp_twitter_fdx_allow_tweet_button');
-	$tweet_btn_display_page = get_option('wp_twitter_fdx_tweet_button_display_page');
-	$tweet_btn_display_home = get_option('wp_twitter_fdx_tweet_button_display_home');
-	$tweet_btn_display_rss = get_option('wp_twitter_fdx_tweet_button_display_rss');
-	$tweet_btn_place = get_option('wp_twitter_fdx_tweet_button_place');
-	$tweet_btn_style = get_option('wp_twitter_fdx_tweet_button_style');
-	$tweet_btn_float = get_option('wp_twitter_fdx_tweet_button_container');
-	$tweet_btn_twt_username = get_option('wp_twitter_fdx_tweet_button_twitter_username');
-	$tweet_btn_reco_username = get_option('wp_twitter_fdx_tweet_button_reco_username');
-    $tweet_btn_reco_langcode = get_option('wp_twitter_fdx_tweet_button_langcode');
-	$tweet_btn_reco_desc = get_option('wp_twitter_fdx_tweet_button_reco_desc');
-    $language_code = get_option('wp_twitter_fdx_tweet_button_langcode');
-
-	global $post;
-	$p = $post;
-	$title1 = $p->post_title ;
-	$link1 = get_permalink($p);
-	$final_url2 = '<a href="http://twitter.com/share?url='.$link1.'&via='.$tweet_btn_twt_username.'&text='.$title1.'&related='.$tweet_btn_reco_username.':'.$tweet_btn_reco_desc.'&lang='.$language_code.'&count='.$tweet_btn_style.'" class="twitter-share-button">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>';
-
-	echo $final_url2;
-}
-//fdx adiciona um botão teste
-function fdx_tweet_button_test()
-{
-	$tweet_btn_allow = get_option('wp_twitter_fdx_allow_tweet_button');
-	$tweet_btn_display_page = get_option('wp_twitter_fdx_tweet_button_display_page');
-	$tweet_btn_display_home = get_option('wp_twitter_fdx_tweet_button_display_home');
-	$tweet_btn_display_rss = get_option('wp_twitter_fdx_tweet_button_display_rss');
-	$tweet_btn_place = get_option('wp_twitter_fdx_tweet_button_place');
-	$tweet_btn_style = get_option('wp_twitter_fdx_tweet_button_style');
-	$tweet_btn_float = get_option('wp_twitter_fdx_tweet_button_container');
-	$tweet_btn_twt_username = get_option('wp_twitter_fdx_tweet_button_twitter_username');
-	$tweet_btn_reco_username = get_option('wp_twitter_fdx_tweet_button_reco_username');
-    $tweet_btn_reco_langcode = get_option('wp_twitter_fdx_tweet_button_langcode');
-	$tweet_btn_reco_desc = get_option('wp_twitter_fdx_tweet_button_reco_desc');
-    $language_code = get_option('wp_twitter_fdx_tweet_button_langcode');
-
-	$final_url2 = '<a href="http://twitter.com/share?url=http://wp.webmais.com/wp-twitter/&via='.$tweet_btn_twt_username.'&text=Plugin WP Twitter&related='.$tweet_btn_reco_username.':'.$tweet_btn_reco_desc.'&lang='.$language_code.'&count='.$tweet_btn_style.'" class="twitter-share-button">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>';
-	echo $final_url2;
-}
-
-
-
 
 function wp_twitter_fdx_search()
 {
@@ -301,15 +146,15 @@ function wp_twitter_fdx_search()
 			$v1 = $search_width;
 		$T2 = ",  height: ";
 			$v2 = $search_height;
-		$T3 = ",  theme: {    shell: {      background: '#";
+		$T3 = ",  theme: {    shell: {      background: '";
 			$v3 = $search_shell_bg;
-		$T4 = "',      color: '#";
+		$T4 = "',      color: '";
 			$v4 = $search_shell_text;
-		$T5 = "'    },    tweets: {      background: '#";
+		$T5 = "'    },    tweets: {      background: '";
 			$v5 = $search_tweet_bg;
-		$T6 = "',      color: '#";
+		$T6 = "',      color: '";
 			$v6 = $search_tweet_text;
-		$T7 = "',      links: '#";
+		$T7 = "',      links: '";
 			$v7 = $search_links;
 		$T8 = "'    }  },  features: {    scrollbar: ";
 			$v8 = $search_scrollbar;
@@ -326,9 +171,6 @@ function wp_twitter_fdx_search()
 
 // Displays Wordpress Blog Twitter fdx Options menu
 function wp_twitter_fdx_options_page() {
-
- 	$wp_twitter_fdx_tweet_button_place = @$_POST['wp_twitter_fdx_tweet_button_place'];
-	$wp_twitter_fdx_tweet_button_style = @$_POST['wp_twitter_fdx_tweet_button_style'];
 
 
     if (isset($_POST['info_update']))
@@ -356,21 +198,9 @@ function wp_twitter_fdx_options_page() {
 		update_option('wp_twitter_fdx_search_tweet_text', (string)$_POST['wp_twitter_fdx_search_tweet_text']);
 		update_option('wp_twitter_fdx_search_links', (string)$_POST['wp_twitter_fdx_search_links']);
 		update_option('wp_twitter_fdx_search_widget_sidebar_title', (string)$_POST['wp_twitter_fdx_search_widget_sidebar_title']);
-		update_option('wp_twitter_fdx_allow_tweet_button', (@$_POST['wp_twitter_fdx_allow_tweet_button']=='1') ? '1':'-1' );
-		update_option('wp_twitter_fdx_tweet_button_display_page', (@$_POST['wp_twitter_fdx_tweet_button_display_page']=='1') ? '1':'-1' );
-		update_option('wp_twitter_fdx_tweet_button_display_home', (@$_POST['wp_twitter_fdx_tweet_button_display_home']=='1') ? '1':'-1' );
-		update_option('wp_twitter_fdx_tweet_button_display_rss', (@$_POST['wp_twitter_fdx_tweet_button_display_rss']=='1') ? '1':'-1' );
-		update_option('wp_twitter_fdx_tweet_button_container', stripslashes_deep((string)$_POST['wp_twitter_fdx_tweet_button_container']));
-		update_option('wp_twitter_fdx_tweet_button_twitter_username', stripslashes_deep((string)$_POST['wp_twitter_fdx_tweet_button_twitter_username']));
-		update_option('wp_twitter_fdx_tweet_button_reco_username', stripslashes_deep((string)$_POST['wp_twitter_fdx_tweet_button_reco_username']));
-		update_option('wp_twitter_fdx_tweet_button_langcode', stripslashes_deep((string)$_POST['wp_twitter_fdx_tweet_button_langcode']));
-        update_option('wp_twitter_fdx_tweet_button_reco_desc', stripslashes_deep((string)$_POST['wp_twitter_fdx_tweet_button_reco_desc']));
-		update_option('wp_twitter_fdx_tweet_button_place', stripslashes_deep((string)@$_POST['wp_twitter_fdx_tweet_button_place']));
-		update_option('wp_twitter_fdx_tweet_button_style', stripslashes_deep((string)@$_POST['wp_twitter_fdx_tweet_button_style']));
         echo '<div class="updated fade"><p><strong>' . __( 'Settings updated', 'fdx-lang' ) . '.</strong></p></div>';
         } else {
-	$wp_twitter_fdx_tweet_button_place = get_option('wp_twitter_fdx_tweet_button_place');
-	$wp_twitter_fdx_tweet_button_style = get_option('wp_twitter_fdx_tweet_button_style');
+
 	}
 //adicionar icones e lang patch
 
@@ -389,268 +219,88 @@ function wp_twitter_fdx_options_page() {
 <input type="hidden" name="info_update" id="info_update" value="true" />
 
 <div class="postbox">
-<div class="handlediv" title="<?php _e('Click to toggle', 'fdx-lang') ?>"><br /></div><h3 class='hndle'><span><?php _e('Twitter Button integration', 'fdx-lang') ?></span></h3>
-<div class="inside">
-<!-- ############################################################################################################### -->
-<table class="form-table">
-           					<tr valign="top">
-					<th scope="row" style="width:29%;"><label>Allow Tweet Button Integration?</label></th>
-						<td>
-						 <input name="wp_twitter_fdx_allow_tweet_button" type="checkbox"<?php if(get_option('wp_twitter_fdx_allow_tweet_button')!='-1') echo 'checked="checked"'; ?> value="1" /> <code>Check</code> to allow Tweet Button Integration
-						</td>
-					</tr>
-
-
-					<tr valign="top" class="alternate">
-						<th scope="row" style="width:29%;"><label>Display</label></th>
-						<td>
-						 <input name="wp_twitter_fdx_tweet_button_display_page" type="checkbox"<?php if(get_option('wp_twitter_fdx_tweet_button_display_page')!='-1') echo 'checked="checked"'; ?> value="1" />Pages
-
-						 <input name="wp_twitter_fdx_tweet_button_display_home" type="checkbox"<?php if(get_option('wp_twitter_fdx_tweet_button_display_home')!='-1') echo 'checked="checked"'; ?> value="1" />Front Page (Home)
-
-						 <input name="wp_twitter_fdx_tweet_button_display_rss" type="checkbox"<?php if(get_option('wp_twitter_fdx_tweet_button_display_rss')!='-1') echo 'checked="checked"'; ?> value="1" />RSS Feed
-						</td>
-					</tr>
-
-					<tr valign="top">
-						<th scope="row"><label>Placing Option</label></th>
-						<td>
-							<input name="wp_twitter_fdx_tweet_button_place" type="radio" value="before" <?php checked('before', $wp_twitter_fdx_tweet_button_place); ?> />
-						&nbsp;Before Content
-
-							<input name="wp_twitter_fdx_tweet_button_place" type="radio" value="after" <?php checked('after', $wp_twitter_fdx_tweet_button_place); ?> />
-						&nbsp;After Content (default)
-
-							<input name="wp_twitter_fdx_tweet_button_place" type="radio" value="manual" <?php checked('manual', $wp_twitter_fdx_tweet_button_place); ?> />
-						&nbsp;Manual<br>
-						Manual Insertion Code: <br /><code>&lt;?php if(function_exists('fdx_tweet_button'))<br /> { fdx_tweet_button();} ?&gt;</code>
-						</td>
-					</tr>
-
-					<tr valign="top" class="alternate">
-						<th scope="row"><label>Button Style option</label></th>
-						<td>
-							<input name="wp_twitter_fdx_tweet_button_style" type="radio" value="vertical" <?php checked('vertical', $wp_twitter_fdx_tweet_button_style); ?> />
-						&nbsp;Vertical
-
-					<input name="wp_twitter_fdx_tweet_button_style" type="radio" value="horizontal" <?php checked('horizontal', $wp_twitter_fdx_tweet_button_style); ?> />
-						&nbsp;Horizonal
-
-					<input name="wp_twitter_fdx_tweet_button_style" type="radio" value="none" <?php checked('none', $wp_twitter_fdx_tweet_button_style); ?> />
-						&nbsp;No Count
-
-                         <div style="float: right; margin-right: 100px"> <?php fdx_tweet_button_test(); ?> </div>
-                        </td>
-					</tr>
-
-                    	<tr valign="top" class="alternate">
-						<th scope="row"><label>Language code of button</label></th>
-						<td>
-
-                         <input name="wp_twitter_fdx_tweet_button_langcode" type="text" size="2" maxlength="2" value="<?php echo get_option('wp_twitter_fdx_tweet_button_langcode'); ?>" /> (2 digits <a href="http://en.wikipedia.org/wiki/List_of_ISO_639-1_codes" target="_blank">ISO 639-1</a> codes)  Ex: Portuguese (pt)
-
-
-                        </td>
-					</tr>
-
-
-
-					<tr valign="top" class="alternate">
-							<th scope="row" style="width:29%;"><label>Float Left/Right?</label></th>
-						<td>
-						<input name="wp_twitter_fdx_tweet_button_container" type="text" size="25" value="<?php echo get_option('wp_twitter_fdx_tweet_button_container'); ?>" /> i.e. float: left; margin-right: 10px;
-						</td>
-					</tr>
-
-					<tr valign="top">
-							<th scope="row" style="width:29%;"><label>Twitter Username</label></th>
-						<td>
-						@<input name="wp_twitter_fdx_tweet_button_twitter_username" type="text" size="25" value="<?php echo get_option('wp_twitter_fdx_tweet_button_twitter_username'); ?>" />
-						</td>
-					</tr>
-
-					<tr valign="top" class="alternate">
-							<th scope="row" style="width:29%;"><label>Recommended Twitter user</label></th>
-						<td>
-						Name<input name="wp_twitter_fdx_tweet_button_reco_username" type="text" size="25" value="<?php echo get_option('wp_twitter_fdx_tweet_button_reco_username'); ?>" /><br />
-						Description<input name="wp_twitter_fdx_tweet_button_reco_desc" type="text" size="25" value="<?php echo get_option('wp_twitter_fdx_tweet_button_reco_desc'); ?>" />
-						</td>
-					</tr>
-
- 					</table>
-<!-- ############################################################################################################### -->  
-</div>
-</div>
-
-
-<div class="postbox closed">
 <div class="handlediv" title="<?php _e('Click to toggle', 'fdx-lang') ?>"><br /></div><h3 class='hndle'><span><?php _e('Twitter Profile Widget Options', 'fdx-lang') ?></span></h3>
 <div class="inside">
 <!-- ############################################################################################################### -->
- <table class="form-table">
+ <table style="width: auto">
+   <tr>
+     <td style="width: 400px; text-align: left; vertical-align: top">
+ <ul>
+ <li><input name="wp_twitter_fdx_widget_title" type="text" size="20" value="<?php echo get_option('wp_twitter_fdx_widget_title'); ?>"> &raquo; Widget Title *</li>
+  <li><input name="wp_twitter_fdx_username" type="text" size="20" value="<?php echo get_option('wp_twitter_fdx_username'); ?>" /> &raquo; Twitter Username (for this Widget)</li>
+    <li><input name="wp_twitter_fdx_width" type="text" size="7" value="<?php echo get_option('wp_twitter_fdx_width'); ?>" /> &raquo; Widget Width  </li>
+     <li><input name="wp_twitter_fdx_height" type="text" size="7" value="<?php echo get_option('wp_twitter_fdx_height'); ?>" /> &raquo; Widget Height</li>
 
-				<tr valign="top" class="alternate">
-          			<th scope="row" style="width:29%;"><label>Widget Title</label></th>
-                      <td><input name="wp_twitter_fdx_widget_title" type="text" size="35" value="<?php echo get_option('wp_twitter_fdx_widget_title'); ?>"></td>
-				</tr>
-				<tr valign="top">
-						<th scope="row" style="width:29%;"><label>Twitter Username</label></th>
-					<td>
-					 <input name="wp_twitter_fdx_username" type="text" size="25" value="<?php echo get_option('wp_twitter_fdx_username'); ?>" /> (for Twitter Widget)
-					</td>
-				</tr>
+     <li><p><input name="wp_twitter_fdx_scrollbar" type="checkbox"<?php if(get_option('wp_twitter_fdx_scrollbar')!='-1') echo 'checked="checked"'; ?> value="1" /> &raquo;  Include Scrollbar?</p></li>
+      <li><p><input name="wp_twitter_fdx_behavior" type="checkbox"<?php if(get_option('wp_twitter_fdx_behavior')!='-1') echo 'checked="checked"'; ?> value="1" /> &raquo; Load all Tweets/Time Interval? <code>total 30)</code></p> </li>
 
-				<tr valign="top" class="alternate">
-						<th scope="row" style="width:29%;"><label>Widget Height</label></th>
-					<td>
-					<input name="wp_twitter_fdx_height" type="text" size="15" value="<?php echo get_option('wp_twitter_fdx_height'); ?>" />
-					</td>
-				</tr>
-				<tr valign="top">
-						<th scope="row" style="width:29%;"><label>Widget Width</label></th>
-					<td>
-					 <input name="wp_twitter_fdx_width" type="text" size="15" value="<?php echo get_option('wp_twitter_fdx_width'); ?>" />
-					</td>
-				</tr>
+       <li><input class="widget-colors" rel="shell-bg" id="sw-shell-background" name="wp_twitter_fdx_shell_bg" type="text" size="7" value="<?php echo get_option('wp_twitter_fdx_shell_bg'); ?>" /><b style=" padding: 4px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b> &raquo; Widget Shell Background Color</li>
+        <li><input class="widget-colors" rel="shell-color" id="sw-shell-color" name="wp_twitter_fdx_shell_text" type="text" size="7" value="<?php echo get_option('wp_twitter_fdx_shell_text'); ?>" /><b style=" padding: 4px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b> &raquo; Widget Shell Text Color</li>
+         <li><input class="widget-colors" rel="tweet-background" id="sw-tweet-background" name="wp_twitter_fdx_tweet_bg" type="text" size="7" value="<?php echo get_option('wp_twitter_fdx_tweet_bg'); ?>" /><b style=" padding: 4px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b> &raquo; Widget Tweet Background Color</li>
+       <li>	<input class="widget-colors" rel="tweet-color" id="sw-tweet-text" name="wp_twitter_fdx_tweet_text" type="text" size="7" value="<?php echo get_option('wp_twitter_fdx_tweet_text'); ?>" /><b style=" padding: 4px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b> &raquo; Widget Tweet Text Color</li>
+        <li><input class="widget-colors" rel="tweet-links" id="sw-tweet-links" name="wp_twitter_fdx_links" type="text" size="7" value="<?php echo get_option('wp_twitter_fdx_links'); ?>" /><b style=" padding: 4px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b> &raquo; Link Color</li>
+ </ul>
+ *<em><small>(<?php _e('The format will depend on your theme', 'fdx-lang') ?>)</small></em>
+</td>
+<td style="width: auto; text-align: center; vertical-align: top;">
 
-				<tr valign="top" class="alternate">
-						<th scope="row" style="width:29%;"><label>Include Scrollbar?</label></th>
-					<td>
-					<input name="wp_twitter_fdx_scrollbar" type="checkbox"<?php if(get_option('wp_twitter_fdx_scrollbar')!='-1') echo 'checked="checked"'; ?> value="1" /> <code>Check</code> to include Scrollbar
-					</td>
-				</tr>
-				<tr valign="top">
-						<th scope="row" style="width:29%;"><label>Load all Tweets? / Time Interval?</label></th>
-					<td>
-					<input name="wp_twitter_fdx_behavior" type="checkbox"<?php if(get_option('wp_twitter_fdx_behavior')!='-1') echo 'checked="checked"'; ?> value="1" /> <code>Check</code> to Load all Tweets (total 30)
-					</td>
-				</tr>
 
-				<tr valign="top" class="alternate">
-						<th scope="row" style="width:29%;"><label>Widget Shell Background Color</label></th>
-					<td>
-					 <input class="color" name="wp_twitter_fdx_shell_bg" type="text" size="15" value="<?php echo get_option('wp_twitter_fdx_shell_bg'); ?>" />
+     <div style="padding: 2px;"><code> <?php echo get_option('wp_twitter_fdx_widget_title'); ?> </code> *</div>
+             <div id="example-preview-widget"></div>
+ </td>
+</tr>
+ </table>
 
-					</td>
-				</tr>
-				<tr valign="top">
-						<th scope="row" style="width:29%;"><label>Widget Shell Text Color</label></th>
-					<td>
-					<input class="color" name="wp_twitter_fdx_shell_text" type="text" size="15" value="<?php echo get_option('wp_twitter_fdx_shell_text'); ?>" />
-					</td>
-				</tr>
 
-				<tr valign="top" class="alternate">
-						<th scope="row" style="width:29%;"><label>Widget Tweet Background Color</label></th>
-					<td>
-					 <input class="color" name="wp_twitter_fdx_tweet_bg" type="text" size="15" value="<?php echo get_option('wp_twitter_fdx_tweet_bg'); ?>" />
-
-					</td>
-				</tr>
-				<tr valign="top">
-						<th scope="row" style="width:29%;"><label>Widget Tweet Text Color</label></th>
-					<td>
-					<input class="color" name="wp_twitter_fdx_tweet_text" type="text" size="15" value="<?php echo get_option('wp_twitter_fdx_tweet_text'); ?>" />
-					</td>
-				</tr>
-				<tr valign="top" class="alternate">
-						<th scope="row" style="width:29%;"><label>Link Color</label></th>
-					<td>
-					<input class="color" name="wp_twitter_fdx_links" type="text" size="15" value="<?php echo get_option('wp_twitter_fdx_links'); ?>" />
-					</td>
-				</tr>
-
-				</table>
 <!-- ############################################################################################################### -->
 </div>
 </div>
 
-<div class="postbox closed" >
+<div class="postbox  closed" >
 <div class="handlediv" title="<?php _e('Click to toggle', 'fdx-lang') ?>"><br /></div><h3 class='hndle'><span><?php _e('Twitter Search Widget Options', 'fdx-lang') ?></span></h3>
 <div class="inside">
 <!-- ############################################################################################################### -->
-	<table class="form-table">
-					<tr valign="top" class="alternate">
-						<th scope="row" style="width:29%;"><label>Search Query</label></th>
-                        <td><input name="wp_twitter_fdx_widget_search_query" type="text" size="35" value="<?php echo get_option('wp_twitter_fdx_widget_search_query'); ?>">HELP:
-                        <a href="https://twitter.com/#!/search-home" target="_blank">https://twitter.com/#!/search-home</a></td>
-					</tr>
-					<tr valign="top" class="alternate">
-						<th scope="row" style="width:29%;"><label>Search Title</label></th>
-                        <td><input name="wp_twitter_fdx_widget_search_title" type="text" size="35" value="<?php echo get_option('wp_twitter_fdx_widget_search_title'); ?>"></td>
-					</tr>
-					<tr valign="top" class="alternate">
-						<th scope="row" style="width:29%;"><label>Search Caption</label></th>
-                        <td><input name="wp_twitter_fdx_widget_search_caption" type="text" size="35" value="<?php echo get_option('wp_twitter_fdx_widget_search_caption'); ?>"></td>
-					</tr>
 
-				<tr valign="top">
-          			<th scope="row" style="width:29%;"><label>Widget Title</label></th>
-                      <td><input name="wp_twitter_fdx_search_widget_sidebar_title" type="text" size="35" value="<?php echo get_option('wp_twitter_fdx_search_widget_sidebar_title'); ?>"></td>
-				</tr>
 
-				<tr valign="top" class="alternate">
-						<th scope="row" style="width:29%;"><label>Widget Height</label></th>
-					<td>
-					<input name="wp_twitter_fdx_search_height" type="text" size="15" value="<?php echo get_option('wp_twitter_fdx_search_height'); ?>" />
-					</td>
-				</tr>
-				<tr valign="top">
-						<th scope="row" style="width:29%;"><label>Widget Width</label></th>
-					<td>
-					 <input name="wp_twitter_fdx_search_width" type="text" size="15" value="<?php echo get_option('wp_twitter_fdx_search_width'); ?>" />
-					</td>
-				</tr>
 
-				<tr valign="top" class="alternate">
-						<th scope="row" style="width:29%;"><label>Include Scrollbar?</label></th>
-					<td>
-					<input name="wp_twitter_fdx_search_scrollbar" type="checkbox"<?php if(get_option('wp_twitter_fdx_search_scrollbar')!='-1') echo 'checked="checked"'; ?> value="1" /> <code>Check</code> to include Scrollbar
-					</td>
-				</tr>
 
-				<tr valign="top" class="alternate">
-						<th scope="row" style="width:29%;"><label>Widget Shell Background Color</label></th>
-					<td>
-					 <input class="color" name="wp_twitter_fdx_search_shell_bg" type="text" size="15" value="<?php echo get_option('wp_twitter_fdx_search_shell_bg'); ?>" />
 
-					</td>
-				</tr>
-				<tr valign="top">
-						<th scope="row" style="width:29%;"><label>Widget Shell Text Color</label></th>
-					<td>
-					<input class="color" name="wp_twitter_fdx_search_shell_text" type="text" size="15" value="<?php echo get_option('wp_twitter_fdx_search_shell_text'); ?>" />
-					</td>
-				</tr>
+ <table style="width: auto">
+   <tr>
+     <td style="width: 400px; text-align: left; vertical-align: top">
+<ul>
+<li><input name="wp_twitter_fdx_search_widget_sidebar_title" type="text" size="20" value="<?php echo get_option('wp_twitter_fdx_search_widget_sidebar_title'); ?>"> &raquo; Widget Title *</li>
+<li><input name="wp_twitter_fdx_widget_search_query" type="text" size="20" value="<?php echo get_option('wp_twitter_fdx_widget_search_query'); ?>"> &raquo; Search Query <span id="butpop"><a href="javascript:void(0);" onclick="PopupCenter('https://twitter.com/#!/search-home', 'page2_id1',900,500,'yes');"><code class="red">?</code></a></span></li>
+<li><input name="wp_twitter_fdx_widget_search_title" type="text" size="20" value="<?php echo get_option('wp_twitter_fdx_widget_search_title'); ?>"> &raquo; Search Title</li>
+<li><input name="wp_twitter_fdx_widget_search_caption" type="text" size="20" value="<?php echo get_option('wp_twitter_fdx_widget_search_caption'); ?>"> &raquo; Search Caption</li>
+<li><input name="wp_twitter_fdx_search_width" type="text" size="7" value="<?php echo get_option('wp_twitter_fdx_search_width'); ?>" /> &raquo; Widget Width</li>
+<li><input name="wp_twitter_fdx_search_height" type="text" size="7" value="<?php echo get_option('wp_twitter_fdx_search_height'); ?>" /> &raquo; Widget Height</li>
+<li><p>Include Scrollbar?: <input name="wp_twitter_fdx_search_scrollbar" type="checkbox"<?php if(get_option('wp_twitter_fdx_search_scrollbar')!='-1') echo 'checked="checked"'; ?> value="1" /> <code>Check to include Scrollbar </code></p></li>
 
-				<tr valign="top" class="alternate">
-						<th scope="row" style="width:29%;"><label>Widget Tweet Background Color</label></th>
-					<td>
-					 <input class="color" name="wp_twitter_fdx_search_tweet_bg" type="text" size="15" value="<?php echo get_option('wp_twitter_fdx_search_tweet_bg'); ?>" />
+<li><input class="widget-colors2" rel="shell-bg2" id="sw-shell-background2" name="wp_twitter_fdx_search_shell_bg" type="text" size="7" value="<?php echo get_option('wp_twitter_fdx_search_shell_bg'); ?>" /><b style=" padding: 4px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b> &raquo; Widget Shell Background Color</li>
+<li><input class="widget-colors2" rel="shell-color2" id="sw-shell-color2" name="wp_twitter_fdx_search_shell_text" type="text" size="7" value="<?php echo get_option('wp_twitter_fdx_search_shell_text'); ?>" /><b style=" padding: 4px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b> &raquo; Widget Shell Text Color</li>
+<li><input class="widget-colors2" rel="tweet-background2" id="sw-tweet-background2" name="wp_twitter_fdx_search_tweet_bg" type="text" size="7" value="<?php echo get_option('wp_twitter_fdx_search_tweet_bg'); ?>" /><b style=" padding: 4px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b> &raquo; Widget Tweet Background Color: </li>
+<li><input class="widget-colors2" rel="tweet-color2" id="sw-tweet-text2" name="wp_twitter_fdx_search_tweet_text" type="text" size="7" value="<?php echo get_option('wp_twitter_fdx_search_tweet_text'); ?>" /><b style=" padding: 4px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b> &raquo; Widget Tweet Text Color: </li>
+<li><input class="widget-colors2" rel="tweet-links2" id="sw-tweet-links2" name="wp_twitter_fdx_search_links" type="text" size="7" value="<?php echo get_option('wp_twitter_fdx_search_links'); ?>" /><b style=" padding: 4px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b> &raquo; Link Color: </li>
+</ul>
+*<em><small>(<?php _e('The format will depend on your theme', 'fdx-lang') ?>)</small></em>
+</td>
+<td style="width: auto; text-align: center; vertical-align: top;">
 
-					</td>
-				</tr>
-				<tr valign="top">
-						<th scope="row" style="width:29%;"><label>Widget Tweet Text Color</label></th>
-					<td>
-					<input class="color" name="wp_twitter_fdx_search_tweet_text" type="text" size="15" value="<?php echo get_option('wp_twitter_fdx_search_tweet_text'); ?>" />
-					</td>
-				</tr>
-				<tr valign="top" class="alternate">
-						<th scope="row" style="width:29%;"><label>Link Color</label></th>
-					<td>
-					<input class="color" name="wp_twitter_fdx_search_links" type="text" size="15" value="<?php echo get_option('wp_twitter_fdx_search_links'); ?>" />
-					</td>
-				</tr>
+<div style="padding: 2px;"><code><?php echo get_option('wp_twitter_fdx_search_widget_sidebar_title'); ?></code> *</div>
 
-					</table>
+<div id="example-preview-widget2"></div>
+</td>
+</tr>
+ </table>
+
 <!-- ############################################################################################################### -->
 </div>
 </div>
 
 
 
-<div align="center"><input name="Submit" class="button-primary"  type="submit" value="<?php _e('Save All Options', 'fdx-lang') ?>" /></div>
+<div align="center"><input name="Submit" class="button-primary" type="submit" value="<?php _e('Save All Options', 'fdx-lang') ?>" /></div>
 </form>
 </div> <!-- /postbox-container -->
 </div><!-- /meta-box-sortables -->
@@ -662,8 +312,256 @@ function wp_twitter_fdx_options_page() {
 
 
 </div><!-- /wrap -->
+
+
+
 <?php include('inc/footer_js.php'); ?>
-<!-- carregar javascript especifico aqui -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js " type="text/javascript"></script>
+
+<script charset="utf-8"  src="<?php echo FDX1_PLUGIN_URL;?>/js/twitter-text-js.js"></script>
+<script src="<?php echo FDX1_PLUGIN_URL;?>/js/colorpicker.js" type="text/javascript"></script>
+<script src="<?php echo FDX1_PLUGIN_URL;?>/js/goodies2.js" type="text/javascript"></script>
+<script src="<?php echo FDX1_PLUGIN_URL;?>/js/goodies.js" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+  var DemoWidget = new TWTR.Widget({
+    version: 2,
+    type: 'profile',
+    width: <?php echo get_option('wp_twitter_fdx_width'); ?>,
+    height: <?php echo get_option('wp_twitter_fdx_search_height'); ?>,
+    creator: true,
+    id: 'example-preview-widget',
+    rpp: 4,
+    features: {
+      live: false,
+      scrollbar: false,
+      behavior: 'all',
+      loop: false
+    },
+    theme: {
+      shell: {
+        background: '<?php echo get_option('wp_twitter_fdx_shell_bg'); ?>',
+        color: '<?php echo get_option('wp_twitter_fdx_shell_text'); ?>'
+      },
+      tweets: {
+        background: '<?php echo get_option('wp_twitter_fdx_tweet_bg'); ?>',
+        color: '<?php echo get_option('wp_twitter_fdx_tweet_text'); ?>',
+        links: '<?php echo get_option('wp_twitter_fdx_links'); ?>'
+      }
+    }
+  }).render().setUser('<?php echo get_option('wp_twitter_fdx_username'); ?>').start();
+  $('#rpp-range').rangeInput([1, 30], {
+    id: 'rpp-input',
+    def: 4
+  });
+
+  function testSettings(e) {
+    if (e) {
+      e.preventDefault();
+    }
+    var user = h($('#sw-username').val());
+    if (!user.match(/^[@@]?([a-zA-Z0-9_]{1,20})$/)) {
+      alert(_("Whoops! That's not a valid username"));
+      return false;
+    }
+    var opts = goodies.getWidgetOptions();
+    DemoWidget
+      .destroy()
+      .setFeatures({
+        live: opts.live,
+        scrollbar: opts.scrollbar,
+        behavior: opts.behavior,
+        loop: opts.loop
+      })
+      .setDimensions(250, 300)
+      .setRpp(opts.rpp)
+      .setTweetInterval(opts.interval)
+      .setUser(user).render().start();
+  }
+
+  var getWidgetCode = function() {
+    var user = h($('#sw-username').val());
+
+    var theme = goodies.getWidgetTheme();
+    var opts = goodies.getWidgetOptions();
+
+    var codeHead = '<script charset="utf-8" src="http://widgets.twimg.com/j/2/widget.js"></scr' + 'ipt>\n\<scr' + 'ipt>';
+    var codeFoot = '</scr' + 'ipt>';
+    var codeJavaScript = '\nnew TWTR.Widget({\n\
+  version: 2,\n\
+  type: \'profile\',\n\
+  rpp: ' + opts.rpp + ',\n\
+  interval: ' + opts.interval + ',\n\
+  width: ' + opts.width + ',\n\
+  height: ' + opts.height + ',\n\
+  theme: {\n\
+    shell: {\n\
+      background: \'' + theme.shell.background + '\',\n\
+      color: \'' + theme.shell.color + '\'\n\
+    },\n\
+    tweets: {\n\
+      background: \'' + theme.tweets.background + '\',\n\
+      color: \'' + theme.tweets.color + '\',\n\
+      links: \'' + theme.tweets.links + '\'\n\
+    }\n\
+  },\n\
+  features: {\n\
+    scrollbar: ' + opts.scrollbar + ',\n\
+    loop: ' + opts.loop + ',\n\
+    live: ' + opts.live + ',\n\
+    behavior: \'' + opts.behavior + '\'\n\
+  }\n\
+}).render().setUser(\'' + user + '\').start();\n';
+
+    var code = codeHead + codeJavaScript + codeFoot;
+    return code;
+  };
+      page.controller_name = 'GoodiesController';
+      page.action_name = 'widget_profile';
+      twttr.form_authenticity_token = 'd0c52c1551855ad7d883325e18399b6e9f890f00';
+      $.ajaxSetup({ data: { authenticity_token: 'd0c52c1551855ad7d883325e18399b6e9f890f00' } });
+
+      // FIXME: Reconcile with the kinds on the Status model.
+      twttr.statusKinds = {
+        UPDATE: 1,
+        SHARE: 2
+      };
+      twttr.ListPerUserLimit = 20;
+//]]>
+</script>
+
+<script type="text/javascript">
+//<![CDATA[
+  var DemoWidget = new TWTR.Widget({
+    creator: true,
+    version: 2,
+    type: 'search',
+    id: 'example-preview-widget2',
+    search: '<?php echo get_option('wp_twitter_fdx_widget_search_query'); ?>',
+    title: '<?php echo get_option('wp_twitter_fdx_widget_search_title'); ?>',
+    subject: '<?php echo get_option('wp_twitter_fdx_widget_search_caption'); ?>',
+    rpp: 30,
+    width: <?php echo get_option('wp_twitter_fdx_search_width'); ?>,
+    height: <?php echo get_option('wp_twitter_fdx_search_height'); ?>,
+    interval: 6000,
+    features: {
+      loop: true,
+      live: true,
+      scrollbar: <?php  if (get_option('wp_twitter_fdx_search_scrollbar') == 1){$search_scrollbar = "true";}else{$search_scrollbar = "false";} echo $search_scrollbar;?> ,
+      behavior: 'default'
+    },
+    theme: {
+      shell: {
+        background: '<?php echo get_option('wp_twitter_fdx_search_shell_bg'); ?>',
+        color: '<?php echo get_option('wp_twitter_fdx_search_shell_text'); ?>'
+      },
+      tweets: {
+        background: '<?php echo get_option('wp_twitter_fdx_search_tweet_bg'); ?>',
+        color: '<?php echo get_option('wp_twitter_fdx_search_tweet_text'); ?>',
+        links: '<?php echo get_option('wp_twitter_fdx_search_links'); ?>'
+      }
+    }
+    ,
+
+    ready: function() {
+      $('#sw-widget-caption').mirror('#example-preview-widget h4');
+      $('#sw-widget-title').mirror('#example-preview-widget h2');
+    }
+  }).render().start();
+
+  $('#rpp-range').rangeInput([1, 100], {
+    id: 'rpp-input',
+    def: 30
+  });
+
+  function testSettings(e) {
+    if (e) {
+      e.preventDefault();
+    }
+    var searchTerms = $('#sw-search-terms').val();
+    var title = h($('#sw-widget-title').val());
+    var caption = h($('#sw-widget-caption').val());
+
+    var opts = goodies.getWidgetOptions();
+
+    DemoWidget
+      .destroy()
+      .setFeatures({
+        live: opts.live,
+        scrollbar: opts.scrollbar,
+        behavior: opts.behavior,
+        loop: opts.loop
+      })
+      .setDimensions(250, 300)
+      .setSearch(searchTerms)
+      .setTweetInterval(opts.interval)
+      .setRpp(opts.rpp)
+      .setTitle(title)
+      .setCaption(caption)
+      .render().start();
+  }
+
+    function getWidgetCode() {
+
+      var search = addSlashes($('#sw-search-terms').val());
+      var title = addSlashes(h($('#sw-widget-title').val()));
+      var subject = addSlashes(h($('#sw-widget-caption').val()));
+
+      var theme = goodies.getWidgetTheme();
+      var opts = goodies.getWidgetOptions();
+
+      var codeHead = '<script charset="utf-8" src="http://widgets.twimg.com/j/2/widget.js"></scr' + 'ipt>\n\
+<scr' + 'ipt>';
+      var codeFoot = '</scr' + 'ipt>';
+      var codeJavaScript = '\nnew TWTR.Widget({\n\
+  version: 2,\n\
+  type: \'search\',\n\
+  search: \'' + search + '\',\n\
+  interval: ' + opts.interval + ',\n\
+  title: \'' + title + '\',\n\
+  subject: \'' + subject + '\',\n\
+  width: ' + opts.width + ',\n\
+  height: ' + opts.height + ',\n\
+  theme: {\n\
+    shell: {\n\
+      background: \'' + theme.shell.background + '\',\n\
+      color: \'' + theme.shell.color + '\'\n\
+    },\n\
+    tweets: {\n\
+      background: \'' + theme.tweets.background + '\',\n\
+      color: \'' + theme.tweets.color + '\',\n\
+      links: \'' + theme.tweets.links + '\'\n\
+    }\n\
+  },\n\
+  features: {\n\
+    scrollbar: ' + opts.scrollbar + ',\n\
+    loop: ' + opts.loop + ',\n\
+    live: ' + opts.live + ',\n\
+    behavior: \'' + opts.behavior + '\'\n\
+  }\n\
+}).render().start();\n';
+
+      var code = codeHead + codeJavaScript + codeFoot;
+      return code;
+    }
+
+
+      page.controller_name = 'GoodiesController2';
+      page.action_name = 'widget_search';
+      twttr.form_authenticity_token = 'ed613f8a8ab1fe51325af8dbdc56fdc04306ad65';
+      $.ajaxSetup({ data: { authenticity_token: 'ed613f8a8ab1fe51325af8dbdc56fdc04306ad65' } });
+
+      // FIXME: Reconcile with the kinds on the Status model.
+      twttr.statusKinds = {
+        UPDATE: 1,
+        SHARE: 2
+      };
+      twttr.ListPerUserLimit = 20;
+//]]>
+</script>
+
+
+
 <div class="clear"></div>
 <?php } //fim da pagina de opções
 
@@ -691,42 +589,31 @@ function show_wp_twitter_fdx_search_widget($args)
 
 function wp_twitter_fdx_profile_widget_control()
 {
-    ?>
-    <p>
-    <? _e("Please go to <b>Settings -> Twitter fdx</b> for options. <br><br> Available options: <br> 1) Widget Title <br> 2) Twitter Username <br> 3) Widget Height <br> 4) Widget Width <br> 5) 5 different Shell and Tweet background and text color options"); ?>
-    </p>
-    <?php
+printf(__('Please go to <b>%s | Widgets</b> for options. <br><br> Available options: <br> 1) Widget Title <br> 2) Twitter Username <br> 3) Widget Height <br> 4) Widget Width <br> 5) 5 different Shell and Tweet background and text color options', 'fdx-lang'), FDX1_PLUGIN_NAME);
 }
 
 
 function wp_twitter_fdx_search_widget_control()
 {
-    ?>
-    <p>
-    <? _e("Please go to <b>Settings -> Twitter fdx</b> for options. <br><br> Available options: <br> 1) Search Query <br> 2) Search Title <br> 3) Search Caption"); ?>
-    </p>
-    <?php
+printf(__('Please go to <b>%s | Widgets</b> for options. <br><br> Available options: <br> 1) Widget Title <br> 2) Search Query <br> 3) Search Title <br> 4) Search Caption <br> 5) 5 different Shell and Tweet background and text color options', 'fdx-lang'), FDX1_PLUGIN_NAME);
 }
 
 function widget_wp_twitter_fdx_profile_init()
 {
-    $widget_options = array('classname' => 'widget_wp_twitter_fdx_profile', 'description' => __( "Display Twitter fdx Profile Widget") );
+    $widget_options = array('classname' => 'widget_wp_twitter_fdx_profile', 'description' => __('Display Twitter Profile Widget', 'fdx-lang') );
     wp_register_sidebar_widget('wp_twitter_fdx_profile_widgets', FDX1_PLUGIN_NAME . __(' - Profile Widget', 'fdx-lang'), 'show_wp_twitter_fdx_profile_widget', $widget_options);
     wp_register_widget_control('wp_twitter_fdx_profile_widgets', FDX1_PLUGIN_NAME . __(' - Profile Widget', 'fdx-lang'), 'wp_twitter_fdx_profile_widget_control' );
 }
 
 function widget_wp_twitter_fdx_search_init()
 {
-    $widget_options = array('classname' => 'widget_wp_twitter_fdx_search', 'description' => __( "Display Twitter fdx Search Widget") );
+    $widget_options = array('classname' => 'widget_wp_twitter_fdx_search', 'description' => __('Display Twitter Search Widget', 'fdx-lang') );
     wp_register_sidebar_widget('wp_twitter_fdx_search_widgets', FDX1_PLUGIN_NAME. __(' - Search Widget', 'fdx-lang'), 'show_wp_twitter_fdx_search_widget', $widget_options);
     wp_register_widget_control('wp_twitter_fdx_search_widgets', FDX1_PLUGIN_NAME. __(' - Search Widget', 'fdx-lang'), 'wp_twitter_fdx_search_widget_control' );
 }
 
 add_filter('the_content', 'filter_wp_twitter_fdx_profile');
 add_filter('the_content', 'filter_wp_twitter_fdx_search');
-
-add_filter('the_content', 'filter_wp_twitter_fdx_tweet_button_show');
-
 
 add_action('init', 'widget_wp_twitter_fdx_profile_init');
 add_action('init', 'widget_wp_twitter_fdx_search_init');

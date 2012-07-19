@@ -2,7 +2,7 @@
 /*
 Plugin Name: WP Twitter
 Description: Is a plugin that creates a complete integration between your WordPress blog and your Twitter account including a Twitter Button and Widgets.
-Version: 3.0.1
+Version: 3.1
 Author: Fabrix DoRoMo
 Author URI: http://fabrix.net
 Plugin URI: http://wp.webmais.com/wp-twitter
@@ -29,23 +29,27 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 define('FDX1_MINIMUM_WP_VER', '3.4.1'); //minimum version of WordPress
 define('FDX1_MINIMUM_PHP_VER', '5.0.0'); //minimum version of PHP
 define('FDX1_PLUGIN_NAME', 'WP Twitter' ); //plugin name
-define('FDX1_PLUGIN_VERSION', '3.0.1' ); //plugin version
-define('FDX1_PLUGIN_P1', 'wp-twitter' ); //plugin prefix, link1
-define('FDX1_PLUGIN_P2', 'integration' ); //link2
+define('FDX1_PLUGIN_VERSION', '3.1' ); //plugin version
+define('FDX1_PLUGIN_P1', 'wp-twitter-Settings' ); //plugin prefix, link1
+define('FDX1_PLUGIN_P2', 'wp-twitter-widgets' ); //link2
+define('FDX1_PLUGIN_P3', 'wp-twitter-integration' ); //link3
 define('FDX1_PLUGIN_URL', plugins_url('', __FILE__) );//plugin URL
 
 /* CARREGA FUNÇÕES
 *------------------------------------------------------------*/
 require_once( dirname(__FILE__) . '/admin/page-1.php' );
 require_once( dirname(__FILE__) . '/admin/page-2.php' );
-
+require_once( dirname(__FILE__) . '/admin/page-3.php' );
 
 /* ADICIONA O MENU
 *------------------------------------------------------------*/
 function fdx_admin_add_page(){
+  if (function_exists('add_menu_page')) {
 	add_menu_page(' ',FDX1_PLUGIN_NAME, 'manage_options', FDX1_PLUGIN_P1, 'fdx_updater_options_page', FDX1_PLUGIN_URL . '/images/menu_fdx.png' );
     add_submenu_page(FDX1_PLUGIN_P1, __('Basic Settings and Connect', 'fdx-lang'), __('Settings', 'fdx-lang'), 'manage_options', FDX1_PLUGIN_P1, 'fdx_updater_options_page');
-    add_submenu_page(FDX1_PLUGIN_P1, __('Integration and Widget', 'fdx-lang'), __('Integration', 'fdx-lang'), 'manage_options', FDX1_PLUGIN_P2, 'wp_twitter_fdx_options_page');
+    add_submenu_page(FDX1_PLUGIN_P1, __('Widgets Settings', 'fdx-lang'), __('Widgets', 'fdx-lang'), 'manage_options', FDX1_PLUGIN_P2, 'wp_twitter_fdx_options_page');
+    add_submenu_page(FDX1_PLUGIN_P1, __('Sharethis Integration', 'fdx-lang'), __('Integration', 'fdx-lang'), 'manage_options', FDX1_PLUGIN_P3, 'wp_twitter_fdx_social');
+     }
   }
 add_action( 'admin_menu', 'fdx_admin_add_page' );
 
@@ -53,8 +57,10 @@ add_action( 'admin_menu', 'fdx_admin_add_page' );
 *------------------------------------------------------------*/
 function fdx_admin_files() {
 	if ( isset( $_GET['page'] ) && $_GET['page'] == FDX1_PLUGIN_P1 ||
-         isset( $_GET['page'] ) && $_GET['page'] == FDX1_PLUGIN_P2 ) {
+         isset( $_GET['page'] ) && $_GET['page'] == FDX1_PLUGIN_P2 ||
+         isset( $_GET['page'] ) && $_GET['page'] == FDX1_PLUGIN_P3 ) {
        echo "<link rel='stylesheet' type='text/css' href='" . FDX1_PLUGIN_URL . "/css/fdx-inc.css' />\n";
+       echo "<link rel='stylesheet' type='text/css' href='" . FDX1_PLUGIN_URL . "/css/colorpicker.css' />\n";
        echo "<script type='text/javascript' src='" . FDX1_PLUGIN_URL . "/js/fdx-inc.js'></script>\n";
 	}
 }
@@ -77,4 +83,5 @@ function fdx_updater_add_settings_link( $links ) {
 }
  	$plugin = plugin_basename(__FILE__);
 	add_filter("plugin_action_links_$plugin", 'fdx_updater_add_settings_link' );
+
 ?>
