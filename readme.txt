@@ -37,7 +37,7 @@ The following short url services are supported:
 == Screenshots ==
 1. URL Shortener Account Settings
 2. ShareThis Button Integration
-5. Widget Real-time Settings
+3. Widget Real-time Settings
 
 
 == Installation ==
