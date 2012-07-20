@@ -34,10 +34,13 @@ The following short url services are supported:
 * Bit.ly
 * and Wordpress default URL format `Ex: domain.com/?p=123`
 
+= Help translate this plugin =
+[Projects -> WP Twitter](http://translate.fabrix.net/projects/wp-twitter)
+
 == Screenshots ==
 1. URL Shortener Account Settings
 2. ShareThis Button Integration
-3. Widget Real-time Settings
+5. Widget Real-time Settings
 
 
 == Installation ==
