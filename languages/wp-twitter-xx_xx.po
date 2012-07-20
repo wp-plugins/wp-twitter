@@ -1,0 +1,403 @@
+# Copyright (C) 2012 WP Twitter
+# This file is distributed under the same license as the WP Twitter package.
+msgid ""
+msgstr ""
+"Project-Id-Version: WP Twitter 3.0\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/wp-twitter\n"
+"POT-Creation-Date: 2012-07-19 23:51:18+00:00\n"
+"PO-Revision-Date: 2012-07-19 20:52-0300\n"
+"Last-Translator: Fabrizio D.R.M. <fabrix@fabrix.net>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: admin/inc/sidebar.php:5
+#: admin/inc/sidebar.php:17
+#: admin/inc/sidebar.php:45
+#: admin/inc/sidebar.php:52
+#: admin/page-1.php:222
+#: admin/page-1.php:260
+#: admin/page-2_manager.php:79
+#: admin/page-2_manager.php:151
+#: admin/page-2_manager.php:162
+#: admin/page-2_manager.php:172
+#: admin/page-3.php:240
+msgid "Click to toggle"
+msgstr ""
+
+#: admin/inc/sidebar.php:8
+msgid "Author Homepage"
+msgstr ""
+
+#: admin/inc/sidebar.php:9
+msgid "Plugin Homepage"
+msgstr ""
+
+#: admin/inc/sidebar.php:10
+msgid "Suggest a Feature"
+msgstr ""
+
+#: admin/inc/sidebar.php:11
+msgid "Help Translate"
+msgstr ""
+
+#: admin/inc/sidebar.php:12
+msgid "Report a Bug"
+msgstr ""
+
+#: admin/inc/sidebar.php:17
+msgid "Notices"
+msgstr ""
+
+#: admin/inc/sidebar.php:22
+msgid "Your WordPress version"
+msgstr ""
+
+#: admin/inc/sidebar.php:25
+msgid "Your WordPress version (<strong><a href=\"http://wordpress.org\" target=\"_blank\">%s</a></strong>) is old, please upgrade to a newer version."
+msgstr ""
+
+#: admin/inc/sidebar.php:32
+msgid "Your PHP version"
+msgstr ""
+
+#: admin/inc/sidebar.php:35
+msgid "Your PHP version (<strong><a href=\"http://www.php.net/\" target=\"_blank\">%s</a></strong>) is old, please upgrade to a newer version."
+msgstr ""
+
+#: admin/inc/sidebar.php:45
+msgid "Need premium support?"
+msgstr ""
+
+#: admin/inc/sidebar.php:52
+msgid "Like this plugin ?"
+msgstr ""
+
+#: admin/inc/sidebar.php:54
+msgid "Want to help make this plugin even better? All donations are used to improve this plugin, so donate now!"
+msgstr ""
+
+#: admin/inc/sidebar.php:56
+msgid "Or you could:"
+msgstr ""
+
+#: admin/inc/sidebar.php:58
+msgid "Rate the plugin 5 star on WordPress.org"
+msgstr ""
+
+#: admin/inc/sidebar.php:59
+msgid "Blog about it and link to the plugin page"
+msgstr ""
+
+#: admin/inc/sidebar.php:61
+msgid "Share with your friends"
+msgstr ""
+
+#: admin/inc/sidebar.php:61
+msgid "WP Twitter: the best wordpress plugin to integrate your website with Twitter. "
+msgstr ""
+
+#: admin/page-1.php:201
+#: admin/page-2_manager.php:67
+#: admin/page-3.php:218
+msgid "Settings updated"
+msgstr ""
+
+#: admin/page-1.php:209
+msgid "Integration and Widget"
+msgstr ""
+
+#: admin/page-1.php:222
+msgid "Twitter Profile Widget Options"
+msgstr ""
+
+#: admin/page-1.php:243
+#: admin/page-1.php:286
+msgid "The format will depend on your theme"
+msgstr ""
+
+#: admin/page-1.php:260
+msgid "Twitter Search Widget Options"
+msgstr ""
+
+#: admin/page-1.php:303
+#: admin/page-2_manager.php:182
+#: admin/page-3.php:347
+msgid "Save All Options"
+msgstr ""
+
+#: admin/page-1.php:592
+msgid "Please go to <b>%s | Widgets</b> for options. <br><br> Available options: <br> 1) Widget Title <br> 2) Twitter Username <br> 3) Widget Height <br> 4) Widget Width <br> 5) 5 different Shell and Tweet background and text color options"
+msgstr ""
+
+#: admin/page-1.php:598
+msgid "Please go to <b>%s | Widgets</b> for options. <br><br> Available options: <br> 1) Widget Title <br> 2) Search Query <br> 3) Search Title <br> 4) Search Caption <br> 5) 5 different Shell and Tweet background and text color options"
+msgstr ""
+
+#: admin/page-1.php:603
+msgid "Display Twitter Profile Widget"
+msgstr ""
+
+#: admin/page-1.php:604
+#: admin/page-1.php:605
+msgid " - Profile Widget"
+msgstr ""
+
+#: admin/page-1.php:610
+msgid "Display Twitter Search Widget"
+msgstr ""
+
+#: admin/page-1.php:611
+#: admin/page-1.php:612
+msgid " - Search Widget"
+msgstr ""
+
+#: admin/page-2_manager.php:64
+#: admin/page-2_manager.php:79
+#: wp-twitter.php:49
+msgid "Basic Settings and Connect"
+msgstr ""
+
+#: admin/page-2_manager.php:82
+msgid "uses <acronym title=\"An open protocol to allow secure authorization in a simple and standard method from web, mobile and desktop applications.\">OAuth</acronym> authentication to connect to Twitter. Follow the authentication process below to authorise this Plugin to access on your Twitter account. "
+msgstr ""
+
+#: admin/page-2_manager.php:89
+msgid "does not have access to a Twitter account yet."
+msgstr ""
+
+#: admin/page-2_manager.php:94
+msgid "Mark if all previous steps were done."
+msgstr ""
+
+#: admin/page-2_manager.php:94
+#: admin/page-2_manager.php:123
+msgid "Authorise"
+msgstr ""
+
+#: admin/page-2_manager.php:108
+msgid "Connection checked OK. Now you can post to"
+msgstr ""
+
+#: admin/page-2_manager.php:113
+msgid "Not able to validate access to account, Twitter is currently unavailable. Try checking again in a couple of minutes."
+msgstr ""
+
+#: admin/page-2_manager.php:116
+msgid "Check again"
+msgstr ""
+
+#: admin/page-2_manager.php:119
+msgid "WP Twitter does not have access to a Twitter account yet."
+msgstr ""
+
+#: admin/page-2_manager.php:126
+msgid "WP Twitter is not currently authorised to use any account. Please reset and try again."
+msgstr ""
+
+#: admin/page-2_manager.php:138
+msgid "Reset"
+msgstr ""
+
+#: admin/page-2_manager.php:138
+msgid "restart the authorisation procedure"
+msgstr ""
+
+#: admin/page-2_manager.php:151
+msgid "Basic Settings"
+msgstr ""
+
+#: admin/page-2_manager.php:162
+msgid "Limit Updating"
+msgstr ""
+
+#: admin/page-2_manager.php:165
+msgid "Twitter messages can be sent only when the post is a member of a [selected category], OR that have a specified Custom Field [title] OR [title AND value]."
+msgstr ""
+
+#: admin/page-2_manager.php:172
+msgid "URL Shortener Account Settings"
+msgstr ""
+
+#: admin/page-2_manager.php:175
+msgid "Choose your short URL service (account settings below)"
+msgstr ""
+
+#: admin/page-2_manager.php:257
+msgid "Now you need to tell Twitter that you want to allow this plugin to be able to post using your account."
+msgstr ""
+
+#: admin/page-2_manager.php:259
+msgid "Follow the instructions on the page to allow access to the plug-in."
+msgstr ""
+
+#: admin/page-2_manager.php:260
+msgid "Return to this page to complete the process."
+msgstr ""
+
+#: admin/page-2_manager.php:350
+msgid "Wordpress default URL format"
+msgstr ""
+
+#: admin/page-2_manager.php:364
+msgid "A free GPL URL shortener service"
+msgstr ""
+
+#: admin/page-3.php:227
+msgid "Button Integration"
+msgstr ""
+
+#: admin/page-3.php:240
+msgid "Sharethis Button integration"
+msgstr ""
+
+#: admin/page-3.php:244
+msgid "Allow itegration in:"
+msgstr ""
+
+#: admin/page-3.php:247
+msgid "Single"
+msgstr ""
+
+#: admin/page-3.php:248
+msgid "Pages"
+msgstr ""
+
+#: admin/page-3.php:249
+msgid "Front Page (Home)"
+msgstr ""
+
+#: admin/page-3.php:250
+msgid "Archive (Category, Tags, ...)"
+msgstr ""
+
+#: admin/page-3.php:258
+msgid "Placing Option:"
+msgstr ""
+
+#: admin/page-3.php:262
+msgid "Before Content"
+msgstr ""
+
+#: admin/page-3.php:263
+msgid "After Content (default)"
+msgstr ""
+
+#: admin/page-3.php:264
+msgid "Manual add"
+msgstr ""
+
+#: admin/page-3.php:272
+msgid "Style of share this"
+msgstr ""
+
+#: admin/page-3.php:275
+msgid "Small Butons (16x16)"
+msgstr ""
+
+#: admin/page-3.php:276
+msgid "Large Buttons (32x32)"
+msgstr ""
+
+#: admin/page-3.php:277
+msgid "Horizontal Count"
+msgstr ""
+
+#: admin/page-3.php:278
+msgid "Vertical Count"
+msgstr ""
+
+#: admin/page-3.php:302
+msgid "CSS Style Align:"
+msgstr ""
+
+#: admin/page-3.php:304
+msgid "or"
+msgstr ""
+
+#: admin/page-3.php:304
+msgid "or your css tags!"
+msgstr ""
+
+#: admin/page-3.php:311
+msgid "Choose which version of the widget you would like to use: "
+msgstr ""
+
+#: admin/page-3.php:314
+msgid "Multi Post"
+msgstr ""
+
+#: admin/page-3.php:314
+msgid "Sharing takes place inside the widget, without taking users away from your site. Preferences are saved so your users can share to more than one service at the same time."
+msgstr ""
+
+#: admin/page-3.php:315
+msgid "Classic"
+msgstr ""
+
+#: admin/page-3.php:315
+msgid "Your users will be redirected to Facebook, Twitter, etc when clicking on the corresponding buttons. The widget is opened when users click on \"Email\" and \"ShareThis\"."
+msgstr ""
+
+#: admin/page-3.php:323
+msgid "Want Analytics?"
+msgstr ""
+
+#: admin/page-3.php:323
+msgid "Click here to Register."
+msgstr ""
+
+#: admin/page-3.php:325
+msgid "At the end of the flow, you will be given a publisher key. Please paste it in the textbox below."
+msgstr ""
+
+#: admin/page-3.php:326
+msgid "see their stats"
+msgstr ""
+
+#: admin/page-3.php:331
+msgid "To get detailed sharing analytics, you need to register with ShareThis. You also get: Must-have live metrics: shares, clicks, social response, influencer reports & more. Monthly tips and tricks newsletter to improve your sites share-ability. Weekly sharing summary delivered via email (and available online)."
+msgstr ""
+
+#: wp-twitter.php:49
+#: wp-twitter.php:80
+msgid "Settings"
+msgstr ""
+
+#: wp-twitter.php:50
+msgid "Widgets Settings"
+msgstr ""
+
+#: wp-twitter.php:50
+msgid "Widgets"
+msgstr ""
+
+#: wp-twitter.php:51
+msgid "Sharethis Integration"
+msgstr ""
+
+#: wp-twitter.php:51
+msgid "Integration"
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+msgid "WP Twitter"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid "http://wp.webmais.com/wp-twitter"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid "Is a plugin that creates a complete integration between your WordPress blog and your Twitter account including a Twitter Button and Widgets."
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Fabrix DoRoMo"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "http://fabrix.net"
+msgstr ""
+

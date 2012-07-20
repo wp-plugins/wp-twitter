@@ -113,17 +113,18 @@ if ( $tokens['auth2_flag'] == '1' && $tokens['auth3_flag'] != '1' ) {
 				echo "<div class='error'><p><strong>".__('Not able to validate access to account, Twitter is currently unavailable. Try checking again in a couple of minutes.', 'fdx-lang')."</strong></p></div>";
 				$tokens['auth3_flag'] = '1'; //Will validate next time
 				update_option('fdx_updater_auth', $tokens);
-?>				<p class="submit" ><input name="Refresh" class="button-primary"  type="button" value="<?php _e('Check again', 'fdx-lang') ?>" onClick="history.go(0)" /></p>
+?>
+
 <?php				break;
 			case '3':
-				echo "<div class='error'><p><strong>".__('WP Twitter does not have access to a Twitter account yet.', 'fdx-lang')."</strong></p></div>";
+				echo "<div class='error'><p><strong>". FDX1_PLUGIN_NAME .__('does not have access to a Twitter account yet.', 'fdx-lang')."</strong></p></div>";
 				$tokens['auth3_flag'] = '0';
 				update_option('fdx_updater_auth', $tokens);
 				do_settings_sections('auth_2a');
 ?>				<p class="submit" ><input name="Submit" class="button-primary"  type="submit" value="<?php _e('Authorise', 'fdx-lang') ?>" /></p>
 <?php				break;
 			default:
-				echo "<div class='warning'>".__('WP Twitter is not currently authorised to use any account. Please reset and try again.', 'fdx-lang')."</strong></p></div>";
+				echo "<div class='warning'>". FDX1_PLUGIN_NAME .__('is not currently authorised to use any account. Please reset and try again.', 'fdx-lang')."</strong></p></div>";
 				update_option('fdx_updater_auth', $tokens);
 			}
 		}
