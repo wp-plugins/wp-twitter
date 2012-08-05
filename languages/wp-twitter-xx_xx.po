@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WP Twitter 3.0\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/wp-twitter\n"
-"POT-Creation-Date: 2012-07-19 23:51:18+00:00\n"
-"PO-Revision-Date: 2012-07-19 20:52-0300\n"
+"POT-Creation-Date: 2012-07-22 10:04:09+00:00\n"
+"PO-Revision-Date: 2012-07-22 07:06-0300\n"
 "Last-Translator: Fabrizio D.R.M. <fabrix@fabrix.net>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -19,9 +19,9 @@ msgstr ""
 #: admin/page-1.php:222
 #: admin/page-1.php:260
 #: admin/page-2_manager.php:79
-#: admin/page-2_manager.php:151
-#: admin/page-2_manager.php:162
-#: admin/page-2_manager.php:172
+#: admin/page-2_manager.php:152
+#: admin/page-2_manager.php:163
+#: admin/page-2_manager.php:173
 #: admin/page-3.php:240
 msgid "Click to toggle"
 msgstr ""
@@ -95,7 +95,7 @@ msgid "Share with your friends"
 msgstr ""
 
 #: admin/inc/sidebar.php:61
-msgid "WP Twitter: the best wordpress plugin to integrate your website with Twitter. "
+msgid "the best wordpress plugin to integrate your website with Twitter. "
 msgstr ""
 
 #: admin/page-1.php:201
@@ -122,7 +122,7 @@ msgid "Twitter Search Widget Options"
 msgstr ""
 
 #: admin/page-1.php:303
-#: admin/page-2_manager.php:182
+#: admin/page-2_manager.php:183
 #: admin/page-3.php:347
 msgid "Save All Options"
 msgstr ""
@@ -164,6 +164,7 @@ msgid "uses <acronym title=\"An open protocol to allow secure authorization in a
 msgstr ""
 
 #: admin/page-2_manager.php:89
+#: admin/page-2_manager.php:120
 msgid "does not have access to a Twitter account yet."
 msgstr ""
 
@@ -172,7 +173,7 @@ msgid "Mark if all previous steps were done."
 msgstr ""
 
 #: admin/page-2_manager.php:94
-#: admin/page-2_manager.php:123
+#: admin/page-2_manager.php:124
 msgid "Authorise"
 msgstr ""
 
@@ -184,63 +185,55 @@ msgstr ""
 msgid "Not able to validate access to account, Twitter is currently unavailable. Try checking again in a couple of minutes."
 msgstr ""
 
-#: admin/page-2_manager.php:116
-msgid "Check again"
+#: admin/page-2_manager.php:127
+msgid "is not currently authorised to use any account. Please reset and try again."
 msgstr ""
 
-#: admin/page-2_manager.php:119
-msgid "WP Twitter does not have access to a Twitter account yet."
-msgstr ""
-
-#: admin/page-2_manager.php:126
-msgid "WP Twitter is not currently authorised to use any account. Please reset and try again."
-msgstr ""
-
-#: admin/page-2_manager.php:138
+#: admin/page-2_manager.php:139
 msgid "Reset"
 msgstr ""
 
-#: admin/page-2_manager.php:138
+#: admin/page-2_manager.php:139
 msgid "restart the authorisation procedure"
 msgstr ""
 
-#: admin/page-2_manager.php:151
+#: admin/page-2_manager.php:152
 msgid "Basic Settings"
 msgstr ""
 
-#: admin/page-2_manager.php:162
+#: admin/page-2_manager.php:163
 msgid "Limit Updating"
 msgstr ""
 
-#: admin/page-2_manager.php:165
+#: admin/page-2_manager.php:166
 msgid "Twitter messages can be sent only when the post is a member of a [selected category], OR that have a specified Custom Field [title] OR [title AND value]."
 msgstr ""
 
-#: admin/page-2_manager.php:172
+#: admin/page-2_manager.php:173
 msgid "URL Shortener Account Settings"
 msgstr ""
 
-#: admin/page-2_manager.php:175
+#: admin/page-2_manager.php:176
 msgid "Choose your short URL service (account settings below)"
 msgstr ""
 
-#: admin/page-2_manager.php:257
+#: admin/page-2_manager.php:258
 msgid "Now you need to tell Twitter that you want to allow this plugin to be able to post using your account."
 msgstr ""
 
-#: admin/page-2_manager.php:259
+#: admin/page-2_manager.php:260
 msgid "Follow the instructions on the page to allow access to the plug-in."
 msgstr ""
 
-#: admin/page-2_manager.php:260
+#: admin/page-2_manager.php:261
 msgid "Return to this page to complete the process."
 msgstr ""
 
-#: admin/page-2_manager.php:350
+#: admin/page-2_manager.php:351
 msgid "Wordpress default URL format"
 msgstr ""
 
-#: admin/page-2_manager.php:364
+#: admin/page-2_manager.php:365
 msgid "A free GPL URL shortener service"
 msgstr ""
 
