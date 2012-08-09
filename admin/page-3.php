@@ -191,12 +191,13 @@ function fdx_sharethis_script() {
 
 //adiciona se ativado
   if (is_single() && $tweet_btn_display_single == 1 || is_page() && $tweet_btn_display_page == 1 || is_archive() && $tweet_btn_display_arquive == 1 || is_home() && $tweet_btn_display_home == 1) {
+       echo "<!-- WP Twitter - http://wp.webmais.com/wp-twitter  -->\n";
        echo "<script type='text/javascript'>var switchTo5x=". $widget_style .";</script>\n";
        echo "<script type='text/javascript' src='http://w.sharethis.com/button/buttons.js'></script>\n";
        echo "<script type='text/javascript'>stLight.options({publisher: '" . $tweet_btn_twt_username . "'}); </script>\n";
       }
 }
-add_action( 'wp_footer', 'fdx_sharethis_script' );
+add_action( 'wp_head', 'fdx_sharethis_script' );
 //---------------------------------------------------
 
 function wp_twitter_fdx_social() {
