@@ -25,6 +25,9 @@ delete_option('wp_twitter_fdx_tweet_button_choose');
 delete_option('wp_twitter_fdx_tweet_button_container');
 delete_option('wp_twitter_fdx_tweet_button_twitter_username');
 
+delete_option('wp_twitter_fdx_logo_top');
+delete_option('wp_twitter_fdx_tweet_button_style2');
+
 //widgets
 delete_option('wp_twitter_fdx_widget_title');
 delete_option('wp_twitter_fdx_username');
