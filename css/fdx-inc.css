@@ -32,13 +32,13 @@ a.sm_link {background-image:url(../images/link.png);}
 /* htabs ****widget */
 
 .tabsCell{padding:0 0 15px;}
-ul.tabs{float:left;list-style:none;border-bottom:1px solid silver;border-left:1px solid silver;width:100%;font-family:Arial, Helvetica, sans-serif;font-size:11px;margin:0;padding:0;}
-ul.tabs li{float:left;border:1px solid silver;border-left:none;overflow:hidden;position:relative;margin:0 0 -1px;padding:0;}
-ul.tabs li a{text-decoration:none;font-size:113%;display:block;border:1px solid #F9F9F9;border-bottom:none;outline:none;padding:4px 10px 4px 10px;}
+ul.tabs{float:left;list-style:none;width:100%;font-family:Arial, Helvetica, sans-serif;font-size:11px;margin:0;padding:0;}
+ul.tabs li{float:left;overflow:hidden;position:relative;margin:0 0 -1px;padding:0;}
+ul.tabs li a{text-decoration:none;font-size:113%;display:block;outline:none;padding:4px 10px 4px 10px;}
 ul.tabs li a:hover{;}
-ul.tabs li.active a{font-weight:700;}
+ul.tabs li.active a{font-weight:700; background: #E4E4E4}
 ul.tabs li.active a:hover{font-weight:700;}
-ul.tabs li.active{border-bottom:1px solid #F9F9F9;}
-.tab_container{clear:both;border:1px solid silver;border-top:none;}
+ul.tabs li.active{}
+.tab_container{clear:both;}
 .tab_container p{clear:both;margin:0; padding: 5px }
-.tab_content{border:1px solid #F9F9F9;padding:0; padding-top: 5px}
+.tab_content{padding:0; padding-top: 5px}
