@@ -206,7 +206,7 @@ function wp_twitter_fdx_options_page() {
 
 ?>
 <div class="wrap">
-<div id="icon-edit" class="icon32 icon32-posts-post"><br /></div><h2><?php echo FDX1_PLUGIN_NAME;?>: <?php _e('Integration and Widget', 'fdx-lang') ?></h2>
+<div id="icon-edit" class="icon32 icon32-posts-post"><br /></div><h2><?php echo FDX1_PLUGIN_NAME;?>: <?php _e('Widgets Settings', 'fdx-lang') ?></h2>
 <div id="poststuff">
 <div id="post-body" class="metabox-holder columns-2">
 

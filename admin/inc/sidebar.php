@@ -4,12 +4,12 @@
 <div class="postbox">
 <div class="handlediv" title="<?php _e('Click to toggle', 'fdx-lang') ?>"><br /></div><h3 class='hndle'><span><?php echo FDX1_PLUGIN_NAME;?> <small style="float: right">v<?php echo FDX1_PLUGIN_VERSION;?></small></span></h3>
 <div class="inside">
-<div style="float: right; margin: 0 0 0 0"><a href="http://wp.webmais.com/wp-twitter/" target="_blank"><img src="<?php echo FDX1_PLUGIN_URL;?>/images/logo.png" width="91" height="119" border="0" alt="" /></a></div>
-<a class="sm_button sm_autor" href="http://fabrix.net" target="_blank"><?php _e('Author Homepage', 'fdx-lang') ?></a>
-<a class="sm_button sm_wp" href="http://wordpress.org/extend/plugins/wp-twitter/" target="_blank"><?php _e('Plugin Homepage', 'fdx-lang') ?></a>
+<div style="float: right; margin: -15px 0 10px 0"><a href="http://wp.webmais.com/wp-twitter/" target="_blank"><img src="<?php echo FDX1_PLUGIN_URL;?>/images/logo.png" width="91" height="119" border="0" alt="" /></a></div>
+<a class="sm_button sm_autor" href="http://fabrix.net/wp-twitter" target="_blank"><?php _e('Plugin Homepage', 'fdx-lang') ?></a>
 <a class="sm_button sm_code" href="http://wordpress.org/support/plugin/wp-twitter" target="_blank"><?php _e('Suggest a Feature', 'fdx-lang') ?></a>
-<a class="sm_button sm_lang" href="http://translate.fabrix.net/projects/wp-twitter" target="_blank"><?php _e('Help Translate', 'fdx-lang') ?></a>
 <a class="sm_button sm_bug" href="http://wordpress.org/support/plugin/wp-twitter" target="_blank"><?php _e('Report a Bug', 'fdx-lang') ?></a>
+<a class="sm_button sm_lang" href="http://translate.fabrix.net/projects/wp-twitter" target="_blank"><?php _e('Help Translate', 'fdx-lang') ?></a>
+
 </div>
 </div>
 
@@ -42,13 +42,6 @@ if (version_compare(PHP_VERSION, FDX1_MINIMUM_PHP_VER, '>=') ) { ?>
 
 
 <div class="postbox">
-<div class="handlediv" title="<?php _e('Click to toggle', 'fdx-lang') ?>"><br /></div><h3 class='hndle'><span><?php _e('Need premium support?', 'fdx-lang') ?></span></h3>
-<div class="inside">
-<p>coming soon</p>
-</div>
-</div>
-
-<div class="postbox">
 <div class="handlediv" title="<?php _e('Click to toggle', 'fdx-lang') ?>"><br /></div><h3 class='hndle'><span><?php _e('Like this plugin ?', 'fdx-lang') ?></span></h3>
 <div class="inside">
 <?php _e('Want to help make this plugin even better? All donations are used to improve this plugin, so donate now!', 'fdx-lang') ?>
@@ -56,9 +49,9 @@ if (version_compare(PHP_VERSION, FDX1_MINIMUM_PHP_VER, '>=') ) { ?>
 <p><?php _e('Or you could:', 'fdx-lang') ?> </p>
 <ul>
 <li><a class="sm_button sm_star" href="http://wordpress.org/extend/plugins/wp-twitter/" target="_blank"><?php _e('Rate the plugin 5 star on WordPress.org', 'fdx-lang') ?></a></li>
-<li><a class="sm_button sm_link" href="http://wp.webmais.com/wp-twitter/" target="_blank"><?php _e('Blog about it and link to the plugin page', 'fdx-lang') ?></a></li>
+<li><a class="sm_button sm_link" href="http://fabrix.net/wp-twitter/" target="_blank"><?php _e('Blog about it and link to the plugin page', 'fdx-lang') ?></a></li>
 </ul>
-<span class="st_sharethis_hcount" displayText="<?php _e('Share with your friends', 'fdx-lang') ?>" st_url="http://wp.webmais.com/wp-twitter" st_title="<?php echo FDX1_PLUGIN_NAME;?>: <?php _e('the best wordpress plugin to integrate your website with Twitter. ', 'fdx-lang') ?>"></span>
+<div align="center"><span class="st_sharethis_hcount" st_url="http://fabrix.net/wp-twitter/" st_title="<?php echo FDX1_PLUGIN_NAME;?>: <?php _e('the best wordpress plugin to integrate your website with Twitter. ', 'fdx-lang') ?>"></span></div>
 
 
 </div>

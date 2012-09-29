@@ -18,6 +18,8 @@ delete_option('wp_twitter_fdx_tweet_button_display_page');
 delete_option('wp_twitter_fdx_tweet_button_display_home');
 delete_option('wp_twitter_fdx_tweet_button_display_arquive');
 
+delete_option('wp_twitter_copynshare');
+
 delete_option('wp_twitter_fdx_tweet_button_place');
 delete_option('wp_twitter_fdx_tweet_button_style');
 delete_option('wp_twitter_fdx_tweet_button_choose');
@@ -27,6 +29,7 @@ delete_option('wp_twitter_fdx_tweet_button_twitter_username');
 
 delete_option('wp_twitter_fdx_logo_top');
 delete_option('wp_twitter_fdx_tweet_button_style2');
+delete_option('wp_twitter_fdx_tweet_button_style3');
 
 //widgets
 delete_option('wp_twitter_fdx_widget_title');
