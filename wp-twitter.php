@@ -5,7 +5,7 @@ Description: Is a plugin that creates a complete integration between your WordPr
 Version: 3.4
 Author: Fabrix DoRoMo
 Author URI: http://fabrix.net
-Plugin URI: http://wp.webmais.com/wp-twitter
+Plugin URI: http://fabrix.net/wp-twitter
 */
 
 /*

@@ -37,7 +37,7 @@
 global $fdx_updater_placeholders;
 $fdx_updater_placeholders = "<br />
 		   <small>Shortcodes:</small><br />
-		   <code>#title#</code><small> (the title of your blog post) </small> <code>#url#</code><small> (the post URL)</small>
+		   <code>#title#</code> &raquo; <small>".__('The title of your blog post.', 'fdx-lang')." </small><br /> <code>#url#</code> &raquo; <small>".__('The post URL', 'fdx-lang')."</small>
 		   ";
 
 function fdx_updater_options_page() {
@@ -227,18 +227,18 @@ register_setting( 'fdx_updater_options', 'fdx_updater_options', 'fdx_updater_opt
 
 	//Section 1: New Post published
 	add_settings_section('fdx_updater_new_post', '', 'fdx_updater_new_post', 'fdx_new_post');
-		add_settings_field('fdx_updater_newpost_update', '<strong>Update when a post is published.</strong>', 'fdx_updater_newpost_update', 'fdx_new_post', 'fdx_updater_new_post');
-		add_settings_field('fdx_updater_newpost_format', '<strong>Tweet format for a new post:</strong>', 'fdx_updater_newpost_format', 'fdx_new_post', 'fdx_updater_new_post');
+		add_settings_field('fdx_updater_newpost_update',  __('<strong>Update when a post is published</strong>', 'fdx-lang'), 'fdx_updater_newpost_update', 'fdx_new_post', 'fdx_updater_new_post');
+		add_settings_field('fdx_updater_newpost_format', __('<strong>Tweet format for a new post:</strong>', 'fdx-lang'), 'fdx_updater_newpost_format', 'fdx_new_post', 'fdx_updater_new_post');
 
 	//Section 2: Updated Post
 	add_settings_section('fdx_updater_edited_post', '', 'fdx_updater_edited_post', 'fdx_edited_post');
-		add_settings_field('fdx_updater_edited_update', '<strong>Update when a post is edited.</strong>', 'fdx_updater_edited_update', 'fdx_edited_post', 'fdx_updater_edited_post');
-		add_settings_field('fdx_updater_edited_format', '<strong>Tweet format for an updated post:</strong>', 'fdx_updater_edited_format', 'fdx_edited_post', 'fdx_updater_edited_post');
+		add_settings_field('fdx_updater_edited_update', __('<strong>Update when a post is edited.</strong>', 'fdx-lang'), 'fdx_updater_edited_update', 'fdx_edited_post', 'fdx_updater_edited_post');
+		add_settings_field('fdx_updater_edited_format', __('<strong>Tweet format for an updated post:</strong>', 'fdx-lang'), 'fdx_updater_edited_format', 'fdx_edited_post', 'fdx_updater_edited_post');
 
 	// Section 3: Limit tweets to posts with certain custom field/value pair or part of a specific category
       	add_settings_section('fdx_updater_limit_tweets', '', 'fdx_updater_limit_tweets' ,'fdx_limit_tweets');
- 	  	add_settings_field('fdx_updater_limit_to_category', '<strong>If no categories are checked, limiting by category will be ignored, and all categories will be Tweeted.</strong>', 'fdx_updater_limit_to_category', 'fdx_limit_tweets', 'fdx_updater_limit_tweets');
-		add_settings_field('fdx_updater_limit_to_customfield', '<strong>Send tweets for posts with this Meta [Title] OR [Title AND Value]</strong>', 'fdx_updater_limit_to_customfield', 'fdx_limit_tweets', 'fdx_updater_limit_tweets');
+ 	  	add_settings_field('fdx_updater_limit_to_category', __('<strong>If no categories are checked, limiting by category will be ignored, and all categories will be Tweeted.</strong>', 'fdx-lang'), 'fdx_updater_limit_to_category', 'fdx_limit_tweets', 'fdx_updater_limit_tweets');
+		add_settings_field('fdx_updater_limit_to_customfield', __('<strong>Send tweets for posts with this Meta [Title] OR [Title AND Value]</strong>', 'fdx-lang'), 'fdx_updater_limit_to_customfield', 'fdx_limit_tweets', 'fdx_updater_limit_tweets');
 
 	//Section 4: Short Url service
 		add_settings_section('fdx_updater_chose_url', '', 'fdx_updater_chose_url1', 'fdx_short_url');
@@ -285,21 +285,21 @@ function fdx_updater_acc_sec_reset()
 //New Post published
 function fdx_updater_new_post() { }
 function fdx_updater_newpost_update()
-	{ $options = get_option('fdx_updater_options'); echo "<input id='fdx_updater_newpost_update' type='checkbox' name='fdx_updater_options[newpost_update]' value='1'"; if( $options['newpost_update'] == '1' ) { echo " checked='true'"; }; echo " /> <code>Set the plugin behaviour for when a new post is published.</code>"; }
+	{ $options = get_option('fdx_updater_options'); echo "<input id='fdx_updater_newpost_update' type='checkbox' name='fdx_updater_options[newpost_update]' value='1'"; if( $options['newpost_update'] == '1' ) { echo " checked='true'"; }; echo " /> <code>".__('Set the plugin behaviour for when a new post is published.', 'fdx-lang')."</code>"; }
 function fdx_updater_newpost_format()
 	{ global $fdx_updater_placeholders; $options = get_option('fdx_updater_options'); echo "<input id='fdx_updater_newpost_format' type='text' size='60' maxlength='100' name='fdx_updater_options[newpost_format]' value='{$options['newpost_format']}' />" . $fdx_updater_placeholders; }
 
 //Updated Post
 function fdx_updater_edited_post() { echo "<h3>&nbsp;</h3>"; }
 function fdx_updater_edited_update()
-	{ $options = get_option('fdx_updater_options'); echo "<input id='fdx_updater_edited_update' type='checkbox' name='fdx_updater_options[edited_update]' value='1'"; if( $options['edited_update'] == '1' ) { echo " checked='true'"; }; echo " /> <code>Set the plugin behaviour for when a previously published post is updated.</code>"; }
+	{ $options = get_option('fdx_updater_options'); echo "<input id='fdx_updater_edited_update' type='checkbox' name='fdx_updater_options[edited_update]' value='1'"; if( $options['edited_update'] == '1' ) { echo " checked='true'"; }; echo " /> <code>".__('Set the plugin behaviour for when a previously published post is updated.', 'fdx-lang')."</code>"; }
 function fdx_updater_edited_format()
 	{ global $fdx_updater_placeholders; $options = get_option('fdx_updater_options'); echo "<input id='fdx_updater_edited_format' type='text' size='60' maxlength='100' name='fdx_updater_options[edited_format]' value='{$options['edited_format']}' />" . $fdx_updater_placeholders; }
 
 // Limit tweets to Categories and Custom Fields
 function fdx_updater_limit_tweets()
 	{ $options = get_option('fdx_updater_options');
-       echo "<h3>Limit Twitter updates using the rules below? <input id='fdx_updater_limit_activate' type='checkbox' name='fdx_updater_options[limit_activate]' value='1'"; if( $options['limit_activate'] == '1' ) { echo " checked='true'"; }; echo " /></h3>";
+       echo "<h3>".__('Limit Twitter updates using the rules below?', 'fdx-lang')." <input id='fdx_updater_limit_activate' type='checkbox' name='fdx_updater_options[limit_activate]' value='1'"; if( $options['limit_activate'] == '1' ) { echo " checked='true'"; }; echo " /></h3>";
     }
 
 function fdx_updater_limit_to_category()
@@ -333,9 +333,9 @@ function fdx_updater_limit_to_customfield()
 	{
 	$options = get_option('fdx_updater_options');
 	echo "<input id='fdx_updater_limit_to_custom_field_key' type='text' size='20' maxlength='250' name='fdx_updater_options[limit_to_custom_field_key]' value='{$options['limit_to_custom_field_key']}' />";
-	echo "<label for='fdx_updater_limit_to_custom_field_key'> <code>Custom Field Title (key)</code></label><br />";
+	echo "<label for='fdx_updater_limit_to_custom_field_key'> <code>".__('Custom Field Title (key)', 'fdx-lang')."</code></label><br />";
 	echo "<input id='fdx_updater_limit_to_custom_field_val' type='text' size='20' maxlength='250' name='fdx_updater_options[limit_to_custom_field_val]' value='{$options['limit_to_custom_field_val']}' />";
-	echo "<label for='fdx_updater_limit_to_custom_field_val'> <code>Custom Field Value (leave blank to match any value)</code></label>";
+	echo "<label for='fdx_updater_limit_to_custom_field_val'> <code>".__('Custom Field Value (leave blank to match any value)', 'fdx-lang')."</code></label>";
 	}
 
 

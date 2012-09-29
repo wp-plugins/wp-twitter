@@ -22,7 +22,7 @@ if (version_compare($wp_version, FDX1_MINIMUM_WP_VER, '>=')) { ?>
 <span class="ico_button ico_button_ok"><?php _e('Your WordPress version', 'fdx-lang') ?>: <strong><a href="http://wordpress.org" target="_blank"><?php global $wp_version; echo $wp_version; ?></a></strong></span>
 <?php } else {
 	echo '<span class="ico_button ico_button_error">';
-	printf(__('Your WordPress version ('.$wp_version.') is old, please upgrade to a newer version (<strong><a href="http://wordpress.org" target="_blank">%s</a></strong>)', 'fdx-lang'), FDX1_MINIMUM_WP_VER);
+	echo (sprintf(__('Your WordPress version ('.$wp_version.') is old, please upgrade to a newer version (<strong><a href="http://wordpress.org" target="_blank">%s</a></strong>)', 'fdx-lang'), FDX1_MINIMUM_WP_VER ));
 	echo "</span>\n";
    }
 ?>
@@ -33,7 +33,7 @@ if (version_compare(PHP_VERSION, FDX1_MINIMUM_PHP_VER, '>=') ) { ?>
 <?php } else {
 	echo '<span class="ico_button ico_button_error">';
     echo (sprintf(__('Your PHP version (<strong><a href="http://www.php.net/" target="_blank">%s</a></strong>) is old, please upgrade to a newer version.', 'fdx-lang'), phpversion()));
-	echo "</epan>\n";
+	echo "</span>\n";
   }
 ?>
 

@@ -226,19 +226,19 @@ function wp_twitter_fdx_options_page() {
    <tr>
      <td style="width: 400px; text-align: left; vertical-align: top">
  <ul>
- <li><input name="wp_twitter_fdx_widget_title" type="text" size="20" value="<?php echo get_option('wp_twitter_fdx_widget_title'); ?>"> &raquo; Widget Title *</li>
-  <li><input name="wp_twitter_fdx_username" type="text" size="20" value="<?php echo get_option('wp_twitter_fdx_username'); ?>" /> &raquo; Twitter Username (for this Widget)</li>
-    <li><input name="wp_twitter_fdx_width" type="text" size="7" value="<?php echo get_option('wp_twitter_fdx_width'); ?>" /> &raquo; Widget Width  </li>
-     <li><input name="wp_twitter_fdx_height" type="text" size="7" value="<?php echo get_option('wp_twitter_fdx_height'); ?>" /> &raquo; Widget Height</li>
+ <li><input name="wp_twitter_fdx_widget_title" type="text" size="20" value="<?php echo get_option('wp_twitter_fdx_widget_title'); ?>"> &raquo; <?php _e('Widget Title', 'fdx-lang') ?> *</li>
+  <li><input name="wp_twitter_fdx_username" type="text" size="20" value="<?php echo get_option('wp_twitter_fdx_username'); ?>" /> &raquo; <?php _e('Twitter Username (for this Widget)', 'fdx-lang') ?></li>
+    <li><input name="wp_twitter_fdx_width" type="text" size="7" value="<?php echo get_option('wp_twitter_fdx_width'); ?>" /> &raquo; <?php _e('Widget Width', 'fdx-lang') ?>  </li>
+     <li><input name="wp_twitter_fdx_height" type="text" size="7" value="<?php echo get_option('wp_twitter_fdx_height'); ?>" /> &raquo; <?php _e('Widget Height', 'fdx-lang') ?></li>
 
-     <li><p><input name="wp_twitter_fdx_scrollbar" type="checkbox"<?php if(get_option('wp_twitter_fdx_scrollbar')!='-1') echo 'checked="checked"'; ?> value="1" /> &raquo;  Include Scrollbar?</p></li>
-      <li><p><input name="wp_twitter_fdx_behavior" type="checkbox"<?php if(get_option('wp_twitter_fdx_behavior')!='-1') echo 'checked="checked"'; ?> value="1" /> &raquo; Load all Tweets/Time Interval? <code>total 30)</code></p> </li>
+     <li><p><input name="wp_twitter_fdx_scrollbar" type="checkbox"<?php if(get_option('wp_twitter_fdx_scrollbar')!='-1') echo 'checked="checked"'; ?> value="1" /> &raquo;  <?php _e('Include Scrollbar?', 'fdx-lang') ?></p></li>
+      <li><p><input name="wp_twitter_fdx_behavior" type="checkbox"<?php if(get_option('wp_twitter_fdx_behavior')!='-1') echo 'checked="checked"'; ?> value="1" /> &raquo; <?php _e('Load all Tweets/Time Interval? <code>total 30</code>', 'fdx-lang') ?></p> </li>
 
-       <li><input class="widget-colors" rel="shell-bg" id="sw-shell-background" name="wp_twitter_fdx_shell_bg" type="text" size="7" value="<?php echo get_option('wp_twitter_fdx_shell_bg'); ?>" /><b style=" padding: 4px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b> &raquo; Widget Shell Background Color</li>
-        <li><input class="widget-colors" rel="shell-color" id="sw-shell-color" name="wp_twitter_fdx_shell_text" type="text" size="7" value="<?php echo get_option('wp_twitter_fdx_shell_text'); ?>" /><b style=" padding: 4px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b> &raquo; Widget Shell Text Color</li>
-         <li><input class="widget-colors" rel="tweet-background" id="sw-tweet-background" name="wp_twitter_fdx_tweet_bg" type="text" size="7" value="<?php echo get_option('wp_twitter_fdx_tweet_bg'); ?>" /><b style=" padding: 4px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b> &raquo; Widget Tweet Background Color</li>
-       <li>	<input class="widget-colors" rel="tweet-color" id="sw-tweet-text" name="wp_twitter_fdx_tweet_text" type="text" size="7" value="<?php echo get_option('wp_twitter_fdx_tweet_text'); ?>" /><b style=" padding: 4px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b> &raquo; Widget Tweet Text Color</li>
-        <li><input class="widget-colors" rel="tweet-links" id="sw-tweet-links" name="wp_twitter_fdx_links" type="text" size="7" value="<?php echo get_option('wp_twitter_fdx_links'); ?>" /><b style=" padding: 4px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b> &raquo; Link Color</li>
+       <li><input class="widget-colors" rel="shell-bg" id="sw-shell-background" name="wp_twitter_fdx_shell_bg" type="text" size="7" value="<?php echo get_option('wp_twitter_fdx_shell_bg'); ?>" /><b style=" padding: 4px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b> &raquo; <?php _e('Widget Shell Background Color', 'fdx-lang') ?></li>
+        <li><input class="widget-colors" rel="shell-color" id="sw-shell-color" name="wp_twitter_fdx_shell_text" type="text" size="7" value="<?php echo get_option('wp_twitter_fdx_shell_text'); ?>" /><b style=" padding: 4px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b> &raquo; <?php _e('Widget Shell Text Color', 'fdx-lang') ?></li>
+         <li><input class="widget-colors" rel="tweet-background" id="sw-tweet-background" name="wp_twitter_fdx_tweet_bg" type="text" size="7" value="<?php echo get_option('wp_twitter_fdx_tweet_bg'); ?>" /><b style=" padding: 4px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b> &raquo; <?php _e('Widget Tweet Background Color', 'fdx-lang') ?></li>
+       <li>	<input class="widget-colors" rel="tweet-color" id="sw-tweet-text" name="wp_twitter_fdx_tweet_text" type="text" size="7" value="<?php echo get_option('wp_twitter_fdx_tweet_text'); ?>" /><b style=" padding: 4px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b> &raquo; <?php _e('Widget Tweet Text Color', 'fdx-lang') ?></li>
+        <li><input class="widget-colors" rel="tweet-links" id="sw-tweet-links" name="wp_twitter_fdx_links" type="text" size="7" value="<?php echo get_option('wp_twitter_fdx_links'); ?>" /><b style=" padding: 4px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b> &raquo; <?php _e('Link Color', 'fdx-lang') ?></li>
  </ul>
  *<em><small>(<?php _e('The format will depend on your theme', 'fdx-lang') ?>)</small></em>
 </td>
@@ -269,19 +269,19 @@ function wp_twitter_fdx_options_page() {
    <tr>
      <td style="width: 400px; text-align: left; vertical-align: top">
 <ul>
-<li><input name="wp_twitter_fdx_search_widget_sidebar_title" type="text" size="20" value="<?php echo get_option('wp_twitter_fdx_search_widget_sidebar_title'); ?>"> &raquo; Widget Title *</li>
-<li><input name="wp_twitter_fdx_widget_search_query" type="text" size="20" value="<?php echo get_option('wp_twitter_fdx_widget_search_query'); ?>"> &raquo; Search Query <span id="butpop"><a href="javascript:void(0);" onclick="PopupCenter('https://twitter.com/#!/search-home', 'page2_id1',900,500,'yes');"><code class="red">?</code></a></span></li>
-<li><input name="wp_twitter_fdx_widget_search_title" type="text" size="20" value="<?php echo get_option('wp_twitter_fdx_widget_search_title'); ?>"> &raquo; Search Title</li>
-<li><input name="wp_twitter_fdx_widget_search_caption" type="text" size="20" value="<?php echo get_option('wp_twitter_fdx_widget_search_caption'); ?>"> &raquo; Search Caption</li>
-<li><input name="wp_twitter_fdx_search_width" type="text" size="7" value="<?php echo get_option('wp_twitter_fdx_search_width'); ?>" /> &raquo; Widget Width</li>
-<li><input name="wp_twitter_fdx_search_height" type="text" size="7" value="<?php echo get_option('wp_twitter_fdx_search_height'); ?>" /> &raquo; Widget Height</li>
-<li><p>Include Scrollbar?: <input name="wp_twitter_fdx_search_scrollbar" type="checkbox"<?php if(get_option('wp_twitter_fdx_search_scrollbar')!='-1') echo 'checked="checked"'; ?> value="1" /> <code>Check to include Scrollbar </code></p></li>
+<li><input name="wp_twitter_fdx_search_widget_sidebar_title" type="text" size="20" value="<?php echo get_option('wp_twitter_fdx_search_widget_sidebar_title'); ?>"> &raquo; <?php _e('Widget Title', 'fdx-lang') ?> *</li>
+<li><input name="wp_twitter_fdx_widget_search_query" type="text" size="20" value="<?php echo get_option('wp_twitter_fdx_widget_search_query'); ?>"> &raquo; <?php _e('Search Query', 'fdx-lang') ?> <span id="butpop"><a href="javascript:void(0);" onclick="PopupCenter('https://twitter.com/#!/search-home', 'page2_id1',900,500,'yes');"><code class="red">?</code></a></span></li>
+<li><input name="wp_twitter_fdx_widget_search_title" type="text" size="20" value="<?php echo get_option('wp_twitter_fdx_widget_search_title'); ?>"> &raquo; <?php _e('Search Title', 'fdx-lang') ?></li>
+<li><input name="wp_twitter_fdx_widget_search_caption" type="text" size="20" value="<?php echo get_option('wp_twitter_fdx_widget_search_caption'); ?>"> &raquo; <?php _e('Search Caption', 'fdx-lang') ?></li>
+<li><input name="wp_twitter_fdx_search_width" type="text" size="7" value="<?php echo get_option('wp_twitter_fdx_search_width'); ?>" /> &raquo; <?php _e('Widget Width', 'fdx-lang') ?></li>
+<li><input name="wp_twitter_fdx_search_height" type="text" size="7" value="<?php echo get_option('wp_twitter_fdx_search_height'); ?>" /> &raquo; <?php _e('Widget Height', 'fdx-lang') ?></li>
+<li><p>Include Scrollbar?: <input name="wp_twitter_fdx_search_scrollbar" type="checkbox"<?php if(get_option('wp_twitter_fdx_search_scrollbar')!='-1') echo 'checked="checked"'; ?> value="1" /> <code><?php _e('Check to include Scrollbar', 'fdx-lang') ?> </code></p></li>
 
-<li><input class="widget-colors2" rel="shell-bg2" id="sw-shell-background2" name="wp_twitter_fdx_search_shell_bg" type="text" size="7" value="<?php echo get_option('wp_twitter_fdx_search_shell_bg'); ?>" /><b style=" padding: 4px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b> &raquo; Widget Shell Background Color</li>
-<li><input class="widget-colors2" rel="shell-color2" id="sw-shell-color2" name="wp_twitter_fdx_search_shell_text" type="text" size="7" value="<?php echo get_option('wp_twitter_fdx_search_shell_text'); ?>" /><b style=" padding: 4px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b> &raquo; Widget Shell Text Color</li>
-<li><input class="widget-colors2" rel="tweet-background2" id="sw-tweet-background2" name="wp_twitter_fdx_search_tweet_bg" type="text" size="7" value="<?php echo get_option('wp_twitter_fdx_search_tweet_bg'); ?>" /><b style=" padding: 4px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b> &raquo; Widget Tweet Background Color: </li>
-<li><input class="widget-colors2" rel="tweet-color2" id="sw-tweet-text2" name="wp_twitter_fdx_search_tweet_text" type="text" size="7" value="<?php echo get_option('wp_twitter_fdx_search_tweet_text'); ?>" /><b style=" padding: 4px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b> &raquo; Widget Tweet Text Color: </li>
-<li><input class="widget-colors2" rel="tweet-links2" id="sw-tweet-links2" name="wp_twitter_fdx_search_links" type="text" size="7" value="<?php echo get_option('wp_twitter_fdx_search_links'); ?>" /><b style=" padding: 4px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b> &raquo; Link Color: </li>
+<li><input class="widget-colors2" rel="shell-bg2" id="sw-shell-background2" name="wp_twitter_fdx_search_shell_bg" type="text" size="7" value="<?php echo get_option('wp_twitter_fdx_search_shell_bg'); ?>" /><b style=" padding: 4px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b> &raquo; <?php _e('Widget Shell Background Color', 'fdx-lang') ?></li>
+<li><input class="widget-colors2" rel="shell-color2" id="sw-shell-color2" name="wp_twitter_fdx_search_shell_text" type="text" size="7" value="<?php echo get_option('wp_twitter_fdx_search_shell_text'); ?>" /><b style=" padding: 4px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b> &raquo; <?php _e('Widget Shell Text Color', 'fdx-lang') ?></li>
+<li><input class="widget-colors2" rel="tweet-background2" id="sw-tweet-background2" name="wp_twitter_fdx_search_tweet_bg" type="text" size="7" value="<?php echo get_option('wp_twitter_fdx_search_tweet_bg'); ?>" /><b style=" padding: 4px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b> &raquo; <?php _e('Widget Tweet Background Color:', 'fdx-lang') ?> </li>
+<li><input class="widget-colors2" rel="tweet-color2" id="sw-tweet-text2" name="wp_twitter_fdx_search_tweet_text" type="text" size="7" value="<?php echo get_option('wp_twitter_fdx_search_tweet_text'); ?>" /><b style=" padding: 4px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b> &raquo; <?php _e('Widget Tweet Text Color:', 'fdx-lang') ?> </li>
+<li><input class="widget-colors2" rel="tweet-links2" id="sw-tweet-links2" name="wp_twitter_fdx_search_links" type="text" size="7" value="<?php echo get_option('wp_twitter_fdx_search_links'); ?>" /><b style=" padding: 4px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b> &raquo; <?php _e('Link Color:', 'fdx-lang') ?> </li>
 </ul>
 *<em><small>(<?php _e('The format will depend on your theme', 'fdx-lang') ?>)</small></em>
 </td>
