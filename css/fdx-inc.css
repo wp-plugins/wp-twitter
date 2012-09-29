@@ -1,0 +1,44 @@
+div.hid { visibility: hidden; overflow: hidden; height: 1px; }  /* hack para input hiden */
+.postbox p { padding: 0 5px 0 5px !important  }
+.fdx { font-size: 13px !important; font-weight: normal !important; text-align: left !important}
+.fdx td { padding: 10px }
+.itens { width: 250px !important }
+small { color: #535353; }
+.red { color: red }
+
+code.red {font-family: Verdana, Arial, Helvetica, sans-serif;  background-color:#FFCC66; color:#000000; padding:0px 5px 0px 5px; height:20px;border:1px solid #FF6600;border-radius:3px;}
+span#butpop a  {  text-decoration: none !important }
+h5 { padding: 0!important; margin: 0 !important; font-size: 11px !important }
+
+
+
+a.sm_button {padding:4px;display:block;padding-left:25px;background-repeat:no-repeat;background-position:5px 50%;text-decoration:none;border:none;}
+a.sm_button:hover {border-bottom-width:1px;}
+a.sm_bug {background-image:url(../images/bug.png);}
+a.sm_code {background-image:url(../images/code.png);}
+a.sm_autor {background-image:url(../images/menu_fdx.png);}
+a.sm_lang {background-image:url(../images/locate.png);}
+
+a.sm_star {background-image:url(../images/star.png);}
+a.sm_link {background-image:url(../images/link.png);}
+
+
+
+.ico_button {padding:4px;display:block;padding-left:25px;background-repeat:no-repeat;background-position:5px 50%;text-decoration:none;border:none;}
+.ico_button_ok {background-image:url(../images/ok.png);}
+.ico_button_error {background-image:url(../images/error.png);}
+
+
+/* htabs ****widget */
+
+.tabsCell{padding:0 0 15px;}
+ul.tabs{float:left;list-style:none;border-bottom:1px solid silver;border-left:1px solid silver;width:100%;font-family:Arial, Helvetica, sans-serif;font-size:11px;margin:0;padding:0;}
+ul.tabs li{float:left;border:1px solid silver;border-left:none;overflow:hidden;position:relative;margin:0 0 -1px;padding:0;}
+ul.tabs li a{text-decoration:none;font-size:113%;display:block;border:1px solid #F9F9F9;border-bottom:none;outline:none;padding:4px 10px 4px 10px;}
+ul.tabs li a:hover{;}
+ul.tabs li.active a{font-weight:700;}
+ul.tabs li.active a:hover{font-weight:700;}
+ul.tabs li.active{border-bottom:1px solid #F9F9F9;}
+.tab_container{clear:both;border:1px solid silver;border-top:none;}
+.tab_container p{clear:both;margin:0; padding: 5px }
+.tab_content{border:1px solid #F9F9F9;padding:0; padding-top: 5px}
