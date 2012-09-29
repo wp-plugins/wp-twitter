@@ -11,7 +11,7 @@ License: GPLv2 or later
 Is a plugin that creates a complete integration between your WordPress blog and your Twitter account including ShareThis Buttons and Goodies Widgets.
 
 == Description ==
-[WP Twitter](http://wp.webmais.com/wp-twitter/ "Ver esta pagina em Portugues (pt-BR)") is a plugin that creates a complete integration between your WordPress blog and your Twitter account by giving you the following functionality:
+[WP Twitter](http://fabrix.net/wp-twitter/ "Ver esta pagina em Portugues (pt-BR)") is a plugin that creates a complete integration between your WordPress blog and your Twitter account by giving you the following functionality:
 
 * It will post a tweet when you have created a new post on your Wordpress blog and when you have updated a post.
 * Complete Sharethis Button Integration
