@@ -4,7 +4,7 @@
 <div class="postbox">
 <div class="handlediv" title="<?php _e('Click to toggle', 'fdx-lang') ?>"><br /></div><h3 class='hndle'><span><?php echo FDX1_PLUGIN_NAME;?> <small style="float: right">v<?php echo FDX1_PLUGIN_VERSION;?></small></span></h3>
 <div class="inside">
-<div style="float: right; margin: -15px 0 10px 0"><a href="http://wp.webmais.com/wp-twitter/" target="_blank"><img src="<?php echo FDX1_PLUGIN_URL;?>/images/logo.png" width="91" height="119" border="0" alt="" /></a></div>
+<div style="float: right; margin: -15px 0 10px 0"><a href="http://fabrix.net/wp-twitter" target="_blank"><img src="<?php echo FDX1_PLUGIN_URL;?>/images/logo.png" width="91" height="119" border="0" alt="" /></a></div>
 <a class="sm_button sm_autor" href="http://fabrix.net/wp-twitter" target="_blank"><?php _e('Plugin Homepage', 'fdx-lang') ?></a>
 <a class="sm_button sm_code" href="http://wordpress.org/support/plugin/wp-twitter" target="_blank"><?php _e('Suggest a Feature', 'fdx-lang') ?></a>
 <a class="sm_button sm_bug" href="http://wordpress.org/support/plugin/wp-twitter" target="_blank"><?php _e('Report a Bug', 'fdx-lang') ?></a>

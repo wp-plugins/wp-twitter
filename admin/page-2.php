@@ -299,7 +299,7 @@ function fdx_updater_get_file_contents( $url, $method='GET', $body=array(), $hea
 	if( !class_exists( 'WP_Http' ) )
 		include_once( ABSPATH . WPINC. '/class-http.php' );
 	$request = new WP_Http;
-	$result = $request->request( $url , array( 'method'=>$method, 'body'=>$body, 'headers'=>$headers, 'user-agent'=>'http://wp.webmais.com/wp-twitter' ) );
+	$result = $request->request( $url , array( 'method'=>$method, 'body'=>$body, 'headers'=>$headers, 'user-agent'=>'http://fabrix.net/wp-twitter' ) );
 
 	if ( !is_wp_error($result) && isset($result['body']) )
 	{
