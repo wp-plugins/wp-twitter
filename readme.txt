@@ -34,8 +34,20 @@ The following short url services are supported:
 * Bit.ly
 * and Wordpress default URL format `Ex: domain.com/?p=123`
 
-= Help translate this plugin =
-[Projects -> WP Twitter](http://translate.fabrix.net/projects/wp-twitter)
+= Acknowledgements =
+* Brazilian Portuguese translation by [Fabrix](http://fabrix.net) 
+
+
+
+= How To Contribute =
+We'd love for you to get involved. Whatever your level of skill or however much time you can give, your contribution is greatly appreciated.
+
+* **Users** - download the latest development version of the plugin, and submit bug/feature requests.
+
+* **Non-English Speaking Users** - Contribute a translation using the GlotPress web interface - no technical knowledge required ([how to](http://translate.fabrix.net/projects/wp-twitter)).
+
+* **Developers** - Fork the development version and submit a pull request, especially for any known issues
+
 
 == Screenshots ==
 1. URL Shortener Account Settings
@@ -64,8 +76,9 @@ No, this plugin does not work with php4.
 
 == Changelog ==
 
-* 3.5 
-    * Bug Fix (ShareThis Button Integration)
+* 3.5
+    * Adds Brazilian Portuguese translation.
+    * Bug Fix (ShareThis Button Integration).
     * ShareThis, added support for Bottom Fixed bar.
 
 * 3.4 
