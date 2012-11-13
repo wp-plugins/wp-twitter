@@ -15,6 +15,10 @@ add_option('wp_twitter_fdx_tweet_button_style3', '3');
 add_option('wp_twitter_fdx_tweet_button_choose', 'direct_post');
 add_option('wp_twitter_fdx_tweet_button_container', 'text-align: center');
 add_option('wp_twitter_fdx_tweet_button_twitter_username', '');
+
+add_option('wp_twitter_fdx_services', 'facebook,twitter,linkedin,email,sharethis');    //New
+
+
 add_option('wp_twitter_fdx_logo_top', FDX1_PLUGIN_URL .'/images/logo300x40.png');
 
 function filter_wp_twitter_fdx_tweet_button_show($related_content)
@@ -34,46 +38,61 @@ function filter_wp_twitter_fdx_tweet_button_show($related_content)
 	$tweet_btn_float = get_option('wp_twitter_fdx_tweet_button_container');
 	$tweet_btn_twt_username = get_option('wp_twitter_fdx_tweet_button_twitter_username');
 
+    $tweet_btn_services = get_option('wp_twitter_fdx_services');
 
-//	global $post;
-//	$p = $post;
-//	$title1 = $p->post_title ;
-//	$link1 = get_permalink($p);
-//	$blog_url = get_bloginfo('wpurl');
-//	$blog_title = get_bloginfo('wp_title');
 
 if ($tweet_btn_style == "large_buton")
     {
-//	$final_url2 = '<a href="http://twitter.com/share?url='.$link1.'&via='.$tweet_btn_twt_username.'&text='.$title1.'&count='.$tweet_btn_style.'" class="twitter-share-button">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>';
- 	$final_url2 = '<span class="st_twitter_large" displayText="Tweet"></span><span class="st_facebook_large" displayText="Facebook"></span><span class="st_googleplus_large" displayText="Google +"></span><span class="st_email_large" displayText="Email"></span><span class="st_sharethis_large" displayText="ShareThis"></span> ';
-    $final_url2 = '<div style="'.$tweet_btn_float.'">' . $final_url2 . '</div>';
- }
+       $sh_services = explode(',' , $tweet_btn_services);
+       foreach($sh_services as $key) {
+       $key = preg_replace("/\s/", "", $key);
+       @$final_url.='<span class="st_'.$key.'_large" displayText="'.$key.'"></span>';
+    }
+    $final_url = '<div style="'.$tweet_btn_float.'">' . $final_url . '</div>';
+}
 
 if ($tweet_btn_style == "small_buton")
-    {
-    $final_url2 = '<span class="st_twitter"></span><span class="st_facebook"></span><span class="st_googleplus" ></span><span class="st_email"></span><span class="st_sharethis"></span>';
-    $final_url2 = '<div style="'.$tweet_btn_float.'">' . $final_url2 . '</div>';
+      {
+       $sh_services = explode(',' , $tweet_btn_services);
+       foreach($sh_services as $key) {
+       $key = preg_replace("/\s/", "", $key);
+       @$final_url.='<span class="st_'.$key.'"></span>';
+       }
+    $final_url = '<div style="'.$tweet_btn_float.'">' . $final_url . '</div>';
     }
 
 if ($tweet_btn_style == "h_count_buton")
-    {
-  	$final_url2 = '<span class="st_twitter_hcount" displayText="Tweet"></span><span class="st_fblike_hcount" displayText="Facebook Like"></span><span class="st_plusone_hcount" displayText="Google +1"></span><span class="st_email_hcount" displayText="Email"></span><span class="st_sharethis_hcount" displayText="ShareThis"></span>';
-    $final_url2 = '<div style="'.$tweet_btn_float.'">' . $final_url2 . '</div>';
+      {
+       $sh_services = explode(',' , $tweet_btn_services);
+       foreach($sh_services as $key) {
+       $key = preg_replace("/\s/", "", $key);
+       @$final_url.='<span class="st_'.$key.'_hcount" displayText="'.$key.'"></span>';
+      }
+      $final_url = '<div style="'.$tweet_btn_float.'">' . $final_url . '</div>';
    }
 
 if ($tweet_btn_style == "v_count_buton")
-    {
-  	$final_url2 = '<span class="st_twitter_vcount" displayText="Tweet"></span><span class="st_fblike_vcount" displayText="Facebook Like"></span><span class="st_plusone_vcount" displayText="Google +1"></span><span class="st_email_vcount" displayText="Email"></span><span class="st_sharethis_vcount" displayText="ShareThis"></span>';
-    $final_url2 = '<div style="'.$tweet_btn_float.'">' . $final_url2 . '</div>';
+       {
+       $sh_services = explode(',' , $tweet_btn_services);
+       foreach($sh_services as $key) {
+       $key = preg_replace("/\s/", "", $key);
+       @$final_url.='<span class="st_'.$key.'_vcount" displayText="'.$key.'"></span>';
+      }
+    $final_url = '<div style="'.$tweet_btn_float.'">' . $final_url . '</div>';
     }
-
+/************************** SHAREEGG *********************************/
 if ($tweet_btn_place == "shareegg")
     {
      if (is_single() || is_page() ){
-    $final_url6 = '<script type="text/javascript">stlib.shareEgg.createEgg("shareThisShareEgg", ["sharethis","facebook","googleplus","twitter","pinterest","linkedin","email"], {title:"ShareThis Rocks!!!",url:"http://www.sharethis.com",theme:"shareegg"});</script>';
-    $final_url6 = '<div id="shareThisShareEgg" class="shareEgg">' . $final_url6 . '</div>';
+       $sh_services = explode(',' , $tweet_btn_services);
+       foreach($sh_services as $key) {
+       $key = preg_replace("/\s/", "", $key);
+       @$allopt.= '"'.$key.'",';
+       }
+    $final_url = '<script type="text/javascript">stlib.shareEgg.createEgg("shareThisShareEgg", ['.$allopt.'], {title:"ShareThis Rocks!!!",url:"http://www.sharethis.com",theme:"shareegg"});</script>';
+    $final_url = '<div id="shareThisShareEgg" class="shareEgg">' . $final_url . '</div>';
      }else {
-      $final_url6 = '';
+      $final_url = '';
      }
 
    }
@@ -92,12 +111,12 @@ if (is_single() && $tweet_btn_display_single == 1 || is_page() && $tweet_btn_dis
 //------------------------------------------------------------
 if ($tweet_btn_place == "before")
 {
-$related_content =  $final_url2 . $related_content;
+$related_content =  $final_url . $related_content;
 }
 //------------------------------------------------------------
 if ($tweet_btn_place == "after")
 {
-$related_content =  $related_content . $final_url2;
+$related_content =  $related_content . $final_url;
 }
 //------------------------------------------------------------
 if ($tweet_btn_place == "manual")
@@ -107,25 +126,39 @@ fdx_admin_add_page();  //reset
 //------------------------------------------------------------
 if ($tweet_btn_place == "floatside")
 {
+      $sh_services = explode(',' , $tweet_btn_services);
+       foreach($sh_services as $key) {
+       $key = preg_replace("/\s/", "", $key);
+       @$allopt.= '"'.$key.'",';
+       }
     if ($tweet_btn_style2 == "floatside_left")
        {
-       echo '<script type="text/javascript">stLight.options({publisher: "'.$tweet_btn_twt_username.'"'.$display_copynshare.'});</script><script>var options={ "publisher": "'.$tweet_btn_twt_username.'", "position": "left", "ad": { "visible": false, "openDelay": 5, "closeDelay": 0}, "chicklets": { "items": ["facebook", "twitter", "googleplus", "email", "sharethis"]}}; var st_hover_widget = new sharethis.widgets.hoverbuttons(options);</script>';
+       echo '<script type="text/javascript">stLight.options({publisher: "'.$tweet_btn_twt_username.'"'.$display_copynshare.'});</script><script>var options={ "publisher": "'.$tweet_btn_twt_username.'", "position": "left", "ad": { "visible": false, "openDelay": 5, "closeDelay": 0}, "chicklets": { "items": ['.$allopt.']}}; var st_hover_widget = new sharethis.widgets.hoverbuttons(options);</script>';
        }
     if ($tweet_btn_style2 == "floatside_right")
        {
-       echo '<script type="text/javascript">stLight.options({publisher: "'.$tweet_btn_twt_username.'"'.$display_copynshare.'});</script><script>var options={ "publisher": "'.$tweet_btn_twt_username.'", "position": "right", "ad": { "visible": false, "openDelay": 5, "closeDelay": 0}, "chicklets": { "items": ["facebook", "twitter", "googleplus", "email", "sharethis"]}}; var st_hover_widget = new sharethis.widgets.hoverbuttons(options);</script>';
+       echo '<script type="text/javascript">stLight.options({publisher: "'.$tweet_btn_twt_username.'"'.$display_copynshare.'});</script><script>var options={ "publisher": "'.$tweet_btn_twt_username.'", "position": "right", "ad": { "visible": false, "openDelay": 5, "closeDelay": 0}, "chicklets": { "items": ['.$allopt.']}}; var st_hover_widget = new sharethis.widgets.hoverbuttons(options);</script>';
        }
 }
 //------------------------------------------------------------
-if ($tweet_btn_place == "fixedtop")
-{
-echo '<script type="text/javascript">stLight.options({publisher: "'.$tweet_btn_twt_username.'"'.$display_copynshare.'});</script><script>var options={ "publisher": "'.$tweet_btn_twt_username.'", "scrollpx": 10, "ad": { "visible": false}, "chicklets": { "items": ["facebook", "twitter", "googleplus", "linkedin", "pinterest", "email", "sharethis"]}}; var st_pulldown_widget = new sharethis.widgets.pulldownbar(options);</script>';
+if ($tweet_btn_place == "fixedtop"){
+       $sh_services = explode(',' , $tweet_btn_services);
+       foreach($sh_services as $key) {
+       $key = preg_replace("/\s/", "", $key);
+       @$allopt.= '"'.$key.'",';
+       }
+echo '<script type="text/javascript">stLight.options({publisher: "'.$tweet_btn_twt_username.'"'.$display_copynshare.'});</script><script>var options={ "publisher": "'.$tweet_btn_twt_username.'", "scrollpx": 10, "ad": { "visible": false}, "chicklets": { "items": ['.$allopt.']}}; var st_pulldown_widget = new sharethis.widgets.pulldownbar(options);</script>';
 }
 //------------------------------------------------------------
 if ($tweet_btn_place == "fixedbottom")
 {
+       $sh_services = explode(',' , $tweet_btn_services);
+       foreach($sh_services as $key) {
+       $key = preg_replace("/\s/", "", $key);
+       @$allopt.= '"'.$key.'",';
+       }
 echo '<script type="text/javascript">stLight.options({publisher: "'.$tweet_btn_twt_username.'"'.$display_copynshare.'});</script>';
-echo '<script>var options={ "publisher": "'.$tweet_btn_twt_username.'", "logo": { "visible": false, "url": "", "img": "http://sd.sharethis.com/disc/images/demo_logo.png", "height": 45}, "ad": { "visible": false, "openDelay": "5", "closeDelay": "0"}, "livestream": { "domain": "", "type": "sharethis", "customColors": { "widgetBackgroundColor": "#FFFFFF", "articleLinkColor": "#006fbb"}}, "ticker": { "visible": false, "domain": "", "title": "", "type": "sharethis", "customColors": { "widgetBackgroundColor": "#a0adc7", "articleLinkColor": "#00487f"}}, "facebook": { "visible": false, "profile": "sharethis"}, "fblike": { "visible": false, "url": ""}, "twitter": { "visible": false, "user": "sharethis"}, "twfollow": { "visible": false, "url": "http://www.twitter.com/sharethis"}, "custom": [{ "visible": false, "title": "Custom 1", "url": "", "img": "", "popup": false, "popupCustom": { "width": 300, "height": 250}}, { "visible": false, "title": "Custom 2", "url": "", "img": "", "popup": false, "popupCustom": { "width": 300, "height": 250}}, { "visible": false, "title": "Custom 3", "url": "", "img": "", "popup": false, "popupCustom": { "width": 300, "height": 250}}], "shadow": "gloss", "background": "#c2c2c2", "color": "#555555", "arrowStyle": "light", "chicklets": { "items": ["facebook", "twitter", "googleplus", "linkedin", "pinterest", "email", "sharethis"]}};';
+echo '<script>var options={ "publisher": "'.$tweet_btn_twt_username.'", "logo": { "visible": false, "url": "", "img": "http://sd.sharethis.com/disc/images/demo_logo.png", "height": 45}, "ad": { "visible": false, "openDelay": "5", "closeDelay": "0"}, "livestream": { "domain": "", "type": "sharethis", "customColors": { "widgetBackgroundColor": "#FFFFFF", "articleLinkColor": "#006fbb"}}, "ticker": { "visible": false, "domain": "", "title": "", "type": "sharethis", "customColors": { "widgetBackgroundColor": "#a0adc7", "articleLinkColor": "#00487f"}}, "facebook": { "visible": false, "profile": "sharethis"}, "fblike": { "visible": false, "url": ""}, "twitter": { "visible": false, "user": "sharethis"}, "twfollow": { "visible": false, "url": "http://www.twitter.com/sharethis"}, "custom": [{ "visible": false, "title": "Custom 1", "url": "", "img": "", "popup": false, "popupCustom": { "width": 300, "height": 250}}, { "visible": false, "title": "Custom 2", "url": "", "img": "", "popup": false, "popupCustom": { "width": 300, "height": 250}}, { "visible": false, "title": "Custom 3", "url": "", "img": "", "popup": false, "popupCustom": { "width": 300, "height": 250}}], "shadow": "gloss", "background": "#c2c2c2", "color": "#555555", "arrowStyle": "light", "chicklets": { "items": ['.$allopt.']}};';
 echo 'var st_bar_widget = new sharethis.widgets.sharebar(options);</script>';
 }
 //------------------------------------------------------------
@@ -136,7 +169,7 @@ echo '<script type="text/javascript">stLight.options({publisher: "'.$tweet_btn_t
 //------------------------------------------------------------
 if ($tweet_btn_place == "shareegg")
 {
-$related_content =  $related_content . $final_url6;
+$related_content =  $related_content . $final_url;
 }
 //------------------------------------------------------------
 }
@@ -160,32 +193,49 @@ function fdx_add_sharethis()
 	$tweet_btn_float = get_option('wp_twitter_fdx_tweet_button_container');
 	$tweet_btn_twt_username = get_option('wp_twitter_fdx_tweet_button_twitter_username');
 
+    $tweet_btn_services = get_option('wp_twitter_fdx_services');   //New
+
 if ($tweet_btn_style == "large_buton")
     {
-//	$final_url2 = '<a href="http://twitter.com/share?url='.$link1.'&via='.$tweet_btn_twt_username.'&text='.$title1.'&count='.$tweet_btn_style.'" class="twitter-share-button">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>';
- 	$final_url2 = '<span class="st_twitter_large" displayText="Tweet"></span><span class="st_facebook_large" displayText="Facebook"></span><span class="st_googleplus_large" displayText="Google +"></span><span class="st_email_large" displayText="Email"></span><span class="st_sharethis_large" displayText="ShareThis"></span> ';
-    $final_url2 = '<div style="'.$tweet_btn_float.'">' . $final_url2 . '</div>';
- }
+       $sh_services = explode(',' , $tweet_btn_services);
+       foreach($sh_services as $key) {
+       $key = preg_replace("/\s/", "", $key);
+       @$final_url.='<span class="st_'.$key.'_large" displayText="'.$key.'"></span>';
+    }
+    $final_url = '<div style="'.$tweet_btn_float.'">' . $final_url . '</div>';
+}
 
 if ($tweet_btn_style == "small_buton")
-    {
-    $final_url2 = '<span class="st_twitter"></span><span class="st_facebook"></span><span class="st_googleplus" ></span><span class="st_email"></span><span class="st_sharethis"></span>';
-    $final_url2 = '<div style="'.$tweet_btn_float.'">' . $final_url2 . '</div>';
+      {
+       $sh_services = explode(',' , $tweet_btn_services);
+       foreach($sh_services as $key) {
+       $key = preg_replace("/\s/", "", $key);
+       @$final_url.='<span class="st_'.$key.'"></span>';
+       }
+    $final_url = '<div style="'.$tweet_btn_float.'">' . $final_url . '</div>';
     }
 
 if ($tweet_btn_style == "h_count_buton")
-    {
-  	$final_url2 = '<span class="st_twitter_hcount" displayText="Tweet"></span><span class="st_fblike_hcount" displayText="Facebook Like"></span><span class="st_plusone_hcount" displayText="Google +1"></span><span class="st_email_hcount" displayText="Email"></span><span class="st_sharethis_hcount" displayText="ShareThis"></span>';
-    $final_url2 = '<div style="'.$tweet_btn_float.'">' . $final_url2 . '</div>';
+      {
+       $sh_services = explode(',' , $tweet_btn_services);
+       foreach($sh_services as $key) {
+       $key = preg_replace("/\s/", "", $key);
+       @$final_url.='<span class="st_'.$key.'_hcount" displayText="'.$key.'"></span>';
+      }
+      $final_url = '<div style="'.$tweet_btn_float.'">' . $final_url . '</div>';
    }
 
 if ($tweet_btn_style == "v_count_buton")
-    {
-  	$final_url2 = '<span class="st_twitter_vcount" displayText="Tweet"></span><span class="st_fblike_vcount" displayText="Facebook Like"></span><span class="st_plusone_vcount" displayText="Google +1"></span><span class="st_email_vcount" displayText="Email"></span><span class="st_sharethis_vcount" displayText="ShareThis"></span>';
-    $final_url2 = '<div style="'.$tweet_btn_float.'">' . $final_url2 . '</div>';
+       {
+       $sh_services = explode(',' , $tweet_btn_services);
+       foreach($sh_services as $key) {
+       $key = preg_replace("/\s/", "", $key);
+       @$final_url.='<span class="st_'.$key.'_vcount" displayText="'.$key.'"></span>';
+      }
+    $final_url = '<div style="'.$tweet_btn_float.'">' . $final_url . '</div>';
     }
 
-echo $final_url2;
+echo $final_url;
 
 }
 
@@ -196,6 +246,8 @@ function fdx_sharethis_script() {
     $tweet_btn_display_single = get_option('wp_twitter_fdx_tweet_button_display_single');
 	$tweet_btn_display_page = get_option('wp_twitter_fdx_tweet_button_display_page');
 	$tweet_btn_display_home = get_option('wp_twitter_fdx_tweet_button_display_home');
+
+    $tweet_btn_services = get_option('wp_twitter_fdx_services');   //New
 
      $tweet_btn_display_copynshare = get_option('wp_twitter_copynshare');
 
@@ -287,6 +339,10 @@ function wp_twitter_fdx_social() {
 
 		update_option('wp_twitter_fdx_tweet_button_container', stripslashes_deep((string)$_POST['wp_twitter_fdx_tweet_button_container']));
 		update_option('wp_twitter_fdx_tweet_button_twitter_username', stripslashes_deep((string)$_POST['wp_twitter_fdx_tweet_button_twitter_username']));
+
+   		update_option('wp_twitter_fdx_services', stripslashes_deep((string)$_POST['wp_twitter_fdx_services']));   //New
+
+
 		update_option('wp_twitter_fdx_logo_top', stripslashes_deep((string)$_POST['wp_twitter_fdx_logo_top']));
     	update_option('wp_twitter_fdx_tweet_button_place', stripslashes_deep((string)@$_POST['wp_twitter_fdx_tweet_button_place']));
 		update_option('wp_twitter_fdx_tweet_button_style', stripslashes_deep((string)@$_POST['wp_twitter_fdx_tweet_button_style']));
@@ -384,7 +440,7 @@ function wp_twitter_fdx_social() {
 
 
  <p><strong><?php _e('CSS Style Align', 'fdx-lang') ?>:</strong> <input name="wp_twitter_fdx_tweet_button_container" type="text" size="50" value="<?php echo get_option('wp_twitter_fdx_tweet_button_container'); ?>" /></p>
-<div style="margin: 5px 0 0 140px"><code>text-align: center</code>&nbsp;&nbsp;&nbsp;<code>float: left; margin-right: 10px;</code>&nbsp;&nbsp;&nbsp;<code>float: right</code></div>
+<code>text-align: center</code>&nbsp;&nbsp;&nbsp;<code>float: left; margin-right: 10px;</code>&nbsp;&nbsp;&nbsp;<code>float: right</code>
  <!-- ******************************************tab1****************************************** -->
 </div>
 
@@ -456,17 +512,27 @@ function wp_twitter_fdx_social() {
 </div>
 
 
-
 </div>
 </div>
 
+</div></div>
+<!-- ***************************************************************************************** -->
+
+<div class="postbox">
+<div class="handlediv" title="<?php _e('Click to toggle', 'fdx-lang') ?>"><br /></div><h3 class='hndle'><span><?php _e('Change order or modify list of buttons.', 'fdx-lang') ?></span></h3>
+<div class="inside">
 
 
- <!-- ***************************************************************************************** -->
+<ul>
+<li><p><strong><?php _e('Selected Services', 'fdx-lang') ?>:</strong> <input name="wp_twitter_fdx_services" type="text" size="65" value="<?php echo get_option('wp_twitter_fdx_services'); ?>" /><small><em> (<?php _e('lowercase, separated by commas', 'fdx-lang') ?>)</em></small></p></li>
+</ul>
+<p><a href="javascript:void(0);" onclick="PopupCenter('http://sharethis.com/publishers/services-directory', 'page2_id3',980,680,'yes');" title="<?php _e('Sharing Services Directory', 'fdx-lang') ?>"><?php _e('Service Codes', 'fdx-lang') ?></a>: <code>sharethis</code>, <code>email</code>, <code>facebook</code>, <code>twitter</code>, <code>linkedin</code>, <code>pinterest</code>, <code>tumblr</code>, <code>googleplus</code>, <code>blogger</code>, <code>delicious</code>, <code>wordpress</code>, <code>technorati</code>, <code>stumbleupon</code>, <code>reddit</code>, <code>digg</code>, <code>plusone</code><small><em>(Google +1)</em></small>, <code>fblike</code><small><em>(<?php _e('Facebook Like', 'fdx-lang') ?>)</em></small>, <code>fbrec</code><small><em>(<?php _e('Facebook Recommend', 'fdx-lang') ?>)</em></small>, <code>fbsend</code><small><em>(<?php _e('Facebook Send', 'fdx-lang') ?>)</em></small></p>
+</div></div>
 
-  </div></div>
+<!-- ***************************************************************************************** -->
 
- <div class="postbox">
+
+<div class="postbox">
 <div class="handlediv" title="<?php _e('Click to toggle', 'fdx-lang') ?>"><br /></div><h3 class='hndle'><span><?php _e('Choose which version of the widget you would like to use: ', 'fdx-lang') ?></span></h3>
 <div class="inside">
 
@@ -478,7 +544,7 @@ function wp_twitter_fdx_social() {
 
   </div></div>
 
-
+<!-- ***************************************************************************************** -->
 <div class="postbox">
 <div class="handlediv" title="<?php _e('Click to toggle', 'fdx-lang') ?>"><br /></div><h3 class='hndle'><span><?php _e('Want Analytics?', 'fdx-lang') ?> (<a href="javascript:void(0);" onclick="PopupCenter('http://sharethis.com/external-login', 'page3_id1',562,342,'no');"><?php _e('CLICK HERE TO REGISTER', 'fdx-lang') ?></a>)</span></h3>
 <div class="inside">

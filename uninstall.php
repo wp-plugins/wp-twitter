@@ -31,6 +31,9 @@ delete_option('wp_twitter_fdx_logo_top');
 delete_option('wp_twitter_fdx_tweet_button_style2');
 delete_option('wp_twitter_fdx_tweet_button_style3');
 
+delete_option('wp_twitter_fdx_services');
+
+
 //widgets
 delete_option('wp_twitter_fdx_widget_title');
 delete_option('wp_twitter_fdx_username');
