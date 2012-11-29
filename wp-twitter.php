@@ -7,10 +7,7 @@ Author: Fabrix DoRoMo
 Author URI: http://fabrix.net
 Plugin URI: http://fabrix.net/wp-twitter
 */
-
 /*
-Copyright (c) 2009-2012 Fabrix DoRoMo
-
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
 the Free Software Foundation; either version 3 of the License, or
@@ -26,22 +23,34 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 /*********************************************************************************/
-define('FDX1_MINIMUM_WP_VER', '3.4.2'); //minimum version of WordPress
-define('FDX1_MINIMUM_PHP_VER', '5.0.0'); //minimum version of PHP
-define('FDX1_PLUGIN_NAME', 'WP Twitter' ); //plugin name
-define('FDX1_PLUGIN_VERSION', '3.6' ); //plugin version
+define('FDX1_PLUGIN_NAME', 'WP Twitter' );
+define('FDX1_PLUGIN_VERSION', '3.6' );
+define('FDX1_PLUGIN_URL', plugin_dir_url(__FILE__));
+
+define('FDX1_WPPAGE', 'http://wordpress.org/extend/plugins/wp-twitter/');
+define('FDX1_PLUGINPAGE', 'http://fabrix.net/wp-twitter/');
+define('FDX1_GLOTPRESS', 'http://translate.fabrix.net/projects/wp-twitter/');
+define('FDX1_SUPFORUM', 'http://wmais.in/?forum=wp-twitter/');
+define('FDX1_DONATELINK', 'https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=Z9SRNRLLDAFZJ');
+
 define('FDX1_PLUGIN_P1', 'wp-twitter' ); //link1, plugin prefix (.mo)
 define('FDX1_PLUGIN_P2', 'wp-twitter-widgets' ); //link2
 define('FDX1_PLUGIN_P3', 'wp-twitter-integration' ); //link3
-define('FDX1_PLUGIN_URL', plugins_url('', __FILE__) );//plugin URL
+/*
+*------------------------------------------------------------*/
+$currentLocale = get_locale();
+			if(!empty($currentLocale)) {
+				$moFile = dirname(__FILE__) . "/languages/".FDX1_PLUGIN_P1."-" . $currentLocale . ".mo";
+				if(@file_exists($moFile) && is_readable($moFile)) load_textdomain('fdx-lang', $moFile);
+}
 
-/* CARREGA FUNÇÕES
+/*
 *------------------------------------------------------------*/
 require_once( dirname(__FILE__) . '/admin/page-1.php' );
 require_once( dirname(__FILE__) . '/admin/page-2.php' );
 require_once( dirname(__FILE__) . '/admin/page-3.php' );
 
-/* ADICIONA O MENU
+/*
 *------------------------------------------------------------*/
 function fdx_admin_add_page(){
   if (function_exists('add_menu_page')) {
@@ -66,22 +75,5 @@ function fdx_admin_files() {
 }
 add_action( 'admin_head', 'fdx_admin_files' );
 
-/* SUPORTE A MULTI IDIOMAS
-*------------------------------------------------------------*/
-$currentLocale = get_locale();
-			if(!empty($currentLocale)) {
-				$moFile = dirname(__FILE__) . "/languages/".FDX1_PLUGIN_P1."-" . $currentLocale . ".mo";
-				if(@file_exists($moFile) && is_readable($moFile)) load_textdomain('fdx-lang', $moFile);
-}
-
-/* ADICIONA LINK CONFIGURAÇÕES NA PAGINA DE PLUGINS
-*------------------------------------------------------------*/
-function fdx_updater_add_settings_link( $links ) {
-	$settings_link = '<a href="' . admin_url( 'admin.php?page=wp-twitter' ) . '">' . __( 'Settings', 'fdx-lang' ) . '</a>';
-	array_unshift( $links, $settings_link );
-	return $links;
-}
- 	$plugin = plugin_basename(__FILE__);
-	add_filter("plugin_action_links_$plugin", 'fdx_updater_add_settings_link' );
 
 ?>

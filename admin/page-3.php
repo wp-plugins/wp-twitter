@@ -364,7 +364,7 @@ function wp_twitter_fdx_social() {
 <div id="poststuff">
 <div id="post-body" class="metabox-holder columns-2">
 
-<?php include('inc/sidebar.php'); ?>
+<?php include('_sidebar.php'); ?>
 
 <div class="postbox-container">
 <div class="meta-box-sortables">
@@ -576,7 +576,7 @@ function wp_twitter_fdx_social() {
 
 
 </div><!-- /wrap -->
-<?php include('inc/footer_js.php'); ?>
+<?php include('_footer_js.php'); ?>
 <!-- carregar javascript especifico aqui -->
 <div class="clear"></div>
 <?php } //end page

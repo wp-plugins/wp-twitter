@@ -70,7 +70,7 @@ echo '<div class="updated fade"><p><strong>' . __( 'Settings updated', 'fdx-lang
 <div id="poststuff">
 <div id="post-body" class="metabox-holder columns-2">
 
-<?php include('inc/sidebar.php'); ?>
+<?php include('_sidebar.php'); ?>
 
 <div class="postbox-container">
 <div class="meta-box-sortables">
@@ -192,7 +192,7 @@ if ( $tokens['auth2_flag'] == '1' && $tokens['auth3_flag'] != '1' ) {
 
 
 </div><!-- /wrap -->
-<?php include('inc/footer_js.php'); ?>
+<?php include('_footer_js.php'); ?>
 <!-- carregar javascript especifico aqui -->
 <div class="clear"></div>
 <?php }

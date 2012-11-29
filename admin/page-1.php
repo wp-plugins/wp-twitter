@@ -210,7 +210,7 @@ function wp_twitter_fdx_options_page() {
 <div id="poststuff">
 <div id="post-body" class="metabox-holder columns-2">
 
-<?php include('inc/sidebar.php'); ?>
+<?php include('_sidebar.php'); ?>
 
 <div class="postbox-container">
 <div class="meta-box-sortables">
@@ -315,7 +315,7 @@ function wp_twitter_fdx_options_page() {
 
 
 
-<?php include('inc/footer_js.php'); ?>
+<?php include('_footer_js.php'); ?>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js " type="text/javascript"></script>
 
 <script charset="utf-8"  src="<?php echo FDX1_PLUGIN_URL;?>/js/twitter-text-js.js"></script>
