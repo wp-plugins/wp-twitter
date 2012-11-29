@@ -360,7 +360,8 @@ function wp_twitter_fdx_social() {
 ?>
 
 <div class="wrap">
-<div id="icon-edit" class="icon32 icon32-posts-post"><br /></div><h2><?php echo FDX1_PLUGIN_NAME;?>: <?php _e('Sharethis Button Integration', 'fdx-lang') ?></h2>
+<?php echo get_screen_icon('fdx-lock');?>
+<h2><?php echo FDX1_PLUGIN_NAME;?>: <?php _e('Sharethis Button Integration', 'fdx-lang') ?></h2>
 <div id="poststuff">
 <div id="post-body" class="metabox-holder columns-2">
 

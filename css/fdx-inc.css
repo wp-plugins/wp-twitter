@@ -24,3 +24,7 @@ a.sm_lang {background-image:url(../images/locate.png);}
 
 a.sm_star {background-image:url(../images/star.png);}
 a.sm_link {background-image:url(../images/link.png);}
+
+#icon-fdx-lock {background: url('../images/logo_icon.png') no-repeat scroll transparent;}
+.admin-color-classic #icon-fdx-lock {background: url('../images/logo_icon.png') no-repeat scroll transparent !important;}
+
