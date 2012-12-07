@@ -34,10 +34,10 @@ The following short url services are supported:
 * Bit.ly
 * and Wordpress default URL format `Ex: domain.com/?p=123`
 
-= Languages ??Available =
+= Languages Available =
 * English (default)
-* Brazilian Portuguese (Português Brasileiro: pt_BR) translation by [Fabrix DoRoMo](http://fabrix.net)
-* French (Français: fr_FR) translation by [Karim El Khalifa](http://www.moutons.ch/)
+* Brazilian Portuguese (Portugues Brasileiro: pt_BR) translation by [Fabrix DoRoMo](http://fabrix.net)
+* French (Francais: fr_FR) translation by [Karim El Khalifa](http://www.moutons.ch/)
 
 = How To Contribute =
 We'd love for you to get involved. Whatever your level of skill or however much time you can give, your contribution is greatly appreciated.
