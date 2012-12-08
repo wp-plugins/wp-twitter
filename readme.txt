@@ -5,7 +5,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: twitter,twit, tweet, tweets, twitter widget, dynamic twitter widget, auto refresh tweet, twitter goodies,twitter tools, yourls, short url, shortlink, shorturl, Widget, Twitter , Post, Tweet, Integrate, Update, Sidebar, Sharethis 
 Requires at least: 3.0
 Tested up to: 3.4.2
-Stable tag: 3.6.1
+Stable tag: 3.6.2
 License: GPLv2 or later
 
 Is a plugin that creates a complete integration between your WordPress blog and your Twitter account including ShareThis Buttons and Goodies Widgets.
@@ -36,8 +36,9 @@ The following short url services are supported:
 
 = Languages Available =
 * English (default)
-* Brazilian Portuguese (Portugues Brasileiro: pt_BR) translation by [Fabrix DoRoMo](http://fabrix.net)
-* French (Francais: fr_FR) translation by [Karim El Khalifa](http://www.moutons.ch/)
+* Brazilian Portuguese (Português Brasileiro: pt_BR) translation by [Fabrix DoRoMo](http://fabrix.net)
+* French (Français: fr_FR) translation by [Karim El Khalifa](http://www.moutons.ch/)
+* Spanish (Español: es_ES) translation by [Juan Pablo Población Paredes](http://www.juventudfuenla.com/)
 
 = How To Contribute =
 We'd love for you to get involved. Whatever your level of skill or however much time you can give, your contribution is greatly appreciated.
@@ -75,6 +76,9 @@ No, this plugin does not work with php4.
 
 
 == Changelog ==
+* 3.6.2
+    * Add Spanish (Español: es_ES) translation by [Juan Pablo Población Paredes](http://www.juventudfuenla.com/)
+
 * 3.6.1
     * Various cosmetic fixes
     * Add French (Français: fr_FR) translation by [Karim El Khalifa](http://www.moutons.ch/)
