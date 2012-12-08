@@ -1,4 +1,4 @@
-=== WP Twitter ===
+ï»¿=== WP Twitter ===
 Plugin Name: WP Twitter
 Contributors: fdoromo
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=Z9SRNRLLDAFZJ
@@ -36,9 +36,9 @@ The following short url services are supported:
 
 = Languages Available =
 * English (default)
-* Brazilian Portuguese (Português Brasileiro: pt_BR) translation by [Fabrix DoRoMo](http://fabrix.net)
-* French (Français: fr_FR) translation by [Karim El Khalifa](http://www.moutons.ch/)
-* Spanish (Español: es_ES) translation by [Juan Pablo Población Paredes](http://www.juventudfuenla.com/)
+* Brazilian Portuguese (PortuguÃªs Brasileiro: pt_BR) translation by [Fabrix DoRoMo](http://fabrix.net)
+* French (FranÃ§ais: fr_FR) translation by [Karim El Khalifa](http://www.moutons.ch/)
+* Spanish (EspaÃ±ol: es_ES) translation by [Juan Pablo PoblaciÃ³n Paredes](http://www.juventudfuenla.com/)
 
 = How To Contribute =
 We'd love for you to get involved. Whatever your level of skill or however much time you can give, your contribution is greatly appreciated.
@@ -77,11 +77,11 @@ No, this plugin does not work with php4.
 
 == Changelog ==
 * 3.6.2
-    * Add Spanish (Español: es_ES) translation by [Juan Pablo Población Paredes](http://www.juventudfuenla.com/)
+    * Add Spanish (EspaÃ±ol: es_ES) translation by [Juan Pablo PoblaciÃ³n Paredes](http://www.juventudfuenla.com/)
 
 * 3.6.1
     * Various cosmetic fixes
-    * Add French (Français: fr_FR) translation by [Karim El Khalifa](http://www.moutons.ch/)
+    * Add French (FranÃ§ais: fr_FR) translation by [Karim El Khalifa](http://www.moutons.ch/)
 
 * 3.6
     * ShareThis, support for change order or modify buttons.
