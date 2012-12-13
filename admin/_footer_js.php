@@ -1,3 +1,4 @@
+<script type="text/javascript" src="<?php echo admin_url(); ?>load-scripts.php?c=0&amp;load=jquery-ui-core,jquery-ui-widget,jquery-ui-mouse,jquery-ui-sortable,postbox,post"></script>
 <script language="JavaScript" type="text/javascript">
 function PopupCenter(pageURL, title,w,h,scrol) {
 var left = (screen.width/2)-(w/2);
@@ -15,4 +16,3 @@ return false;
    });
   });
 </script>
-<script type="text/javascript" src="<?php echo admin_url(); ?>load-scripts.php?c=0&amp;load=jquery,jquery-ui-core,jquery-ui-widget,jquery-ui-mouse,jquery-ui-sortable,postbox,post"></script>

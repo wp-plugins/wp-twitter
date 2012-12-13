@@ -2,16 +2,16 @@
 Plugin Name: WP Twitter
 Contributors: fdoromo
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=Z9SRNRLLDAFZJ
-Tags: twitter,twit, tweet, tweets, twitter widget, dynamic twitter widget, auto refresh tweet, twitter goodies,twitter tools, yourls, short url, shortlink, shorturl, Widget, Twitter , Post, Tweet, Integrate, Update, Sidebar, Sharethis 
+Tags: twitter, twit, tweet, tweets, twitter widget, dynamic twitter widget, auto refresh tweet, twitter goodies,twitter tools, yourls, Widget, Sharethis 
 Requires at least: 3.0
 Tested up to: 3.4.2
-Stable tag: 3.7
+Stable tag: 3.7.1
 License: GPLv2 or later
 
 Is a plugin that creates a complete integration between your WordPress blog and your Twitter account including ShareThis Buttons and Goodies Widgets.
 
 == Description ==
-[WP Twitter](http://fabrix.net/wp-twitter/ "Ver esta pagina em Portugues (pt-BR)") is a plugin that creates a complete integration between your WordPress blog and your Twitter account by giving you the following functionality:
+**WP Twitter** is a plugin that creates a complete integration between your WordPress blog and your Twitter account by giving you the following functionality:
 
 * It will post a tweet when you have created a new post on your Wordpress blog and when you have updated a post.
 * Complete Sharethis Button Integration
@@ -36,18 +36,16 @@ The following short url services are supported:
 
 = Languages Available =
 * English (default)
-* Brazilian Portuguese (Português Brasileiro: pt_BR) translation by [Fabrix DoRoMo](http://fabrix.net)
-* French (Français: fr_FR) translation by [Karim El Khalifa](http://www.moutons.ch/)
-* Spanish (Español: es_ES) translation by [Juan Pablo Población Paredes](http://www.juventudfuenla.com/)
-* Italian (Italiano: it_IT) translation by [TheShark_76](http://genitori-insieme.org)
+* Brazilian Portuguese (**pt_BR**) translation by **Fabrix DoRoMo**
+* French (**fr_FR**) translation by **Karim El Khalifa**
+* Spanish (**es_ES**) translation by **Juan Pablo Poblacion Paredes**
+* Italian (**it_IT**) translation by **TheShark_76**
 
 = How To Contribute =
 We'd love for you to get involved. Whatever your level of skill or however much time you can give, your contribution is greatly appreciated.
 
 * **Users** - download the latest development version of the plugin, and submit bug/feature requests.
-
 * **Non-English Speaking Users** - Contribute a translation using the GlotPress web interface - no technical knowledge required ([how to](http://translate.fabrix.net/projects/wp-twitter)).
-
 * **Developers** - Fork the development version and submit a pull request, especially for any known issues
 
 
@@ -77,17 +75,20 @@ No, this plugin does not work with php4.
 
 
 == Changelog ==
+* 3.7.1
+    * Fix [Guidelines](http://wordpress.org/extend/plugins/about/guidelines/)
+
 * 3.7
-    * Add Italian (Italiano: it_IT) translation by [TheShark_76](http://genitori-insieme.org)
+    * Add Italian (Italiano: it_IT) translation by TheShark_76
     * Improvement of performance 
     * Various cosmetic fixes
 
 * 3.6.2
-    * Add Spanish (Español: es_ES) translation by [Juan Pablo Población Paredes](http://www.juventudfuenla.com/)
+    * Add Spanish (Español: es_ES) translation by Juan Pablo Población Paredes
 
 * 3.6.1
     * Various cosmetic fixes
-    * Add French (Français: fr_FR) translation by [Karim El Khalifa](http://www.moutons.ch/)
+    * Add French (Français: fr_FR) translation by Karim El Khalifa
 
 * 3.6
     * ShareThis, support for change order or modify buttons.

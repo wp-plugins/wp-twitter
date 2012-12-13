@@ -134,7 +134,7 @@ document.forms.agreeform.agreecheck.checked=false
 ?>
 </form>
 
-    <tr><td>
+    <tr class="alternate"><td>
 
 
 		<form action="options.php" method="post" id="fdxReset">

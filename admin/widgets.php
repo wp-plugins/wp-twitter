@@ -310,7 +310,6 @@ function wp_twitter_fdx_options_page() {
 
 
 <?php include('_footer_js.php'); ?>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js " type="text/javascript"></script>
 <script src="<?php echo FDX1_PLUGIN_URL;?>js/twitter-text-js.js" type="text/javascript" charset="utf-8"></script>
 <script src="<?php echo FDX1_PLUGIN_URL;?>js/colorpicker.js" type="text/javascript"></script>
 <script src="<?php echo FDX1_PLUGIN_URL;?>js/goodies2.js" type="text/javascript"></script>
