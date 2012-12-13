@@ -171,8 +171,6 @@ function wp_twitter_fdx_search()
 
 // Displays Wordpress Blog Twitter fdx Options menu
 function wp_twitter_fdx_options_page() {
-
-
     if (isset($_POST['info_update']))
     {
 		update_option('wp_twitter_fdx_widget_title', stripslashes_deep((string)$_POST["wp_twitter_fdx_widget_title"]));
@@ -199,11 +197,7 @@ function wp_twitter_fdx_options_page() {
 		update_option('wp_twitter_fdx_search_links', (string)$_POST['wp_twitter_fdx_search_links']);
 		update_option('wp_twitter_fdx_search_widget_sidebar_title', (string)$_POST['wp_twitter_fdx_search_widget_sidebar_title']);
         echo '<div class="updated fade"><p><strong>' . __( 'Settings updated', 'fdx-lang' ) . '.</strong></p></div>';
-        } else {
-
-	}
-//adicionar icones e lang patch
-
+        } else {};
 ?>
 <div class="wrap"><?php echo get_screen_icon('fdx-lock');?>
 <h2><?php echo FDX1_PLUGIN_NAME;?>: <?php _e('Widgets Settings', 'fdx-lang') ?></h2>
@@ -256,7 +250,7 @@ function wp_twitter_fdx_options_page() {
 </div>
 </div>
 
-<div class="postbox  closed" >
+<div class="postbox" >
 <div class="handlediv" title="<?php _e('Click to toggle', 'fdx-lang') ?>"><br /></div><h3 class='hndle'><span><?php _e('Twitter Search Widget Options', 'fdx-lang') ?></span></h3>
 <div class="inside">
 <!-- ############################################################################################################### -->
@@ -275,7 +269,7 @@ function wp_twitter_fdx_options_page() {
 <li><input name="wp_twitter_fdx_widget_search_caption" type="text" size="20" value="<?php echo get_option('wp_twitter_fdx_widget_search_caption'); ?>"> &raquo; <?php _e('Search Caption', 'fdx-lang') ?></li>
 <li><input name="wp_twitter_fdx_search_width" type="text" size="7" value="<?php echo get_option('wp_twitter_fdx_search_width'); ?>" /> &raquo; <?php _e('Widget Width', 'fdx-lang') ?></li>
 <li><input name="wp_twitter_fdx_search_height" type="text" size="7" value="<?php echo get_option('wp_twitter_fdx_search_height'); ?>" /> &raquo; <?php _e('Widget Height', 'fdx-lang') ?></li>
-<li><p>Include Scrollbar?: <input name="wp_twitter_fdx_search_scrollbar" type="checkbox"<?php if(get_option('wp_twitter_fdx_search_scrollbar')!='-1') echo 'checked="checked"'; ?> value="1" /> <code><?php _e('Check to include Scrollbar', 'fdx-lang') ?> </code></p></li>
+<li><p><input name="wp_twitter_fdx_search_scrollbar" type="checkbox"<?php if(get_option('wp_twitter_fdx_search_scrollbar')!='-1') echo 'checked="checked"'; ?> value="1" />  &raquo;  <?php _e('Include Scrollbar?', 'fdx-lang') ?></p></li>
 
 <li><input class="widget-colors2" rel="shell-bg2" id="sw-shell-background2" name="wp_twitter_fdx_search_shell_bg" type="text" size="7" value="<?php echo get_option('wp_twitter_fdx_search_shell_bg'); ?>" /><b style=" padding: 4px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b> &raquo; <?php _e('Widget Shell Background Color', 'fdx-lang') ?></li>
 <li><input class="widget-colors2" rel="shell-color2" id="sw-shell-color2" name="wp_twitter_fdx_search_shell_text" type="text" size="7" value="<?php echo get_option('wp_twitter_fdx_search_shell_text'); ?>" /><b style=" padding: 4px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b> &raquo; <?php _e('Widget Shell Text Color', 'fdx-lang') ?></li>
@@ -316,12 +310,12 @@ function wp_twitter_fdx_options_page() {
 
 
 <?php include('_footer_js.php'); ?>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js " type="text/javascript"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js " type="text/javascript"></script>
+<script src="<?php echo FDX1_PLUGIN_URL;?>js/twitter-text-js.js" type="text/javascript" charset="utf-8"></script>
+<script src="<?php echo FDX1_PLUGIN_URL;?>js/colorpicker.js" type="text/javascript"></script>
+<script src="<?php echo FDX1_PLUGIN_URL;?>js/goodies2.js" type="text/javascript"></script>
+<script src="<?php echo FDX1_PLUGIN_URL;?>js/goodies.js" type="text/javascript"></script>
 
-<script charset="utf-8"  src="<?php echo FDX1_PLUGIN_URL;?>/js/twitter-text-js.js"></script>
-<script src="<?php echo FDX1_PLUGIN_URL;?>/js/colorpicker.js" type="text/javascript"></script>
-<script src="<?php echo FDX1_PLUGIN_URL;?>/js/goodies2.js" type="text/javascript"></script>
-<script src="<?php echo FDX1_PLUGIN_URL;?>/js/goodies.js" type="text/javascript"></script>
 <script type="text/javascript">
 //<![CDATA[
   var DemoWidget = new TWTR.Widget({
@@ -563,59 +557,5 @@ function wp_twitter_fdx_options_page() {
 
 
 <div class="clear"></div>
-<?php } //fim da pagina de opções
-
-function show_wp_twitter_fdx_profile_widget($args)
-{
-	extract($args);
-	$wp_twitter_fdx_widget_title1 = get_option('wp_twitter_fdx_widget_title');
-	echo $before_widget;
-	echo $before_title . $wp_twitter_fdx_widget_title1 . $after_title;
-    echo wp_twitter_fdx_profile();
-    echo $after_widget;
-}
-
-function show_wp_twitter_fdx_search_widget($args)
-{
-	extract($args);
-	$wp_twitter_fdx_widget_title1 = get_option('wp_twitter_fdx_search_widget_sidebar_title');
-	echo $before_widget;
-	echo $before_title . $wp_twitter_fdx_widget_title1 . $after_title;
-
-    echo wp_twitter_fdx_search();
-    echo $after_widget;
-}
-
-
-function wp_twitter_fdx_profile_widget_control()
-{
-printf(__('Please go to <b>%s | Widgets</b> for options. <br><br> Available options: <br> 1) Widget Title <br> 2) Twitter Username <br> 3) Widget Height <br> 4) Widget Width <br> 5) 5 different Shell and Tweet background and text color options', 'fdx-lang'), FDX1_PLUGIN_NAME);
-}
-
-
-function wp_twitter_fdx_search_widget_control()
-{
-printf(__('Please go to <b>%s | Widgets</b> for options. <br><br> Available options: <br> 1) Widget Title <br> 2) Search Query <br> 3) Search Title <br> 4) Search Caption <br> 5) 5 different Shell and Tweet background and text color options', 'fdx-lang'), FDX1_PLUGIN_NAME);
-}
-
-function widget_wp_twitter_fdx_profile_init()
-{
-    $widget_options = array('classname' => 'widget_wp_twitter_fdx_profile', 'description' => __('Display Twitter Profile Widget', 'fdx-lang') );
-    wp_register_sidebar_widget('wp_twitter_fdx_profile_widgets', FDX1_PLUGIN_NAME . __(' - Profile Widget', 'fdx-lang'), 'show_wp_twitter_fdx_profile_widget', $widget_options);
-    wp_register_widget_control('wp_twitter_fdx_profile_widgets', FDX1_PLUGIN_NAME . __(' - Profile Widget', 'fdx-lang'), 'wp_twitter_fdx_profile_widget_control' );
-}
-
-function widget_wp_twitter_fdx_search_init()
-{
-    $widget_options = array('classname' => 'widget_wp_twitter_fdx_search', 'description' => __('Display Twitter Search Widget', 'fdx-lang') );
-    wp_register_sidebar_widget('wp_twitter_fdx_search_widgets', FDX1_PLUGIN_NAME. __(' - Search Widget', 'fdx-lang'), 'show_wp_twitter_fdx_search_widget', $widget_options);
-    wp_register_widget_control('wp_twitter_fdx_search_widgets', FDX1_PLUGIN_NAME. __(' - Search Widget', 'fdx-lang'), 'wp_twitter_fdx_search_widget_control' );
-}
-
-add_filter('the_content', 'filter_wp_twitter_fdx_profile');
-add_filter('the_content', 'filter_wp_twitter_fdx_search');
-
-add_action('init', 'widget_wp_twitter_fdx_profile_init');
-add_action('init', 'widget_wp_twitter_fdx_search_init');
-
+<?php } //end
 ?>

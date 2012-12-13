@@ -115,7 +115,7 @@ class FDXTwitterOAuth {
     }
     $request = $this->oAuthRequest($this->accessTokenURL(), 'GET', $parameters);
     $token = FDXOAuthUtil::parse_parameters($request);
-    $this->token = new FDXOAuthConsumer($token['oauth_token'], $token['oauth_token_secret']);
+    $this->token = new FDXOAuthConsumer(@$token['oauth_token'], @$token['oauth_token_secret']);
     return $token;
   }
 

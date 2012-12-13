@@ -1,6 +1,6 @@
 <?php
-require_once('twitteroauth.php');
-require_once('page-2_manager.php');
+define('FDX_CONSUMER_KEY', '02aKLZppFA5zVlPwZogUGQ' );
+define('FDX_CONSUMER_SECRET', 'J8SvzvH0HnknkMKYqeGVJ5SsIb8t64CW6DEAul1sM' );
 
 /* Plugin action when status changes to publish */
 function fdx_updater_published($post) //$post_ID)
@@ -316,17 +316,14 @@ function fdx_updater_get_file_contents( $url, $method='GET', $body=array(), $hea
 	/*** Twitter OAuth Functions ***/
 
 
-$fdx_consumer_key = '02aKLZppFA5zVlPwZogUGQ';
-$fdx_consumer_secret = 'J8SvzvH0HnknkMKYqeGVJ5SsIb8t64CW6DEAul1sM';
-
 /* Get Request Tokens */
 function fdx_updater_register($tokens)
 {
-	global $fdx_consumer_key, $fdx_consumer_secret;
-	$connection = new FDXTwitterOAuth($fdx_consumer_key, $fdx_consumer_secret);
+    $fdx_callback = FDX1_PLUGIN_URL.'admin/callback.php';
+	$connection = new FDXTwitterOAuth(FDX_CONSUMER_KEY, FDX_CONSUMER_SECRET);
 
 	// Get the request tokens
-	$request = $connection->getRequestToken();
+	$request = $connection->getRequestToken($fdx_callback);
 
 	// Retrive tokens from request and store in array
 	$tokens['request_key'] = $request["oauth_token"];
@@ -342,22 +339,13 @@ function fdx_updater_register($tokens)
 
 function fdx_updater_authorise($tokens)
 {
-    global $fdx_consumer_key, $fdx_consumer_secret;
-	$connection = new FDXTwitterOAuth($fdx_consumer_key, $fdx_consumer_secret, $tokens['request_key'], $tokens['request_secret']);
-
+    $connection = new FDXTwitterOAuth(FDX_CONSUMER_KEY, FDX_CONSUMER_SECRET, $tokens['request_key'], $tokens['request_secret']);
 	// Get the access tokens
 	$request = $connection->getAccessToken();
-
 	// Retrieve access token from request:
-
-if(isset($request['oauth_token'])){//verifica se existe
-
-    $tokens['access_key'] = $request['oauth_token'];
-	$tokens['access_secret'] = $request['oauth_token_secret'];
-
+    $tokens['access_key'] = @$request['oauth_token'];
+	$tokens['access_secret'] = @$request['oauth_token_secret'];
     return $tokens;
-
-   } else {echo "erro"; }
 
 }
 
@@ -365,9 +353,7 @@ if(isset($request['oauth_token'])){//verifica se existe
 
 function fdx_updater_verify($tokens)
 {
-
-global $fdx_consumer_key, $fdx_consumer_secret;
-	$connection = new FDXTwitterOAuth($fdx_consumer_key, $fdx_consumer_secret, $tokens['access_key'], $tokens['access_secret']);
+	$connection = new FDXTwitterOAuth(FDX_CONSUMER_KEY, FDX_CONSUMER_SECRET, $tokens['access_key'], $tokens['access_secret']);
 
 	$result = $connection->get('account/verify_credentials');
 
@@ -399,8 +385,7 @@ function fdx_updater_update_status($tweet)
 
 	if( $tokens['auth3_flag'] == '1' )
 	{
-		global $fdx_consumer_key, $fdx_consumer_secret;
-		$connection = new FDXTwitterOAuth($fdx_consumer_key, $fdx_consumer_secret, $tokens['access_key'], $tokens['access_secret']);
+		$connection = new FDXTwitterOAuth(FDX_CONSUMER_KEY, FDX_CONSUMER_SECRET, $tokens['access_key'], $tokens['access_secret']);
 
 		// Post an update to Twitter via your application:
 		$result = $connection->post('statuses/update', array('status' => $tweet));
@@ -416,14 +401,4 @@ function fdx_updater_update_status($tweet)
 
 	return $result;
 }
-
-/* Action for when a post is published */
-	add_action( 'draft_to_publish', 'fdx_updater_published', 1, 1 );
-	add_action( 'new_to_publish', 'fdx_updater_published', 1, 1 );
-	add_action( 'pending_to_publish', 'fdx_updater_published', 1, 1 );
-	add_action( 'future_to_publish', 'fdx_updater_published', 1, 1 );
-
-    add_action( 'publish_to_publish', 'fdx_updater_edited', 1, 1 );
-
-    add_action( 'admin_init', 'fdx_updater_admin_init' );
 ?>

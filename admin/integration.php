@@ -318,7 +318,7 @@ function fdx_sharethis_script() {
 
       }
 }
-add_action( 'wp_head', 'fdx_sharethis_script' );
+
 //---------------------------------------------------
 
 function wp_twitter_fdx_social() {
@@ -582,9 +582,4 @@ function wp_twitter_fdx_social() {
 <div class="clear"></div>
 <?php } //end page
 
-
-add_action('wp_footer', 'filter_wp_twitter_fdx_tweet_button_show');
-
-add_filter('the_content', 'filter_wp_twitter_fdx_tweet_button_show', 1);
-add_filter('the_excerpt', 'filter_wp_twitter_fdx_tweet_button_show', 1);
 ?>

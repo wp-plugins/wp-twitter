@@ -2,11 +2,12 @@
 .ico_button {padding:4px;display:block;padding-left:25px;background-repeat:no-repeat;background-position:5px 50%;text-decoration:none;border:none;}
 .ico_button_pt_BR, .ico_button_pt-BR, .ico_button_pt   {background-image:url(../images/flag_br.png);}
 .ico_button_fr_FR, .ico_button_fr-FR, .ico_button_fr   {background-image:url(../images/flag_fr.png);}
-.ico_button_es_ES, .ico_button_es-ES, .ico_button_es   {background-image:url(../images/flag_es.png);} 
-
+.ico_button_es_ES, .ico_button_es-ES, .ico_button_es   {background-image:url(../images/flag_es.png);}
+.ico_button_it_IT, .ico_button_it-IT, .ico_button_it   {background-image:url(../images/flag_it.png);}
 
 /* ************************sidebar common******************************* */
-div.hid { visibility: hidden; overflow: hidden; height: 1px; }  /* hack para input hiden */
+#fdxerror { color: red; font-size: 15px; font-weight: bold; margin: 10px; text-align: center; padding: 3px }
+
 .postbox p { padding: 0 5px 0 5px !important  }
 .fdx { font-size: 13px !important; font-weight: normal !important; text-align: left !important}
 .fdx td { padding: 10px }
