@@ -39,7 +39,7 @@ The following short url services are supported:
 * Brazilian Portuguese (Português Brasileiro: pt_BR) translation by [Fabrix DoRoMo](http://fabrix.net)
 * French (Français: fr_FR) translation by [Karim El Khalifa](http://www.moutons.ch/)
 * Spanish (Español: es_ES) translation by [Juan Pablo Población Paredes](http://www.juventudfuenla.com/)
-* Italian (Italiano: it_IT) translation by [TheShark_76] (http://genitori-insieme.org)
+* Italian (Italiano: it_IT) translation by [TheShark_76](http://genitori-insieme.org)
 
 = How To Contribute =
 We'd love for you to get involved. Whatever your level of skill or however much time you can give, your contribution is greatly appreciated.
