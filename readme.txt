@@ -62,6 +62,7 @@ We'd love for you to get involved. Whatever your level of skill or however much 
 1. Go to `Presentation / Widgets` in your WordPress admin area.
 1. Drag the `WP Twitter` widget to your sidebar.
 
+> You can install **WP Twitter** directly from the WordPress admin! Visit the Plugins - > Add New page and search for **WP Twitter**. Click to install.
 
 
 == Frequently Asked Questions ==

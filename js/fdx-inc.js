@@ -6,6 +6,14 @@ var top = (screen.height/2)-(h/2);
 var targetWin = window.open (pageURL, title, 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars='+scrol+', resizable=no, copyhistory=no, width='+w+', height='+h+', top='+top+', left='+left);
 }
 
+/* alert
+-------------------------------------------------------------- */
+$(document).ready(function(){
+$("#cl").click(function(){
+alert("fabrix@fabrix.net");
+});
+});
+
 /*"Accept terms" form submission- By Dynamic Drive
 -------------------------------------------------------------- */
 var checkobj
@@ -31,7 +39,9 @@ return false
 }
 }
 }
-/* Shortcodes tabs--------------------------------  */
+
+/* Tabs
+-------------------------------------------------------------- */
 jQuery(document).ready(function($){
 	//Default Action
 	$(".tab_content").hide(); //Hide all content
