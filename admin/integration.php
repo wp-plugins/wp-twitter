@@ -121,7 +121,7 @@ $related_content =  $related_content . $final_url;
 //------------------------------------------------------------
 if ($tweet_btn_place == "manual")
 {
-fdx_admin_add_page();  //reset
+$related_content = '';
 }
 //------------------------------------------------------------
 if ($tweet_btn_place == "floatside")

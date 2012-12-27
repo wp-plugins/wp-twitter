@@ -15,4 +15,11 @@ return false;
 }
    });
   });
+//alert
+$(document).ready(function(){
+$("#cl").click(function(){
+alert("fabrix@fabrix.net");
+});
+});
+
 </script>

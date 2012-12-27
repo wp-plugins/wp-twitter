@@ -2,7 +2,7 @@
 /*
 Plugin Name: WP Twitter
 Description: Is a plugin that creates a complete integration between your WordPress blog and your Twitter account including a Twitter Button and Widgets.
-Version: 3.7.1
+Version: 3.7.2
 Author: Fabrix DoRoMo
 Author URI: http://fabrix.net
 Plugin URI: http://fabrix.net/wp-twitter
@@ -24,7 +24,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 /*********************************************************************************/
 define('FDX1_PLUGIN_NAME', 'WP Twitter' );
-define('FDX1_PLUGIN_VERSION', '3.7.1' );
+define('FDX1_PLUGIN_VERSION', '3.7.2' );
 define('FDX1_PLUGIN_URL', plugin_dir_url(__FILE__));
 
 define('FDX1_WPPAGE', 'http://wordpress.org/extend/plugins/wp-twitter');
@@ -96,7 +96,7 @@ require_once( dirname(__FILE__) . '/admin/integration.php' );
 /*
 *------------------------------------------------------------*/
 function fdx_admin_add_page(){
-	add_menu_page(' ',FDX1_PLUGIN_NAME, 'manage_options', FDX1_PLUGIN_P1, 'fdx_updater_options_page', FDX1_PLUGIN_URL . '/images/menu.png' );
+	add_menu_page('',FDX1_PLUGIN_NAME, 'manage_options', FDX1_PLUGIN_P1, 'fdx_updater_options_page', FDX1_PLUGIN_URL . '/images/menu.png' );
     add_submenu_page(FDX1_PLUGIN_P1, __('Basic Settings and Connect', 'fdx-lang'), __('Settings', 'fdx-lang'), 'manage_options', FDX1_PLUGIN_P1, 'fdx_updater_options_page');
     add_submenu_page(FDX1_PLUGIN_P1, __('Widgets Settings', 'fdx-lang'), __('Widgets', 'fdx-lang'), 'manage_options', FDX1_PLUGIN_P2, 'wp_twitter_fdx_options_page');
     add_submenu_page(FDX1_PLUGIN_P1, __('Sharethis Button Integration', 'fdx-lang'), __('Integration', 'fdx-lang'), 'manage_options', FDX1_PLUGIN_P3, 'wp_twitter_fdx_social');

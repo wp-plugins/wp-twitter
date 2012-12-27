@@ -29,6 +29,9 @@ a.sm_lang {background-image:url(../images/locate.png);}
 a.sm_star {background-image:url(../images/star.png);}
 a.sm_link {background-image:url(../images/link.png);}
 
+a.sm_bullet {background-image:url(../images/bullet.png);}
+em.none { color: #808080; font-size: 10px  }
+
 #icon-fdx-lock {background: url('../images/logo_icon.png') no-repeat scroll transparent;}
 .admin-color-classic #icon-fdx-lock {background: url('../images/logo_icon.png') no-repeat scroll transparent !important;}
 
