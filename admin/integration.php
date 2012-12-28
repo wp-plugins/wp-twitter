@@ -577,8 +577,6 @@ function wp_twitter_fdx_social() {
 
 
 </div><!-- /wrap -->
-<?php include('_footer_js.php'); ?>
-<!-- carregar javascript especifico aqui -->
 <div class="clear"></div>
 <?php } //end page
 

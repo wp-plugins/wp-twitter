@@ -306,15 +306,8 @@ function wp_twitter_fdx_options_page() {
 
 
 </div><!-- /wrap -->
-
-
-
-<?php include('_footer_js.php'); ?>
+<div class="clear"></div>
 <script src="<?php echo FDX1_PLUGIN_URL;?>js/twitter-text-js.js" type="text/javascript" charset="utf-8"></script>
-<script src="<?php echo FDX1_PLUGIN_URL;?>js/colorpicker.js" type="text/javascript"></script>
-<script src="<?php echo FDX1_PLUGIN_URL;?>js/goodies2.js" type="text/javascript"></script>
-<script src="<?php echo FDX1_PLUGIN_URL;?>js/goodies.js" type="text/javascript"></script>
-
 <script type="text/javascript">
 //<![CDATA[
   var DemoWidget = new TWTR.Widget({
@@ -552,9 +545,5 @@ function wp_twitter_fdx_options_page() {
       twttr.ListPerUserLimit = 20;
 //]]>
 </script>
-
-
-
-<div class="clear"></div>
 <?php } //end
 ?>

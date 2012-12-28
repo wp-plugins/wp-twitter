@@ -2,7 +2,7 @@
 /*
 Plugin Name: WP Twitter
 Description: Is a plugin that creates a complete integration between your WordPress blog and your Twitter account including a Twitter Button and Widgets.
-Version: 3.7.2
+Version: 3.7.3
 Author: Fabrix DoRoMo
 Author URI: http://fabrix.net
 Plugin URI: http://fabrix.net/wp-twitter
@@ -24,7 +24,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 /*********************************************************************************/
 define('FDX1_PLUGIN_NAME', 'WP Twitter' );
-define('FDX1_PLUGIN_VERSION', '3.7.2' );
+define('FDX1_PLUGIN_VERSION', '3.7.3' );
 define('FDX1_PLUGIN_URL', plugin_dir_url(__FILE__));
 
 define('FDX1_WPPAGE', 'http://wordpress.org/extend/plugins/wp-twitter');
@@ -51,7 +51,6 @@ $currentLocale = get_locale();
       add_action( 'admin_menu', 'fdx_admin_add_page' );
       //------------------------------
        if ( isset( $_GET['page'] ) && $_GET['page'] == FDX1_PLUGIN_P1 || isset( $_GET['page'] ) && $_GET['page'] == FDX1_PLUGIN_P2 || isset( $_GET['page'] ) && $_GET['page'] == FDX1_PLUGIN_P3)  {
-           wp_deregister_script('jquery');
            add_action('admin_enqueue_scripts', 'fdx_1_enqueue_scripts');
            }
  }
@@ -76,11 +75,12 @@ add_action('wp_footer', 'filter_wp_twitter_fdx_tweet_button_show');
 *------------------------------------------------------------*/
 function fdx_1_enqueue_scripts() {
       wp_enqueue_style('fdx-css', FDX1_PLUGIN_URL . 'css/fdx-inc.css', array(), FDX1_PLUGIN_VERSION);
-      wp_enqueue_script('jquery', FDX1_PLUGIN_URL . 'js/jquery-1.8.3.min.js', array(), '1.8.3');
+      wp_enqueue_script('wpcore-js', admin_url() . 'load-scripts.php?c=0&amp;load=jquery-ui-core,jquery-ui-widget,jquery-ui-mouse,jquery-ui-sortable,postbox,post', array(), FDX1_PLUGIN_VERSION, true);
       wp_enqueue_script('fdx-js', FDX1_PLUGIN_URL . 'js/fdx-inc.js', array(), FDX1_PLUGIN_VERSION, true);
    if ( isset( $_GET['page'] ) && $_GET['page'] == FDX1_PLUGIN_P2)  {
  	  wp_enqueue_style('fdx-colorpicker', FDX1_PLUGIN_URL . 'css/colorpicker.css', array(), FDX1_PLUGIN_VERSION);
-
+      wp_enqueue_script('fdx-colorpicker', FDX1_PLUGIN_URL . 'js/colorpicker.js', array(), FDX1_PLUGIN_VERSION, true);
+      wp_enqueue_script('fdx-goodies', FDX1_PLUGIN_URL . 'js/goodies.js', array(), FDX1_PLUGIN_VERSION, true);
     }
  }
 

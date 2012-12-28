@@ -362,8 +362,19 @@ echo " /></strong>";
 
 
 </div><!-- /wrap -->
-<?php include('_footer_js.php'); ?>
 <div class="clear"></div>
+<script language="JavaScript" type="text/javascript">
+//reset
+jQuery(document).ready(function($) {
+$("#fdxReset").submit(function(event) {
+var ask = confirm('<?php _e('Are you sure you want to reset all settings?', 'fdx-lang') ?>');
+if (!ask) {
+event.preventDefault();
+return false;
+}
+   });
+  });
+</script>
 <?php } ?>
 <?php
 function fdx_updater_admin_init()
