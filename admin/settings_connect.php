@@ -12,8 +12,8 @@ function fdx_updater_published($post) //$post_ID)
 	{
 		$post_ID = $post->ID;
 		$title = $post->post_title;
-//		$link = get_permalink($post_ID);
-	    $link = wp_get_shortlink($post_ID);
+		$link = get_permalink($post_ID);
+//	    $link = wp_get_shortlink($post_ID);
 		$tweet = '';
 
 		// Format the message
@@ -41,8 +41,8 @@ function fdx_updater_edited($post) //$post_ID)
 	{
 		$post_ID = $post->ID;
 		$title = $post->post_title;
-//		$link = get_permalink($post_ID);
-        $link = wp_get_shortlink($post_ID);
+		$link = get_permalink($post_ID);
+//      $link = wp_get_shortlink($post_ID);
 		$tweet = '';
 
 		// Format the message
@@ -141,7 +141,7 @@ function fdx_updater_format_tweet( $tweet_format, $title, $link, $post_ID, $url_
 	$short_url = fdx_get_shorturl($url_method,$link,$post_ID);
 
 	// Error handling: If plugin is deacitvated, repeat to use default link supplier
-	if( $short_url['error_code'] == '1' )
+	if( @$short_url['error_code'] == '1' )
 	{
 		$short_url = fdx_get_shorturl($short_url['url_method'],$link,$post_ID);
 	}
@@ -163,12 +163,12 @@ function fdx_updater_format_tweet( $tweet_format, $title, $link, $post_ID, $url_
 			if ( "$val[0]" == "#url#" )
 			{
 				$tweet_length = $tweet_length-5+$url_length;
-				$url_count++;
+				@$url_count++;
 			}
 			elseif ( "$val[0]" == "#title#" )
 			{
 				$tweet_length = $tweet_length-7+$title_length;
-				$title_count++;
+				@$title_count++;
 			}
 
 		}

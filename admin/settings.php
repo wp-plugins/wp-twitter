@@ -310,10 +310,10 @@ echo " /></strong>";
 <p>
 <?php
   $options = get_option('fdx_updater_options');
- 	// Full length WordPress Permalink
+ 	// default wp Options
 	echo "<ul><li><input id='fdx_updater_chose_url' type='radio' name='fdx_updater_options[url_method]' value='permalink'";
 	if( $options['url_method'] == 'permalink' || $options['url_method'] == 'default' ) { echo " checked='true'"; };
-	echo " /><label for='fdx_updater_chose_url'> <strong>".__('Wordpress default URL format', 'fdx-lang')."</strong> <code>Ex: http://domain.com/?p=123</code></label></li>";
+	echo " /><label for='fdx_updater_chose_url'> <strong>".__('Wordpress default URL format', 'fdx-lang')." (<a href='".admin_url('options-permalink.php')."'>Permalink</a>)</strong></label></li>";
 // is.gd
 	echo "<li><input id='fdx_updater_chose_url' type='radio' name='fdx_updater_options[url_method]' value='is.gd'";
 	if( $options['url_method'] == 'is.gd' ) { echo " checked='true'"; };
