@@ -2,68 +2,96 @@
 define('FDX_CONSUMER_KEY', '02aKLZppFA5zVlPwZogUGQ' );
 define('FDX_CONSUMER_SECRET', 'J8SvzvH0HnknkMKYqeGVJ5SsIb8t64CW6DEAul1sM' );
 
+function fdx_hash_tags( $post_ID ) {
+	$hashtags = '';
+	$max_tags = '3'; //Maximum number of tags to include
+	$max_characters = '15'; //Maximum length in characters for included tags
+	$max_characters = ( $max_characters == 0 || $max_characters == "" )?100:$max_characters + 1;
+	if ($max_tags == 0 || $max_tags == "") { $max_tags = 100; }
+		$tags = get_the_tags( $post_ID );
+		if ( $tags > 0 ) {
+		$i = 1;
+			foreach ( $tags as $value ) {
+			$tag = $value->name;
+			$replace = '_'; //Spaces in tags replaced with
+			$strip = '0'; //Strip nonalphanumeric characters from tags no=0 | yes=1
+			$search = "/[^\p{L}\p{N}\s]/u";
+			if ($replace == "[ ]") { $replace = ""; }
+			$tag = str_ireplace( " ",$replace,trim( $tag ) );
+			if ($strip == '1') { $tag = preg_replace( $search, $replace, $tag ); }
+			if ($replace == "" || !$replace) { $replace = "_"; }
+				$newtag = "#$tag";
+					if ( mb_strlen( $newtag ) > 2 && (mb_strlen( $newtag ) <= $max_characters) && ($i <= $max_tags) ) {
+					$hashtags .= "$newtag ";
+					$i++;
+					}
+			}
+		}
+	$hashtags = trim( $hashtags );
+	if ( mb_strlen( $hashtags ) <= 1 ) { $hashtags = ""; }
+	return $hashtags;
+}
+
+
 /* Plugin action when status changes to publish */
 function fdx_updater_published($post) //$post_ID)
 {
 	//load plugin preferences
 	$options = get_option('fdx_updater_options');
-
 	if ( $options['newpost_update'] == "1" && fdx_updater_is_tweetable($post, $options) )
 	{
 		$post_ID = $post->ID;
 		$title = $post->post_title;
 		$link = get_permalink($post_ID);
+        $author = get_the_author_meta( 'display_name',$post->post_author );
+        $categorys = get_the_category($post_ID);
+        $category = $categorys[0]->name;
+        $tags = fdx_hash_tags( $post_ID );
 //	    $link = wp_get_shortlink($post_ID);
 		$tweet = '';
-
 		// Format the message
-		$tweet = fdx_updater_format_tweet( $options['newpost_format'], $title, $link, $post_ID, $options['url_method'] );
-
+		$tweet = fdx_updater_format_tweet( $options['newpost_format'], $title, $link, $author, $category, $tags, $post_ID, $options['url_method'] );
 			if($tweet != '')
 			{
 				// Send the message
 		    		$result = fdx_updater_update_status($tweet);
 			}
-
 	}
-
 	return $post;
 }
 
-/* Plugin action when published is (re)published (i.e. updated) */
 
+/* Plugin action when published is (re)published (i.e. updated) */
 function fdx_updater_edited($post) //$post_ID)
 {
 	//load plugin preferences
 	$options = get_option('fdx_updater_options');
-
 	if ( $options['edited_update'] == "1" && fdx_updater_is_tweetable($post, $options) )
 	{
 		$post_ID = $post->ID;
 		$title = $post->post_title;
 		$link = get_permalink($post_ID);
+        $author = get_the_author_meta( 'display_name',$post->post_author );
+        $categorys = get_the_category($post_ID);
+        $category = $categorys[0]->name;
+        $tags = fdx_hash_tags( $post_ID );
 //      $link = wp_get_shortlink($post_ID);
 		$tweet = '';
-
 		// Format the message
-		$tweet = fdx_updater_format_tweet( $options['edited_format'], $title, $link, $post_ID, $options['url_method'] );
-
+		$tweet = fdx_updater_format_tweet( $options['edited_format'], $title, $link, $author, $category, $tags, $post_ID, $options['url_method'] );
 			if($tweet != '')
 			{
 				// Send the message
 		    		$result = fdx_updater_update_status($tweet);
 			}
-
 	}
-
 	return $post;
 }
 
 
-
-
-
-	/*** Additional Functions ***/
+/*****************************************************************************
+*                           Additional Functions                             *
+*****************************************************************************/
 
 
 // checks if the post has either a given custom field key/value
@@ -77,7 +105,6 @@ function fdx_updater_is_tweetable($post, $options)
 		if( is_array($options['limit_to_category']) && sizeof($options['limit_to_category']) > 0 )
 		{
 			$post_categories = wp_get_post_categories($post->ID);
-
 			if( is_array($post_categories) && sizeof($post_categories) > 0 )
 			{
 				foreach( $post_categories as $key => $value )
@@ -90,7 +117,6 @@ function fdx_updater_is_tweetable($post, $options)
 				}
 			}
 		}
-
 		// Ok, no category found so continue with checking for the custom fields
 		if( !empty( $options['limit_to_custom_field_key'] ) )
 		{
@@ -98,7 +124,6 @@ function fdx_updater_is_tweetable($post, $options)
 			if( empty( $options['limit_to_custom_field_val'] ) || $options['limit_to_custom_field_val'] == '*' )
 			{
 				$custom_field_val = get_post_meta( $post->ID, $options['limit_to_custom_field_key'], true );
-
 				if( !empty($custom_field_val) )
 				{
 					//echo "key matches: true";
@@ -109,7 +134,6 @@ function fdx_updater_is_tweetable($post, $options)
 			else if( !empty( $options['limit_to_custom_field_val'] ) )
 			{
 				$custom_field_val = get_post_meta( $post->ID, $options['limit_to_custom_field_key'], true );
-
 				if( !empty($custom_field_val) && $custom_field_val == $options['limit_to_custom_field_val'] )
 				{
 					//echo "key and value match: true";
@@ -117,10 +141,8 @@ function fdx_updater_is_tweetable($post, $options)
 				}
 			}
 		}
-
 		// in all other cases return false
 		return false;
-
 	}
 	else
 	{
@@ -130,33 +152,26 @@ function fdx_updater_is_tweetable($post, $options)
 }
 
 
-/* Single function to output a formatted tweet */
-
-function fdx_updater_format_tweet( $tweet_format, $title, $link, $post_ID, $url_method )
+/* Single function to output a formatted tweet
+*------------------------------------------------------------*/
+function fdx_updater_format_tweet( $tweet_format, $title, $link, $author, $category, $tags, $post_ID, $url_method )
 {
 	//initialise tweet
 	$tweet = $tweet_format;
-
 	//retieve the short url
 	$short_url = fdx_get_shorturl($url_method,$link,$post_ID);
-
 	// Error handling: If plugin is deacitvated, repeat to use default link supplier
 	if( @$short_url['error_code'] == '1' )
 	{
 		$short_url = fdx_get_shorturl($short_url['url_method'],$link,$post_ID);
 	}
-
-	// Additional error handing is possible: if $tweet is empty, sending will be aborted.
-
 	//check string length and trim title if necessary (max $tweet_format length without placeholders is 100 chars)
 	preg_match_all( '/#[a-z]{3,5}#/', $tweet, $placeholders, PREG_SET_ORDER);
-
 	if ( $placeholders != NULL )
 	{
 		$tweet_length = strlen($tweet);
 		$title_length = strlen($title);
 		$url_length = strlen($short_url);
-
 		//calculate the final tweet length
 		foreach ($placeholders as $val)
 		{
@@ -170,38 +185,33 @@ function fdx_updater_format_tweet( $tweet_format, $title, $link, $post_ID, $url_
 				$tweet_length = $tweet_length-7+$title_length;
 				@$title_count++;
 			}
-
 		}
-
 		//If the tweet is too long, reduce the length of the placeholders in order of increasing importance
-
 		//if too long, trim the title (if the placeholder was used)
 		if ( $tweet_length > 140 && isset($title_count) && $title_count > 0 )
 		{
 			$max_title_length = $title_length-(($tweet_length-140)/$title_count);
 			$max_title_length = floor($max_title_length);
-
 			if ( $max_title_length > 0 ) { $title = substr( $title, 0, $max_title_length ); } else { $title = ''; }
-
 			$tweet_length = $tweet_length-(($title_length+strlen($title))*$title_count);
 		}
-
 		//if still too long, force a url shortener
 		if ($tweet_length > 140)
 		{
 			$short_url = fdx_get_shorturl('tinyurl',$link,$post_ID);
 		}
 	}
-
 	//do the placeholder string replace
 	$tweet = str_replace ( '#title#', $title, $tweet);
 	$tweet = str_replace ( '#url#', $short_url, $tweet);
-
+    $tweet = str_replace ( '#author#', $author, $tweet);
+    $tweet = str_replace ( '#category#', $category, $tweet);
+    $tweet = str_replace ( '#tags#', $tags, $tweet);
 	return $tweet;
 }
 
-/* Get the selected short url */
-
+/* Get the selected short url
+*------------------------------------------------------------*/
 function fdx_get_shorturl( $url_method, $link, $post_ID )
 {
 	//Internal URL providers:
@@ -209,17 +219,13 @@ function fdx_get_shorturl( $url_method, $link, $post_ID )
 	{
 		$short_url = $link;
 	}
-
 	//Generic Shortener Engines
-
 	else if ( $url_method == 'yourls' )
 	{
 		$options = get_option('fdx_updater_options');
-
 		if ( !empty($options['yourls_token']) )
 		{
 			$timestamp = time();
-
 			$attributes = array(     // Data to POST
 					'url'      => $link,
 					'keyword'  => '',
@@ -228,18 +234,14 @@ function fdx_get_shorturl( $url_method, $link, $post_ID )
 					'timestamp' => $timestamp,
 					'signature' => md5( $timestamp . $options['yourls_token'] ),
 						);
-
 			$response = fdx_updater_get_file_contents($options['yourls_url'], 'POST', $attributes);
 		}
 		else
 		{
 			$target_url = $options['yourls_url'] . "?format=json&action=shorturl&url=" . urlencode($link) ;
-
 			$response = fdx_updater_get_file_contents($target_url);
 		}
-
 		$json = json_decode( $response, true );
-
 		if ( $json['statusCode'] == "200" )
 		{
 			$short_url = $json['shorturl'];
@@ -254,16 +256,14 @@ function fdx_get_shorturl( $url_method, $link, $post_ID )
 		}
 	}
 
-	//External URL shorteners:
+/* External URL shorteners
+*------------------------------------------------------------*/
 	else if ( $url_method == 'bitly' )
 	{
 		$options = get_option('fdx_updater_options');
-
 		$bitly = 'http://api.bit.ly/v3/shorten?login=' . $options['bitly_username'] . '&apiKey=' . $options['bitly_appkey'] . '&format=json&longUrl=' . urlencode($link);
 		$response = fdx_updater_get_file_contents($bitly);
-
 		$json = json_decode( $response, true );
-
 		if ( $json['status_code'] == "200" )
 		{
 			$short_url = $json['data']['url'];
@@ -288,19 +288,17 @@ function fdx_get_shorturl( $url_method, $link, $post_ID )
 	    $target_url = "http://is.gd/api.php?longurl=" . $link;
 		$short_url = fdx_updater_get_file_contents($target_url);
 	}
-
-
 	return $short_url;
 }
 
 
-/* Wordress alternative to file_get_contents/CURL/Snoopy/etc. - server independent*/
+/* Wordress alternative to file_get_contents/CURL/Snoopy/etc
+*------------------------------------------------------------*/
 function fdx_updater_get_file_contents( $url, $method='GET', $body=array(), $headers=array() ) {
 	if( !class_exists( 'WP_Http' ) )
 		include_once( ABSPATH . WPINC. '/class-http.php' );
 	$request = new WP_Http;
 	$result = $request->request( $url , array( 'method'=>$method, 'body'=>$body, 'headers'=>$headers, 'user-agent'=>'http://fabrix.net/wp-twitter' ) );
-
 	if ( !is_wp_error($result) && isset($result['body']) )
 	{
 		return $result['body'];
@@ -312,31 +310,28 @@ function fdx_updater_get_file_contents( $url, $method='GET', $body=array(), $hea
 	}
 }
 
+/*****************************************************************************
+*                           Twitter OAuth Functions                          *
+*****************************************************************************/
 
-	/*** Twitter OAuth Functions ***/
-
-
-/* Get Request Tokens */
+/* Get Request Tokens
+*------------------------------------------------------------*/
 function fdx_updater_register($tokens)
 {
     $fdx_callback = FDX1_PLUGIN_URL.'admin/callback.php';
 	$connection = new FDXTwitterOAuth(FDX_CONSUMER_KEY, FDX_CONSUMER_SECRET);
-
 	// Get the request tokens
 	$request = $connection->getRequestToken($fdx_callback);
-
 	// Retrive tokens from request and store in array
 	$tokens['request_key'] = $request["oauth_token"];
 	$tokens['request_secret'] = $request["oauth_token_secret"];
-
 	// Generate a request link and output it
 	$tokens['request_link'] = $connection->getAuthorizeURL($request);
-
 	return $tokens;
 }
 
-/* Get Access Tokens */
-
+/* Get Access Tokens
+*------------------------------------------------------------*/
 function fdx_updater_authorise($tokens)
 {
     $connection = new FDXTwitterOAuth(FDX_CONSUMER_KEY, FDX_CONSUMER_SECRET, $tokens['request_key'], $tokens['request_secret']);
@@ -346,22 +341,18 @@ function fdx_updater_authorise($tokens)
     $tokens['access_key'] = @$request['oauth_token'];
 	$tokens['access_secret'] = @$request['oauth_token_secret'];
     return $tokens;
-
 }
 
-/* Validate Access */
-
+/* Validate Access
+*------------------------------------------------------------*/
 function fdx_updater_verify($tokens)
 {
 	$connection = new FDXTwitterOAuth(FDX_CONSUMER_KEY, FDX_CONSUMER_SECRET, $tokens['access_key'], $tokens['access_secret']);
-
 	$result = $connection->get('account/verify_credentials');
-
 	$verify = array(
 		'exit_code' => '',
 		'user_name' => '',
 			);
-
 	if ($result->id)
 	{
 		$verify['exit_code'] = "1";
@@ -371,34 +362,27 @@ function fdx_updater_verify($tokens)
 	{
 		$verify['exit_code'] = "3";
 	}
-
 return $verify;
-
 }
 
-/* Send a Tweet */
-
+/* Send a Tweet
+*------------------------------------------------------------*/
 function fdx_updater_update_status($tweet)
 {
-
-	$tokens = get_option('fdx_updater_auth');
-
-	if( $tokens['auth3_flag'] == '1' )
-	{
-		$connection = new FDXTwitterOAuth(FDX_CONSUMER_KEY, FDX_CONSUMER_SECRET, $tokens['access_key'], $tokens['access_secret']);
-
-		// Post an update to Twitter via your application:
-		$result = $connection->post('statuses/update', array('status' => $tweet));
-
+$tokens = get_option('fdx_updater_auth');
+     if( $tokens['auth3_flag'] == '1' )
+	 {
+	 $connection = new FDXTwitterOAuth(FDX_CONSUMER_KEY, FDX_CONSUMER_SECRET, $tokens['access_key'], $tokens['access_secret']);
+    // Post an update to Twitter via your application:
+     $result = $connection->post('statuses/update', array('status' => $tweet));
 	}
 	else
 	{
-		$result = array(
+	$result = array(
 			'plugin_error' => 'auth',
 			'error_description' => 'is not linked to a twitter account'
 				);
 	}
-
 	return $result;
 }
 ?>

@@ -4,8 +4,8 @@ Contributors: fdoromo
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=Z9SRNRLLDAFZJ
 Tags: twitter, twit, tweet, tweets, twitter widget, dynamic twitter widget, auto refresh tweet, twitter goodies,twitter tools, yourls, Widget, Sharethis 
 Requires at least: 3.0
-Tested up to: 3.4.2
-Stable tag: 3.8.3
+Tested up to: 3.5
+Stable tag: 3.8.4
 License: GPLv2 or later
 
 Is a plugin that creates a complete integration between your WordPress blog and your Twitter account including ShareThis Buttons and Goodies Widgets.
@@ -20,11 +20,9 @@ Is a plugin that creates a complete integration between your WordPress blog and 
 Add both widgets into sidebar - Go to Appearance -> Widgets -> WP Twitter
 
 to add Twitter Profile widget on page/post `[--wp_twitter--]`
-
 to add Twitter Search Widget on page/post `[--wp_twitter_search--]`
 
 Sharethis Button Option: Activate integration option from Admin Panel
-
 
 The following short url services are supported:
 
@@ -76,6 +74,10 @@ No, this plugin does not work with php4.
 
 
 == Changelog ==
+* 3.8.4
+    * Add support for Shortcodes: #author# #category# #tags#
+    * Cosmetic fixes
+
 * 3.8.3
     * Use your Permalink Settings for default URL format.
 

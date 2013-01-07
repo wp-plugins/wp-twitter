@@ -69,7 +69,7 @@ echo '<div class="updated fade"><p><strong>' . __( 'Settings updated', 'fdx-lang
 <div class="handlediv" title="<?php _e('Click to toggle', 'fdx-lang') ?>"><br /></div><h3 class='hndle'><span><?php _e('Connect to Twitter', 'fdx-lang') ?></span></h3>
 <div class="inside">
 <!-- ############################################################################################################### -->
-<p><strong><?php echo FDX1_PLUGIN_NAME;?></strong> <?php _e('uses <acronym title="An open protocol to allow secure authorization in a simple and standard method from web, mobile and desktop applications.">OAuth</acronym> authentication to connect to Twitter. Follow the authentication process below to authorise this Plugin to access on your Twitter account. ', 'fdx-lang') ?> </p>
+<p><span class="description"><strong><?php echo FDX1_PLUGIN_NAME;?></strong> <?php _e('uses OAuth authentication to connect to Twitter. Follow the authentication process below to authorise this Plugin to access on your Twitter account. ', 'fdx-lang') ?> </span></p>
 
 <form action="options.php" method="post" name="agreeform" onSubmit="return defaultagree(this)">
 
@@ -134,12 +134,15 @@ document.forms.agreeform.agreecheck.checked=false
 ?>
 </form>
 
-    <tr class="alternate"><td>
+   </td>
+ </tr>
+ </tbody>
+ </table>
 
 
 		<form action="options.php" method="post" id="fdxReset">
 		<?php settings_fields('fdx_updater_auth'); ?>
-<div style="text-align: center; margin: 20px"> <input name="Submit" class="button-secondary"  type="submit" value="<?php _e('restart the authorisation procedure', 'fdx-lang') ?>" /></div>
+<div style="margin-top: 20px"><input name="Submit" class="button-secondary"  type="submit" value="Reset" /> <span class="description">(<?php _e('restart the authorisation procedure', 'fdx-lang') ?>)</span></div>
 <div style="visibility: hidden; overflow: hidden; margin: 0; padding: 0; display: none">
 <input id='fdx_updater_auth1_reset' type='hidden' name='fdx_updater_auth[auth1_flag]' value='0' />
 <input id='fdx_updater_auth2_reset' type='hidden' name='fdx_updater_auth[auth2_flag]' value='0' />
@@ -152,10 +155,7 @@ document.forms.agreeform.agreecheck.checked=false
 </div>
 </form>
 
-</td>
- </tr>
- </tbody>
- </table>
+
 <!-- ############################################################################################################### -->
 </div>
 </div>
@@ -166,65 +166,83 @@ document.forms.agreeform.agreecheck.checked=false
 <div class="handlediv" title="<?php _e('Click to toggle', 'fdx-lang') ?>"><br /></div><h3 class='hndle'><span><?php _e('Basic Settings', 'fdx-lang') ?></span></h3>
 <div class="inside">
 <!-- ############################################################################################################### -->
-<br />
-<table style="width:100%;" class="widefat">
- <thead><tr><th><?php _e('Update when a post is published', 'fdx-lang');?></th> </tr></thead>
-<tbody><tr class="alternate"><td>
-<p>
+<table style="width:100%;">
+<tr>
+<td style="width:auto;vertical-align: top">
+<legend>
 <?php
 $options = get_option('fdx_updater_options');
 echo "<input id='fdx_updater_newpost_update' type='checkbox' name='fdx_updater_options[newpost_update]' value='1'";
 if( $options['newpost_update'] == '1' )
 {
 echo " checked='true'";
-echo " /> ".__('Set the plugin behaviour for when a new post is published.', 'fdx-lang');
+echo " /> ".__('Update when a post is published', 'fdx-lang');
 }
 ?>
-</p><p>
+</legend>
+<span class="description">
 <?php
-_e('<strong>Tweet format for a new post:</strong>', 'fdx-lang');
+_e('Text for new post updates', 'fdx-lang');
 $options = get_option('fdx_updater_options');
-echo " <input id='fdx_updater_newpost_format' type='text' size='60' maxlength='100' name='fdx_updater_options[newpost_format]' value='{$options['newpost_format']}' />";
+echo ":<br /><input id='fdx_updater_newpost_format' type='text' size='50' maxlength='100' name='fdx_updater_options[newpost_format]' value='{$options['newpost_format']}' />";
 ?>
-<br />
-<small>Shortcodes:</small><br />
-<code>#title#</code> &raquo; <small><?php _e('The title of your blog post.', 'fdx-lang') ?>  </small>
-<br /><code>#url#</code> &raquo; <small><?php _e('The post URL', 'fdx-lang')?></small>
-</p>
-</td>
- </tr>
- </tbody>
- </table>
- <br />
+</span>
 
-<table style="width:100%;" class="widefat">
- <thead><tr><th><?php _e('Update when a post is edited', 'fdx-lang');?></th> </tr></thead>
-<tbody><tr class="alternate"><td>
-<p>
+<h3 style="margin: 15px 0 15px 0; padding: 0">&nbsp;</h3>
+<legend>
 <?php
 $options = get_option('fdx_updater_options');
 echo "<input id='fdx_updater_edited_update' type='checkbox' name='fdx_updater_options[edited_update]' value='1'";
 if( $options['edited_update'] == '1' )
  {
   echo " checked='true'";
-  echo " /> ".__('Set the plugin behaviour for when a previously published post is updated.', 'fdx-lang');
+  echo " /> ".__('Update when a post is edited', 'fdx-lang');
 }
-?>
-</p><p>
+?> </legend>
+<span class="description">
 <?php
-_e('<strong>Tweet format for an updated post:</strong>', 'fdx-lang');
+_e('Text for post editing updates', 'fdx-lang');
 $options = get_option('fdx_updater_options');
-echo " <input id='fdx_updater_edited_format' type='text' size='60' maxlength='100' name='fdx_updater_options[edited_format]' value='{$options['edited_format']}' />";
+echo ":<br /><input id='fdx_updater_edited_format' type='text' size='50' maxlength='100' name='fdx_updater_options[edited_format]' value='{$options['edited_format']}' />";
 ?>
-<br />
-<small>Shortcodes:</small><br />
-<code>#title#</code> &raquo; <small><?php _e('The title of your blog post.', 'fdx-lang') ?>  </small>
-<br /><code>#url#</code> &raquo; <small><?php _e('The post URL', 'fdx-lang')?></small>
+</span>
+
+</td>
+<td style="width:250px; vertical-align: top">
+
+<table style="width:250px;" class="widefat">
+ <thead><tr><th><?php _e('Shortcodes', 'fdx-lang');?></th> </tr></thead>
+<tbody><tr class="alternate"><td>
+<p>
+
+<p><code>#title#</code>: <?php _e('The title of your blog post.', 'fdx-lang') ?>.</p>
+<p><code>#url#</code>: <?php _e('The post URL', 'fdx-lang')?>. </p>
+
+<p><code>#author#</code>: <?php _e('Post author\'s', 'fdx-lang')?>. </p>
+<p><code>#category#</code>: <?php _e('The first category', 'fdx-lang')?>. </p>
+<p><code>#tags#</code>: <?php _e('Post tags', 'fdx-lang')?>. <small> <?php _e('Modified into hashtags, show only 3 tags of less than 15 characters each, and space replaced by', 'fdx-lang')?> (<code>_</code>)</small> </p>
+
+
 </p>
+
+
 </td>
  </tr>
  </tbody>
  </table>
+
+
+
+
+
+
+
+</td>
+</tr>
+</table>
+
+
+
 <!-- ############################################################################################################### -->
 </div>
 </div>
@@ -233,33 +251,40 @@ echo " <input id='fdx_updater_edited_format' type='text' size='60' maxlength='10
 <div class="handlediv" title="<?php _e('Click to toggle', 'fdx-lang') ?>"><br /></div><h3 class='hndle'><span><?php _e('Limit Updating', 'fdx-lang') ?></span></h3>
 <div class="inside">
 <!-- ############################################################################################################### -->
-<p><?php
+<legend><?php
 $options = get_option('fdx_updater_options');
-echo "<strong>".__('Limit Twitter updates using the rules below?', 'fdx-lang')." <input id='fdx_updater_limit_activate' type='checkbox' name='fdx_updater_options[limit_activate]' value='1'";
+echo "<input id='fdx_updater_limit_activate' type='checkbox' name='fdx_updater_options[limit_activate]' value='1'";
 if( $options['limit_activate'] == '1' ) {
 echo " checked='true'"; };
-echo " /></strong>";
-?></p>
+echo " /> ".__('Limit Twitter updates using the rules below?', 'fdx-lang');
+?></legend>
+
+<span class="description">
+<?php _e('Twitter messages can be sent only when the post is a member of a "Selected Category" or that have a specified Custom Fields', 'fdx-lang') ?>.<br />
+<?php _e('If no categories are checked, limiting by category will be ignored, and all categories will be Tweeted.', 'fdx-lang');?></span>
+
+<table style="width:100%">
+  <tr>
+ <td style="width:50%; vertical-align: top; padding: 10px">
+
 
 <table style="width:100%;" class="widefat">
  <thead><tr><th><?php _e('Send tweets for posts with this category', 'fdx-lang');?>:</th> </tr></thead>
 <tbody><tr class="alternate"><td>
-<p>
 <?php
 	$options = get_option('fdx_updater_options');
 	$categories=get_categories( array( 'orderby'=>'name', 'order'=>'ASC' , 'hide_empty'=>'0') );
 	if ( !empty($categories) )
 	{
-		echo "</h3>";
-        	echo "<ul>";
+       	echo "<ul>";
         foreach($categories as $category)
 
             {
 				echo "<li>";
 				echo "<input id='fdx_updater_limit_to_category_" . $category->name . "' type='checkbox' name='fdx_updater_options[limit_to_category][" . $category->name . "]' value='" . $category->cat_ID . "'";
 				if(@$options['limit_to_category'][$category->name] == $category->cat_ID ) { echo " checked='true'"; };
-				echo " />";
-				echo " <label for='fdx_updater_limit_to_category_" . $category->name . "'>" . $category->name . "</label>";
+				echo " /> ";
+				echo $category->name;
             	echo "<li>";
 			}
             echo "</ul>";
@@ -269,31 +294,35 @@ echo " /></strong>";
 		echo "No categories set. You must create categories before using them as limit criterion.";
 	}
 ?>
-<small><?php _e('If no categories are checked, limiting by category will be ignored, and all categories will be Tweeted.', 'fdx-lang');?></small>
-</p>
-</td>
- </tr>
- </tbody>
- </table>
-  <br />
-<table style="width:100%;" class="widefat">
- <thead><tr><th><?php _e('Send tweets for posts with this Meta Data', 'fdx-lang');?>:</th> </tr></thead>
-<tbody><tr class="alternate"><td>
-<p>
-<?php
-	$options = get_option('fdx_updater_options');
-	echo "<input id='fdx_updater_limit_to_custom_field_key' type='text' size='20' maxlength='250' name='fdx_updater_options[limit_to_custom_field_key]' value='{$options['limit_to_custom_field_key']}' />";
-	echo "<label for='fdx_updater_limit_to_custom_field_key'> <code>".__('Custom Field Title (key)', 'fdx-lang')."</code></label><br />";
-	echo "<input id='fdx_updater_limit_to_custom_field_val' type='text' size='20' maxlength='250' name='fdx_updater_options[limit_to_custom_field_val]' value='{$options['limit_to_custom_field_val']}' />";
-	echo "<label for='fdx_updater_limit_to_custom_field_val'> <code>".__('Custom Field Value (leave blank to match any value)', 'fdx-lang')."</code></label>";
-?>
-</p>
+
+
 </td>
  </tr>
  </tbody>
  </table>
 
-<p><?php _e('Twitter messages can be sent only when the post is a member of a "Selected Category" or that have a specified custom field in "Meta Data"', 'fdx-lang') ?>.</p>
+  </td>
+      <td style="width:50%; vertical-align: top; padding: 10px">
+
+
+<table style="width:100%;" class="widefat">
+ <thead><tr><th><?php _e('Send tweets for posts with this Custom Fields', 'fdx-lang');?>:</th> </tr></thead>
+<tbody><tr class="alternate"><td>
+<?php
+	$options = get_option('fdx_updater_options');
+	echo "<p>".__('Custom Field: Name', 'fdx-lang')."<br /><input id='fdx_updater_limit_to_custom_field_key' type='text' size='20' maxlength='250' name='fdx_updater_options[limit_to_custom_field_key]' value='{$options['limit_to_custom_field_key']}' />";
+  	echo "</p><p>".__('Custom Field: Value', 'fdx-lang')." <br /><input id='fdx_updater_limit_to_custom_field_val' type='text' size='20' maxlength='250' name='fdx_updater_options[limit_to_custom_field_val]' value='{$options['limit_to_custom_field_val']}' /><span class=\"description\"> ".__('leave blank to match any value', 'fdx-lang')."</span>";
+	echo "</p>";
+?>
+
+</td>
+ </tr>
+ </tbody>
+ </table>
+
+</td>
+  </tr>
+</table>
 
 <!-- ############################################################################################################### -->
 </div>
@@ -303,48 +332,40 @@ echo " /></strong>";
 <div class="handlediv" title="<?php _e('Click to toggle', 'fdx-lang') ?>"><br /></div><h3 class='hndle'><span><?php _e('URL Shortener Account Settings', 'fdx-lang') ?></span></h3>
 <div class="inside">
 <!-- ############################################################################################################### -->
-   <br />
-<table style="width:100%;" class="widefat">
- <thead><tr><th><?php _e('Choose your short URL service (account settings below)', 'fdx-lang') ?></th> </tr></thead>
-<tbody><tr class="alternate"><td>
-<p>
 <?php
   $options = get_option('fdx_updater_options');
  	// default wp Options
 	echo "<ul><li><input id='fdx_updater_chose_url' type='radio' name='fdx_updater_options[url_method]' value='permalink'";
 	if( $options['url_method'] == 'permalink' || $options['url_method'] == 'default' ) { echo " checked='true'"; };
-	echo " /><label for='fdx_updater_chose_url'> <strong>".__('Wordpress default URL format', 'fdx-lang')." (<a href='".admin_url('options-permalink.php')."'>Permalink</a>)</strong></label></li>";
+	echo " /> <strong>".__('Don\'t shorten URLs', 'fdx-lang')." (<a href='".admin_url('options-permalink.php')."'>Permalink</a>)</strong></li>";
+    echo"<li><h3></h3></li>";
 // is.gd
 	echo "<li><input id='fdx_updater_chose_url' type='radio' name='fdx_updater_options[url_method]' value='is.gd'";
 	if( $options['url_method'] == 'is.gd' ) { echo " checked='true'"; };
-	echo " /> <label for='fdx_updater_chose_url'><a href='http://is.gd'><strong>is.gd</strong></a></label></li>";
+	echo " /> <strong>IS.gd</strong></li>";
 
 	// TinyURL
 	echo "<li><input id='fdx_updater_chose_url' type='radio' name='fdx_updater_options[url_method]' value='tinyurl'";
 	if( $options['url_method'] == 'tinyurl' ) { echo " checked='true'"; };
-	echo " /> <label for='fdx_updater_chose_url'><a href='http://tinyurl.com/'><strong>TinyURL</strong></a></label></li>";
+	echo " /> <strong>TINYURL.com</strong></li>";
  echo"<li><h3></h3></li>";
 //yourls
 	echo "<li><input id='fdx_updater_chose_url' type='radio' name='fdx_updater_options[url_method]' value='yourls'";
 	if( $options['url_method'] == 'yourls' ) { echo " checked='true'"; };
-	echo " /> <label for='fdx_updater_chose_url'><a href='http://yourls.org/'><strong>YOURLS.org</strong></a>&nbsp; (".__('A free GPL URL shortener service', 'fdx-lang').")</label>";
+	echo " /> <strong>YOURLS.org</strong> <span class=\"description\"> (".__('A free GPL URL shortener service', 'fdx-lang').")</span>";
 //yourls Options
-		echo "<p><label for='fdx_updater_yourls_url'>API url:</label><input id='fdx_updater_yourls_url' type='text' size='40' name='fdx_updater_options[yourls_url]' value='{$options['yourls_url']}' /> &nbsp; <label for='fdx_updater_yourls_token'>Signature Token: </label><input id='fdx_updater_yourls_token' type='text' size='20' name='fdx_updater_options[yourls_token]' value='{$options['yourls_token']}' /><label></p>
+		echo "<p>API url:<input id='fdx_updater_yourls_url' type='text' size='40' name='fdx_updater_options[yourls_url]' value='{$options['yourls_url']}' /> &nbsp; Signature Token: <input id='fdx_updater_yourls_token' type='text' size='20' name='fdx_updater_options[yourls_token]' value='{$options['yourls_token']}' /> [<a href=\"http://yourls.org\" target=\"_blank\">?</a>]</p>
         <code>Ex: http://domain.com/yourls-api.php</code></li>";
  echo"<li><h3></h3></li>";
 	//Bit.ly
 	echo "<li><input id='fdx_updater_chose_url' type='radio' name='fdx_updater_options[url_method]' value='bitly'";
 	if( $options['url_method'] == 'bitly' ) { echo " checked='true'"; };
-	echo " /> <label for='fdx_updater_chose_url'><a href='http://bit.ly'><strong>Bit.ly</strong></a></label>";
+	echo " /> <strong>BIT.ly</strong></a>";
 		//Bit.ly Options
-    	echo "<br /><label for='fdx_updater_bitly_username'>Username: </label><input id='fdx_updater_bitly_username' type='text' size='20' name='fdx_updater_options[bitly_username]' value='{$options['bitly_username']}' /> <label for='fdx_updater_bitly_appkey'>&nbsp;&nbsp;API Key: </label><input id='fdx_updater_bitly_appkey' type='text' size='40' name='fdx_updater_options[bitly_appkey]' value='{$options['bitly_appkey']}' /></li>";
+    	echo "<br />Username: <input id='fdx_updater_bitly_username' type='text' size='20' name='fdx_updater_options[bitly_username]' value='{$options['bitly_username']}' /> &nbsp;&nbsp;API Key: <input id='fdx_updater_bitly_appkey' type='text' size='40' name='fdx_updater_options[bitly_appkey]' value='{$options['bitly_appkey']}' /> [<a href=\"http://bit.ly\" target=\"_blank\">?</a>]</li>";
       echo"</ul>";
 ?>
-</p>
-</td>
- </tr>
- </tbody>
- </table>
+
 <!-- ############################################################################################################### -->
 </div>
 </div>
