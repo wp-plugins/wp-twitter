@@ -5,7 +5,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: twitter, twit, tweet, tweets, twitter widget, dynamic twitter widget, auto refresh tweet, twitter goodies,twitter tools, yourls, Widget, Sharethis 
 Requires at least: 3.0
 Tested up to: 3.5
-Stable tag: 3.8.4
+Stable tag: 3.8.5
 License: GPLv2 or later
 
 Is a plugin that creates a complete integration between your WordPress blog and your Twitter account including ShareThis Buttons and Goodies Widgets.
@@ -20,6 +20,7 @@ Is a plugin that creates a complete integration between your WordPress blog and 
 Add both widgets into sidebar - Go to Appearance -> Widgets -> WP Twitter
 
 to add Twitter Profile widget on page/post `[--wp_twitter--]`
+
 to add Twitter Search Widget on page/post `[--wp_twitter_search--]`
 
 Sharethis Button Option: Activate integration option from Admin Panel
@@ -38,6 +39,9 @@ The following short url services are supported:
 * French (**fr_FR**) translation by **Karim El Khalifa**
 * Spanish (**es_ES**) translation by **Juan Pablo Poblacion Paredes**
 * Italian (**it_IT**) translation by **TheShark_76**
+* Deutsch (**de_DE**) translation by **Benedikt Hartmann**
+
+> In `<em>wp-config.php</em>` **define ('WPLANG', 'pt_BR');** for Portuguese [...]
 
 = How To Contribute =
 We'd love for you to get involved. Whatever your level of skill or however much time you can give, your contribution is greatly appreciated.
@@ -74,6 +78,10 @@ No, this plugin does not work with php4.
 
 
 == Changelog ==
+* 3.8.5
+    * Add German (Deutsch: de_DE) translation by Benedikt Hartmann
+    * Updated all languages
+
 * 3.8.4
     * Add support for Shortcodes: #author# #category# #tags#
     * Cosmetic fixes
@@ -127,10 +135,10 @@ No, this plugin does not work with php4.
     * Added Real-time widget config
 
 * 3.0.1
-    *  Bug Fix
+    * Bug Fix
 
 * 3.0
-    *  Completely NEW version (new core, old version was discontinued <2.5)
+    * Completely NEW version (new core, old version was discontinued <2.5)
 
 * 2.5
     * Added WP 2.9+ compatibility and tweaks
