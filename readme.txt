@@ -41,8 +41,6 @@ The following short url services are supported:
 * Italian (**it_IT**) translation by **TheShark_76**
 * Deutsch (**de_DE**) translation by **Benedikt Hartmann**
 
-> In `<em>wp-config.php</em>` **define ('WPLANG', 'pt_BR');** for Portuguese [...]
-
 = How To Contribute =
 We'd love for you to get involved. Whatever your level of skill or however much time you can give, your contribution is greatly appreciated.
 
