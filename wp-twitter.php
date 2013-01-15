@@ -30,12 +30,13 @@ define('FDX1_PLUGIN_URL', plugin_dir_url(__FILE__));
 define('FDX1_WPPAGE', 'http://wordpress.org/extend/plugins/wp-twitter');
 define('FDX1_PLUGINPAGE', 'http://fabrix.net/wp-twitter');
 define('FDX1_GLOTPRESS', 'http://translate.fabrix.net/projects/wp-twitter');
-define('FDX1_SUPFORUM', 'http://wmais.in/?forum=wp-twitter');
+define('FDX1_SUPFORUM', 'https://github.com/fabrix/wp-twitter');
 define('FDX1_DONATELINK', 'https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=Z9SRNRLLDAFZJ');
 
 define('FDX1_PLUGIN_P1', 'wp-twitter' ); //link1, plugin prefix (.mo)
 define('FDX1_PLUGIN_P2', 'wp-twitter-widgets' ); //link2
 define('FDX1_PLUGIN_P3', 'wp-twitter-integration' ); //link3
+
 /*
 *------------------------------------------------------------*/
 $currentLocale = get_locale();
@@ -43,7 +44,6 @@ $currentLocale = get_locale();
 				$moFile = dirname(__FILE__) . "/languages/".FDX1_PLUGIN_P1."-" . $currentLocale . ".mo";
 				if(@file_exists($moFile) && is_readable($moFile)) load_textdomain('fdx-lang', $moFile);
 }
-
 
 
  function fdx_1_init() {
@@ -147,7 +147,6 @@ class FDX_Widget_search extends WP_Widget {
 	}
 }
 
-
 function fdx_widgets_init() {
 	register_widget('FDX_Widget_profile');
  	register_widget('FDX_Widget_search');
@@ -155,59 +154,6 @@ function fdx_widgets_init() {
 	do_action('widgets_init');
 }
 
-
-/* clean-up when deactivated
-*------------------------------------------------------------*/
-function fdx_1_deactivate() {
-//Settings
-delete_option('fdx_updater_auth');
-delete_option('fdx_updater_options');
-
-//Sharethis Button integration
-delete_option('wp_twitter_fdx_tweet_button_display_single');
-delete_option('wp_twitter_fdx_tweet_button_display_page');
-delete_option('wp_twitter_fdx_tweet_button_display_home');
-delete_option('wp_twitter_fdx_tweet_button_display_arquive');
-delete_option('wp_twitter_copynshare');
-delete_option('wp_twitter_fdx_tweet_button_place');
-delete_option('wp_twitter_fdx_tweet_button_style');
-delete_option('wp_twitter_fdx_tweet_button_choose');
-delete_option('wp_twitter_fdx_tweet_button_container');
-delete_option('wp_twitter_fdx_tweet_button_twitter_username');
-delete_option('wp_twitter_fdx_logo_top');
-delete_option('wp_twitter_fdx_tweet_button_style2');
-delete_option('wp_twitter_fdx_tweet_button_style3');
-delete_option('wp_twitter_fdx_services');
-
-//widgets
-delete_option('wp_twitter_fdx_widget_title');
-delete_option('wp_twitter_fdx_username');
-delete_option('wp_twitter_fdx_height');
-delete_option('wp_twitter_fdx_width');
-delete_option('wp_twitter_fdx_scrollbar');
-delete_option('wp_twitter_fdx_behavior');
-delete_option('wp_twitter_fdx_shell_bg');
-delete_option('wp_twitter_fdx_shell_text');
-delete_option('wp_twitter_fdx_tweet_bg');
-delete_option('wp_twitter_fdx_tweet_text');
-delete_option('wp_twitter_fdx_links');
-
-delete_option('wp_twitter_fdx_search_widget_sidebar_title');
-delete_option('wp_twitter_fdx_widget_search_query');
-delete_option('wp_twitter_fdx_widget_search_title');
-delete_option('wp_twitter_fdx_widget_search_caption');
-delete_option('wp_twitter_fdx_search_height');
-delete_option('wp_twitter_fdx_search_width');
-delete_option('wp_twitter_fdx_search_scrollbar');
-delete_option('wp_twitter_fdx_search_shell_bg');
-delete_option('wp_twitter_fdx_search_shell_text');
-delete_option('wp_twitter_fdx_search_tweet_bg');
-delete_option('wp_twitter_fdx_search_tweet_text');
-delete_option('wp_twitter_fdx_search_links');
- }
-
 add_action('init', 'fdx_1_init');
 add_action('init', 'fdx_widgets_init', 1);
-
-register_deactivation_hook( __FILE__, 'fdx_1_deactivate'); // when deativated clean up
 ?>

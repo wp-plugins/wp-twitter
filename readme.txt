@@ -27,11 +27,11 @@ Sharethis Button Option: Activate integration option from Admin Panel
 
 The following short url services are supported:
 
-* [YOURLS](http://yourls.org/)
-* TinyURL 
+* YOURLS.org
+* TinyURL.com 
 * is.gd
 * Bit.ly
-* and Wordpress default URL format `Ex: domain.com/?p=123`
+
 
 = Languages Available =
 * English (default)
@@ -44,9 +44,9 @@ The following short url services are supported:
 = How To Contribute =
 We'd love for you to get involved. Whatever your level of skill or however much time you can give, your contribution is greatly appreciated.
 
-* **Users** - download the latest development version of the plugin, and submit bug/feature requests.
+* **Users** - download the latest development version of the plugin, and submit bug/feature requests.([GitHub](https://github.com/fabrix/wp-twitter))
 * **Non-English Speaking Users** - Contribute a translation using the GlotPress web interface - no technical knowledge required ([how to](http://translate.fabrix.net/projects/wp-twitter)).
-* **Developers** - Fork the development version and submit a pull request, especially for any known issues
+* **Developers** - Fork the development version and submit a pull request, especially for any known issues ([GitHub](https://github.com/fabrix/wp-twitter)). 
 
 
 == Screenshots ==
