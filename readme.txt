@@ -5,7 +5,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: twitter, twit, tweet, tweets, twitter widget, dynamic twitter widget, auto refresh tweet, twitter goodies,twitter tools, yourls, Widget, Sharethis 
 Requires at least: 3.0
 Tested up to: 3.5
-Stable tag: 3.8.5
+Stable tag: 3.8.6
 License: GPLv2 or later
 
 Is a plugin that creates a complete integration between your WordPress blog and your Twitter account including ShareThis Buttons and Goodies Widgets.
@@ -36,10 +36,12 @@ The following short url services are supported:
 = Languages Available =
 * English (default)
 * Brazilian Portuguese (**pt_BR**) translation by **Fabrix DoRoMo**
-* French (**fr_FR**) translation by **Karim El Khalifa**
+* French  (**fr_FR**) translation by **Karim El Khalifa**
 * Spanish (**es_ES**) translation by **Juan Pablo Poblacion Paredes**
 * Italian (**it_IT**) translation by **TheShark_76**
 * Deutsch (**de_DE**) translation by **Benedikt Hartmann**
+* Turkish (**tr**)    translation by **Hakan Erarslan**
+
 
 = How To Contribute =
 We'd love for you to get involved. Whatever your level of skill or however much time you can give, your contribution is greatly appreciated.
@@ -76,6 +78,10 @@ No, this plugin does not work with php4.
 
 
 == Changelog ==
+* 3.8.6
+    * Add Turkish (Türkçe: tr) translation by Hakan Erarslan
+    * Improvement of performance 
+
 * 3.8.5
     * Add German (Deutsch: de_DE) translation by Benedikt Hartmann
     * Updated all languages
@@ -136,49 +142,4 @@ No, this plugin does not work with php4.
     * Bug Fix
 
 * 3.0
-    * Completely NEW version (new core, old version was discontinued <2.5)
-
-* 2.5
-    * Added WP 2.9+ compatibility and tweaks
-
-
-* 2.4
-    * BookMarklet: added search on twitter
-
-
-* 2.3
-    * Add: Set your URL shortening
-    * bug fix: space at the end of the prefix
-
-
-* 2.2.1
-    * Russian translation (ru_RU)
-
-* 2.2
-    * Added the WordPress login page in BookMarklet. Note: only the administrator login has access.
-
-* 2.1
-    * Turn on or off in each post
-
-* 2.0
-    * Completely new version, including the BookMarklet
-
-* 1.5
-    * Compatibility with WordPress 2.8
-
-* 1.4
-
-    * New Admin Screens Layout, included Yours last tweets
-    * Add avatar in Widget front end
-
-* 1.3
-    * bug fix: installation code was failing on some systems
-
-* 1.2
-    * Settings : verify credentials
-
-* 1.1
-    * Multilanguage support
-
-* 1.0
-    * Initial release
+    * Completely NEW version (new core, old version was discontinued)

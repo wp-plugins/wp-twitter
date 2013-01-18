@@ -2,7 +2,7 @@
 /*
 Plugin Name: WP Twitter
 Description: Is a plugin that creates a complete integration between your WordPress blog and your Twitter account including a Twitter Button and Widgets.
-Version: 3.8.5
+Version: 3.8.6
 Author: Fabrix DoRoMo
 Author URI: http://fabrix.net
 Plugin URI: http://fabrix.net/wp-twitter
@@ -24,7 +24,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 /*********************************************************************************/
 define('FDX1_PLUGIN_NAME', 'WP Twitter' );
-define('FDX1_PLUGIN_VERSION', '3.8.5' );
+define('FDX1_PLUGIN_VERSION', '3.8.6' );
 define('FDX1_PLUGIN_URL', plugin_dir_url(__FILE__));
 
 define('FDX1_WPPAGE', 'http://wordpress.org/extend/plugins/wp-twitter');
@@ -150,8 +150,6 @@ class FDX_Widget_search extends WP_Widget {
 function fdx_widgets_init() {
 	register_widget('FDX_Widget_profile');
  	register_widget('FDX_Widget_search');
-    //------------------------------
-	do_action('widgets_init');
 }
 
 add_action('init', 'fdx_1_init');
