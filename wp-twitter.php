@@ -30,7 +30,7 @@ define('FDX1_PLUGIN_URL', plugin_dir_url(__FILE__));
 define('FDX1_WPPAGE', 'http://wordpress.org/extend/plugins/wp-twitter');
 define('FDX1_PLUGINPAGE', 'http://fabrix.net/wp-twitter');
 define('FDX1_GLOTPRESS', 'http://translate.fabrix.net/projects/wp-twitter');
-define('FDX1_SUPFORUM', 'https://github.com/fabrix/wp-twitter');
+define('FDX1_SUPFORUM', 'http://wordpress.org/support/plugin/wp-twitter');
 define('FDX1_DONATELINK', 'https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=Z9SRNRLLDAFZJ');
 
 define('FDX1_PLUGIN_P1', 'wp-twitter' ); //link1, plugin prefix (.mo)
