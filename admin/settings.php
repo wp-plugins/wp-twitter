@@ -51,10 +51,10 @@ echo "<div class='error'><p><strong>YOURLS is selected, but account information 
 ?>
 <div class="wrap">
 <?php echo get_screen_icon('fdx-lock');?>
-<h2><?php echo FDX1_PLUGIN_NAME;?>: <?php _e('Basic Settings and Connect', 'fdx-lang') ?></h2>
+<h2><?php echo FDX1_PLUGIN_NAME;?>: <?php _e('Basic Settings and Connect', 'wp-twitter') ?></h2>
 <?php
 if ( ( isset( $_GET['updated'] ) && $_GET['updated'] == 'true' ) || ( isset( $_GET['settings-updated'] ) && $_GET['settings-updated'] == 'true' ) ) {
-echo '<div class="updated fade"><p><strong>' . __( 'Settings updated', 'fdx-lang' ) . '.</strong></p></div>';
+echo '<div class="updated fade"><p><strong>' . __( 'Settings updated', 'wp-twitter' ) . '.</strong></p></div>';
 }
 ?>
 <div id="poststuff">
@@ -66,10 +66,10 @@ echo '<div class="updated fade"><p><strong>' . __( 'Settings updated', 'fdx-lang
 <div class="meta-box-sortables">
 
 <div class="postbox">
-<div class="handlediv" title="<?php _e('Click to toggle', 'fdx-lang') ?>"><br /></div><h3 class='hndle'><span><?php _e('Connect to Twitter', 'fdx-lang') ?></span></h3>
+<div class="handlediv" title="<?php _e('Click to toggle', 'wp-twitter') ?>"><br /></div><h3 class='hndle'><span><?php _e('Connect to Twitter', 'wp-twitter') ?></span></h3>
 <div class="inside">
 <!-- ############################################################################################################### -->
-<p><span class="description"><strong><?php echo FDX1_PLUGIN_NAME;?></strong> <?php _e('uses OAuth authentication to connect to Twitter. Follow the authentication process below to authorise this Plugin to access on your Twitter account. ', 'fdx-lang') ?> </span></p>
+<p><span class="description"><strong><?php echo FDX1_PLUGIN_NAME;?></strong> <?php _e('uses OAuth authentication to connect to Twitter. Follow the authentication process below to authorise this Plugin to access on your Twitter account. ', 'wp-twitter') ?> </span></p>
 
 <form action="options.php" method="post" name="agreeform" onSubmit="return defaultagree(this)">
 
@@ -80,19 +80,19 @@ echo '<div class="updated fade"><p><strong>' . __( 'Settings updated', 'fdx-lang
       echo "<input id='fdx_updater_auth1_flag' type='hidden' name='fdx_updater_auth[auth1_flag]' value='1' />";
        ?>
 
-<div class="error fade"><p><strong><?php echo FDX1_PLUGIN_NAME;?> <?php _e('does not have access to a Twitter account yet.', 'fdx-lang') ?></strong></p></div>
+<div class="error fade"><p><strong><?php echo FDX1_PLUGIN_NAME;?> <?php _e('does not have access to a Twitter account yet.', 'wp-twitter') ?></strong></p></div>
 
 <?php $tokens = fdx_updater_register($tokens);
       update_option('fdx_updater_auth', $tokens);
 
   $tokens = get_option('fdx_updater_auth');
-    echo "<table style=\"width:100%;\" class=\"widefat\"><thead><tr><th> ". __('Now you need to tell Twitter that you want to allow this plugin to be able to post using your account.', 'fdx-lang');
+    echo "<table style=\"width:100%;\" class=\"widefat\"><thead><tr><th> ". __('Now you need to tell Twitter that you want to allow this plugin to be able to post using your account.', 'wp-twitter');
     echo "</th> </tr></thead><tbody><tr class=\"alternate\"><td><ol><li><a href=\"javascript:void(0);\" onclick=\"PopupCenter('{$tokens['request_link']}', 'page1_id1',750,660,'no');\" title='{$tokens['request_link']}'><img src='". FDX1_PLUGIN_URL ."/images/twitter_signin_badge.png' width='151' height='24' border='0' alt='*' style='vertical-align: middle' /></a></li>";
-    echo "<li>". __('Follow the instructions on the page to allow access to the plug-in.', 'fdx-lang')."</li>";
-    echo "<li>". __('Wait close the popup window', 'fdx-lang')."</li></ol>";
+    echo "<li>". __('Follow the instructions on the page to allow access to the plug-in.', 'wp-twitter')."</li>";
+    echo "<li>". __('Wait close the popup window', 'wp-twitter')."</li></ol>";
     echo "<input id='fdx_updater_auth2_flag' type='hidden' name='fdx_updater_auth[auth2_flag]' value='1' />";
       ?>
-<p><input name="agreecheck" type="checkbox" onClick="agreesubmit(this)"> <strong><?php _e('Mark if all previous steps were done.', 'fdx-lang') ?> (1,2,3)</strong> <input name="Submit" class="button-primary" disabled="disabled"  type="submit" value="<?php _e('Authorise', 'fdx-lang') ?>" />
+<p><input name="agreecheck" type="checkbox" onClick="agreesubmit(this)"> <strong><?php _e('Mark if all previous steps were done.', 'wp-twitter') ?> (1,2,3)</strong> <input name="Submit" class="button-primary" disabled="disabled"  type="submit" value="<?php _e('Authorise', 'wp-twitter') ?>" />
 </p><script>
 document.forms.agreeform.agreecheck.checked=false
 </script>
@@ -108,25 +108,25 @@ document.forms.agreeform.agreecheck.checked=false
 			switch ($verify['exit_code'])
 			{
 			case '1':
-			echo "<table style=\"width:100%;\" class=\"widefat\"><thead><tr><th>".__('Connection checked OK. Now you can post to', 'fdx-lang')." <a href=\"javascript:void(0);\" onclick=\"PopupCenter('http://twitter.com/{$verify['user_name']}', 'page1_id2',933,660,'yes');\"><img src='".FDX1_PLUGIN_URL."libs/_showpic.php?user={$verify['user_name']}' style='vertical-align: middle'/> <strong>@{$verify['user_name']}</strong></a></th> </tr></thead><tbody>";
+			echo "<table style=\"width:100%;\" class=\"widefat\"><thead><tr><th>".__('Connection checked OK. Now you can post to', 'wp-twitter')." <a href=\"javascript:void(0);\" onclick=\"PopupCenter('http://twitter.com/{$verify['user_name']}', 'page1_id2',933,660,'yes');\"><img src='".FDX1_PLUGIN_URL."libs/_showpic.php?user={$verify['user_name']}' style='vertical-align: middle'/> <strong>@{$verify['user_name']}</strong></a></th> </tr></thead><tbody>";
 			$tokens['auth3_flag'] = '1'; //Will only validate until reset
 			update_option('fdx_updater_auth', $tokens);
 			break;
 
 			case '2':
-			echo "<div class='error'><p><strong>".__('Not able to validate access to account, Twitter is currently unavailable. Try checking again in a couple of minutes.', 'fdx-lang')."</strong></p></div>";
+			echo "<div class='error'><p><strong>".__('Not able to validate access to account, Twitter is currently unavailable. Try checking again in a couple of minutes.', 'wp-twitter')."</strong></p></div>";
 			$tokens['auth3_flag'] = '1'; //Will validate next time
 			update_option('fdx_updater_auth', $tokens);
            	break;
 
 			case '3':
-			echo "<div class='error'><p><strong>". FDX1_PLUGIN_NAME .__('does not have access to a Twitter account yet.', 'fdx-lang')."</strong></p></div>";
+			echo "<div class='error'><p><strong>". FDX1_PLUGIN_NAME .__('does not have access to a Twitter account yet.', 'wp-twitter')."</strong></p></div>";
    		    echo "<style media=\"all\">#hid {visibility: hidden; overflow: hidden;  display: none } </style>";
-			echo "<div id='fdxerror'>".__('ERROR', 'fdx-lang')."~~C1</div>";
+			echo "<div id='fdxerror'>".__('ERROR', 'wp-twitter')."~~C1</div>";
 	    	break;
 
             default:
-			echo "<div class='warning'>". FDX1_PLUGIN_NAME .__('is not currently authorised to use any account. Please reset and try again.', 'fdx-lang')."</strong></p></div>";
+			echo "<div class='warning'>". FDX1_PLUGIN_NAME .__('is not currently authorised to use any account. Please reset and try again.', 'wp-twitter')."</strong></p></div>";
 			update_option('fdx_updater_auth', $tokens);
 			}
 }
@@ -142,7 +142,7 @@ document.forms.agreeform.agreecheck.checked=false
 
 		<form action="options.php" method="post" id="fdxReset">
 		<?php settings_fields('fdx_updater_auth'); ?>
-<div style="margin-top: 20px"><input name="Submit" class="button-secondary"  type="submit" value="Reset" /> <span class="description">(<?php _e('restart the authorisation procedure', 'fdx-lang') ?>)</span></div>
+<div style="margin-top: 20px"><input name="Submit" class="button-secondary"  type="submit" value="Reset" /> <span class="description">(<?php _e('restart the authorisation procedure', 'wp-twitter') ?>)</span></div>
 <div style="visibility: hidden; overflow: hidden; margin: 0; padding: 0; display: none">
 <input id='fdx_updater_auth1_reset' type='hidden' name='fdx_updater_auth[auth1_flag]' value='0' />
 <input id='fdx_updater_auth2_reset' type='hidden' name='fdx_updater_auth[auth2_flag]' value='0' />
@@ -163,7 +163,7 @@ document.forms.agreeform.agreecheck.checked=false
 <form action="options.php" method="post">
 <?php settings_fields('fdx_updater_options'); ?>
 <div class="postbox">
-<div class="handlediv" title="<?php _e('Click to toggle', 'fdx-lang') ?>"><br /></div><h3 class='hndle'><span><?php _e('Basic Settings', 'fdx-lang') ?></span></h3>
+<div class="handlediv" title="<?php _e('Click to toggle', 'wp-twitter') ?>"><br /></div><h3 class='hndle'><span><?php _e('Basic Settings', 'wp-twitter') ?></span></h3>
 <div class="inside">
 <!-- ############################################################################################################### -->
 <table style="width:100%;">
@@ -176,13 +176,13 @@ echo "<input id='fdx_updater_newpost_update' type='checkbox' name='fdx_updater_o
 if( $options['newpost_update'] == '1' )
 {
 echo " checked='true'";
-echo " /> ".__('Update when a post is published', 'fdx-lang');
+echo " /> ".__('Update when a post is published', 'wp-twitter');
 }
 ?>
 </legend>
 <span class="description">
 <?php
-_e('Text for new post updates', 'fdx-lang');
+_e('Text for new post updates', 'wp-twitter');
 $options = get_option('fdx_updater_options');
 echo ":<br /><input id='fdx_updater_newpost_format' type='text' size='50' maxlength='100' name='fdx_updater_options[newpost_format]' value='{$options['newpost_format']}' />";
 ?>
@@ -196,12 +196,12 @@ echo "<input id='fdx_updater_edited_update' type='checkbox' name='fdx_updater_op
 if( $options['edited_update'] == '1' )
  {
   echo " checked='true'";
-  echo " /> ".__('Update when a post is edited', 'fdx-lang');
+  echo " /> ".__('Update when a post is edited', 'wp-twitter');
 }
 ?> </legend>
 <span class="description">
 <?php
-_e('Text for post editing updates', 'fdx-lang');
+_e('Text for post editing updates', 'wp-twitter');
 $options = get_option('fdx_updater_options');
 echo ":<br /><input id='fdx_updater_edited_format' type='text' size='50' maxlength='100' name='fdx_updater_options[edited_format]' value='{$options['edited_format']}' />";
 ?>
@@ -211,16 +211,16 @@ echo ":<br /><input id='fdx_updater_edited_format' type='text' size='50' maxleng
 <td style="width:250px; vertical-align: top">
 
 <table style="width:250px;" class="widefat">
- <thead><tr><th><?php _e('Shortcodes', 'fdx-lang');?></th> </tr></thead>
+ <thead><tr><th><?php _e('Shortcodes', 'wp-twitter');?></th> </tr></thead>
 <tbody><tr class="alternate"><td>
 <p>
 
-<p><code>#title#</code>: <?php _e('The title of your blog post.', 'fdx-lang') ?>.</p>
-<p><code>#url#</code>: <?php _e('The post URL', 'fdx-lang')?>. </p>
+<p><code>#title#</code>: <?php _e('The title of your blog post.', 'wp-twitter') ?>.</p>
+<p><code>#url#</code>: <?php _e('The post URL', 'wp-twitter')?>. </p>
 
-<p><code>#author#</code>: <?php _e('Post author\'s', 'fdx-lang')?>. </p>
-<p><code>#category#</code>: <?php _e('The first category', 'fdx-lang')?>. </p>
-<p><code>#tags#</code>: <?php _e('Post tags', 'fdx-lang')?>. <small> <?php _e('Modified into hashtags, show only 3 tags of less than 15 characters each, and space replaced by', 'fdx-lang')?> (<code>_</code>)</small> </p>
+<p><code>#author#</code>: <?php _e('Post author\'s', 'wp-twitter')?>. </p>
+<p><code>#category#</code>: <?php _e('The first category', 'wp-twitter')?>. </p>
+<p><code>#tags#</code>: <?php _e('Post tags', 'wp-twitter')?>. <small> <?php _e('Modified into hashtags, show only 3 tags of less than 15 characters each, and space replaced by', 'wp-twitter')?> (<code>_</code>)</small> </p>
 
 
 </p>
@@ -248,7 +248,7 @@ echo ":<br /><input id='fdx_updater_edited_format' type='text' size='50' maxleng
 </div>
 
 <div class="postbox closed" >
-<div class="handlediv" title="<?php _e('Click to toggle', 'fdx-lang') ?>"><br /></div><h3 class='hndle'><span><?php _e('Limit Updating', 'fdx-lang') ?></span></h3>
+<div class="handlediv" title="<?php _e('Click to toggle', 'wp-twitter') ?>"><br /></div><h3 class='hndle'><span><?php _e('Limit Updating', 'wp-twitter') ?></span></h3>
 <div class="inside">
 <!-- ############################################################################################################### -->
 <legend><?php
@@ -256,12 +256,12 @@ $options = get_option('fdx_updater_options');
 echo "<input id='fdx_updater_limit_activate' type='checkbox' name='fdx_updater_options[limit_activate]' value='1'";
 if( $options['limit_activate'] == '1' ) {
 echo " checked='true'"; };
-echo " /> ".__('Limit Twitter updates using the rules below?', 'fdx-lang');
+echo " /> ".__('Limit Twitter updates using the rules below?', 'wp-twitter');
 ?></legend>
 
 <span class="description">
-<?php _e('Twitter messages can be sent only when the post is a member of a "Selected Category" or that have a specified Custom Fields', 'fdx-lang') ?>.<br />
-<?php _e('If no categories are checked, limiting by category will be ignored, and all categories will be Tweeted.', 'fdx-lang');?></span>
+<?php _e('Twitter messages can be sent only when the post is a member of a "Selected Category" or that have a specified Custom Fields', 'wp-twitter') ?>.<br />
+<?php _e('If no categories are checked, limiting by category will be ignored, and all categories will be Tweeted.', 'wp-twitter');?></span>
 
 <table style="width:100%">
   <tr>
@@ -269,7 +269,7 @@ echo " /> ".__('Limit Twitter updates using the rules below?', 'fdx-lang');
 
 
 <table style="width:100%;" class="widefat">
- <thead><tr><th><?php _e('Send tweets for posts with this category', 'fdx-lang');?>:</th> </tr></thead>
+ <thead><tr><th><?php _e('Send tweets for posts with this category', 'wp-twitter');?>:</th> </tr></thead>
 <tbody><tr class="alternate"><td>
 <?php
 	$options = get_option('fdx_updater_options');
@@ -306,12 +306,12 @@ echo " /> ".__('Limit Twitter updates using the rules below?', 'fdx-lang');
 
 
 <table style="width:100%;" class="widefat">
- <thead><tr><th><?php _e('Send tweets for posts with this Custom Fields', 'fdx-lang');?>:</th> </tr></thead>
+ <thead><tr><th><?php _e('Send tweets for posts with this Custom Fields', 'wp-twitter');?>:</th> </tr></thead>
 <tbody><tr class="alternate"><td>
 <?php
 	$options = get_option('fdx_updater_options');
-	echo "<p>".__('Custom Field: Name', 'fdx-lang')."<br /><input id='fdx_updater_limit_to_custom_field_key' type='text' size='20' maxlength='250' name='fdx_updater_options[limit_to_custom_field_key]' value='{$options['limit_to_custom_field_key']}' />";
-  	echo "</p><p>".__('Custom Field: Value', 'fdx-lang')." <br /><input id='fdx_updater_limit_to_custom_field_val' type='text' size='20' maxlength='250' name='fdx_updater_options[limit_to_custom_field_val]' value='{$options['limit_to_custom_field_val']}' /><span class=\"description\"> ".__('leave blank to match any value', 'fdx-lang')."</span>";
+	echo "<p>".__('Custom Field: Name', 'wp-twitter')."<br /><input id='fdx_updater_limit_to_custom_field_key' type='text' size='20' maxlength='250' name='fdx_updater_options[limit_to_custom_field_key]' value='{$options['limit_to_custom_field_key']}' />";
+  	echo "</p><p>".__('Custom Field: Value', 'wp-twitter')." <br /><input id='fdx_updater_limit_to_custom_field_val' type='text' size='20' maxlength='250' name='fdx_updater_options[limit_to_custom_field_val]' value='{$options['limit_to_custom_field_val']}' /><span class=\"description\"> ".__('leave blank to match any value', 'wp-twitter')."</span>";
 	echo "</p>";
 ?>
 
@@ -329,7 +329,7 @@ echo " /> ".__('Limit Twitter updates using the rules below?', 'fdx-lang');
 </div>
 
 <div class="postbox closed">
-<div class="handlediv" title="<?php _e('Click to toggle', 'fdx-lang') ?>"><br /></div><h3 class='hndle'><span><?php _e('URL Shortener Account Settings', 'fdx-lang') ?></span></h3>
+<div class="handlediv" title="<?php _e('Click to toggle', 'wp-twitter') ?>"><br /></div><h3 class='hndle'><span><?php _e('URL Shortener Account Settings', 'wp-twitter') ?></span></h3>
 <div class="inside">
 <!-- ############################################################################################################### -->
 <?php
@@ -337,7 +337,7 @@ echo " /> ".__('Limit Twitter updates using the rules below?', 'fdx-lang');
  	// default wp Options
 	echo "<ul><li><input id='fdx_updater_chose_url' type='radio' name='fdx_updater_options[url_method]' value='permalink'";
 	if( $options['url_method'] == 'permalink' || $options['url_method'] == 'default' ) { echo " checked='true'"; };
-	echo " /> <strong>".__('Don\'t shorten URLs', 'fdx-lang')." (<a href='".admin_url('options-permalink.php')."'>Permalink</a>)</strong></li>";
+	echo " /> <strong>".__('Don\'t shorten URLs', 'wp-twitter')." (<a href='".admin_url('options-permalink.php')."'>Permalink</a>)</strong></li>";
     echo"<li><h3></h3></li>";
 // is.gd
 	echo "<li><input id='fdx_updater_chose_url' type='radio' name='fdx_updater_options[url_method]' value='is.gd'";
@@ -352,7 +352,7 @@ echo " /> ".__('Limit Twitter updates using the rules below?', 'fdx-lang');
 //yourls
 	echo "<li><input id='fdx_updater_chose_url' type='radio' name='fdx_updater_options[url_method]' value='yourls'";
 	if( $options['url_method'] == 'yourls' ) { echo " checked='true'"; };
-	echo " /> <strong>YOURLS.org</strong> <span class=\"description\"> (".__('A free GPL URL shortener service', 'fdx-lang').")</span>";
+	echo " /> <strong>YOURLS.org</strong> <span class=\"description\"> (".__('A free GPL URL shortener service', 'wp-twitter').")</span>";
 //yourls Options
 		echo "<p>API url:<input id='fdx_updater_yourls_url' type='text' size='40' name='fdx_updater_options[yourls_url]' value='{$options['yourls_url']}' /> &nbsp; Signature Token: <input id='fdx_updater_yourls_token' type='text' size='20' name='fdx_updater_options[yourls_token]' value='{$options['yourls_token']}' /> [<a href=\"http://yourls.org\" target=\"_blank\">?</a>]</p>
         <code>Ex: http://domain.com/yourls-api.php</code></li>";
@@ -371,7 +371,7 @@ echo " /> ".__('Limit Twitter updates using the rules below?', 'fdx-lang');
 </div>
 
 
-<div align="center"><input name="Submit" class="button-primary"  type="submit" value="<?php _e('Save All Options', 'fdx-lang') ?>" /></div>
+<div align="center"><input name="Submit" class="button-primary"  type="submit" value="<?php _e('Save All Options', 'wp-twitter') ?>" /></div>
 </form>
 </div> <!-- /postbox-container -->
 </div><!-- /meta-box-sortables -->
@@ -388,7 +388,7 @@ echo " /> ".__('Limit Twitter updates using the rules below?', 'fdx-lang');
 //reset
 jQuery(document).ready(function($) {
 $("#fdxReset").submit(function(event) {
-var ask = confirm('<?php _e('Are you sure you want to reset all settings?', 'fdx-lang') ?>');
+var ask = confirm('<?php _e('Are you sure you want to reset all settings?', 'wp-twitter') ?>');
 if (!ask) {
 event.preventDefault();
 return false;

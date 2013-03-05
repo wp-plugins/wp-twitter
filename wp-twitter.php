@@ -2,7 +2,7 @@
 /*
 Plugin Name: WP Twitter
 Description: Is a plugin that creates a complete integration between your WordPress blog and your Twitter account including a Twitter Button and Widgets.
-Version: 3.8.6
+Version: 3.8.7
 Author: Fabrix DoRoMo
 Author URI: http://fabrix.net
 Plugin URI: http://fabrix.net/wp-twitter
@@ -24,7 +24,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 /*********************************************************************************/
 define('FDX1_PLUGIN_NAME', 'WP Twitter' );
-define('FDX1_PLUGIN_VERSION', '3.8.6' );
+define('FDX1_PLUGIN_VERSION', '3.8.7' );
 define('FDX1_PLUGIN_URL', plugin_dir_url(__FILE__));
 
 define('FDX1_WPPAGE', 'http://wordpress.org/extend/plugins/wp-twitter');
@@ -37,14 +37,11 @@ define('FDX1_PLUGIN_P1', 'wp-twitter' ); //link1, plugin prefix (.mo)
 define('FDX1_PLUGIN_P2', 'wp-twitter-widgets' ); //link2
 define('FDX1_PLUGIN_P3', 'wp-twitter-integration' ); //link3
 
-/*
+/* Locale
 *------------------------------------------------------------*/
-$currentLocale = get_locale();
-			if(!empty($currentLocale)) {
-				$moFile = dirname(__FILE__) . "/languages/".FDX1_PLUGIN_P1."-" . $currentLocale . ".mo";
-				if(@file_exists($moFile) && is_readable($moFile)) load_textdomain('fdx-lang', $moFile);
+function fdx1_lang_init(){
+load_plugin_textdomain('wp-twitter', false, dirname(plugin_basename( __FILE__ )).'/languages');
 }
-
 
  function fdx_1_init() {
     if (is_admin() && current_user_can('administrator')) {
@@ -97,9 +94,9 @@ require_once( dirname(__FILE__) . '/admin/integration.php' );
 *------------------------------------------------------------*/
 function fdx_admin_add_page(){
 	add_menu_page('',FDX1_PLUGIN_NAME, 'manage_options', FDX1_PLUGIN_P1, 'fdx_updater_options_page', FDX1_PLUGIN_URL . '/images/menu.png' );
-    add_submenu_page(FDX1_PLUGIN_P1, __('Basic Settings and Connect', 'fdx-lang'), __('Settings', 'fdx-lang'), 'manage_options', FDX1_PLUGIN_P1, 'fdx_updater_options_page');
-    add_submenu_page(FDX1_PLUGIN_P1, __('Widgets Settings', 'fdx-lang'), __('Widgets', 'fdx-lang'), 'manage_options', FDX1_PLUGIN_P2, 'wp_twitter_fdx_options_page');
-    add_submenu_page(FDX1_PLUGIN_P1, __('Sharethis Button Integration', 'fdx-lang'), __('Integration', 'fdx-lang'), 'manage_options', FDX1_PLUGIN_P3, 'wp_twitter_fdx_social');
+    add_submenu_page(FDX1_PLUGIN_P1, __('Basic Settings and Connect', 'wp-twitter'), __('Settings', 'wp-twitter'), 'manage_options', FDX1_PLUGIN_P1, 'fdx_updater_options_page');
+    add_submenu_page(FDX1_PLUGIN_P1, __('Widgets Settings', 'wp-twitter'), __('Widgets', 'wp-twitter'), 'manage_options', FDX1_PLUGIN_P2, 'wp_twitter_fdx_options_page');
+    add_submenu_page(FDX1_PLUGIN_P1, __('Sharethis Button Integration', 'wp-twitter'), __('Integration', 'wp-twitter'), 'manage_options', FDX1_PLUGIN_P3, 'wp_twitter_fdx_social');
   }
 
 /* Widget_profile
@@ -107,8 +104,8 @@ function fdx_admin_add_page(){
 class FDX_Widget_profile extends WP_Widget {
 
 	function __construct() {
-		$widget_options = array('classname' => 'widget_wp_twitter_fdx_profile', 'description' => __('Display Twitter Profile Widget', 'fdx-lang') );
-		parent::__construct('fdxprofile',FDX1_PLUGIN_NAME. ' - '.__('Profile Widget', 'fdx-lang'), $widget_options);
+		$widget_options = array('classname' => 'widget_wp_twitter_fdx_profile', 'description' => __('Display Twitter Profile Widget', 'wp-twitter') );
+		parent::__construct('fdxprofile',FDX1_PLUGIN_NAME. ' - '.__('Profile Widget', 'wp-twitter'), $widget_options);
 	}
 
 	function widget($args) {
@@ -121,7 +118,7 @@ class FDX_Widget_profile extends WP_Widget {
 	}
 
     function form() {
-    echo __('Please go to', 'fdx-lang').': <b><a href="'. admin_url('admin.php?page='.FDX1_PLUGIN_P2).'">'. FDX1_PLUGIN_NAME . ' | Widgets</a></b> '. __('for options.', 'fdx-lang');
+    echo __('Please go to', 'wp-twitter').': <b><a href="'. admin_url('admin.php?page='.FDX1_PLUGIN_P2).'">'. FDX1_PLUGIN_NAME . ' | Widgets</a></b> '. __('for options.', 'wp-twitter');
 	}
 }
 
@@ -129,8 +126,8 @@ class FDX_Widget_profile extends WP_Widget {
 class FDX_Widget_search extends WP_Widget {
 
 	function __construct() {
-		$widget_options = array('classname' => 'widget_wp_twitter_fdx_search', 'description' => __('Display Twitter Search Widget', 'fdx-lang') );
-		parent::__construct('fdxsearch',FDX1_PLUGIN_NAME. ' - '.__('Search Widget', 'fdx-lang'), $widget_options);
+		$widget_options = array('classname' => 'widget_wp_twitter_fdx_search', 'description' => __('Display Twitter Search Widget', 'wp-twitter') );
+		parent::__construct('fdxsearch',FDX1_PLUGIN_NAME. ' - '.__('Search Widget', 'wp-twitter'), $widget_options);
 	}
 
 	function widget($args) {
@@ -143,7 +140,7 @@ class FDX_Widget_search extends WP_Widget {
 	}
 
     function form() {
-    echo __('Please go to', 'fdx-lang').': <b><a href="'. admin_url('admin.php?page='.FDX1_PLUGIN_P2).'">'. FDX1_PLUGIN_NAME . ' | Widgets</a></b> '. __('for options.', 'fdx-lang');
+    echo __('Please go to', 'wp-twitter').': <b><a href="'. admin_url('admin.php?page='.FDX1_PLUGIN_P2).'">'. FDX1_PLUGIN_NAME . ' | Widgets</a></b> '. __('for options.', 'wp-twitter');
 	}
 }
 
@@ -154,4 +151,5 @@ function fdx_widgets_init() {
 
 add_action('init', 'fdx_1_init');
 add_action('init', 'fdx_widgets_init', 1);
+add_action('init', 'fdx1_lang_init');
 ?>

@@ -2,10 +2,10 @@
 Plugin Name: WP Twitter
 Contributors: fdoromo
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=Z9SRNRLLDAFZJ
-Tags: twitter, twit, tweet, tweets, twitter widget, dynamic twitter widget, auto refresh tweet, twitter goodies,twitter tools, yourls, Widget, Sharethis 
+Tags: twitter, twit, tweet, tweets, twitter widget, dynamic twitter widget, auto refresh tweet, twitter goodies,twitter tools, yourls, Widget, Sharethis
 Requires at least: 3.0
 Tested up to: 3.5
-Stable tag: 3.8.6
+Stable tag: 3.8.7
 License: GPLv2 or later
 
 Is a plugin that creates a complete integration between your WordPress blog and your Twitter account including ShareThis Buttons and Goodies Widgets.
@@ -28,7 +28,7 @@ Sharethis Button Option: Activate integration option from Admin Panel
 The following short url services are supported:
 
 * YOURLS.org
-* TinyURL.com 
+* TinyURL.com
 * is.gd
 * Bit.ly
 
@@ -48,7 +48,7 @@ We'd love for you to get involved. Whatever your level of skill or however much 
 
 * **Users** - download the latest development version of the plugin, and submit bug/feature requests.
 * **Non-English Speaking Users** - Contribute a translation using the GlotPress web interface - no technical knowledge required ([how to](http://translate.fabrix.net/projects/wp-twitter)).
-* **Developers** - Fork the development version and submit a pull request. 
+* **Developers** - Fork the development version and submit a pull request.
 
 
 == Screenshots ==
@@ -78,9 +78,12 @@ No, this plugin does not work with php4.
 
 
 == Changelog ==
+* 3.8.7
+    * Performance Improvement
+
 * 3.8.6
     * Add Turkish (Türkçe: tr) translation by Hakan Erarslan
-    * Improvement of performance 
+    * Performance Improvement
 
 * 3.8.5
     * Add German (Deutsch: de_DE) translation by Benedikt Hartmann
@@ -94,7 +97,7 @@ No, this plugin does not work with php4.
     * Use your Permalink Settings for default URL format.
 
 * 3.7.3
-    * Improvement of performance 
+    * Performance Improvement
 
 * 3.7.2
     * Bug Fix
@@ -105,7 +108,7 @@ No, this plugin does not work with php4.
 
 * 3.7
     * Add Italian (Italiano: it_IT) translation by TheShark_76
-    * Improvement of performance 
+    * Performance Improvement
     * Various cosmetic fixes
 
 * 3.6.2
@@ -117,19 +120,19 @@ No, this plugin does not work with php4.
 
 * 3.6
     * ShareThis, support for change order or modify buttons.
-    
+
 * 3.5
     * Adds Brazilian Portuguese translation.
     * Bug Fix (ShareThis Button Integration).
     * ShareThis, added support for Bottom Fixed bar.
 
-* 3.4 
-    * ShareThis, added support for CopyNShare, ShareNow: enabled option to choosing a different theme. 
+* 3.4
+    * ShareThis, added support for CopyNShare, ShareNow: enabled option to choosing a different theme.
 
-* 3.3 
-    * ShareThis, added support for: ShareNow, Share Egg and Bars (Float Left/Right Side, Top of Page - scrolls down)  
+* 3.3
+    * ShareThis, added support for: ShareNow, Share Egg and Bars (Float Left/Right Side, Top of Page - scrolls down)
 
-* 3.2 
+* 3.2
     * Bug Fix (ShareThis Button Integration)
 
 
