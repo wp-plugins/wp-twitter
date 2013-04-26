@@ -307,7 +307,7 @@ function wp_twitter_fdx_options_page() {
 
 </div><!-- /wrap -->
 <div class="clear"></div>
-<script src="<?php echo FDX1_PLUGIN_URL;?>js/twitter-text-js.js" type="text/javascript" charset="utf-8"></script>
+<script src="<?php echo FDX1_PLUGIN_URL;?>_inc/twitter-text-js.js" type="text/javascript" charset="utf-8"></script>
 <script type="text/javascript">
 //<![CDATA[
   var DemoWidget = new TWTR.Widget({

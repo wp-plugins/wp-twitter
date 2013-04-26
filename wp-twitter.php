@@ -1,30 +1,20 @@
 <?php
 /*
-Plugin Name: WP Twitter
-Description: Is a plugin that creates a complete integration between your WordPress blog and your Twitter account including a Twitter Button and Widgets.
-Version: 3.8.7
-Author: Fabrix DoRoMo
-Author URI: http://fabrix.net
-Plugin URI: http://fabrix.net/wp-twitter
-*/
-/*
-This program is free software; you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation; either version 3 of the License, or
-(at your option) any later version.
+ * Plugin Name: WP Twitter
+ * Plugin URI: http://fabrix.net/wp-twitter
+ * Description: Is a plugin that creates a complete integration between your WordPress blog and your Twitter account including a Twitter Button and Widgets.
+ * Author: Fabrix DoRoMo
+ * Version: 3.9
+ * Author URI: http://fabrix.net
+ * License: GPL2+
+ * Text Domain: wp-twitter
+ * Domain Path: /languages/
+ */
 
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
+include('compat.php' );  //???
 
-You should have received a copy of the GNU General Public License
-along with this program.  If not, see <http://www.gnu.org/licenses/>.
-*/
-
-/*********************************************************************************/
 define('FDX1_PLUGIN_NAME', 'WP Twitter' );
-define('FDX1_PLUGIN_VERSION', '3.8.7' );
+define('FDX1_PLUGIN_VERSION', '3.9' );
 define('FDX1_PLUGIN_URL', plugin_dir_url(__FILE__));
 
 define('FDX1_WPPAGE', 'http://wordpress.org/extend/plugins/wp-twitter');
@@ -43,7 +33,8 @@ function fdx1_lang_init(){
 load_plugin_textdomain('wp-twitter', false, dirname(plugin_basename( __FILE__ )).'/languages');
 }
 
- function fdx_1_init() {
+
+function fdx_1_init() {
     if (is_admin() && current_user_can('administrator')) {
       add_action( 'admin_menu', 'fdx_admin_add_page' );
       //------------------------------
@@ -57,47 +48,73 @@ add_filter('the_content', 'filter_wp_twitter_fdx_search');
 add_filter('the_content', 'filter_wp_twitter_fdx_tweet_button_show', 1);
 add_filter('the_excerpt', 'filter_wp_twitter_fdx_tweet_button_show', 1);
 
-add_action( 'draft_to_publish', 'fdx_updater_published', 1, 1 );
+/*add_action( 'draft_to_publish', 'fdx_updater_published', 1, 1 );
 add_action( 'new_to_publish', 'fdx_updater_published', 1, 1 );
 add_action( 'pending_to_publish', 'fdx_updater_published', 1, 1 );
 add_action( 'future_to_publish', 'fdx_updater_published', 1, 1 );
 add_action( 'publish_to_publish', 'fdx_updater_edited', 1, 1 );
-add_action( 'admin_init', 'fdx_updater_admin_init' );
+add_action( 'admin_init', 'fdx_updater_admin_init' );*/
 
 add_action('wp_head', 'fdx_sharethis_script' );
 add_action('wp_footer', 'filter_wp_twitter_fdx_tweet_button_show');
 }
 
+
 /* Loads CSS or JS
 *------------------------------------------------------------*/
 function fdx_1_enqueue_scripts() {
-      wp_enqueue_style('fdx-css', FDX1_PLUGIN_URL . 'css/fdx-inc.css', array(), FDX1_PLUGIN_VERSION);
+      wp_enqueue_style('fdx-css', FDX1_PLUGIN_URL . '_inc/fdx-inc.css', array(), FDX1_PLUGIN_VERSION);
       wp_enqueue_script('wpcore-js', admin_url() . 'load-scripts.php?c=0&amp;load=jquery-ui-core,jquery-ui-widget,jquery-ui-mouse,jquery-ui-sortable,postbox,post', array(), FDX1_PLUGIN_VERSION, true);
-      wp_enqueue_script('fdx-js', FDX1_PLUGIN_URL . 'js/fdx-inc.js', array(), FDX1_PLUGIN_VERSION, true);
+      wp_enqueue_script('fdx-js', FDX1_PLUGIN_URL . '_inc/fdx-inc.js', array(), FDX1_PLUGIN_VERSION, true);
    if ( isset( $_GET['page'] ) && $_GET['page'] == FDX1_PLUGIN_P2)  {
- 	  wp_enqueue_style('fdx-colorpicker', FDX1_PLUGIN_URL . 'css/colorpicker.css', array(), FDX1_PLUGIN_VERSION);
-      wp_enqueue_script('fdx-colorpicker', FDX1_PLUGIN_URL . 'js/colorpicker.js', array(), FDX1_PLUGIN_VERSION, true);
-      wp_enqueue_script('fdx-goodies', FDX1_PLUGIN_URL . 'js/goodies.js', array(), FDX1_PLUGIN_VERSION, true);
+ 	  wp_enqueue_style('fdx-colorpicker', FDX1_PLUGIN_URL . '_inc/colorpicker.css', array(), FDX1_PLUGIN_VERSION);
+      wp_enqueue_script('fdx-colorpicker', FDX1_PLUGIN_URL . '_inc/colorpicker.js', array(), FDX1_PLUGIN_VERSION, true);
+      wp_enqueue_script('fdx-goodies', FDX1_PLUGIN_URL . '_inc/goodies.js', array(), FDX1_PLUGIN_VERSION, true);
     }
  }
 
 
 /*
 *------------------------------------------------------------*/
-require_once( dirname(__FILE__) . '/libs/twitteroauth.php' );
-require_once( dirname(__FILE__) . '/admin/settings_connect.php' );
-require_once( dirname(__FILE__) . '/admin/settings.php' );
-require_once( dirname(__FILE__) . '/admin/widgets.php' );
-require_once( dirname(__FILE__) . '/admin/integration.php' );
+require_once( dirname(__FILE__) . '/modules/p2.php' );
+require_once( dirname(__FILE__) . '/modules/p3.php' );
+
+
+/* P1-Settings Connect
+*------------------------------------------------------------*/
+require_once( dirname(__FILE__) . '/modules/p1/xml.php' );
+require_once( dirname(__FILE__) . '/modules/p1/oauth-twitter.php' );
+
+
+/* P1-Settings Connect
+*------------------------------------------------------------*/
+require_once( dirname(__FILE__) . '/modules/p1-function.php' );
+
+
+
+/*function fdx1_add_plugin_option() {
+	if ( function_exists( 'add_options_page' ) ) {
+		add_menu_page( 'nome do plugin', 'nome do plugin2', 'manage_options', basename(__FILE__), 'fdx1_options_subpanel' );
+    }
+}*/
+
+
 
 /*
 *------------------------------------------------------------*/
 function fdx_admin_add_page(){
-	add_menu_page('',FDX1_PLUGIN_NAME, 'manage_options', FDX1_PLUGIN_P1, 'fdx_updater_options_page', FDX1_PLUGIN_URL . '/images/menu.png' );
-    add_submenu_page(FDX1_PLUGIN_P1, __('Basic Settings and Connect', 'wp-twitter'), __('Settings', 'wp-twitter'), 'manage_options', FDX1_PLUGIN_P1, 'fdx_updater_options_page');
+	add_menu_page('',FDX1_PLUGIN_NAME, 'manage_options', FDX1_PLUGIN_P1, 'fdx1_options_subpanel', FDX1_PLUGIN_URL . '/_inc/images/menu.png' );
+    add_submenu_page(FDX1_PLUGIN_P1, __('Basic Settings and Connect', 'wp-twitter'), __('Settings', 'wp-twitter'), 'manage_options', FDX1_PLUGIN_P1, 'fdx1_options_subpanel');
     add_submenu_page(FDX1_PLUGIN_P1, __('Widgets Settings', 'wp-twitter'), __('Widgets', 'wp-twitter'), 'manage_options', FDX1_PLUGIN_P2, 'wp_twitter_fdx_options_page');
     add_submenu_page(FDX1_PLUGIN_P1, __('Sharethis Button Integration', 'wp-twitter'), __('Integration', 'wp-twitter'), 'manage_options', FDX1_PLUGIN_P3, 'wp_twitter_fdx_social');
   }
+
+
+/* P1-Settings Connect
+*------------------------------------------------------------*/
+function fdx1_options_subpanel() {
+include( dirname(__FILE__) . '/modules/p1.php' );
+}
 
 /* Widget_profile
 *------------------------------------------------------------*/
@@ -149,6 +166,12 @@ function fdx_widgets_init() {
  	register_widget('FDX_Widget_search');
 }
 
+
+/* P1-Settings Connect
+*------------------------------------------------------------*/
+add_action( 'publish_post', 'fdx1_post_now_published' );
+add_filter( 'init', 'fdx1_init');
+//--------------------
 add_action('init', 'fdx_1_init');
 add_action('init', 'fdx_widgets_init', 1);
 add_action('init', 'fdx1_lang_init');

@@ -8,8 +8,8 @@ if ( !defined( 'WP_UNINSTALL_PLUGIN' ) )
 //get_option('fdx_updater_options');
 
 //Settings
-delete_option('fdx_updater_auth');
-delete_option('fdx_updater_options');
+delete_option('fdx1_settings');
+
 
 //Sharethis Button integration
 delete_option('wp_twitter_fdx_tweet_button_display_single');

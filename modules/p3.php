@@ -19,7 +19,7 @@ add_option('wp_twitter_fdx_tweet_button_twitter_username', '');
 add_option('wp_twitter_fdx_services', 'facebook,twitter,linkedin,email,sharethis');    //New
 
 
-add_option('wp_twitter_fdx_logo_top', FDX1_PLUGIN_URL .'/images/logo300x40.png');
+add_option('wp_twitter_fdx_logo_top', FDX1_PLUGIN_URL .'/_inc/images/logo300x40.png');
 
 function filter_wp_twitter_fdx_tweet_button_show($related_content)
 {
@@ -158,7 +158,7 @@ if ($tweet_btn_place == "fixedbottom")
        @$allopt.= '"'.$key.'",';
        }
 echo '<script type="text/javascript">stLight.options({publisher: "'.$tweet_btn_twt_username.'"'.$display_copynshare.'});</script>';
-echo '<script>var options={ "publisher": "'.$tweet_btn_twt_username.'", "logo": { "visible": false, "url": "", "img": "http://sd.sharethis.com/disc/images/demo_logo.png", "height": 45}, "ad": { "visible": false, "openDelay": "5", "closeDelay": "0"}, "livestream": { "domain": "", "type": "sharethis", "customColors": { "widgetBackgroundColor": "#FFFFFF", "articleLinkColor": "#006fbb"}}, "ticker": { "visible": false, "domain": "", "title": "", "type": "sharethis", "customColors": { "widgetBackgroundColor": "#a0adc7", "articleLinkColor": "#00487f"}}, "facebook": { "visible": false, "profile": "sharethis"}, "fblike": { "visible": false, "url": ""}, "twitter": { "visible": false, "user": "sharethis"}, "twfollow": { "visible": false, "url": "http://www.twitter.com/sharethis"}, "custom": [{ "visible": false, "title": "Custom 1", "url": "", "img": "", "popup": false, "popupCustom": { "width": 300, "height": 250}}, { "visible": false, "title": "Custom 2", "url": "", "img": "", "popup": false, "popupCustom": { "width": 300, "height": 250}}, { "visible": false, "title": "Custom 3", "url": "", "img": "", "popup": false, "popupCustom": { "width": 300, "height": 250}}], "shadow": "gloss", "background": "#c2c2c2", "color": "#555555", "arrowStyle": "light", "chicklets": { "items": ['.$allopt.']}};';
+echo '<script>var options={ "publisher": "'.$tweet_btn_twt_username.'", "logo": { "visible": false, "url": "", "img": "http://sd.sharethis.com/disc/_inc/images/demo_logo.png", "height": 45}, "ad": { "visible": false, "openDelay": "5", "closeDelay": "0"}, "livestream": { "domain": "", "type": "sharethis", "customColors": { "widgetBackgroundColor": "#FFFFFF", "articleLinkColor": "#006fbb"}}, "ticker": { "visible": false, "domain": "", "title": "", "type": "sharethis", "customColors": { "widgetBackgroundColor": "#a0adc7", "articleLinkColor": "#00487f"}}, "facebook": { "visible": false, "profile": "sharethis"}, "fblike": { "visible": false, "url": ""}, "twitter": { "visible": false, "user": "sharethis"}, "twfollow": { "visible": false, "url": "http://www.twitter.com/sharethis"}, "custom": [{ "visible": false, "title": "Custom 1", "url": "", "img": "", "popup": false, "popupCustom": { "width": 300, "height": 250}}, { "visible": false, "title": "Custom 2", "url": "", "img": "", "popup": false, "popupCustom": { "width": 300, "height": 250}}, { "visible": false, "title": "Custom 3", "url": "", "img": "", "popup": false, "popupCustom": { "width": 300, "height": 250}}], "shadow": "gloss", "background": "#c2c2c2", "color": "#555555", "arrowStyle": "light", "chicklets": { "items": ['.$allopt.']}};';
 echo 'var st_bar_widget = new sharethis.widgets.sharebar(options);</script>';
 }
 //------------------------------------------------------------
@@ -439,10 +439,10 @@ function wp_twitter_fdx_social() {
 <p><strong><?php _e('Type of the Button', 'wp-twitter') ?>   </strong> </p>
   <table style="width: 100%; text-align: center">
      <tr>
-       <td valign="top"><input name="wp_twitter_fdx_tweet_button_style" type="radio" value="small_buton" <?php checked('small_buton', $wp_twitter_fdx_tweet_button_style); ?> /> <?php _e('Small Butons (16x16)', 'wp-twitter') ?><br /><img src="<?php echo FDX1_PLUGIN_URL;?>/images/but1.png" width="140" height="54" border="0" alt="" /></td>
-       <td valign="top"><input name="wp_twitter_fdx_tweet_button_style" type="radio" value="large_buton" <?php checked('large_buton', $wp_twitter_fdx_tweet_button_style); ?> /> <?php _e('Large Buttons (32x32)', 'wp-twitter') ?><br /><img src="<?php echo FDX1_PLUGIN_URL;?>/images/but2.png" width="140" height="54" border="0" alt="" /></td>
-      <td valign="top"><input name="wp_twitter_fdx_tweet_button_style" type="radio" value="h_count_buton" <?php checked('h_count_buton', $wp_twitter_fdx_tweet_button_style); ?> /> <?php _e('Horizontal Count', 'wp-twitter') ?><br /><img src="<?php echo FDX1_PLUGIN_URL;?>/images/but3.png" width="140" height="54" border="0" alt="" /></td>
-       <td valign="top"><input name="wp_twitter_fdx_tweet_button_style" type="radio" value="v_count_buton" <?php checked('v_count_buton', $wp_twitter_fdx_tweet_button_style); ?> /> <?php _e('Vertical Count', 'wp-twitter') ?><br /><img src="<?php echo FDX1_PLUGIN_URL;?>/images/but4.png" width="140" height="54" border="0" alt="" /></td>
+       <td valign="top"><input name="wp_twitter_fdx_tweet_button_style" type="radio" value="small_buton" <?php checked('small_buton', $wp_twitter_fdx_tweet_button_style); ?> /> <?php _e('Small Butons (16x16)', 'wp-twitter') ?><br /><img src="<?php echo FDX1_PLUGIN_URL;?>/_inc/images/but1.png" width="140" height="54" border="0" alt="" /></td>
+       <td valign="top"><input name="wp_twitter_fdx_tweet_button_style" type="radio" value="large_buton" <?php checked('large_buton', $wp_twitter_fdx_tweet_button_style); ?> /> <?php _e('Large Buttons (32x32)', 'wp-twitter') ?><br /><img src="<?php echo FDX1_PLUGIN_URL;?>/_inc/images/but2.png" width="140" height="54" border="0" alt="" /></td>
+      <td valign="top"><input name="wp_twitter_fdx_tweet_button_style" type="radio" value="h_count_buton" <?php checked('h_count_buton', $wp_twitter_fdx_tweet_button_style); ?> /> <?php _e('Horizontal Count', 'wp-twitter') ?><br /><img src="<?php echo FDX1_PLUGIN_URL;?>/_inc/images/but3.png" width="140" height="54" border="0" alt="" /></td>
+       <td valign="top"><input name="wp_twitter_fdx_tweet_button_style" type="radio" value="v_count_buton" <?php checked('v_count_buton', $wp_twitter_fdx_tweet_button_style); ?> /> <?php _e('Vertical Count', 'wp-twitter') ?><br /><img src="<?php echo FDX1_PLUGIN_URL;?>/_inc/images/but4.png" width="140" height="54" border="0" alt="" /></td>
      </tr>
    </table>
 <p><strong><?php _e('CSS Style Align', 'wp-twitter') ?>:</strong> <input name="wp_twitter_fdx_tweet_button_container" type="text" size="50" value="<?php echo get_option('wp_twitter_fdx_tweet_button_container'); ?>" /></p>
@@ -457,10 +457,10 @@ function wp_twitter_fdx_social() {
 <table style="width: 100%">
   <tr>
     <td style="width: 50%; vertical-align: top">
-<p><img src="<?php echo FDX1_PLUGIN_URL;?>/images/button_sidebar.png" width="232" height="100" border="0" alt="" style="vertical-align: middle"  /> <input name="wp_twitter_fdx_tweet_button_style2" type="radio" value="floatside_left" <?php checked('floatside_left', $wp_twitter_fdx_tweet_button_style2); ?> /> <?php _e('Left', 'wp-twitter') ?></p>
+<p><img src="<?php echo FDX1_PLUGIN_URL;?>/_inc/images/button_sidebar.png" width="232" height="100" border="0" alt="" style="vertical-align: middle"  /> <input name="wp_twitter_fdx_tweet_button_style2" type="radio" value="floatside_left" <?php checked('floatside_left', $wp_twitter_fdx_tweet_button_style2); ?> /> <?php _e('Left', 'wp-twitter') ?></p>
  </td>
  <td style="width: 50%; vertical-align: top">
-<p><img src="<?php echo FDX1_PLUGIN_URL;?>/images/button_sidebar2.png" width="232" height="100" border="0" alt="" style="vertical-align: middle" /> <input name="wp_twitter_fdx_tweet_button_style2" type="radio" value="floatside_right" <?php checked('floatside_right', $wp_twitter_fdx_tweet_button_style2); ?> /> <?php _e('Right', 'wp-twitter') ?></p>
+<p><img src="<?php echo FDX1_PLUGIN_URL;?>/_inc/images/button_sidebar2.png" width="232" height="100" border="0" alt="" style="vertical-align: middle" /> <input name="wp_twitter_fdx_tweet_button_style2" type="radio" value="floatside_right" <?php checked('floatside_right', $wp_twitter_fdx_tweet_button_style2); ?> /> <?php _e('Right', 'wp-twitter') ?></p>
 </td>
   </tr>
 </table>
@@ -470,14 +470,14 @@ function wp_twitter_fdx_social() {
 <div id="tabid3" class="tab_content">
 <!-- ******************************************tab3****************************************** -->
 <p><strong><?php _e('Logo Area', 'wp-twitter') ?></strong> <span class="description"> (300x40 pix)</span>  </p>
-<p><img src="<?php echo FDX1_PLUGIN_URL;?>/images/button_top.png" width="234" height="101" border="0" alt="" /><br /><strong>Logo Url:</strong> <input name="wp_twitter_fdx_logo_top" type="text" size="75" value="<?php echo get_option('wp_twitter_fdx_logo_top'); ?>" /></p>
+<p><img src="<?php echo FDX1_PLUGIN_URL;?>/_inc/images/button_top.png" width="234" height="101" border="0" alt="" /><br /><strong>Logo Url:</strong> <input name="wp_twitter_fdx_logo_top" type="text" size="75" value="<?php echo get_option('wp_twitter_fdx_logo_top'); ?>" /></p>
 <!-- ******************************************tab3****************************************** -->
 </div>
 
 <div id="tabid4" class="tab_content">
 <!-- ******************************************tab4****************************************** -->
 <p><strong>options of customization: coming soon  </strong>  </p>
-<p><img src="<?php echo FDX1_PLUGIN_URL;?>/images/sahre_bar.png" width="233" height="86" border="0" alt="" />   </p>
+<p><img src="<?php echo FDX1_PLUGIN_URL;?>/_inc/images/sahre_bar.png" width="233" height="86" border="0" alt="" />   </p>
 <!-- ******************************************tab4****************************************** -->
 </div>
 
@@ -487,13 +487,13 @@ function wp_twitter_fdx_social() {
 
 <table style="width: 100%">
   <tr>
-    <td style="width: 33%; vertical-align: top"><p><img src="<?php echo FDX1_PLUGIN_URL;?>/images/fbtheme_3.png" width="140" height="112" border="0" alt="" style="vertical-align: middle" /> <input name="wp_twitter_fdx_tweet_button_style3" type="radio" value="3" <?php checked('3', $wp_twitter_fdx_tweet_button_style3); ?> /></p>
-<p><img src="<?php echo FDX1_PLUGIN_URL;?>/images/fbtheme_4.png" width="140" height="112" border="0" alt="" style="vertical-align: middle" /> <input name="wp_twitter_fdx_tweet_button_style3" type="radio" value="4" <?php checked('4', $wp_twitter_fdx_tweet_button_style3); ?> /></p>
+    <td style="width: 33%; vertical-align: top"><p><img src="<?php echo FDX1_PLUGIN_URL;?>/_inc/images/fbtheme_3.png" width="140" height="112" border="0" alt="" style="vertical-align: middle" /> <input name="wp_twitter_fdx_tweet_button_style3" type="radio" value="3" <?php checked('3', $wp_twitter_fdx_tweet_button_style3); ?> /></p>
+<p><img src="<?php echo FDX1_PLUGIN_URL;?>/_inc/images/fbtheme_4.png" width="140" height="112" border="0" alt="" style="vertical-align: middle" /> <input name="wp_twitter_fdx_tweet_button_style3" type="radio" value="4" <?php checked('4', $wp_twitter_fdx_tweet_button_style3); ?> /></p>
 </td>
-    <td style="width: 33%; vertical-align: top"><p><img src="<?php echo FDX1_PLUGIN_URL;?>/images/fbtheme_5.png" width="140" height="112" border="0" alt="" style="vertical-align: middle" /> <input name="wp_twitter_fdx_tweet_button_style3" type="radio" value="5" <?php checked('5', $wp_twitter_fdx_tweet_button_style3); ?> /></p>
-<p><img src="<?php echo FDX1_PLUGIN_URL;?>/images/fbtheme_6.png" width="140" height="112" border="0" alt="" style="vertical-align: middle" /> <input name="wp_twitter_fdx_tweet_button_style3" type="radio" value="6" <?php checked('6', $wp_twitter_fdx_tweet_button_style3); ?> /></p>
+    <td style="width: 33%; vertical-align: top"><p><img src="<?php echo FDX1_PLUGIN_URL;?>/_inc/images/fbtheme_5.png" width="140" height="112" border="0" alt="" style="vertical-align: middle" /> <input name="wp_twitter_fdx_tweet_button_style3" type="radio" value="5" <?php checked('5', $wp_twitter_fdx_tweet_button_style3); ?> /></p>
+<p><img src="<?php echo FDX1_PLUGIN_URL;?>/_inc/images/fbtheme_6.png" width="140" height="112" border="0" alt="" style="vertical-align: middle" /> <input name="wp_twitter_fdx_tweet_button_style3" type="radio" value="6" <?php checked('6', $wp_twitter_fdx_tweet_button_style3); ?> /></p>
 </td>
-    <td style="width: 33%; vertical-align: top"><p><img src="<?php echo FDX1_PLUGIN_URL;?>/images/fbtheme_7.png" width="140" height="112" border="0" alt="" style="vertical-align: middle" /> <input name="wp_twitter_fdx_tweet_button_style3" type="radio" value="7" <?php checked('7', $wp_twitter_fdx_tweet_button_style3); ?> /></p>
+    <td style="width: 33%; vertical-align: top"><p><img src="<?php echo FDX1_PLUGIN_URL;?>/_inc/images/fbtheme_7.png" width="140" height="112" border="0" alt="" style="vertical-align: middle" /> <input name="wp_twitter_fdx_tweet_button_style3" type="radio" value="7" <?php checked('7', $wp_twitter_fdx_tweet_button_style3); ?> /></p>
 </td>
   </tr>
 </table>
