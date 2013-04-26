@@ -329,21 +329,13 @@ function fdx1_get_message( $post_id ) {
 
 /*
 *------------------------------------------------------------*/
-function fdx1_post_now_published( $post_id, $force_tweet = false ) {
+function fdx1_post_now_published( $post_id) {
 
 	$settings = fdx1_get_settings();
 
 	$wt_tags = $settings['tags'];
 	$wt_reverse = $settings['reverse'];
 
-	$activation_time = $settings['activation_time'];
-	$cur_time = time();
-
-	query_posts( 'p=' . $post_id );
-	if ( have_posts() ) {
-		the_post();
-
-		global $post;
 
 		$can_tweet = true;
 
@@ -376,25 +368,10 @@ function fdx1_post_now_published( $post_id, $force_tweet = false ) {
 			}
 		}
 
-		$has_been_twittered = get_post_meta( $post_id, 'has_been_twittered', true );
-		if ( $has_been_twittered !== 'yes' && $has_been_twittered !== 'previously' && $can_tweet ) {
-
-				$result = fdx1_do_tweet( $post_id );
-
-				if ( $result ) {
-					update_post_meta( $post_id, 'has_been_twittered', 'yes' );
- 					delete_post_meta( $post_id, 'twitter_failure_code' );
- 					delete_post_meta( $post_id, 'twitter_failure_reason' );
-				} else {
-					global $fdx1_oauth;
-
-					update_post_meta( $post_id, 'has_been_twittered', 'failed' );
-					update_post_meta( $post_id, 'twitter_failure_code', $fdx1_oauth->get_response_code() );
-					update_post_meta( $post_id, 'twitter_failure_reason', $fdx1_oauth->get_error_message() );
-				}
-
+		if ($can_tweet ) {
+ 			$result = fdx1_do_tweet( $post_id );
 		}
-	}
+
 }
 
 /* Atention
