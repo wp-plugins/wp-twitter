@@ -213,12 +213,20 @@ function wp_twitter_fdx_options_page() {
 <input type="hidden" name="info_update" id="info_update" value="true" />
 
 <div class="postbox">
-<div class="handlediv" title="<?php _e('Click to toggle', 'wp-twitter') ?>"><br /></div><h3 class='hndle'><span><?php _e('Twitter Profile Widget Options', 'wp-twitter') ?></span></h3>
+<div class="handlediv" title="<?php _e('Click to toggle', 'wp-twitter') ?>"><br /></div><h3 class='hndle'><span class="icon5">&nbsp;</span><?php _e('Twitter Profile Widget Options', 'wp-twitter') ?></h3>
 <div class="inside">
 <!-- ############################################################################################################### -->
- <table style="width: auto">
-   <tr>
-     <td style="width: 400px; text-align: left; vertical-align: top">
+
+ <div class="fdx-left-content">
+
+<h3> <?php echo get_option('wp_twitter_fdx_widget_title'); ?>*</h3>
+<div id="example-preview-widget"></div>
+
+
+</div><!-- left content -->
+
+<div class="fdx-right-content">
+
  <ul>
  <li><input name="wp_twitter_fdx_widget_title" type="text" size="20" value="<?php echo get_option('wp_twitter_fdx_widget_title'); ?>"> &raquo; <?php _e('Widget Title', 'wp-twitter') ?> *</li>
   <li><input name="wp_twitter_fdx_username" type="text" size="20" value="<?php echo get_option('wp_twitter_fdx_username'); ?>" /> &raquo; <?php _e('Twitter Username (for this Widget)', 'wp-twitter') ?></li>
@@ -234,16 +242,14 @@ function wp_twitter_fdx_options_page() {
        <li>	<input class="widget-colors" rel="tweet-color" id="sw-tweet-text" name="wp_twitter_fdx_tweet_text" type="text" size="7" value="<?php echo get_option('wp_twitter_fdx_tweet_text'); ?>" /><b style=" padding: 4px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b> &raquo; <?php _e('Widget Tweet Text Color', 'wp-twitter') ?></li>
         <li><input class="widget-colors" rel="tweet-links" id="sw-tweet-links" name="wp_twitter_fdx_links" type="text" size="7" value="<?php echo get_option('wp_twitter_fdx_links'); ?>" /><b style=" padding: 4px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b> &raquo; <?php _e('Link Color', 'wp-twitter') ?></li>
  </ul>
- *<em><small>(<?php _e('The format will depend on your theme', 'wp-twitter') ?>)</small></em>
-</td>
-<td style="width: auto; text-align: center; vertical-align: top;">
 
 
-     <div style="padding: 2px;"><code> <?php echo get_option('wp_twitter_fdx_widget_title'); ?> </code> *</div>
-             <div id="example-preview-widget"></div>
- </td>
-</tr>
- </table>
+   *<em><small>(<?php _e('The format will depend on your theme', 'wp-twitter') ?>)</small></em>
+ </div><!-- right content -->
+<div class="fdx-clear"></div>
+
+
+
 
 
 <!-- ############################################################################################################### -->
@@ -251,17 +257,17 @@ function wp_twitter_fdx_options_page() {
 </div>
 
 <div class="postbox" >
-<div class="handlediv" title="<?php _e('Click to toggle', 'wp-twitter') ?>"><br /></div><h3 class='hndle'><span><?php _e('Twitter Search Widget Options', 'wp-twitter') ?></span></h3>
+<div class="handlediv" title="<?php _e('Click to toggle', 'wp-twitter') ?>"><br /></div><h3 class='hndle'><span class="icon5">&nbsp;</span><?php _e('Twitter Search Widget Options', 'wp-twitter') ?></h3>
 <div class="inside">
 <!-- ############################################################################################################### -->
 
+ <div class="fdx-left-content">
+<h3><?php echo get_option('wp_twitter_fdx_search_widget_sidebar_title'); ?>*</h3>
+<div id="example-preview-widget2"></div>
+</div>
 
+ <div class="fdx-right-content">
 
-
-
- <table style="width: auto">
-   <tr>
-     <td style="width: 400px; text-align: left; vertical-align: top">
 <ul>
 <li><input name="wp_twitter_fdx_search_widget_sidebar_title" type="text" size="20" value="<?php echo get_option('wp_twitter_fdx_search_widget_sidebar_title'); ?>"> &raquo; <?php _e('Widget Title', 'wp-twitter') ?> *</li>
 <li><input name="wp_twitter_fdx_widget_search_query" type="text" size="20" value="<?php echo get_option('wp_twitter_fdx_widget_search_query'); ?>"> &raquo; <?php _e('Search Query', 'wp-twitter') ?> <span id="butpop"><a href="javascript:void(0);" onclick="PopupCenter('https://twitter.com/#!/search-home', 'page2_id1',900,500,'yes');"><code class="red">?</code></a></span></li>
@@ -278,15 +284,12 @@ function wp_twitter_fdx_options_page() {
 <li><input class="widget-colors2" rel="tweet-links2" id="sw-tweet-links2" name="wp_twitter_fdx_search_links" type="text" size="7" value="<?php echo get_option('wp_twitter_fdx_search_links'); ?>" /><b style=" padding: 4px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b> &raquo; <?php _e('Link Color', 'wp-twitter') ?> </li>
 </ul>
 *<em><small>(<?php _e('The format will depend on your theme', 'wp-twitter') ?>)</small></em>
-</td>
-<td style="width: auto; text-align: center; vertical-align: top;">
 
-<div style="padding: 2px;"><code><?php echo get_option('wp_twitter_fdx_search_widget_sidebar_title'); ?></code> *</div>
 
-<div id="example-preview-widget2"></div>
-</td>
-</tr>
- </table>
+ </div><!-- right content -->
+<div class="fdx-clear"></div>
+
+
 
 <!-- ############################################################################################################### -->
 </div>

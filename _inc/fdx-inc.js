@@ -14,31 +14,20 @@ alert("fabrix@fabrix.net");
 });
 });
 
-/*"Accept terms" form submission- By Dynamic Drive
+/* Select
 -------------------------------------------------------------- */
-var checkobj
+jQuery( document ).ready( function() {
+	jQuery( '#url_shortener' ).live( 'change', function() {
+		var currentValue = jQuery( this ).val();
+ 		jQuery( '#select1, #select2' ).hide();
+		if ( currentValue == 'yourls' ) {
+			jQuery( '#select1' ).slideDown();
+		  		} else if ( currentValue == 'bitly' ) {
+		   	jQuery( '#select2' ).slideDown();
+		}
+	}).change();
 
-function agreesubmit(el){
-checkobj=el
-if (document.all||document.getElementById){
-for (i=0;i<checkobj.form.length;i++){  //hunt down submit button
-var tempobj=checkobj.form.elements[i]
-if(tempobj.type.toLowerCase()=="submit")
-tempobj.disabled=!checkobj.checked
-}
-}
-}
-
-function defaultagree(el){
-if (!document.all&&!document.getElementById){
-if (window.checkobj&&checkobj.checked)
-return true
-else{
-alert("Please read/accept terms to submit form")
-return false
-}
-}
-}
+ });
 
 /* Tabs
 -------------------------------------------------------------- */

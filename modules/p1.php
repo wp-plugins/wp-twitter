@@ -98,7 +98,7 @@
 <p><?php _e('Long URLs will automatically be shortened using the specified URL shortener.', 'wp-twitter' ); ?></p>
 </div><!-- left content -->
 <div class="fdx-right-content">
-<select name="fdx1-url-type" class="long select">
+<select name="fdx1-url-type" class="long select" id="url_shortener">
 <option value="post_id"<?php if ( $settings['url_type'] == 'post_id' ) echo " selected"; ?>><?php _e( "Post ID", "fdx1" ); ?> (<?php echo fdx1_post_id_url_base() . '10'; ?>)</option>
 <option value="tinyurl"<?php if ( $settings['url_type'] == 'tinyurl' ) echo " selected"; ?>>Tinyurl</option>
 <option value="isgd"<?php if ( $settings['url_type'] == 'isgd' ) echo " selected"; ?>>Is.gd</option>
@@ -107,7 +107,7 @@
 </select>
 
 
-     				<?php if ( $settings['url_type'] == 'bitly' ) {?>
+     			   <div id="select2">
      				<ul>
                     <li>
 		     		<input type="text" name="bitly-user-name" id="bitly-user-name" value="<?php if ( isset( $settings['bitly-user-name'] ) ) echo $settings['bitly-user-name']; ?>" />
@@ -118,8 +118,9 @@
 		     		<label for="bitly-api-key">API key</label>
 	     			</li>
                     </ul>
-	     			<?php } else if ( $settings['url_type'] == 'yourls' ) { ?>
-                     	<ul>
+	     			</div>
+<div id="select1">
+<ul>
 <li>
 		     		<input type="text" name="yourls-user-name" id="yourls-user-name" value="<?php if ( isset( $settings['yourls-user-name'] ) ) echo $settings['yourls-user-name']; ?>" />
 		     		<label for="yourls-user-name">Signature Token</label>
@@ -129,12 +130,11 @@
 		     		<label for="yourls-api-key"><?php _e( 'Full URL path to', 'wp-twitter' ); ?> yourls-api.php</label>
 	     			</li>
                     </ul>
-	     				<?php } ?>
-
-
+</div>
 
 				</div><!-- right content -->
-                     <div class="fdx-clear"></div>
+
+                  <div class="fdx-clear"></div>
 
 <!-- ############################################################################################################### -->
 </div>
@@ -174,13 +174,13 @@
 <input type="submit" onclick="return confirm('<?php _e('Restore Default Settings?', 'wp-twitter' ); ?>');" name="reset" value="<?php _e('Restore Defaults', 'wp-twitter' ); ?>" class="button" />
 </form>
 </div>
-</div> <!-- /postbox-container -->
-</div><!-- /meta-box-sortables -->
+</div>
+</div>
 
 
 
-</div><!-- /post-body -->
-</div><!-- /poststuff -->
+</div>
+</div>
 
 
 </div><!-- /wrap -->

@@ -50,7 +50,7 @@ ul.tabs li.active{ background: url(images/arrow-down.png) no-repeat center 19px;
 
 
 /* ***************************************************************** */
-.postbox h3 span.icon1,.postbox h3 span.icon2,.postbox h3 span.icon3,.postbox h3 span.icon4 {
+.postbox h3 span.icon1,.postbox h3 span.icon2,.postbox h3 span.icon3,.postbox h3 span.icon4,.postbox h3 span.icon5 {
 	height: 16px;
 	margin-right: 5px;
 	width: 16px;
@@ -77,6 +77,10 @@ ul.tabs li.active{ background: url(images/arrow-down.png) no-repeat center 19px;
 
 .postbox h3 span.icon4 {
 	background: url(images/h3_icons/ico4.png);
+}
+
+.postbox h3 span.icon5 {
+	background: url(images/h3_icons/widget.png);
 }
 
 .long {
