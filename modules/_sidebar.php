@@ -1,10 +1,17 @@
+<?php
+define('FDX1_WPPAGE', 'http://wordpress.org/extend/plugins/wp-twitter');
+define('FDX1_PLUGINPAGE', 'http://fabrix.net/wp-twitter');
+define('FDX1_GLOTPRESS', 'http://translate.fabrix.net/projects/wp-twitter');
+define('FDX1_SUPFORUM', 'http://wordpress.org/support/plugin/wp-twitter');
+define('FDX1_PAYPAL', 'https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=Z9SRNRLLDAFZJ');
+?>
 <div id="postbox-container-1" class="postbox-container">
 <div id="side-sortables" class="meta-box-sortables">
 <!-- <div class="postbox closed"> -->
 <div class="postbox">
-<div class="handlediv" title="<?php _e('Click to toggle', 'wp-twitter') ?>"><br /></div><h3 class='hndle'><span><?php echo FDX1_PLUGIN_NAME;?> <small style="float: right">v<?php echo FDX1_PLUGIN_VERSION;?></small></span></h3>
+<div class="handlediv" title="<?php _e('Click to toggle', 'wp-twitter') ?>"><br /></div><h3 class='hndle'><span><?php echo WP_Twitter::PLUGIN_NAME;?> <small style="float: right">v<?php echo WP_Twitter::PLUGIN_VERSION;?></small></span></h3>
 <div class="inside" style="padding-bottom: 5px">
-<div style="float: right;"><a href="<?php echo FDX1_PLUGINPAGE;?>" target="_blank"><img src="<?php echo FDX1_PLUGIN_URL;?>/_inc/images/logo.png" width="91" height="106" border="0" alt="*" /></a></div>
+<div style="float: right;"><a href="<?php echo FDX1_PLUGINPAGE;?>" target="_blank"><img src="<?php echo plugins_url( 'images/logo.png', dirname(__FILE__));?>" width="91" height="106" border="0" alt="*" /></a></div>
 <a class="sm_button sm_autor" href="<?php echo FDX1_PLUGINPAGE;?>" target="_blank"><?php _e('Plugin Homepage', 'wp-twitter') ?></a>
 <a class="sm_button sm_code" href="<?php echo FDX1_SUPFORUM;?>" target="_blank"><?php _e('Suggest a Feature', 'wp-twitter') ?></a>
 <a class="sm_button sm_bug" href="<?php echo FDX1_SUPFORUM;?>" target="_blank"><?php _e('Report a Bug', 'wp-twitter') ?></a>
@@ -18,18 +25,18 @@
 <?php _e('Please help to support continued development of this plugin!', 'wp-twitter') ?>
 <div align="center">
 <strong style="font-size: 15px"><?php _e('DONATE', 'wp-twitter') ?></strong><br />
-<a href="<?php echo FDX1_DONATELINK;?>" target="_blank"><img src="<?php echo FDX1_PLUGIN_URL;?>/_inc/images/paypal.png" width="101" height="64" border="0"  alt=""/></a>
-<a href="http://www.neteller.com/personal/send-money/" id="cl" target="_blank" title="fabrix@fabrix.net"><img src="<?php echo FDX1_PLUGIN_URL;?>/_inc/images/neteller.png" width="102" height="64" border="0" alt=""  style="margin-left: 25px" /></a>
+<a href="<?php echo FDX1_PAYPAL ;?>" target="_blank"><img src="<?php echo plugins_url( 'images/paypal.png', dirname(__FILE__));?>" width="101" height="64" border="0"  alt=""/></a>
+<a href="http://www.neteller.com/personal/send-money/" id="cl" target="_blank" title="fabrix@fabrix.net"><img src="<?php echo plugins_url( 'images/neteller.png', dirname(__FILE__));?>" width="102" height="64" border="0" alt=""  style="margin-left: 25px" /></a>
 </div>
 <ul>
-<li><a class="sm_button sm_star" href="<?php echo FDX1_WPPAGE;?>" target="_blank"><?php _e('Rate the plugin 5 star on WordPress.org', 'wp-twitter') ?>.</a></li>
+<li><a class="sm_button sm_star" href="http://wordpress.org/extend/plugins/wp-twitter" target="_blank"><?php _e('Rate the plugin 5 star on WordPress.org', 'wp-twitter') ?>.</a></li>
 <li><a class="sm_button sm_link" href="<?php echo FDX1_PLUGINPAGE ;?>" target="_blank"><?php _e('Blog about it and link to the plugin page', 'wp-twitter') ?>.</a></li>
 </ul>
 
 <div align="center">
-<a href="javascript:void(0);" onclick="PopupCenter('http://www.facebook.com/sharer.php?u=<?php echo FDX1_PLUGINPAGE;?>&t=<?php echo FDX1_PLUGIN_NAME;?>:', 'facebook',800,550,'no');" title="<?php _e('Share on', 'wp-twitter') ?> Facebook" rel="nofollow"><img src="<?php echo FDX1_PLUGIN_URL;?>/_inc/images/facebook.png" width="24" height="24" border="0"  alt="*" style="margin-right: 10px" /></a>
-<a href="javascript:void(0);" onclick="PopupCenter('http://twitter.com/share?text=Plugin <?php echo FDX1_PLUGIN_NAME;?>:&amp;url=<?php echo FDX1_PLUGINPAGE;?>', 'twitter',600,450,'no');" title="<?php _e('Share on', 'wp-twitter') ?> Twitter" rel="nofollow"><img src="<?php echo FDX1_PLUGIN_URL;?>/_inc/images/twitter.png" width="24" height="24" border="0" alt="*" style="margin-right: 10px" /></a>
-<a href="javascript:void(0);" onclick="PopupCenter('https://plus.google.com/share?url=<?php echo FDX1_PLUGINPAGE;?>', 'googleplus',800,550,'no');" title="<?php _e('Share on', 'wp-twitter') ?> Google Plus" rel="nofollow"><img src="<?php echo FDX1_PLUGIN_URL;?>/_inc/images/googleplus.png" width="24" height="24" border="0" alt="*" /></a>
+<a href="javascript:void(0);" onclick="PopupCenter('http://www.facebook.com/sharer.php?u=<?php echo FDX1_PLUGINPAGE;?>&t=<?php echo WP_Twitter::PLUGIN_NAME;?>:', 'facebook',800,550,'no');" title="<?php _e('Share on', 'wp-twitter') ?> Facebook" rel="nofollow"><img src="<?php echo plugins_url( 'images/facebook.png', dirname(__FILE__));?>" width="24" height="24" border="0"  alt="*" style="margin-right: 10px" /></a>
+<a href="javascript:void(0);" onclick="PopupCenter('http://twitter.com/share?text=Plugin <?php echo WP_Twitter::PLUGIN_NAME;?>:&amp;url=<?php echo FDX1_PLUGINPAGE;?>', 'twitter',600,450,'no');" title="<?php _e('Share on', 'wp-twitter') ?> Twitter" rel="nofollow"><img src="<?php echo plugins_url( 'images/twitter.png', dirname(__FILE__));?>" width="24" height="24" border="0" alt="*" style="margin-right: 10px" /></a>
+<a href="javascript:void(0);" onclick="PopupCenter('https://plus.google.com/share?url=<?php echo FDX1_PLUGINPAGE;?>', 'googleplus',800,550,'no');" title="<?php _e('Share on', 'wp-twitter') ?> Google Plus" rel="nofollow"><img src="<?php echo plugins_url( 'images/googleplus.png', dirname(__FILE__));?>" width="24" height="24" border="0" alt="*" /></a>
 </div>
 </div>
 </div>

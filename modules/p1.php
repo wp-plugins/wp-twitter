@@ -1,7 +1,7 @@
 <?php $settings = fdx1_get_settings(); ?>
 
 <div class="wrap"><?php echo get_screen_icon('fdx-lock');?>
-<h2><?php echo FDX1_PLUGIN_NAME;?>: <?php _e('Widgets Settings', 'wp-twitter') ?></h2>
+<h2><?php echo WP_Twitter::PLUGIN_NAME;?>: <?php _e('Widgets Settings', 'wp-twitter') ?></h2>
 <div id="poststuff">
 <div id="post-body" class="metabox-holder columns-2">
 
@@ -31,7 +31,7 @@
 <div class="fdx-right-content">
 <?php $auth_url = fdx1_get_auth_url(); ?>
 <?php if ( $auth_url ) { ?>
-<p><a href="<?php echo $auth_url; ?>" title="<?php _e( 'Sign in with Twitter', 'wp-twitter' ); ?>"><img src="<?php echo FDX1_PLUGIN_URL;?>/_inc/images/sign-in-with-twitter-gray.png" width="158" height="28" alt=""></a></p>
+<p><a href="<?php echo $auth_url; ?>" title="<?php _e( 'Sign in with Twitter', 'wp-twitter' ); ?>"><img src="<?php echo plugins_url( 'images/sign-in-with-twitter-gray.png', dirname(__FILE__));?>" width="158" height="28" alt=""></a></p>
 
 <?php } else { ?>
 <h4><?php _e( 'Not able to validate access to account, Twitter is currently unavailable. Try checking again in a couple of minutes.', 'wp-twitter' ); ?></h4>

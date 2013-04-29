@@ -163,7 +163,7 @@ function fdx1_init() {
 
 			fdx1_save_settings( $settings );
 
-			header( 'Location: ' . get_bloginfo('wpurl') . '/wp-admin/admin.php?page='.FDX1_PLUGIN_P1);
+			header( 'Location: ' . get_bloginfo('wpurl') . '/wp-admin/admin.php?page='. WP_Twitter::PLUGIN_P1);
 			die;
 		}
 	} else if ( isset( $_GET['fdx1'] ) && $_GET['fdx1'] == 'deauthorize' ) {
@@ -173,7 +173,7 @@ function fdx1_init() {
 		$settings['user_id'] = '';
 		fdx1_save_settings( $settings );
 
-		header( 'Location: ' . get_bloginfo('wpurl') . '/wp-admin/admin.php?page='.FDX1_PLUGIN_P1);
+		header( 'Location: ' . get_bloginfo('wpurl') . '/wp-admin/admin.php?page='. WP_Twitter::PLUGIN_P1);
 		die;
 	}
 

@@ -1,5 +1,4 @@
 <?php
-
 function fdx1_parsexml( $xml, $get_attributes = 1, $priority = 'tag' )
 {
     $parser = xml_parser_create('');
@@ -126,5 +125,3 @@ function fdx1_parsexml( $xml, $get_attributes = 1, $priority = 'tag' )
     }
     return $xml_array;
 }
-
-?>
