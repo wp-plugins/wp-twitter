@@ -4,6 +4,8 @@ include_once( 'base_shortener.php' );
 
 class FDX1TinyUrlShortener extends FDX1BaseShortener {
 
+      function FDX1TinyUrlShortener() {}
+
 	function shorten( $link ) {
 		$request_uri = 'http://tinyurl.com/api-create.php?url=' . urlencode( $link );
 				
