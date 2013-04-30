@@ -4,7 +4,7 @@
  * Plugin URI: http://fabrix.net/wp-twitter
  * Description: Is a plugin that creates a complete integration between your WordPress blog and your Twitter account including a Twitter Button and Widgets.
  * Author: Fabrix DoRoMo
- * Version: 3.9.1
+ * Version: 3.9.2
  * Author URI: http://fabrix.net
  * License: GPL2+
  * Text Domain: wp-twitter
@@ -12,7 +12,7 @@
  */
 
 class WP_Twitter {
-    const PLUGIN_VERSION = '3.9.1';
+    const PLUGIN_VERSION = '3.9.2';
     const PLUGIN_NAME = 'WP Twitter';
     const PLUGIN_P1 = 'wp-twitter-p1';
     const PLUGIN_P2 = 'wp-twitter-p2';
@@ -29,11 +29,12 @@ class WP_Twitter {
         add_filter('the_excerpt', 'filter_wp_twitter_fdx_tweet_button_show') ;
         add_action('wp_footer', 'filter_wp_twitter_fdx_tweet_button_show') ;
       //-------------P2
-        add_action('init', 'fdx_widgets_init', 1);
+        add_action('init', 'fdx_widgets_init');
         add_filter('the_content',  'filter_wp_twitter_fdx_profile') ;
         add_filter('the_content',  'filter_wp_twitter_fdx_search') ;
       //-------------P1
-        add_action( 'publish_post', 'fdx1_post_now_published' );
+        add_action('publish_post', 'fdx1_post_now_published'); // post
+        add_action('publish_page', 'fdx1_post_now_published2');  // page
         add_filter( 'init', 'fdx1_init');
 } // end constructor
 
@@ -76,8 +77,6 @@ require_once dirname( __FILE__ ) . '/modules/p2.php';
 function wp_twitter_fdx_social() {
 require_once dirname( __FILE__ ) . '/modules/p3.php';
 }
-
-
 } // end class
 
 /*

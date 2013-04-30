@@ -51,7 +51,7 @@
 <input type="hidden" name="info_update2" id="info_update" value="true" />
 
 <div class="postbox">
-<div class="handlediv" title="<?php _e('Click to toggle', 'wp-twitter') ?>"><br /></div><h3 class='hndle'><span><?php _e('Allow integration in:', 'wp-twitter') ?></span></h3>
+<div class="handlediv" title="<?php _e('Click to toggle', 'wp-twitter') ?>"><br /></div><h3 class='hndle'><span class="icon3">&nbsp;</span><?php _e('Allow integration in:', 'wp-twitter') ?></h3>
 <div class="inside">
 <ul>
 <li><input name="wp_twitter_fdx_tweet_button_display_single" type="checkbox"<?php if(get_option('wp_twitter_fdx_tweet_button_display_single')!='-1') echo 'checked="checked"'; ?> value="1" /> <?php _e('Post', 'wp-twitter') ?> </li>
@@ -62,7 +62,7 @@
 </div></div>
 
 <div class="postbox">
-<div class="handlediv" title="<?php _e('Click to toggle', 'wp-twitter') ?>"><br /></div><h3 class='hndle'><span><?php _e('Sharethis Style', 'wp-twitter') ?></span></h3>
+<div class="handlediv" title="<?php _e('Click to toggle', 'wp-twitter') ?>"><br /></div><h3 class='hndle'><span class="icon8">&nbsp;</span><?php _e('Sharethis Style', 'wp-twitter') ?></h3>
 <div class="inside">
 
 <ul>
@@ -91,7 +91,7 @@
  </div></div>
 
  <div class="postbox">
-<div class="handlediv" title="<?php _e('Click to toggle', 'wp-twitter') ?>"><br /></div><h3 class='hndle'><span><?php _e('Customization', 'wp-twitter') ?></span></h3>
+<div class="handlediv" title="<?php _e('Click to toggle', 'wp-twitter') ?>"><br /></div><h3 class='hndle'><span class="icon7">&nbsp;</span><?php _e('Customization', 'wp-twitter') ?></h3>
 <div class="inside">
 <br />
 <div class="tabsCell">
@@ -210,7 +210,7 @@
  </div></div>
 
 <div class="postbox closed">
-<div class="handlediv" title="<?php _e('Click to toggle', 'wp-twitter') ?>"><br /></div><h3 class='hndle'><span><?php _e('Choose which version of the widget you would like to use: ', 'wp-twitter') ?></span></h3>
+<div class="handlediv" title="<?php _e('Click to toggle', 'wp-twitter') ?>"><br /></div><h3 class='hndle'><span class="icon5">&nbsp;</span><?php _e('Choose which version of the widget you would like to use: ', 'wp-twitter') ?></h3>
 <div class="inside">
 <p><input name="wp_twitter_fdx_tweet_button_choose" type="radio" value="multi_post" <?php checked('multi_post', $wp_twitter_fdx_tweet_button_choose); ?> /> <strong><?php _e('Multi Post', 'wp-twitter') ?></strong> <br /><span class="description"><?php _e('Sharing takes place inside the widget, without taking users away from your site. Preferences are saved so your users can share to more than one service at the same time.', 'wp-twitter') ?></span> </p>
 <p><input name="wp_twitter_fdx_tweet_button_choose" type="radio" value="direct_post" <?php checked('direct_post', $wp_twitter_fdx_tweet_button_choose); ?> /> <strong><?php _e('Classic', 'wp-twitter') ?></strong> <br /> <span class="description"><?php _e('Your users will be redirected to Facebook, Twitter, etc when clicking on the corresponding buttons. The widget is opened when users click on "Email" and "ShareThis".', 'wp-twitter') ?></span></p>
@@ -218,7 +218,7 @@
 
 <!-- ***************************************************************************************** -->
 <div class="postbox closed">
-<div class="handlediv" title="<?php _e('Click to toggle', 'wp-twitter') ?>"><br /></div><h3 class='hndle'><span><?php _e('Want Analytics?', 'wp-twitter') ?></span></h3>
+<div class="handlediv" title="<?php _e('Click to toggle', 'wp-twitter') ?>"><br /></div><h3 class='hndle'><span class="icon6">&nbsp;</span><?php _e('Want Analytics?', 'wp-twitter') ?></h3>
 <div class="inside">
 
 

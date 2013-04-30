@@ -16,13 +16,7 @@ global $fdx1_oauth;
 $fdx1_oauth = new FDX1OAuth;
 
 class FDX1OAuth {
-	var $duplicate_tweet;
-	var $response_code;
-	var $oauth_time_offset;  //atenção opção foi removida
-	var $error_message;
-	var $oauth_consumer_key;
-	var $oauth_consumer_secret;
-	
+
 	function FDX1OAuth() {
 		$this->duplicate_tweet = false;
 		$this->response_code = false;

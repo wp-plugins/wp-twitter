@@ -2,6 +2,21 @@
 
 <div class="wrap"><?php echo get_screen_icon('fdx-lock');?>
 <h2><?php echo WP_Twitter::PLUGIN_NAME;?>: <?php _e('Widgets Settings', 'wp-twitter') ?></h2>
+<?php
+/* show a warning
+*------------------------------------------------------------*/
+if ( $settings['url_type'] == 'bitly' && ( empty( $settings['bitly-api-key'] ) || empty( $settings['bitly-user-name'] ) ) )
+{
+echo "<div class='error'><p><strong>Bit.ly is selected, but account information is missing.</strong></p></div>";
+}
+elseif ( $settings['url_type'] == 'yourls' && ( empty($settings['yourls-api-key']) || empty($settings['yourls-user-name'] ) ) )
+{
+echo "<div class='error'><p><strong>YOURLS is selected, but account information is missing.</strong></p></div>";
+}
+if ( isset($_POST['fdx1_update_settings']) ) {
+echo '<div class="updated fade"><p><strong>' . __( 'Settings updated', 'wp-twitter' ) . '.</strong></p></div>';
+}
+?>
 <div id="poststuff">
 <div id="post-body" class="metabox-holder columns-2">
 
@@ -10,7 +25,7 @@
 <div class="postbox-container">
 <div class="meta-box-sortables">
 
-<form method="post" action="<?php echo $_SERVER['REQUEST_URI']; ?>">
+<form method="post" action="<?php echo $_SERVER["REQUEST_URI"]; ?>">
 <input type="hidden" name="info_update" id="info_update" value="true" />
 
 <div class="postbox" >
@@ -67,24 +82,33 @@
 <!-- ############################################################################################################### -->
 
      <div class="fdx-left-content">
-<p><strong><?php _e('Shortcodes', 'wp-twitter');?></strong></p>
+<p><?php _e('Shortcodes', 'wp-twitter');?>:</p>
 
-<div style="width: 60px; float: left"><strong><code>[title]</code><br /><code>[link]</code><br /><code>[author]</code><br/><code>[cat]</code><br/><code>[tags]</code></strong></div>
-<small><?php _e('The title of your blog post.', 'wp-twitter') ?>.</small><br/>
-<small><?php _e('The post URL', 'wp-twitter')?>. </small><br/>
-<small><?php _e('Post author\'s', 'wp-twitter')?>.</small> <br/>
-<small><?php _e('The first category', 'wp-twitter')?>.</small> <br/>
-<small><?php _e('Post tags', 'wp-twitter')?>.</small>* <br/>
-<p style="margin-top: 10px"><small>*<?php _e('Modified into hashtags, show only 3 tags of less than 15 characters each, and space replaced by', 'wp-twitter')?> (<code>_</code>)</small></p>
+<div style="width: 65px; float: left"><strong><code>[title]</code><br /><code>[link]</code><br /><code>[author]</code><br/><code>[cat]</code><br/><code>[tags]</code></strong></div>
+<small><?php _e('The title of your blog post/page', 'wp-twitter') ?>.</small><br/>
+<small><?php _e('The post/page URL', 'wp-twitter')?>. </small><br/>
+<small><?php _e('Post/page author\'s', 'wp-twitter')?>.</small> <br/>
+<small><?php _e('The first category', 'wp-twitter')?>.<sup>(2)</sup></small><br/>
+<small><?php _e('Post tags', 'wp-twitter')?>.<sup>(1) (2)</sup></small><br/>
+<p style="margin-top: 10px"><small>(1) <?php _e('Modified into hashtags, show only 3 tags of less than 15 characters each, and space replaced by', 'wp-twitter')?>:<code>_</code></small></p>
+<p style="margin-top: 10px"><small>(2) <?php _e('Only for:', 'wp-twitter')?> <?php _e( 'Update when a post is published/edited', 'wp-twitter' ); ?>.</small></p>
+
+
 </div><!-- left content -->
 <div class="fdx-right-content">
+<p><input type="checkbox" class="check" id="tweet_run_1" name="tweet_run_1"<?php if ( $settings['tweet_run_1'] ) echo ' checked'; ?> /> <strong><?php _e( 'Update when a post is published/edited', 'wp-twitter' ); ?></strong></p>
+<p><?php _e('Text for post updates', 'wp-twitter')?>:<br />
+<input type="text" name="message" value="<?php echo( htmlentities( $settings['message'], ENT_COMPAT, "UTF-8" ) ); ?>" class="long" /> </p>
 
-<p><strong> <?php _e('Text for new post updates', 'wp-twitter')?>:</strong> </p>
+<h3 style="margin-top: 20px; padding: 0"></h3>
 
-<input type="text" name="message" value="<?php echo( htmlentities( $settings['message'], ENT_COMPAT, "UTF-8" ) ); ?>" class="long" />
+<p><input type="checkbox" class="check" id="tweet_run_2" name="tweet_run_2"<?php if ( $settings['tweet_run_2'] ) echo ' checked'; ?> /> <strong><?php _e( 'Update when a page is published/edited', 'wp-twitter' ); ?></strong></p>
+<p><?php _e('Text for page updates', 'wp-twitter')?>:<br />
+<input type="text" name="message2" value="<?php echo( htmlentities( $settings['message2'], ENT_COMPAT, "UTF-8" ) ); ?>" class="long" /> </p>
 
 
-                        	</div><!-- right content -->
+
+</div><!-- right content -->
 			<div class="fdx-clear"></div>
 <!-- ############################################################################################################### -->
 </div>

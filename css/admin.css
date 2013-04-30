@@ -50,7 +50,8 @@ ul.tabs li.active{ background: url(../images/arrow-down.png) no-repeat center 19
 
 
 /* ***************************************************************** */
-.postbox h3 span.icon1,.postbox h3 span.icon2,.postbox h3 span.icon3,.postbox h3 span.icon4,.postbox h3 span.icon5 {
+.postbox h3 span.icon1,.postbox h3 span.icon2,.postbox h3 span.icon3,.postbox h3 span.icon4,.postbox h3 span.icon5,.postbox h3 span.icon6,
+.postbox h3 span.icon7, .postbox h3 span.icon8 {
 	height: 16px;
 	margin-right: 5px;
 	width: 16px;
@@ -81,6 +82,18 @@ ul.tabs li.active{ background: url(../images/arrow-down.png) no-repeat center 19
 
 .postbox h3 span.icon5 {
 	background: url(../images/h3_icons/widget.png);
+}
+
+.postbox h3 span.icon6 {
+	background: url(../images/h3_icons/stat.png);
+}
+
+.postbox h3 span.icon7 {
+	background: url(../images/h3_icons/style.png);
+}
+
+.postbox h3 span.icon8 {
+	background: url(../images/h3_icons/posit.png);
 }
 
 .long {

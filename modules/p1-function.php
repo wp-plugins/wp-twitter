@@ -1,21 +1,23 @@
 <?php
-/* (F1)
+/*
 *------------------------------------------------------------*/
 function fdx1_update_post_settings() {
 	if ( is_admin() ) {
 		$settings = fdx1_get_settings();
-
 	  	if ( isset($_POST['fdx1_update_settings']) ) {
 			if ( isset($_POST['message']) ) {
 				$message = $_POST['message'];
 			} else {
 				$message = '';
 			}
-
+          	if ( isset($_POST['message2']) ) {
+				$message2 = $_POST['message2'];
+			} else {
+				$message2 = '';
+			}
 			if ( isset( $_POST['fdx1-url-type'] ) ) {
 				$settings['url_type'] = $_POST['fdx1-url-type'];
 			}
-
 			if ( isset( $_POST['bitly-api-key'] ) ) {
 				$settings['bitly-api-key'] = $_POST['bitly-api-key'];
 			} else {
@@ -25,6 +27,16 @@ function fdx1_update_post_settings() {
 				$settings['bitly-user-name'] = $_POST['bitly-user-name'];
 			} else {
 				$settings['bitly-user-name'] = '';
+			}
+            if ( isset( $_POST['tweet_run_1'] ) ) {
+				$settings['tweet_run_1'] = true;
+			} else {
+				$settings['tweet_run_1'] = false;
+			}
+            if ( isset( $_POST['tweet_run_2'] ) ) {
+				$settings['tweet_run_2'] = true;
+			} else {
+				$settings['tweet_run_2'] = false;
 			}
             if ( isset( $_POST['yourls-api-key'] ) ) {
 				$settings['yourls-api-key'] = $_POST['yourls-api-key'];
@@ -49,84 +61,70 @@ function fdx1_update_post_settings() {
 					$new_tags[] = $clean_tag;
 				}
 			}
-
 			$settings['tags'] = $new_tags;
 			$settings['message'] = stripslashes( $message );
+            $settings['message2'] = stripslashes( $message2 );
 			$settings['reverse'] = $reverse;
-
 			fdx1_save_settings( $settings );
-			update_option( 'fdx1_last_fetch_time', 0 );
 		}
-
-		// The Master Kill Switch
 	 	elseif ( isset( $_POST['reset'] ) ) {
-			update_option( 'fdx1_last_fetch_time', 0 );
 			update_option( 'fdx1_settings', false );
 	    }
 	}
 }
 
-/* (F2)
+/*
 *------------------------------------------------------------*/
 function fdx1_get_auth_url() {
 	global $fdx1_oauth;
 	$settings = fdx1_get_settings();
-
 	$token = $fdx1_oauth->get_request_token();
 	if ( $token ) {
 		$settings['oauth_request_token'] = $token['oauth_token'];
 		$settings['oauth_request_token_secret'] = $token['oauth_token_secret'];
-
 		fdx1_save_settings( $settings );
-
 		return $fdx1_oauth->get_auth_url( $token['oauth_token'] );
 	}
 }
-
 $fdx1_defaults = array(
 	'tags' => array(),
 	'reverse' => false,
-	'activation_time' => 0,
-	'message' => 'New blog posting, [title] - [link]',
-	'url_type' => 'tinyurl',
+	'message' => 'Blog Post: [title] - [link]',
+    'message2' => 'Blog Page: [title] - [link]',
+	'url_type' => 'post_id',
 	'oauth_request_token' => false,
 	'oauth_request_token_secret' => false,
 	'oauth_access_token' => false,
 	'oauth_access_token_secret' => false,
-	'last_tweet_time' => 0,
 	'user_id' => 0,
 	'profile_image_url' => '',
 	'screen_name' => '',
 	'location' => false,
+    'tweet_run_1' => 1,
+    'tweet_run_2' => 0,
 );
 
-/* (F3)
+/*
 *------------------------------------------------------------*/
 function fdx1_get_settings() {
 	global $fdx1_defaults;
-
 	$settings = $fdx1_defaults;
-
 	$wordpress_settings = get_option( 'fdx1_settings' );
 	if ( $wordpress_settings ) {
 		foreach( $wordpress_settings as $key => $value ) {
 			$settings[ $key ] = $value;
 		}
 	}
-
 	return $settings;
 }
 
 
-/* (F4)
+/*
 *------------------------------------------------------------*/
 function fdx1_do_tweet( $post_id ) {
 	$settings = fdx1_get_settings();
   	$message = fdx1_get_message( $post_id );
-	// If we have a valid message, Tweet it
-	// this will fail if the Tiny URL service is done
 	if ( $message ) {
-		// If we successfully posted this to Twitter, then we can remove it from the queue eventually
 		$result_of_tweet = fdx1_twit_update_status( $message );
 		if ( $result_of_tweet ) {
 			return true;
@@ -135,14 +133,26 @@ function fdx1_do_tweet( $post_id ) {
 	return false;
 }
 
+//--------------------------
+function fdx1_do_tweet2( $post_id ) {
+	$settings = fdx1_get_settings();
+  	$message2 = fdx1_get_message2( $post_id );
+	if ( $message2 ) {
+		$result_of_tweet = fdx1_twit_update_status( $message2 );
+		if ( $result_of_tweet ) {
+			return true;
+		}
+	}
+	return false;
+}
+
+
 /* (F5)
 *------------------------------------------------------------*/
 function fdx1_init() {
 	fdx1_update_post_settings();
-
 	if ( isset( $_GET['fdx1_oauth'] ) ) {
 		global $fdx1_oauth;
-
 		$settings = fdx1_get_settings();
 		$result = $fdx1_oauth->get_access_token( $settings['oauth_request_token'], $settings['oauth_request_token_secret'], $_GET['oauth_verifier'] );
 		if ( $result ) {
@@ -160,9 +170,7 @@ function fdx1_init() {
 					$settings['location'] = false;
 				}
 			}
-
 			fdx1_save_settings( $settings );
-
 			header( 'Location: ' . get_bloginfo('wpurl') . '/wp-admin/admin.php?page='. WP_Twitter::PLUGIN_P1);
 			die;
 		}
@@ -172,18 +180,15 @@ function fdx1_init() {
 		$settings['oauth_access_token_secret'] = '';
 		$settings['user_id'] = '';
 		fdx1_save_settings( $settings );
-
 		header( 'Location: ' . get_bloginfo('wpurl') . '/wp-admin/admin.php?page='. WP_Twitter::PLUGIN_P1);
 		die;
 	}
-
 }
 
-/* (F6)
+/*
 *------------------------------------------------------------*/
 function fdx1_get_profile_url() {
 	$settings = fdx1_get_settings();
-
 	return $settings['profile_image_url'];
 }
 
@@ -198,16 +203,13 @@ function fdx1_twit_update_status( $new_status ) {
 	return false;
 }
 
-/*
-*------------------------------------------------------------*/
+//--------------------------
 function fdx1_twit_has_tokens() {
 	$settings = fdx1_get_settings();
-
 	return ( $settings[ 'oauth_access_token' ] && $settings['oauth_access_token_secret'] );
 }
 
-/*
-*------------------------------------------------------------*/
+//--------------------------
 function fdx1_is_valid() {
 	return fdx1_twit_has_tokens();
 }
@@ -219,9 +221,7 @@ function fdx1_make_tinyurl( $link, $update = true, $post_id ) {
 	if ( strpos( $link, 'http://' ) === false ) {
 		return $link;
 	}
-
 	$settings = fdx1_get_settings();
-
 	$short_link = false;
 
 if ( $settings['url_type'] == 'tinyurl' ) {  //ok
@@ -236,16 +236,10 @@ $yourls_link = new FDX1YourlsShortener($settings['yourls-api-key'], $settings['y
 $short_link = $yourls_link->shorten( $link );
 //bitly
 } else if ( $settings['url_type'] == 'bitly' ) {
-if ( isset( $settings['bitly-user-name'] ) && strlen( $settings['bitly-user-name'] ) ) {
 require_once(dirname(__FILE__) . '/p1/bitly.php' );
 $settings = fdx1_get_settings();
 $tinyurl = new FDX1BitlyShortener( $settings['bitly-user-name'], $settings['bitly-api-key'] );
 $short_link = $tinyurl->shorten( $link );
-} else {  // if ERRO = tinyurl
-require_once(dirname(__FILE__) . '/p1/tinyurl.php' );
-$tinyurl = new FDX1TinyUrlShortener;
-$short_link = $tinyurl->shorten( $link );
-}
 //isgd
 } else if ( $settings['url_type'] == 'isgd' ) {
 require_once(dirname(__FILE__) . '/p1/isgd.php' );
@@ -262,7 +256,6 @@ return $short_link;
 *------------------------------------------------------------*/
 function fdx1_post_id_url_base() {
 	$settings = fdx1_get_settings();
-
 	$url = get_bloginfo( 'home' ) . '/?p=';
 	$url = str_replace( 'www.', '', $url );
 	return $url;
@@ -271,7 +264,7 @@ function fdx1_post_id_url_base() {
 
 /*
 *------------------------------------------------------------*/
-function fdx_hash_tags2( $post_id ) {
+function fdx_hash_tags( $post_id ) {
 	$hashtags = '';
 	$max_tags = '3'; //Maximum number of tags to include
 	$max_characters = '15'; //Maximum length in characters for included tags
@@ -307,17 +300,15 @@ function fdx1_get_message( $post_id ) {
 	$my_post = get_post( $post_id );
 	if ( $my_post ) {
 		$settings = fdx1_get_settings();
-
 		$message = $settings['message'];
 		$message = str_replace( '[title]', $my_post->post_title, $message );
 //--------------------------
         $message = str_replace( '[author]', get_the_author_meta( 'display_name',$my_post->post_author ), $message );
-        $message = str_replace( '[tags]', fdx_hash_tags2( $post_id ), $message );
+        $message = str_replace( '[tags]', fdx_hash_tags( $post_id ), $message );
         $categorys = get_the_category($post_id);
         $message = str_replace( '[cat]', $categorys[0]->name, $message );
 //--------------------------
 		$tinyurl = fdx1_make_tinyurl( get_permalink( $post_id ), true, $my_post->ID );
-
 		if ( $tinyurl ) {
 			$message = str_replace( '[link]', $tinyurl, $message );
 			return $message;
@@ -327,54 +318,75 @@ function fdx1_get_message( $post_id ) {
 	return false;
 }
 
+function fdx1_get_message2( $post_id ) {
+	$my_post = get_post( $post_id );
+	if ( $my_post ) {
+		$settings = fdx1_get_settings();
+		$message2 = $settings['message2'];
+		$message2 = str_replace( '[title]', $my_post->post_title, $message2 );
+//--------------------------
+        $message2 = str_replace( '[author]', get_the_author_meta( 'display_name',$my_post->post_author ), $message2 );
+//--------------------------
+		$tinyurl = fdx1_make_tinyurl( get_permalink( $post_id ), true, $my_post->ID );
+		if ( $tinyurl ) {
+			$message2 = str_replace( '[link]', $tinyurl, $message2 );
+			return $message2;
+		}
+	}
+
+	return false;
+}
+
 /*
 *------------------------------------------------------------*/
-function fdx1_post_now_published( $post_id) {
-
+function fdx1_post_now_published( $post_id, $force_tweet = false) {
 	$settings = fdx1_get_settings();
-
 	$wt_tags = $settings['tags'];
 	$wt_reverse = $settings['reverse'];
 
+    if ( !$force_tweet && !$settings['tweet_run_1'] ) {
+ 		return;
+		}
 
-		$can_tweet = true;
-
+    $can_tweet = true;
 		// check tags
 		if ( count( $wt_tags ) ) {
-
 			// we have a tag or a category
 			$new_taxonomy = array();
-
 			$post_tags = get_the_tags();
 			if ( $post_tags ) {
 				foreach ( $post_tags as $some_tag ) {
 					$new_taxonomy[] = strtolower( $some_tag->name );
 				}
 			}
-
 			$post_categories = get_the_category();
 			if ( $post_categories ) {
 				foreach ( $post_categories as $some_category ) {
 					$new_taxonomy[] = strtolower( $some_category->name );
 				}
 			}
-
 			$category_hits = array_intersect( $wt_tags, $new_taxonomy );
-
 			if ( $wt_reverse ) {
 				$can_tweet = ( count( $category_hits ) == 0);
 			} else {
 				$can_tweet = ( count( $category_hits ) > 0);
 			}
 		}
-
 		if ($can_tweet ) {
  			$result = fdx1_do_tweet( $post_id );
 		}
-
 }
 
-/* Atention
+//--------------------------
+function fdx1_post_now_published2( $post_id, $force_tweet = false) {
+$settings = fdx1_get_settings();
+if ( !$force_tweet && !$settings['tweet_run_2'] ) {
+ 		return;
+		}
+$result = fdx1_do_tweet2( $post_id );
+}
+
+/*
 *------------------------------------------------------------*/
 function fdx1_save_settings( $settings ) {
 	update_option( 'fdx1_settings', $settings );
