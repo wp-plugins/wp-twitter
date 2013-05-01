@@ -5,7 +5,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: twitter, twit, tweet, tweets, twitter widget, dynamic twitter widget, auto refresh tweet, twitter goodies,twitter tools, yourls, Widget, Sharethis
 Requires at least: 3.0
 Tested up to: 3.5
-Stable tag: 3.9.2
+Stable tag: 3.9.3
 License: GPLv2 or later
 
 Is a plugin that creates a complete integration between your WordPress blog and your Twitter account including ShareThis Buttons and Goodies Widgets.
@@ -78,6 +78,9 @@ No, this plugin does not work with php4.
 
 
 == Changelog ==
+* 3.9.3
+    * Bug Fix: widget not showing.
+
 * 3.9.2
     * Cosmetic fixes  
     * Minor interface tweaks.
