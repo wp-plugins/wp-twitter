@@ -3,17 +3,11 @@
 if ( !class_exists( 'WP_Http' ) ) {
 	include_once( ABSPATH . WPINC. '/class-http.php' );
 }
-
-
 define( 'fdx1_OAUTH_CONSUMER_KEY', 'ywPMWiTkSJ3HOEINuttyDQ' );
 define( 'fdx1_OAUTH_REQUEST_URL', 'http://api.twitter.com/oauth/request_token' );
 define( 'fdx1_OAUTH_ACCESS_URL', 'http://api.twitter.com/oauth/access_token' );
 define( 'fdx1_OAUTH_AUTHORIZE_URL', 'http://api.twitter.com/oauth/authorize' );
 define( 'fdx1_OAUTH_REALM', 'http://twitter.com/' );
-
-
-global $fdx1_oauth;
-$fdx1_oauth = new FDX1OAuth;
 
 class FDX1OAuth {
 
@@ -206,16 +200,21 @@ class FDX1OAuth {
 		
 		return $this->do_request( $url, $header, $other_params );		
 	}
-	
-	function get_request_token() {
+//******************************************************
+   	function get_oauth_params() {
 		$params = array();
-		
-    	$params['oauth_consumer_key'] = $this->oauth_consumer_key;
-		$params['oauth_callback'] = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] . '&fdx1_oauth=1';
+		$params['oauth_consumer_key'] = $this->oauth_consumer_key;;
 		$params['oauth_signature_method'] = 'HMAC-SHA1';
 		$params['oauth_timestamp'] = time() + $this->oauth_time_offset;
 		$params['oauth_nonce'] = $this->get_nonce();
 		$params['oauth_version'] = '1.0';
+		return $params;
+	}
+//******************************************************
+
+	function get_request_token() {
+        $params = $this->get_oauth_params();
+		$params['oauth_callback'] = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] . '&fdx1_oauth=1';
 
 		$result = $this->do_oauth( fdx1_OAUTH_REQUEST_URL, $params );
 		if ( $result ) {
@@ -225,12 +224,7 @@ class FDX1OAuth {
 	}
 	
 	function get_access_token( $token, $token_secret, $verifier ) {
-		$params = array();
-		$params['oauth_consumer_key'] = $this->oauth_consumer_key;
-		$params['oauth_signature_method'] = 'HMAC-SHA1';
-		$params['oauth_timestamp'] = time() + $this->oauth_time_offset;
-		$params['oauth_nonce'] = $this->get_nonce();
-		$params['oauth_version'] = '1.0';
+        $params = $this->get_oauth_params();
 		$params['oauth_token'] = $token;
 		$params['oauth_verifier'] = $verifier;
 		
@@ -238,25 +232,20 @@ class FDX1OAuth {
 		if ( $result ) {
 			$new_params = $this->parse_params( $result );
 			return $new_params;
-		}		
+		}
 	}
 	
 	function update_status( $token, $token_secret, $status ) {
-		$params = array();
-		$params['oauth_consumer_key'] = $this->oauth_consumer_key;
-		$params['oauth_signature_method'] = 'HMAC-SHA1';
-		$params['oauth_timestamp'] = time() + $this->oauth_time_offset;
-		$params['oauth_nonce'] = $this->get_nonce();
-		$params['oauth_version'] = '1.0';
-		$params['oauth_token'] = $token;
+    	$params = $this->get_oauth_params();
+    	$params['oauth_token'] = $token;
 		$params['status'] = $status;
-		
 
-		$url = 'http://api.twitter.com/1/statuses/update.xml';
-		
+		$url = 'http://api.twitter.com/1.1/statuses/update.json';
+
 		$result = $this->do_oauth( $url, $params, $token_secret );
 		if ( $result ) {
-			$new_params = fdx1_parsexml( $result );
+		 //	$new_params = fdx1_parsexml( $result );
+            $new_params = json_decode( $result );
 			return true;
 		} else {
 			return false;	
@@ -271,17 +260,8 @@ class FDX1OAuth {
 		return fdx1_OAUTH_AUTHORIZE_URL . '?oauth_token=' . $token;
 	}
 	
-	function get_user_info( $user_id ) {
-		$url = 'http://api.twitter.com/1/users/show.xml?id=' . $user_id;	
-		
-		$result = $this->do_get_request( $url );
-		if ( $result ) {
-			$new_params = fdx1_parsexml( $result );
-			return $new_params;
-		}			
-	}
-	
-	function setup() {
+
+function setup() {
 		define( 'fdx1_OAUTH_CONSUMER_SECRET', '8wBlmw81giyrDIVjobkPc1g4aJu5tMnsyGKVulE9k' );
 	}
 }
