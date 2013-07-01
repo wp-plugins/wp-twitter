@@ -67,16 +67,6 @@ We'd love for you to get involved. Whatever your level of skill or however much 
 > You can install **WP Twitter** directly from the WordPress admin! Visit the Plugins - > Add New page and search for **WP Twitter**. Click to install.
 
 
-== Frequently Asked Questions ==
-
-= Does WP Twitter require cURL? =
-* Yes, WP Twitter requires the cURL utility.
-Fortunately, this utility is a standard inclusion with PHP and virtually all users should experience no issues. If it does pose a problem, the link above will lead to further information to fix the problem.
-
-= Does this plugin work with PHP4? =
-No, this plugin does not work with php4.
-
-
 == Changelog ==
 * 4.0
     * New twitter API v1.1
