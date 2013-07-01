@@ -5,7 +5,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: twitter, twit, tweet, tweets, twitter widget, dynamic twitter widget, auto refresh tweet, twitter goodies,twitter tools, yourls, Widget, Sharethis
 Requires at least: 3.0
 Tested up to: 3.5
-Stable tag: 4.0
+Stable tag: 4.1
 License: GPLv2 or later
 
 Is a plugin that creates a complete integration between your WordPress blog and your Twitter account including ShareThis Buttons and Goodies Widgets.
@@ -36,11 +36,8 @@ The following short url services are supported:
 = Languages Available =
 * English (default)
 * Brazilian Portuguese (**pt_BR**) translation by **Fabrix DoRoMo**
-* French  (**fr_FR**) translation by **Karim El Khalifa**
 * Spanish (**es_ES**) translation by **Juan Pablo Poblacion Paredes**
-* Italian (**it_IT**) translation by **TheShark_76**
-* Deutsch (**de_DE**) translation by **Benedikt Hartmann**
-* Turkish (**tr**)    translation by **Hakan Erarslan**
+
 
 
 = How To Contribute =
@@ -68,6 +65,9 @@ We'd love for you to get involved. Whatever your level of skill or however much 
 
 
 == Changelog ==
+* 4.1
+    * Update languages files: pt_BR.mo, es_ES.mo
+
 * 4.0
     * New twitter API v1.1
     * Performance Improvement
