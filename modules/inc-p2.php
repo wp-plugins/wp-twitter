@@ -91,7 +91,7 @@ data-widget-id="<?php echo get_option('wp_twitter_fdx_username'); ?>"></a>
     <p><input name="wp_twitter_fdx_width" type="text" size="7" value="<?php echo get_option('wp_twitter_fdx_width'); ?>" /> <strong><?php _e('Widget Width', $this->hook) ?></strong>  </p>
      <p><input name="wp_twitter_fdx_height" type="text" size="7" value="<?php echo get_option('wp_twitter_fdx_height'); ?>" /><strong> <?php _e('Widget Height', $this->hook) ?></strong></p>
 
-      <p><input  id="sw-shell-background" name="wp_twitter_fdx_shell_bg" type="text" size="7" value="<?php echo get_option('wp_twitter_fdx_shell_bg'); ?>" /> <?php _e('<strong>Tweet limit</strong> (value between 1 and 20, or 0 for all)', $this->hook) ?></p>
+      <p><input  id="sw-shell-background" name="wp_twitter_fdx_shell_bg" type="text" size="7" value="<?php echo get_option('wp_twitter_fdx_shell_bg'); ?>" /> <?php _e('<strong>Tweet limit</strong> <em>(value between 1 and 20, or 0 for all)</em>', $this->hook) ?></p>
         <p><input   id="sw-shell-color" name="wp_twitter_fdx_shell_text" type="text" size="7" value="<?php echo get_option('wp_twitter_fdx_shell_text'); ?>" /> <strong><?php _e('Theme', $this->hook) ?>:</strong> (<code>light</code> - <code>dark</code>)</p>
        <p>	<input class="color" id="sw-tweet-text" name="wp_twitter_fdx_tweet_text" type="text" size="7" value="<?php echo get_option('wp_twitter_fdx_tweet_text'); ?>" />  <strong><?php _e('Border color', $this->hook) ?></strong></p>
         <p><input class="color" id="sw-tweet-links" name="wp_twitter_fdx_links" type="text" size="7" value="<?php echo get_option('wp_twitter_fdx_links'); ?>" /> <strong><?php _e('Link Color', $this->hook) ?></strong></p>
