@@ -47,8 +47,7 @@ $rss = @fetch_feed( $this->sbar_rss );
      if ( is_object($rss) ) {
         if ( is_wp_error($rss) ) {
             echo 'Newsfeed could not be loaded.';
-    		return;
-        }
+           } else {
 echo '<ul>';
 		foreach ( $rss->get_items(0, 5) as $item ) {
     		$link = $item->get_link();
@@ -70,7 +69,8 @@ echo '<ul>';
 echo '<li style=" margin-top: -2px; margin-bottom: -2px"><a class="sm_button sm_bullet" title="'. $date .'" target="_blank" href="'. $link .'">'. $title.' <em class="none">'. $diff.'</em></a></li>';
     }
        echo'</ul>';
-      }
+   } // if feed error
+}
 echo '</div></div>';
 //----------------------------------------
 echo '</div></div>';
