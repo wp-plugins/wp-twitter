@@ -4,10 +4,10 @@ if ( !class_exists( 'WP_Http' ) ) {
 	include_once( ABSPATH . WPINC. '/class-http.php' );
 }
 define( 'fdx1_OAUTH_CONSUMER_KEY', 'ywPMWiTkSJ3HOEINuttyDQ' );
-define( 'fdx1_OAUTH_REQUEST_URL', 'http://api.twitter.com/oauth/request_token' );
-define( 'fdx1_OAUTH_ACCESS_URL', 'http://api.twitter.com/oauth/access_token' );
-define( 'fdx1_OAUTH_AUTHORIZE_URL', 'http://api.twitter.com/oauth/authorize' );
-define( 'fdx1_OAUTH_REALM', 'http://twitter.com/' );
+define( 'fdx1_OAUTH_REQUEST_URL', 'https://api.twitter.com/oauth/request_token' );
+define( 'fdx1_OAUTH_ACCESS_URL', 'https://api.twitter.com/oauth/access_token' );
+define( 'fdx1_OAUTH_AUTHORIZE_URL', 'https://api.twitter.com/oauth/authorize' );
+define( 'fdx1_OAUTH_REALM', 'https://twitter.com/' );
 
 class FDX1OAuth {
 
@@ -240,7 +240,7 @@ class FDX1OAuth {
     	$params['oauth_token'] = $token;
 		$params['status'] = $status;
 
-		$url = 'http://api.twitter.com/1.1/statuses/update.json';
+		$url = 'https://api.twitter.com/1.1/statuses/update.json';
 
 		$result = $this->do_oauth( $url, $params, $token_secret );
 		if ( $result ) {
