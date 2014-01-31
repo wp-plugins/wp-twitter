@@ -165,11 +165,11 @@ echo '<div class="updated fade"><p><strong>' . __( 'Settings updated', $this->ho
 <!-- ############################################################################################################### -->
    <div class="fdx-left-content">
 						<p><?php _e( 'The default behaviour is to publish all new posts as Tweets to your Twitter stream', $this->hook ); ?>.</p>
-						<p><?php _e( 'Can also be configured to include/exclude entries that have a specific tag, category or Associated Tag/Categorie', $this->hook ); ?>.</p>
+						<p><?php _e( 'Can also be configured to include/exclude entries that have a specific tag, category or Associated Tag/Category', $this->hook ); ?>.</p>
 				</div><!-- left content -->
 
 				<div class="fdx-right-content">
-                   <p><strong><?php _e('Tags, Categories, Tag/Categorie', $this->hook ); ?> </strong><small><?php _e('(comma separated)', $this->hook ); ?></small> </p>
+                   <p><strong><?php _e('Tags, Categories, Tag/Category', $this->hook ); ?> </strong><small><?php _e('(comma separated)', $this->hook ); ?></small> </p>
 
 							<input type="text" id="fdx1-tags" name="fdx1-tags" value="<?php echo implode( $settings['tags'], ', '); ?>" class="long"/>
 
