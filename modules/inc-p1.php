@@ -54,7 +54,7 @@ echo '<div class="updated fade"><p><strong>' . __( 'Settings updated', $this->ho
 <div class="fdx-left-content">
 
 
-<h2>Twitter ID = <a href="javascript:void(0);" onclick="PopupCenter(' https://twitter.com/intent/user?user_id=<?php echo $settings['user_id']; ?>', 'page2_id2',700,500,'yes');"> <?php echo $settings['user_id']; ?></a></h2>
+<h2>Twitter ID = <a href="https://twitter.com/intent/user?user_id=<?php echo $settings['user_id']; ?>" data-width="700" data-height="500" rel="1" id="tuwiterid" class="newWindow"> <?php echo $settings['user_id']; ?></a></h2>
 
 </div><!-- left content -->
 

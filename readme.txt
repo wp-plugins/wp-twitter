@@ -5,7 +5,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: twitter, twit, tweet, tweets, twitter widget, dynamic twitter widget, auto refresh tweet, twitter goodies,twitter tools, yourls, Widget, Sharethis
 Requires at least: 3.0
 Tested up to: 3.8.1
-Stable tag: 4.2.1
+Stable tag: 4.2.2
 License: GPLv2 or later
 
 Is a plugin that creates a complete integration between your WordPress blog and your Twitter account including ShareThis Buttons and Goodies Widgets.
@@ -44,7 +44,7 @@ The following short url services are supported:
 We'd love for you to get involved. Whatever your level of skill or however much time you can give, your contribution is greatly appreciated.
 
 * **Users** - download the latest development version of the plugin, and submit bug/feature requests.
-* **Non-English Speaking Users** - Contribute a translation using the GlotPress web interface - no technical knowledge required ([how to](https://poeditor.com/join/project?hash=c4087d646ecd161b8ca8344d327e9e6f)).
+* **Non-English Speaking Users** - Contribute a translation using web interface - no technical knowledge required ([how to](http://i.fabrix.net/nQgiC)).
 * **Developers** - Fork the development version and submit a pull request.
 
 
@@ -65,6 +65,9 @@ We'd love for you to get involved. Whatever your level of skill or however much 
 
 
 == Changelog ==
+* 4.2.2
+    *Fix [pop-up windows]
+
 * 4.2.1
     *Cosmetic fixes
 

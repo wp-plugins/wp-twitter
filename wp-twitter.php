@@ -3,7 +3,7 @@
  * Plugin Name: WP Twitter
  * Plugin URI: http://fabrix.net/wp-twitter
  * Description: Is a plugin that creates a complete integration between your WordPress blog and your Twitter account including a Twitter Button and Widgets.
- * Version: 4.2.1
+ * Version: 4.2.2
  * Author: Fabrix DoRoMo
  * Author URI: http://fabrix.net
  * License: GPL2+
@@ -12,7 +12,7 @@
  * Copyright 2013 fabrix.net (email: fabrix@fabrix.net)
  */
 class WP_Twitter {
-        public $pluginversion 	    = '4.2.1';
+        public $pluginversion 	    = '4.2.2';
         public $pluginname			= 'WP Twitter';
 		public $hook 				= 'wp-twitter'; // $this->hook
         public $_p2 	            = 'widgets-settings';
@@ -34,7 +34,7 @@ class WP_Twitter {
                                            );
         //----------------------------------------------
         public $sbar_homepage       = 'http://fabrix.net/wp-twitter';
-        public $sbar_glotpress      = 'https://poeditor.com/join/project?hash=c4087d646ecd161b8ca8344d327e9e6f';
+        public $sbar_glotpress      = 'http://i.fabrix.net/nQgiC';
         public $sbar_supportpage    = 'http://wordpress.org/extend/plugins/wp-twitter';
         public $sbar_paypalcode     = 'Z9SRNRLLDAFZJ';
         public $sbar_rss            = 'http://feeds.feedburner.com/fdxplugins/';
