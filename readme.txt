@@ -4,8 +4,8 @@ Contributors: fdoromo
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=Z9SRNRLLDAFZJ
 Tags: twitter, twit, tweet, tweets, twitter widget, dynamic twitter widget, auto refresh tweet, twitter goodies,twitter tools, yourls, Widget, Sharethis
 Requires at least: 3.0
-Tested up to: 3.9
-Stable tag: 4.2.2
+Tested up to: 4.0
+Stable tag: 4.2.3
 License: GPLv2 or later
 
 Is a plugin that creates a complete integration between your WordPress blog and your Twitter account including ShareThis Buttons and Goodies Widgets.
@@ -37,15 +37,13 @@ The following short url services are supported:
 * English (default)
 * Brazilian Portuguese (**pt_BR**) translation by **Fabrix DoRoMo**
 * Spanish (**es_ES**) translation by **Juan Pablo Poblacion Paredes**
+* Russian (**ru**) translation by **zerg959**
+* French (**fr_FR**) translation by **Loredana, Clicproxy, francoisambert, kabushi,edwinlmejia**
+* Italian (**it_IT**) translation by **Pigi76**
 
 
+* **Non-English Speaking Users** - Contribute a translation using the GlotPress web interface – no technical knowledge required ([how to](http://dev.fabrix.net/translate/projects/wp-twitter)).
 
-= How To Contribute =
-We'd love for you to get involved. Whatever your level of skill or however much time you can give, your contribution is greatly appreciated.
-
-* **Users** - download the latest development version of the plugin, and submit bug/feature requests.
-* **Non-English Speaking Users** - Contribute a translation using web interface - no technical knowledge required ([how to](http://i.fabrix.net/nQgiC)).
-* **Developers** - Fork the development version and submit a pull request.
 
 
 == Screenshots ==
@@ -55,16 +53,36 @@ We'd love for you to get involved. Whatever your level of skill or however much 
 
 
 == Installation ==
-1. Upload the `wp-twitter` folder to your `/wp-content/plugins/` directory
-1. Activate the `WP Twitter` plugin in your WordPress admin `Plugins`
-1. Go to the `WP Twitter Options page` (Options > WP Twitter >) to set your Twitter account information.
-1. Go to `Presentation / Widgets` in your WordPress admin area.
-1. Drag the `WP Twitter` widget to your sidebar.
 
-> You can install **WP Twitter** directly from the WordPress admin! Visit the Plugins - > Add New page and search for **WP Twitter**. Click to install.
+= Using The WordPress Dashboard =
+
+1. Navigate to the 'Add New' in the plugins dashboard
+2. Search for 'WP Twitter'
+3. Click 'Install Now'
+4. Activate the plugin on the Plugin dashboard
+
+= Uploading in WordPress Dashboard =
+
+1. Navigate to the 'Add New' in the plugins dashboard
+2. Navigate to the 'Upload' area
+3. Select `wp-twitter.zip` from your computer
+4. Click 'Install Now'
+5. Activate the plugin in the Plugin dashboard
+
+= Using FTP =
+
+1. Download `wp-twitter.zip`
+2. Extract the `wp-twitter` directory to your computer
+3. Upload the `wp-twitter` directory to the `/wp-content/plugins/` directory
+4. Activate the plugin in the Plugin dashboard
 
 
 == Changelog ==
+* 4.2.3
+    * IMPROVED - Russian **(ru)** Language pack added (thanks to zerg959)
+    * IMPROVED - French **(fr_FR)** Language pack added (thanks to Loredana, Clicproxy, francoisambert, kabushi,edwinlmejia)   
+    * IMPROVED - Italian **(it_IT)** Language pack added (thanks to Pigi76)
+
 * 4.2.2
     *Fix [pop-up windows]
 
